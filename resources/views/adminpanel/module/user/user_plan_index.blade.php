@@ -16,7 +16,7 @@
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>{{"Credits: " .$plan->credit}}</li>
                             </ul>
-                            <a class="subscribe" @if(\Illuminate\Support\Facades\Auth::user()->credit <= 0)  href="{{ route('billing', ['plan' => $plan->id]) }}" @else check="0" @endif ><button type="button" class="btn btn-lg btn-block btn-outline-primary">Subscribe</button></a>
+                            <a class="subscribe" @if(\Illuminate\Support\Facades\Auth::user()->plan_id == 1) href="{{ route('billing', ['plan' => $plan->id]) }}" @elseif(\Illuminate\Support\Facades\Auth::user()->credit <= 0 && \Illuminate\Support\Facades\Auth::user()->plan_id != 1)  href="{{ route('billing', ['plan' => $plan->id]) }}" @else check="0" @endif ><button type="button" class="btn btn-lg btn-block btn-outline-primary">Subscribe</button></a>
 
                         </div>
                     </div>

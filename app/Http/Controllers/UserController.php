@@ -129,7 +129,7 @@ class UserController extends Controller
     public function countries_index(){
 
         $countries_data = Country::get();
-        $country_user_data = Countryuser::where('user_id', auth::user()->id)->where('status', 'active')->get();
+        $country_user_data = CountryUser::where('user_id', auth::user()->id)->where('status', 'active')->get();
 //        dd($country_user_data);
         return view('adminpanel/module/user/countries', compact('countries_data', 'country_user_data'));
 
