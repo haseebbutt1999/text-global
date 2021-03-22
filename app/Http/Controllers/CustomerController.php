@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -54,13 +55,15 @@ class CustomerController extends Controller
 
             //           fetch address
             foreach($customer_check->addresses as $address)
-                $address_customer = Address::where('shopify_shop_id', Auth::user()->id)->where('shopify_customer_id', $address->customer_id)->where('shopify_address_id', $address->id)->first();
-            if($address_customer == null){
+//                dd(  $address->id);
+                $address_customer = Address::where('shopify_customer_id', $address->customer_id)->where('shopify_address_id', $address->id)->first();
+//            dd($address_customer);
+            if($address_customer === null){
                 $address_customer = new Address();
             }
             $address_customer->shopify_address_id = $address->id;
             $address_customer->shopify_customer_id = $address->customer_id;
-            $address_customer->shopify_shop_id = Auth::user()->id;
+//            $address_customer->shopify_shop_id = Auth::user()->id;
             $address_customer->first_name = $address->first_name;
             $address_customer->last_name = $address->last_name;
             $address_customer->company = $address->company;
@@ -76,10 +79,13 @@ class CustomerController extends Controller
             $address_customer->country_code = $address->country_code;
             $address_customer->default = $address->default;
             $address_customer->save();
+//            dd($address_customer);
 
             $welcome_camapaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
 //            dd($welcome_camapaign);
-            dispatch(new WelcomeSmsJob($welcome_camapaign, $customer));
+            if($welcome_camapaign != null){
+                dispatch(new WelcomeSmsJob($welcome_camapaign, $customer));
+            }
             //           fetch address end
         }
         return redirect()->back();

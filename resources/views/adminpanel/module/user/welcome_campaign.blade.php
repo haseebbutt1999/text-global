@@ -15,18 +15,18 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="text-left"  for="#">Campaign Name</label>
-                                    <input value="{{$welcome_campaign->campaign_name}}" name="campaign_name" type="text"  class="form-control ">
+                                    <input @if(isset($welcome_campaign->campaign_name)) value="{{$welcome_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="text-left"  for="#">Sender Name</label>
-                                    <input  value="{{$welcome_campaign->sender_name}}" name="sender_name" type="text"  class="form-control name">
+                                    <input @if(isset($welcome_campaign->sender_name)) value="{{$welcome_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="text-left"  for="#">Text Message</label>
                                     <div id="cct_embed_counts">
-                                        <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">{{$welcome_campaign->message_text}}</textarea>
+                                        <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($welcome_campaign->message_text)){{$welcome_campaign->message_text}}@endif</textarea>
                                         <span id="rchars">160</span> Character(s) Remaining
                                     </div>
                                 </div>

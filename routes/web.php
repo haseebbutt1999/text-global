@@ -86,7 +86,7 @@ Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
 //    Route::get('/package-create', 'AdminController@package_create')->name('package-create');
 });
 
-Route::get('/admin-login', function() {
+Route::get('/admin', function() {
     return view('auth.login');
 })->name('admin-login');
 Route::post('/admin-login-post','Auth\LoginController@login')->name('admin-login-post');
