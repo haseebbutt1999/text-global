@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\Country;
-use App\Countryuser;
+use App\CountryUser;
 use App\Customer;
 use App\Jobs\SendSms;
 use App\Jobs\WelcomeEmailJob;
