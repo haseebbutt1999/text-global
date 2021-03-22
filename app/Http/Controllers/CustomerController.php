@@ -1,0 +1,135 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Address;
+use App\Campaign;
+use App\Customer;
+use App\Jobs\WelcomeSmsJob;
+use App\Jobs\WelcomeSms;
+use App\Mail\WelcomeEmail;
+use App\Shopdetail;
+use App\Test;
+use App\User;
+use App\Welcomecampaign;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+class CustomerController extends Controller
+{
+    public function customer_sync(){
+
+        $customer = Auth::user();
+        $customer = $customer->api()->rest('GET', '/admin/customers.json')['body']['customers'];
+//        dd($customer);
+        //           fetch customer
+        foreach ($customer as $customer_check){
+            $customer = Customer::where('shopify_customer_id', $customer_check->id)->first();
+            if($customer === null){
+                $customer = New Customer();
+            }
+
+            $customer->shopify_customer_id = $customer_check->id;
+            $customer->user_id = Auth::user()->id;
+
+            $customer->email = $customer_check->email;
+            $customer->first_name = $customer_check->first_name;
+            $customer->last_name = $customer_check->last_name;
+            $customer->phone = $customer_check->phone;
+            $customer->currency = $customer_check->currency;
+            $customer->accepts_marketing = $customer_check->accepts_marketing;
+            $customer->state = $customer_check->state;
+            $customer->note = $customer_check->note;
+            $customer->orders_count = $customer_check->orders_count;
+            $customer->total_spent = $customer_check->total_spent;
+            $customer->last_order_id = $customer_check->last_order_id;
+            $customer->addresses = json_encode($customer_check->addresses);
+            $customer->verified_email = $customer_check->verified_email;
+            $customer->accepts_marketing_updated_at = Carbon::createFromTimeString($customer_check->accepts_marketing_updated_at)->format('Y-m-d H:i:s');
+            $customer->marketing_opt_in_level = $customer_check->marketing_opt_in_level;
+            $customer->save();
+            //           fetch customer end
+
+            //           fetch address
+            foreach($customer_check->addresses as $address)
+                $address_customer = Address::where('shopify_shop_id', Auth::user()->id)->where('shopify_customer_id', $address->customer_id)->where('shopify_address_id', $address->id)->first();
+            if($address_customer == null){
+                $address_customer = new Address();
+            }
+            $address_customer->shopify_address_id = $address->id;
+            $address_customer->shopify_customer_id = $address->customer_id;
+            $address_customer->shopify_shop_id = Auth::user()->id;
+            $address_customer->first_name = $address->first_name;
+            $address_customer->last_name = $address->last_name;
+            $address_customer->company = $address->company;
+            $address_customer->address1 = $address->address1;
+            $address_customer->address2 = $address->address2;
+            $address_customer->city = $address->city;
+            $address_customer->province = $address->province;
+            $address_customer->country = $address->country;
+            $address_customer->zip = $address->zip;
+            $address_customer->phone = $address->phone;
+            $address_customer->name = $address->name;
+            $address_customer->province_code = $address->province_code;
+            $address_customer->country_code = $address->country_code;
+            $address_customer->default = $address->default;
+            $address_customer->save();
+
+            $welcome_camapaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
+//            dd($welcome_camapaign);
+            dispatch(new WelcomeSmsJob($welcome_camapaign, $customer));
+            //           fetch address end
+        }
+        return redirect()->back();
+    }
+
+    public function test(){
+//        $camp = Campaign::where('id',6)->first();
+//        $us = User::where('id',$camp->user_id)->first();
+//        $user_select_countries = $us->countries;
+//        $user_customer = $us->customers;
+//        dd($user_customer);
+//        $pushed_users=[];
+//
+//        foreach ($user_select_countries as $countries){
+//            foreach ($user_customer as $uc){
+//                foreach ($uc->addressess as $add){
+//                    if($add->country == $countries->name){
+//                        $users = json_decode(json_encode($uc, TRUE));
+//                        array_push($pushed_users , $users);
+//                    }
+//                }
+//            }
+//
+//        }
+////        dd($pushed_users);
+//        foreach ($pushed_users as $pu){
+//            dd($pu->phone);
+//        }
+
+//        $user = User::Where('id', 19)->first();
+//        if($user->credit >= 0){
+//            $user->credit =  $user->credit - 1;
+//        }else{
+//            $user->credit_status = "0 credits";
+//        }
+//        $user->save();
+
+//        Mail::from('tanveerhaseeb1999.com')->to('haseebtanveerbutt1999@gmail.com')->send(new WelcomeEmail($user->id));
+
+//        $to_email = "haseebtanveerbutt1999@gmail.com";
+//        $s= Shopdetail::where('id',11)->first();
+//        dd($s->email);
+//        Mail::to($s->email)->send(new WelcomeEmail($user->id));
+//
+//        if(Mail::failures() != 0) {
+//            return "<p> Success! Your E-mail has been sent.</p>";
+//        }
+//
+//        else {
+//            return "<p> Failed! Your E-mail has not sent.</p>";
+//        }
+    }
+}

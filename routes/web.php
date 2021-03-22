@@ -1,0 +1,96 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//
+//})->middleware(['auth.shopify'])->name('home');
+
+Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
+    // customer routes
+        Route::get('/', 'UserController@user_dashboard')->middleware(['billable'])->name('home');
+        Route::post('setup-page', 'UserController@setup_page')->name('setup-page');
+
+        Route::get('user-shop-detail', 'UserController@user_shop_detail')->name('user-shop-detail');
+        Route::post('user-shop-detail-save', 'UserController@user_shop_detail_save')->name('user-shop-detail-save');
+
+        Route::get('countries', 'UserController@countries_index')->name('countries');
+
+        Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
+
+        Route::get('user-plans', 'UserController@user_plans')->name('user-plans');
+
+        Route::get('sms-campaign-index', 'UserController@sms_campaign_index')->name('sms-campaign-index');
+        Route::post('sms-campaign-save', 'UserController@sms_campaign_save')->name('sms-campaign-save');
+        Route::post('edit-campaign-save/{id}', 'UserController@edit_campaign_save')->name('edit-campaign-save');
+        Route::get('edit-status-campaign-save/{id}', 'UserController@edit_status_campaign_save')->name('edit-status-campaign-save');
+        Route::get('delete-campaign/{id}', 'UserController@delete_campaign')->name('delete-campaign');
+
+        Route::get('enable-sms', 'UserController@enable_sms')->name('enable-sms');
+
+        Route::get('/customers', 'AdminController@customers_index')->name('customers');
+        Route::get('/welcome-campaign', 'UserController@welcome_campaign')->name('welcome-campaign');
+        Route::post('/welcome-sms-campaign-save', 'UserController@welcome_sms_campaign_save')->name('welcome-sms-campaign-save');
+
+        Route::get('/customer-sync', 'CustomerController@customer_sync')->name('customer-sync');
+
+        Route::get('user', function(){
+            $user = \App\User::find(auth::user()->id);
+            dd($user->countries);
+        });
+
+        Route::get('test', 'CustomerController@test');
+});
+
+Route::group(['middleware'=>['auth.shopify']], function () {
+
+    Route::post('shop-detail', 'UserController@shop_detail')->name('shop-detail');
+    Route::get('shop-status-detail/{id}', 'UserController@shop_status_detail')->name('shop-status-detail');
+    Route::post('shop-status-detail-save', 'UserController@shop_status_detail_save')->name('shop-status-detail-save');
+
+});
+
+
+Route::get('/base', function() {
+    $auth = base64_encode("shopifyapp.textglobal:TGshopify1!");
+
+    dd($auth);
+});
+
+
+
+
+// admin routes
+Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
+    Route::get('/shops', 'AdminController@shops_index')->name('shops');
+
+    Route::get('/plans', 'AdminController@plans_index')->name('plans');
+    Route::post('/plan-save', 'AdminController@plan_save')->name('plan-save');
+    Route::post('/edit-plan-save/{id}', 'AdminController@edit_plan_save')->name('edit-plan-save');
+    Route::get('/delete-plan/{id}', 'AdminController@plan_delete')->name('delete-plan');
+//    Route::get('/package-create', 'AdminController@package_create')->name('package-create');
+});
+
+Route::get('/admin-login', function() {
+    return view('auth.login');
+})->name('admin-login');
+Route::post('/admin-login-post','Auth\LoginController@login')->name('admin-login-post');
+
+Route::get('/admin-logout', '\App\Http\Controllers\HomeController@logout')->name('admin-logout');
+
+

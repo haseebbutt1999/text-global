@@ -1,0 +1,97 @@
+@extends('adminpanel.layout.default')
+@section('content')
+    <div class="col-lg-12 col-md-12 p-4">
+        <!-- start info box -->
+        <div class="row ">
+            <div class="col-md-6 pl-3 pt-2" style="margin: auto;">
+                <div class="card" style="width: 100%">
+                    <div class="card-header" style="background: white;">
+                        <div class="row ">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <div class="col-md-12 px-3 pt-2">
+                                <div class="d-flex justify-content-between">
+                                    <h3>Shops</h3>
+{{--                                    <div >--}}
+{{--                                        <a style="display: inline-block;" type="submit" href=""   class="btn btn-sm btn-primary text-white"  >Sync Collections</a>--}}
+
+{{--                                        <form style="display: inline-block;" action="" method="post">--}}
+{{--                                            @csrf--}}
+{{--                                            <button type="submit"   class="btn btn-sm btn-primary text-white"  >Sync Products</button>--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <div id="product_append">
+                            <div class="row px-3" style="overflow-x:auto;">
+
+                                <table id="datatabled" class="table table-borderless  table-hover  table-class ">
+                                    <thead class="border-0 ">
+
+                                    <tr class="th-tr table-tr text-white text-center">
+                                        <th class="font-weight-bold " style="width: 70%">Shop Name</th>
+                                        <th class="font-weight-bold " style="width: 30%">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+{{--                                        @dd($users_data)--}}
+                                    @foreach($users_data as $key=>$user)
+
+                                        <tr class="td-text-center">
+                                            <td>
+                                                {{$user->name}}
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                {!!  $users_data->links() !!}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+{{--<script>--}}
+{{--    $(document).ready(function(){--}}
+{{--        $('body').on('change','.status-switch',function () {--}}
+{{--            var status = '';--}}
+{{--            var id = $(this).data('id');--}}
+{{--            console.log(id) --}}
+{{--            if($(this).is(':checked')){--}}
+{{--                status = 'active';--}}
+{{--                $(this).next().text('Active')--}}
+{{--            }--}}
+{{--            else{--}}
+{{--                status = 0;--}}
+{{--                $(this).next().text('Inactive')--}}
+{{--            }--}}
+{{--            $.ajax({--}}
+{{--                url: $(this).data('route'),--}}
+{{--                type: 'get',--}}
+{{--                data:{--}}
+{{--                    id:id,--}}
+{{--                    _token: $(this).data('csrf'),--}}
+{{--                    type : 'user_status_update',--}}
+{{--                    status : status--}}
+{{--                }--}}
+{{--            })--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
+

@@ -1,0 +1,237 @@
+.custom-col{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.custom-left-arrow-div{
+    padding: 9px 13px;
+    border: 1px solid grey;
+    border-radius: 7px;
+    margin-right: 12px;
+}
+.card-footer-button-a1{
+    border-radius: 5px !important;
+    /* width: 114%; */
+    width: 100px !important;
+    padding-bottom: 10px !important;
+}
+.card-footer-button-a2 {
+    color: black !important; border-radius: 5px !important;
+    /* width: 114%; */
+    width: 111px !important;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+}
+.custom-left-arrow-icon{
+    font-size: 25px;text-align: center;    margin-right: 4px;
+}
+
+.table-class tr th {
+    background: #313d89;
+    text-align: left;
+}
+.table-class tr td {
+    /*color: black;*/
+    text-align: left;
+}
+.mailbox-card-header{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.card-border-radius{
+    border-radius: 12px!important;
+}
+
+.card-footer.bg-white.card-footer-radius {
+    border-radius: 0px 0px 12px 12px;
+}
+.card-footer.bg-white.card2-footer-radius {
+    width: 94%;
+    border-radius: 0px 0px 12px 12px;
+    margin: 0px auto;
+}
+.custom{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+.card-footer-button{
+    display: flex;
+    justify-content: flex-end;
+}
+.card-footer-button div{
+    margin-left: 10px;
+
+}
+.card-custom-body{
+    padding: 16px 20px;
+
+}
+.card-custom-body2{
+    padding: 0px 20px;
+
+}
+.card2-footer-button{
+    display: flex;
+    justify-content: space-between;
+}
+.custom div {
+    margin: 12px 0px 12px 0px;
+    /* border: 1px solid red; */
+}
+.custom-div-child1{
+    width: 10%;
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+.custom-div-child2{
+    width:60%
+}
+.custom-div-child3{
+    width: 15%;
+}
+.custom-div-child4{
+    width: 15%;
+    text-align: end;
+}
+.custom2{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+.custom-top-div div {
+    padding-right: 10px;
+}
+.custom2>div {
+    margin: 12px 0px 12px 0px;
+    /* border: 1px solid red; */
+}
+.card-child-div1{
+    width: 100px;
+}
+.card-child-div2{
+    width: 100%;
+}
+.card-child-p{
+    margin-left: 20%;
+}
+.custom-list{
+    padding-top: 25px;
+}
+
+.custom-list-child1-div div:first-child {
+    padding: 0px 20px;
+}
+.card2-footer-div{
+    text-align:center;
+    padding: 8px 0px;
+}
+.custom-progress{
+    border-radius: 9px !important;
+    height: 12px !important;
+}
+td .td-a{
+    color: black;
+}
+td .td-a:hover{
+    color: black;
+    text-decoration-line:underline ;
+}
+.filter-parent-div div {
+    padding-right: 35px;
+    width: 125%;
+}
+/*   Switch Button   */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 57px;
+    height: 30px;
+
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #4d5dbf;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 30px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#AddPackageModal .modal-dialog{
+    max-width: 45%;
+}
+.edit-package .modal-dialog{
+    max-width: 45%;
+}
+
+/*   Switch Button End   */
+#search-form-api{
+
+    margin-right: 16px;
+}
+#feature-search-form-api{
+
+    margin-right: 18px;
+}
+/*#search-form{*/
+/*    width: 25%;*/
+/*    float: right;*/
+/*    margin-right: 38px;*/
+/*}*/
+@media (min-width: 994px){
+    .navbar-expand-lg .navbar-collapse {
+        margin-left: 20%;
+    }
+    ul.custom-ul li {
+        padding: 5px 10px;
+    }
+}
