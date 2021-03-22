@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="welcomepage update Form Value exists ot not, checks">
+    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="plan button payment enable or disable check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_072251_create_tests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_18_072251_create_tests_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +73,7 @@
       <workItem from="1615962287121" duration="25368000" />
       <workItem from="1616049140344" duration="27334000" />
       <workItem from="1616135162449" duration="20627000" />
-      <workItem from="1616394564258" duration="10098000" />
+      <workItem from="1616394564258" duration="10728000" />
     </task>
     <task id="LOCAL-00001" summary="product directory deleted">
       <created>1616398302691</created>
@@ -91,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616404637658</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="plan button payment enable or disable check">
+      <created>1616406856945</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616406856945</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +106,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="product directory deleted" />
     <MESSAGE value="welcomepage update Form Value exists ot not, checks" />
-    <option name="LAST_COMMIT_MESSAGE" value="welcomepage update Form Value exists ot not, checks" />
+    <MESSAGE value="plan button payment enable or disable check" />
+    <option name="LAST_COMMIT_MESSAGE" value="plan button payment enable or disable check" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616068215003">
@@ -140,10 +146,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616399013314" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1616404643490">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1616406859801">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1616404643490" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1616406859801" />
     <state x="601" y="339" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1616396779895">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -176,7 +182,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>217</line>
+          <line>218</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

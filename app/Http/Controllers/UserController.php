@@ -11,6 +11,7 @@ use App\Jobs\WelcomeEmailJob;
 use App\Shopdetail;
 use App\User;
 use App\Welcomecampaign;
+use Carbon\Traits\Test;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -170,7 +171,7 @@ class UserController extends Controller
         $campaign_save->campaign_name = $request->campaign_name;
         $campaign_save->message_text = $request->message_text;
         $campaign_save->sender_name = $request->sender_name;
-        $campaign_save->published_at = Carbon::createFromTimeString($request->published_at)->format('Y-m-d H:i:s');
+        $campaign_save->published_at = \Carbon\Carbon::createFromTimeString($request->published_at)->format('Y-m-d H:i:s');
 //        $campaign_save->status = 'active';
         if(isset($request->status)){
             $campaign_save->status= $request->status;
