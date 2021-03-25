@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Abandonedcartcampaign;
 use App\Campaign;
 use App\Country;
 use App\CountryUser;
@@ -252,6 +253,30 @@ class UserController extends Controller
             $welcome_campaign_save->status= $request->status;
         }
         $welcome_campaign_save->save();
+
+        return redirect()->back();
+    }
+
+    public function abandoned_cart_campaign(){
+        $abandoned_cart_campaign = Abandonedcartcampaign::first();
+        $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
+        return view('adminpanel/module/user/abandonedcart_campaign', compact('abandoned_cart_campaign'));
+    }
+
+    public function abandoned_cart_campaign_save(Request $request){
+//        dd($request->all());
+        $abandoned_cart_campaign = Abandonedcartcampaign::first();
+        if($abandoned_cart_campaign == null){
+            $abandoned_cart_campaign = new Abandonedcartcampaign();
+        }
+        $abandoned_cart_campaign->user_id = Auth::user()->id;
+        $abandoned_cart_campaign->campaign_name = $request->campaign_name;
+        $abandoned_cart_campaign->message_text = $request->message_text;
+        $abandoned_cart_campaign->sender_name = $request->sender_name;
+        if(isset($request->status)){
+            $abandoned_cart_campaign->status= $request->status;
+        }
+        $abandoned_cart_campaign->save();
 
         return redirect()->back();
     }

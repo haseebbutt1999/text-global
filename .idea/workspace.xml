@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="import carbon class">
+      <change afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/abandonedcart_campaign.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/adminpanel/module/user" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -73,7 +96,8 @@
       <workItem from="1615962287121" duration="25368000" />
       <workItem from="1616049140344" duration="27334000" />
       <workItem from="1616135162449" duration="20627000" />
-      <workItem from="1616394564258" duration="14497000" />
+      <workItem from="1616394564258" duration="21471000" />
+      <workItem from="1616654224962" duration="2004000" />
     </task>
     <task id="LOCAL-00001" summary="product directory deleted">
       <created>1616398302691</created>
@@ -110,11 +134,29 @@
       <option name="project" value="LOCAL" />
       <updated>1616415953273</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="import carbon class">
+      <created>1616416071221</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1616416071221</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
@@ -157,14 +199,14 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="573" y="174" key="NewPhpClassDialog/0.0.1600.860@0.0.1600.860" timestamp="1616163917722" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1616414617963">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1616426128824">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616414617963" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1616407490920">
+    <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1616416075012">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1616407490920" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1616416075012" />
     <state x="601" y="339" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1616396779895">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -177,10 +219,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1616140133429" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1616164267443">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1616426149109">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1616164267443" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1616426149109" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -197,7 +239,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>218</line>
+          <line>219</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

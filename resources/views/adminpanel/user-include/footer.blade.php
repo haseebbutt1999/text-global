@@ -50,47 +50,47 @@
 
 
 
-</script>
-@if(config('shopify-app.appbridge_enabled'))
-    <script src="https://unpkg.com/@shopify/app-bridge@0.8.2/index.js"></script>
-    <script src="https://unpkg.com/@shopify/app-bridge@0.8.2/actions.js"></script>
-    <script>
-        var AppBridge = window['app-bridge'];
-        var createApp = AppBridge.default;
-        var actions = window['app-bridge']['actions'];
-        var Toast=actions.Toast;
-        var Loading=actions.Loading;
-        var TitleBar = actions.TitleBar;
-        var Button = actions.Button;
-        var app = createApp({
-            apiKey: '{{ config('shopify-app.api_key') }}',
-            shopOrigin: '{{ \Illuminate\Support\Facades\Auth::user()->name }}',
-            forceRedirect: true,
-        });
-        var msg = '{{\Illuminate\Support\Facades\Session::get('msg')}}'
-        var error='{{\Illuminate\Support\Facades\Session::get('error')}}';
-        if(msg!=='')
-        {
-            const toastOptions = {
-                message: msg,
-                duration: 3000,
-            };
-            const toastNotice = Toast.create(app, toastOptions);
-            toastNotice.dispatch(Toast.Action.SHOW);
-        }
-        if(error!=='')
-        {
-            const toastOptions = {
-                message: msg,
-                duration: 3000,
-                isError: true
-            };
-            const toastNotice = Toast.create(app, toastOptions);
-            toastNotice.dispatch(Toast.Action.SHOW);
-        }
-    </script>
-    @include('shopify-app::partials.flash_messages')
-    @endif
+{{--</script>--}}
+{{--@if(config('shopify-app.appbridge_enabled'))--}}
+{{--    <script src="https://unpkg.com/@shopify/app-bridge@0.8.2/index.js"></script>--}}
+{{--    <script src="https://unpkg.com/@shopify/app-bridge@0.8.2/actions.js"></script>--}}
+{{--    <script>--}}
+{{--        var AppBridge = window['app-bridge'];--}}
+{{--        var createApp = AppBridge.default;--}}
+{{--        var actions = window['app-bridge']['actions'];--}}
+{{--        var Toast=actions.Toast;--}}
+{{--        var Loading=actions.Loading;--}}
+{{--        var TitleBar = actions.TitleBar;--}}
+{{--        var Button = actions.Button;--}}
+{{--        var app = createApp({--}}
+{{--            apiKey: '{{ config('shopify-app.api_key') }}',--}}
+{{--            shopOrigin: '{{ \Illuminate\Support\Facades\Auth::user()->name }}',--}}
+{{--            forceRedirect: true,--}}
+{{--        });--}}
+{{--        var msg = '{{\Illuminate\Support\Facades\Session::get('msg')}}'--}}
+{{--        var error='{{\Illuminate\Support\Facades\Session::get('error')}}';--}}
+{{--        if(msg!=='')--}}
+{{--        {--}}
+{{--            const toastOptions = {--}}
+{{--                message: msg,--}}
+{{--                duration: 3000,--}}
+{{--            };--}}
+{{--            const toastNotice = Toast.create(app, toastOptions);--}}
+{{--            toastNotice.dispatch(Toast.Action.SHOW);--}}
+{{--        }--}}
+{{--        if(error!=='')--}}
+{{--        {--}}
+{{--            const toastOptions = {--}}
+{{--                message: msg,--}}
+{{--                duration: 3000,--}}
+{{--                isError: true--}}
+{{--            };--}}
+{{--            const toastNotice = Toast.create(app, toastOptions);--}}
+{{--            toastNotice.dispatch(Toast.Action.SHOW);--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--    @include('shopify-app::partials.flash_messages')--}}
+{{--    @endif--}}
 
 </body>
 </html>

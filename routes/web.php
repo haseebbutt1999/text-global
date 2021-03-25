@@ -45,6 +45,9 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
         Route::get('/welcome-campaign', 'UserController@welcome_campaign')->name('welcome-campaign');
         Route::post('/welcome-sms-campaign-save', 'UserController@welcome_sms_campaign_save')->name('welcome-sms-campaign-save');
 
+        Route::get('/abandoned-cart-campaign', 'UserController@abandoned_cart_campaign')->name('abandoned-cart-campaign');
+        Route::post('/abandoned-cart-campaign-save', 'UserController@abandoned_cart_campaign_save')->name('abandoned-cart-campaign-save');
+
         Route::get('/customer-sync', 'CustomerController@customer_sync')->name('customer-sync');
 
         Route::get('user', function(){
