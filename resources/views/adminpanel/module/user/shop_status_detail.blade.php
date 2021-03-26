@@ -290,24 +290,24 @@
                                                             </thead>
                                                             <tbody>
                                                             {{--                                        @dd($users_data)--}}
-                                                            @if(isset($abandonedCartCampaign_logs_data))
-                                                                @foreach($abandonedCartCampaign_logs_data as $key=>$abandonedCartCampaign_log)
+{{--                                                            @if(isset($abandonedCartCampaign_logs_data))--}}
+{{--                                                                @foreach($abandonedCartCampaign_logs_data as $key=>$abandonedCartCampaign_log)--}}
 
-                                                                    <tr class="td-text-center">
-                                                                        <td>
-                                                                            {{$abandonedCartCampaign_log->action}}
-                                                                        </td>
-                                                                        <td >
-                                                                            {{$abandonedCartCampaign_log->created_at}}
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                                @endif
+{{--                                                                    <tr class="td-text-center">--}}
+{{--                                                                        <td>--}}
+{{--                                                                            {{$abandonedCartCampaign_log->action}}--}}
+{{--                                                                        </td>--}}
+{{--                                                                        <td >--}}
+{{--                                                                            {{$abandonedCartCampaign_log->created_at}}--}}
+{{--                                                                        </td>--}}
+{{--                                                                    </tr>--}}
+{{--                                                                @endforeach--}}
+{{--                                                                @endif--}}
                                                             </tbody>
                                                         </table>
-                                                        @if(isset($abandonedCartCampaign_logs_data))
-                                                        {!!  $abandonedCartCampaign_logs_data->links() !!}
-                                                            @endif
+{{--                                                        @if(isset($abandonedCartCampaign_logs_data))--}}
+{{--                                                        {!!  $abandonedCartCampaign_logs_data->links() !!}--}}
+{{--                                                            @endif--}}
                                                     </div>
 
                                                 </div>
