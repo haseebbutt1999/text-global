@@ -29,7 +29,7 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
 
         Route::get('countries', 'UserController@countries_index')->name('countries');
 
-        Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
+         Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
 
         Route::get('user-plans', 'UserController@user_plans')->name('user-plans');
 
@@ -63,6 +63,7 @@ Route::group(['middleware'=>['auth.shopify']], function () {
     Route::post('shop-detail', 'UserController@shop_detail')->name('shop-detail');
     Route::get('shop-status-detail/{id}', 'UserController@shop_status_detail')->name('shop-status-detail');
     Route::post('shop-status-detail-save', 'UserController@shop_status_detail_save')->name('shop-status-detail-save');
+    Route::post('country-shop-preferences-save', 'UserController@country_shop_preferences_save')->name('country-shop-preferences-save');
 
 });
 
@@ -72,9 +73,6 @@ Route::get('/base', function() {
 
     dd($auth);
 });
-
-
-
 
 // admin routes
 Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {

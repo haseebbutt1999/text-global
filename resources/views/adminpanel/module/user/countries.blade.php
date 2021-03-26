@@ -4,7 +4,7 @@
         <!-- start info box -->
         <div class="row ">
 
-            <div class="col-md-6 col-lg-6 m-auto">
+            <div class="col-md-12 col-lg-12 ">
                 <div class="card">
                     <form action="{{route('country-user-save')}}" method="post">
                         @csrf
@@ -17,7 +17,7 @@
                         <div class="card-body">
                         {{--                        @dd($user_shop_data)--}}
 {{--                        {{route('user-country-save')}}--}}
-
+{{--                            @dd($countries_shop_pref)--}}
                             <input hidden type="number" name="user_id" value="{{auth()->user()->id}}">
                             <div class="row">
                                 <div class="col-md-12">
@@ -25,7 +25,7 @@
 
                                     <div class="form-group">
                                         <div>
-                                            @foreach($countries_data as $key=>$countries)
+                                            @foreach($admin_selected_countries as $key=>$countries)
 {{--                                                <input hidden type="number" name="country_id" value="{{$countries->id}}">--}}
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div >{{$countries->name}}</div>

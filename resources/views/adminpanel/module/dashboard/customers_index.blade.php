@@ -14,7 +14,7 @@
                             @endif
                             <div class="col-md-12 px-3 pt-2">
                                 <div class="d-flex justify-content-between align-items-center mr-2">
-                                    <h3>Customers</h3>
+                                    <h5>Customers</h5>
                                     <a href="{{route('customer-sync')}}"><button class="btn-primary">Customer Sync</button></a>
                                     <div>
                                         <a href="{{route('welcome-campaign')}}"><button class="btn-primary">Welcome Campaign</button></a>
@@ -67,7 +67,9 @@
                                                    #dd($customer->addressess->first()->country);
                                             @endphp
                                             <td>
-                                                {{$customer->addressess->first()->country}}
+                                                @if(isset($customer->addressess->first()->country))
+                                                    {{$customer->addressess->first()->country}}
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

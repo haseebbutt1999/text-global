@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Http\Controllers\LogsController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Support\Facades\Auth;
 use Osiset\ShopifyApp\Contracts\ShopModel as IShopModel;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 use Osiset\ShopifyApp\Traits\ShopModel;
@@ -19,6 +21,12 @@ class User extends Authenticatable implements IShopModel
      *
      * @var array
      */
+    protected $log_store;
+
+//    public function __construct()
+//    {
+//        $this->log_store = new LogsController();
+//    }
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -51,6 +59,11 @@ class User extends Authenticatable implements IShopModel
         return $this->belongsToMany(Country::class, 'country_users');
     }
 
+    public function country_shop_pref()
+    {
+        return $this->belongsToMany(Country::class, 'country_shoppreferences');
+    }
+
     public function customers()
     {
         return $this->hasMany(Customer::class,'user_id', 'id');
@@ -59,6 +72,12 @@ class User extends Authenticatable implements IShopModel
     public function setPlanIdAttribute($value)
     {
         $this->attributes['plan_id'] = $value;
-        $this->attributes['credit'] += Plan::find($value)->credit;
+        if($value != '1'){
+            $this->attributes['credit'] += Plan::find($value)->credit;
+        }
+
+        $log_store = new LogsController();
+        $log_store->log_store(Auth::user()->id, 'Plan', $value, Plan::find($value)->name, 'Plan Updated by User' , $notes = null);
+
     }
 }

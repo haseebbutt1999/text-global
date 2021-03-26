@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header bg-white pb-1 d-flex justify-content-between align-items-center">
                         <h5>Sms Campaign</h5>
-                        <button type="button" class="btn btn-sm btn-info create-sms-button"  data-toggle="modal" data-target="#CreateSmsModal" >Create Campaign</button>
+                        <button type="button" class="btn btn-sm btn-primary create-sms-button"  data-toggle="modal" data-target="#CreateSmsModal" >Create Campaign</button>
                         {{--                              Modal--}}
                         <div aria-hidden="true" class="modal fade create-sms" id="CreateSmsModal" role="dialog" tabindex="-1">
                             <div class="modal-dialog" role="document">
@@ -107,7 +107,7 @@
 
                                     <td>
                                         <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-sm btn-info "  data-toggle="modal" data-target="#EditCampaignModal{{$key}}" >Edit</button>
+                                            <button type="button" class="btn btn-sm btn-primary "  data-toggle="modal" data-target="#EditCampaignModal{{$key}}" >Edit</button>
 {{--                                                                          Modal--}}
                                             <div aria-hidden="true" class="modal fade " id="EditCampaignModal{{$key}}" role="dialog" tabindex="-1">
                                                 <div class="modal-dialog" role="document">

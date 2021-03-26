@@ -3,7 +3,7 @@
     <div class="col-lg-12 col-md-12 p-4">
         <!-- start info box -->
         <div class="row ">
-            <div class="col-md-6 pl-3 pt-2" style="margin: auto;">
+            <div class="col-md-12 pl-3 pt-2" style="margin: auto;">
                 <div class="card" style="width: 100%">
                     <div class="card-header" style="background: white;">
                         <div class="row ">
@@ -14,7 +14,7 @@
                             @endif
                             <div class="col-md-12 px-3 pt-2">
                                 <div class="d-flex justify-content-between">
-                                    <h3>Shops</h3>
+                                    <h5>Shops</h5>
 {{--                                    <div >--}}
 {{--                                        <a style="display: inline-block;" type="submit" href=""   class="btn btn-sm btn-primary text-white"  >Sync Collections</a>--}}
 
@@ -37,8 +37,10 @@
                                     <thead class="border-0 ">
 
                                     <tr class="th-tr table-tr text-white text-center">
-                                        <th class="font-weight-bold " style="width: 70%">Shop Name</th>
-                                        <th class="font-weight-bold " style="width: 30%">Action</th>
+                                        <th class="font-weight-bold " >Shop Name</th>
+                                        <th class="font-weight-bold " >Plan Name</th>
+                                        <th class="font-weight-bold " >Credits</th>
+                                        <th class="font-weight-bold text-right pr-3"  >Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +50,12 @@
                                         <tr class="td-text-center">
                                             <td>
                                                 {{$user->name}}
+                                            </td>
+                                            <td>
+                                                {{$user->plan->name}}
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-primary text-light px-3 py-1">{{$user->credit}}</div>
                                             </td>
                                             <td style="text-align: right;">
                                                 <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>

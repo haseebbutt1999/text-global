@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Abandonedcartcampaign;
 use App\Campaign;
 use App\Country;
+use App\CountryShoppreference;
 use App\CountryUser;
 use App\Customer;
 use App\Jobs\SendSms;
 use App\Jobs\WelcomeEmailJob;
+use App\Log;
 use App\Shopdetail;
 use App\User;
 use App\Welcomecampaign;
@@ -18,9 +20,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 use phpDocumentor\Reflection\Types\False_;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class UserController extends Controller
 {
+    protected $log_store;
+
+    public function __construct(LogsController $log_store)
+    {
+        $this->log_store = $log_store;
+
+    }
+
     public function user_dashboard(){
         if(auth::user()->role == 'user'){
             return view('adminpanel/module/dashboard/user_dashboard');
@@ -55,9 +66,17 @@ class UserController extends Controller
     public function shop_status_detail(Request $request, $id){
         $shop_data = Shopdetail::where('user_id', $id)->first();
 //        dd($shop_data);
+        $countries_data = Country::get();
 
-
-        return view('adminpanel/module/user/shop_status_detail', compact('shop_data'));
+        $campaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Campaign'])->orderBy('id', 'desc')->paginate(30);
+        $welcomeCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
+        $abandonedCartCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
+        $plan_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Plan'])->orderBy('id', 'desc')->paginate(30);
+        $user_shop_detail_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Shopdetail'])->orderBy('id', 'desc')->paginate(30);
+        $country_shoppreference_data = CountryShoppreference::where('user_id', $id)->where('status', 'active')->get();
+//        dd($country_shoppreference_data);
+        $shop_id = $id;
+        return view('adminpanel/module/user/shop_status_detail', compact('shop_data', 'abandonedCartCampaign_logs_data ', 'welcomeCampaign_logs_data', 'user_shop_detail_logs_data', 'plan_logs_data', 'campaign_logs_data', 'countries_data', 'shop_id','country_shoppreference_data'));
     }
 
     public function shop_status_detail_save(Request $request){
@@ -118,10 +137,13 @@ class UserController extends Controller
         $shop_detail->sender_name = $request->sender_name;
         $shop_detail->save();
         if($shop_updated == "false"){
+            $this->log_store->log_store(Auth::user()->id, 'Shopdetail', $shop_detail->id, $shop_detail->firstname." ".$shop_detail->surname, 'Shop Details Created by User' , $notes = null);
             $shop_detail = Shopdetail::where('user_id', $shop_detail->user_id)->first();
 
             $welcomeEmailJob = (new WelcomeEmailJob($shop_detail));
             dispatch($welcomeEmailJob);
+        }else{
+            $this->log_store->log_store(Auth::user()->id, 'Shopdetail', $shop_detail->id, $shop_detail->firstname." ".$shop_detail->surname, 'Shop Details Updated by User' , $notes = null);
         }
 
         return redirect()->back();
@@ -130,11 +152,30 @@ class UserController extends Controller
 
     public function countries_index(){
 
-        $countries_data = Country::get();
-        $country_user_data = CountryUser::where('user_id', auth::user()->id)->where('status', 'active')->get();
-//        dd($country_user_data);
-        return view('adminpanel/module/user/countries', compact('countries_data', 'country_user_data'));
+        $admin_selected_countries = auth::user()->country_shop_pref;
 
+        $country_user_data = CountryUser::where('user_id', auth::user()->id)->where('status', 'active')->get();
+
+        return view('adminpanel/module/user/countries', compact('admin_selected_countries', 'countries_shop_pref', 'country_user_data'));
+
+    }
+
+    public function country_shop_preferences_save(Request $request){
+
+//        dd($request->all());
+        $countries = $request->country_id;
+//        dd($request->all());
+        $user = User::find($request->user_id);
+//        dd($user->countriesShopPref());
+        $user->countries()->detach();
+        $user->countries()->attach($countries, ['status'=>'active']);
+
+        $user->country_shop_pref()->detach();
+        $user->country_shop_pref()->attach($countries, ['status'=>'active']);
+        $user->country_shop_pref()->attach(230, ['status'=>'active']);
+        $user->countries()->attach(230, ['status'=>'active']);
+
+        return redirect()->back();
     }
 
     public function country_user_save(Request $request){
@@ -146,6 +187,7 @@ class UserController extends Controller
         $user->countries()->detach();
 
         $user->countries()->attach($countries, ['status'=>'active']);
+        $user->countries()->attach(230, ['status'=>'active']);
 
         return redirect()->back();
     }
@@ -158,9 +200,8 @@ class UserController extends Controller
 
     public function sms_campaign_index(){
 
-//        return redirect()->back();
-        $customer_data = Customer::get();
-        $sms_campaign_data = Campaign::get();
+        $customer_data = Customer::where('user_id', Auth::user()->id)->get();
+        $sms_campaign_data = Campaign::where('user_id', Auth::user()->id)->get();
 
         return view('adminpanel/module/user/sms_campaign', compact('customer_data', 'sms_campaign_data'));
     }
@@ -178,6 +219,8 @@ class UserController extends Controller
             $campaign_save->status= $request->status;
         }
         $campaign_save->save();
+
+        $this->log_store->log_store(Auth::user()->id, 'Campaign', $campaign_save->id, $campaign_save->campaign_name, 'Campaign Saved by User' , $notes = null);
 
         return redirect()->back();
 
@@ -200,7 +243,7 @@ class UserController extends Controller
             $campaign_save->status= $request->status;
         }
         $campaign_save->save();
-
+        $this->log_store->log_store(Auth::user()->id, 'Campaign', $campaign_save->id, $campaign_save->campaign_name, 'Campaign Edited by User' , $notes = null);
         return redirect()->back();
     }
 
@@ -216,11 +259,15 @@ class UserController extends Controller
             $campaign_save->status= $request->status;
         }
         $campaign_save->save();
+        if($request->status == 'inactive'){
+            $this->log_store->log_store(Auth::user()->id, 'Campaign', $campaign_save->id, $campaign_save->campaign_name, 'Campaign Inactive by User' , $notes = null);
+        }
         $current_user_campaign = Campaign::where('id', $campaign_save->id)->where('send_status', 'Not Sended')->where('status', 'active')->where('user_id', Auth::user()->id)->first();
         if(isset($current_user_campaign)){
+            $this->log_store->log_store(Auth::user()->id, 'Campaign', $current_user_campaign->id, $current_user_campaign->campaign_name, 'Campaign Active by User' , $notes = null);
             dispatch(new SendSms($current_user_campaign))->delay($current_user_campaign->published_at);
         }else{
-            dd('not found');
+            $this->log_store->log_store(Auth::user()->id, 'Campaign', $current_user_campaign->id, $current_user_campaign->campaign_name, 'Campaign Published Failed by User' , $notes = null);
         }
 
         return redirect()->back();
@@ -230,6 +277,7 @@ class UserController extends Controller
     public function delete_campaign($id){
         $campaign_delete = Campaign::find($id);
         $campaign_delete->delete();
+        $this->log_store->log_store(Auth::user()->id, 'Campaign', $id, $campaign_delete->campaign_name, 'Campaign Deleted by User' , $notes = null);
         return redirect()->back();
     }
 
@@ -253,6 +301,7 @@ class UserController extends Controller
             $welcome_campaign_save->status= $request->status;
         }
         $welcome_campaign_save->save();
+        $this->log_store->log_store(Auth::user()->id, 'Welcomecampaign', $welcome_campaign_save->id, $welcome_campaign_save->campaign_name, 'Welcome Campaign Updated by User' , $notes = null);
 
         return redirect()->back();
     }

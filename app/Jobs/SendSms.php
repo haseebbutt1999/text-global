@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Campaign;
+use App\Http\Controllers\LogsController;
 use App\Test;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -20,6 +21,8 @@ class SendSms implements ShouldQueue
 
     public $campaign;
     public $send_status="Sended";
+    private $log_store;
+
     /**
      * Create a new job instance.
      *
@@ -28,6 +31,7 @@ class SendSms implements ShouldQueue
     public function __construct(Campaign $campaign)
     {
         $this->campaign = $campaign;
+        $this->log_store = new LogsController();
     }
 
     /**
@@ -95,15 +99,13 @@ class SendSms implements ShouldQueue
             curl_close($curl);
 
             if ($err) {
-                $test = new Test();
-                $test->number = 404;
-                $test->text = "cURL Error #:" .$err;
-                $test->save();
+                $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed' , $notes = $err);
             } else {
                 $test = new Test();
                 $test->number = 200;
                 $test->text = "Successful Staus:" .$response;
                 $test->save();
+                $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' , $notes = $response);
 //                Detect Credits
                 $user = User::Where('id', $this->campaign->user_id)->first();
                 if($user->credit >= 0){

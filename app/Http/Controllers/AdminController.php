@@ -26,7 +26,7 @@ class AdminController extends Controller
     }
 
     public function customers_index(){
-        $customers_data = Customer::orderBy('id', 'desc')->paginate(10);
+        $customers_data = Customer::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(10);
 
         return view('adminpanel/module/dashboard/customers_index', compact('customers_data'));
     }
