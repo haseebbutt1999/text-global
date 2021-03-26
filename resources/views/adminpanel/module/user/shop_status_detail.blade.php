@@ -21,90 +21,150 @@
                         <a class="nav-link" id="plan-tab" data-toggle="tab" href="#plan" role="tab" aria-controls="plan"
                            aria-selected="false">User Plans</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="usershopdetail-tab" data-toggle="tab" href="#usershopdetail" role="tab" aria-controls="usershopdetail"
-                           aria-selected="false">User Shop Details</a>
-                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="shopdetail" role="tabpanel" aria-labelledby="shopdetail-tab">
                         <div class="card col-md-12">
-                            <form action="{{route('shop-status-detail-save')}}" method="post">
-                                @csrf
-                            <div class="card-header d-flex justify-content-between align-items-center bg-white pb-1">
-                                <h5>User Status Detail</h5>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">
-                                </div>
-                            </div>
+
                             <div class="card-body col-md-12">
                                 {{--                    @dd($shop_data)--}}
 
                                     {{--                            @dd($shop_data)--}}
-                                    <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="#">Firstname</label>
-                                                <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="#">Surname</label>
-                                                <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="#">Email</label>
-                                                <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="#">Mobile#</label>
-                                                <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">
-                                                <small class="text-muted">Mobile format must be 447</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="#">Sender Name</label>
-                                                <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">
-                                                <small class="text-muted">where the SMS is being sent from</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="#">Company Name</label>
-                                                <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">
-                                            </div>
-                                            <div class="mb-2">
-                                                Shop Status
-                                            </div>
-                                            <label class="switch" style="">
-                                                {{--                                    @dd($shop_data->user)--}}
-                                                <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">
-                                                <span class="slider round"></span>
-                                            </label>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="#">Username</label>
-                                                <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">
-                                                <small class="text-muted">username format must be xxxxxxxx.textglobal</small>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="userShopDetail-tab" data-toggle="tab" href="#userShopDetail" role="tab" aria-controls="userShopDetail"
+                                           aria-selected="false">User Shop Detail</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="userShopLog-tab" data-toggle="tab" href="#userShopLog" role="tab" aria-controls="userShopLog"
+                                           aria-selected="false">User Shop Logs</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="userShopDetail" role="tabpanel" aria-labelledby="userShopDetail-tab">
+                                        <div class="card col-md-12">
+                                            <form action="{{route('shop-status-detail-save')}}" method="post">
+                                                @csrf
+                                            <div class="card-header" style="background: white;padding-bottom: 0;">
+                                                <div class="row ">
+                                                    <div class="col-md-12 px-3 ">
+                                                        <div class="d-flex justify-content-end ">
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-lg btn-primary" value="Save">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="#">Password</label>
-                                                <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">
+                                            <div class="card-body">
+                                                <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="#">Firstname</label>
+                                                            <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="#">Surname</label>
+                                                            <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="#">Email</label>
+                                                            <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="#">Mobile#</label>
+                                                            <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">
+                                                            <small class="text-muted">Mobile format must be 447</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="#">Sender Name</label>
+                                                            <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">
+                                                            <small class="text-muted">where the SMS is being sent from</small>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="#">Company Name</label>
+                                                            <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            Shop Status
+                                                        </div>
+                                                        <label class="switch" style="">
+                                                            {{--                                    @dd($shop_data->user)--}}
+                                                            <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                                            <span class="slider round"></span>
+                                                        </label>
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="#">Username</label>
+                                                            <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">
+                                                            <small class="text-muted">username format must be xxxxxxxx.textglobal</small>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="#">Password</label>
+                                                            <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade " id="userShopLog" role="tabpanel" aria-labelledby="userShopLog-tab">
+                                        <div class="card col-md-12">
+                                            <div class="card-body">
+                                                <div id="product_append">
+                                                    <div class="row px-3" style="overflow-x:auto;">
+
+                                                        <table id="datatabled" class="table table-borderless  table-hover  table-class ">
+                                                            <thead class="border-0 ">
+
+                                                            <tr class="th-tr table-tr text-white text-center">
+                                                                <th class="font-weight-bold " style="width: 50%">Action</th>
+                                                                <th class="font-weight-bold " style="width: 50%">Created_at</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{--                                        @dd($users_data)--}}
+                                                            @foreach($user_shop_detail_logs_data as $key=>$user_shop_detail_log)
+
+                                                                <tr class="td-text-center">
+                                                                    <td>
+                                                                        {{$user_shop_detail_log->action}}
+                                                                    </td>
+                                                                    <td >
+                                                                        {{$user_shop_detail_log->created_at}}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        {!!  $user_shop_detail_logs_data->links() !!}
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+{{--                                --}}
+
 
                             </div>
-                            </form>
+
                         </div>
                     </div>
                     <div class="tab-pane fade" id="countries" role="tabpanel" aria-labelledby="countries-tab">
                         <div class="card col-md-12">
                             <form action="{{route('country-shop-preferences-save')}}" method="post">
                                 @csrf
-                                <div class="card-header col-md-12 d-flex justify-content-between align-items-center bg-white pb-1">
-                                    <h5>Countries</h5>
+                                <div class="card-header col-md-12 d-flex justify-content-end bg-white " style="padding-bottom: 0;">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-lg btn-primary" value="Save">
                                     </div>
@@ -147,15 +207,6 @@
                     </div>
                     <div class="tab-pane fade" id="campaign" role="tabpanel" aria-labelledby="campaign-tab">
                         <div class="card col-md-12">
-                            <div class="card-header" style="background: white;">
-                                <div class="row ">
-                                    <div class="col-md-12 px-3 pt-2">
-                                        <div class="d-flex justify-content-between">
-                                            <h5>Campaigns</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="card-body">
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -177,15 +228,6 @@
 
                                     <div class="tab-pane fade show active" id="bundulCampaign" role="tabpanel" aria-labelledby="bundulCampaign-tab">
                                         <div class="card col-md-12">
-                                            <div class="card-header" style="background: white;">
-                                                <div class="row ">
-                                                    <div class="col-md-12 px-3 pt-2">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h5>Bundul Sms Campains</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="card-body">
                                                 <div id="product_append">
                                                     <div class="row px-3" style="overflow-x:auto;">
@@ -222,15 +264,6 @@
                                     </div>
                                     <div class="tab-pane fade " id="welcomeCampaign" role="tabpanel" aria-labelledby="welcomeCampaign-tab">
                                         <div class="card col-md-12">
-                                            <div class="card-header" style="background: white;">
-                                                <div class="row ">
-                                                    <div class="col-md-12 px-3 pt-2">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h5>Welcome Sms Campaigns</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="card-body">
                                                 <div id="product_append">
                                                     <div class="row px-3" style="overflow-x:auto;">
@@ -267,15 +300,6 @@
                                     </div>
                                     <div class="tab-pane fade " id="abandonedCartCamapign" role="tabpanel" aria-labelledby="abandonedCartCamapign-tab">
                                         <div class="card col-md-12">
-                                            <div class="card-header" style="background: white;">
-                                                <div class="row ">
-                                                    <div class="col-md-12 px-3 pt-2">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h5>Abandoned Cart Camapign</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="card-body">
                                                 <div id="product_append">
                                                     <div class="row px-3" style="overflow-x:auto;">
@@ -321,15 +345,6 @@
                     </div>
                     <div class="tab-pane fade" id="plan" role="tabpanel" aria-labelledby="plan-tab">
                         <div class="card col-md-12">
-                            <div class="card-header" style="background: white;">
-                                <div class="row ">
-                                    <div class="col-md-12 px-3 pt-2">
-                                        <div class="d-flex justify-content-between">
-                                            <h5>User Plans</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div id="product_append">
                                     <div class="row px-3" style="overflow-x:auto;">
@@ -358,51 +373,6 @@
                                             </tbody>
                                         </table>
                                         {!!  $plan_logs_data->links() !!}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="usershopdetail" role="tabpanel" aria-labelledby="usershopdetail-tab">
-                        <div class="card col-md-12">
-                            <div class="card-header" style="background: white;">
-                                <div class="row ">
-                                    <div class="col-md-12 px-3 pt-2">
-                                        <div class="d-flex justify-content-between">
-                                            <h5>User Shop Detail</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="product_append">
-                                    <div class="row px-3" style="overflow-x:auto;">
-
-                                        <table id="datatabled" class="table table-borderless  table-hover  table-class ">
-                                            <thead class="border-0 ">
-
-                                            <tr class="th-tr table-tr text-white text-center">
-                                                <th class="font-weight-bold " style="width: 50%">Action</th>
-                                                <th class="font-weight-bold " style="width: 50%">Created_at</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {{--                                        @dd($users_data)--}}
-                                            @foreach($user_shop_detail_logs_data as $key=>$user_shop_detail_log)
-
-                                                <tr class="td-text-center">
-                                                    <td>
-                                                        {{$user_shop_detail_log->action}}
-                                                    </td>
-                                                    <td >
-                                                        {{$user_shop_detail_log->created_at}}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                        {!!  $user_shop_detail_logs_data->links() !!}
                                     </div>
 
                                 </div>
