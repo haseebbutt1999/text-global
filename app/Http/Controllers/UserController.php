@@ -156,7 +156,7 @@ class UserController extends Controller
 
         $country_user_data = CountryUser::where('user_id', auth::user()->id)->where('status', 'active')->get();
 
-        return view('adminpanel/module/user/countries', compact('admin_selected_countries', 'countries_shop_pref', 'country_user_data'));
+        return view('adminpanel/module/user/countries', compact('admin_selected_countries', 'country_user_data'));
 
     }
 
