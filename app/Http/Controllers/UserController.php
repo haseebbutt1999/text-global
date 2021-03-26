@@ -330,4 +330,10 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function webhooks()
+    {
+        $webhook=Auth::user()->api()->rest('GET','/admin/webhooks.json');
+        dd($webhook);
+    }
 }

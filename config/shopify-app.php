@@ -312,6 +312,10 @@ return [
             ],
             ...
         */
+        [
+            'topic' => 'customers/create',
+            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/customer-create'
+        ],
     ],
 
     /*
