@@ -137,5 +137,22 @@ class CustomerController extends Controller
 //        else {
 //            return "<p> Failed! Your E-mail has not sent.</p>";
 //        }
+        $pushed_customer = [];
+        $customer = Customer::find(10);
+//        dd($customer);
+        $user_select_countries = auth::user()->countries;
+        foreach ($user_select_countries as $countries) {
+            foreach ($customer->addressess as $add){
+                if($add->country == $countries->name){
+                        $customer = json_decode(json_encode($customer));
+                    array_push($pushed_customer , $customer);
+                }
+            }
+        }
+//        dd($pushed_customer);
+    foreach ($pushed_customer as $pushed_cust){
+        dd($pushed_cust->addressess[0]->phone);
+    }
+
     }
 }
