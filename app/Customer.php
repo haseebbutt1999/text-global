@@ -14,4 +14,12 @@ class Customer extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function getCustomerNameAttribute(){
+        $subject = $template->subject;
+        $body = $template->body;
+        $subject = str_replace('{user}',$user->name,$subject);
+        $body = str_replace('{user}',$user->name,$body);
+    }
+
 }
