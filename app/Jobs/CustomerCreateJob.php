@@ -118,7 +118,7 @@ class CustomerCreateJob implements ShouldQueue
             foreach ($user_select_countries as $countries) {
                 foreach ($customer->addressess as $add){
                     if($add->country == $countries->name){
-                        $customer = json_decode(json_encode($customer, TRUE));
+//                        $customer = json_decode(json_encode($customer, TRUE));
                         array_push($pushed_customer , $customer);
                     }
                 }
