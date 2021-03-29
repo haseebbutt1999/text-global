@@ -41,7 +41,7 @@ class CustomerCreateJob implements ShouldQueue
     public function __construct($shopDomain, $data)
     {
         $this->shopDomain = $shopDomain;
-        $this->data = json_decode(json_encode($data),FALSE);;
+        $this->data = json_decode(json_encode($data),TRUE);;
     }
 
     /**
@@ -51,7 +51,9 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-
+        $test = new Test();
+        $test->text = "Error in Try Error #:" .$this->data;
+        $test->save();
         try {
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
             $test = new Test();
