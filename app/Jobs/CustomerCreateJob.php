@@ -41,7 +41,7 @@ class CustomerCreateJob implements ShouldQueue
     public function __construct($shopDomain, $data)
     {
         $this->shopDomain = $shopDomain;
-        $this->data = json_decode(json_encode($data),TRUE);;
+        $this->data = $data;
     }
 
     /**
