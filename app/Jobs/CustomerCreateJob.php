@@ -42,7 +42,7 @@ class CustomerCreateJob implements ShouldQueue
     public function __construct($shopDomain, $data)
     {
         $this->shopDomain = $shopDomain;
-        $this->data = $data;
+        $this->data = json_decode(json_encode($data),FALSE);
     }
 
     /**
@@ -52,16 +52,14 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-        $data = $this->data;
         try {
 
             $shop = $this->shopDomain;
             $shop = User::where('name', $shop)->first();
-            $data = $this->data;
-            $data=json_decode(json_encode($data),FALSE);
+            $data=json_decode(json_encode($this->data),FALSE);
 
             $test = new Test();
-            $test->text = "cURL Error #:" .$data;
+            $test->text = "cURL Error #:" .$this->data;
             $test->save();
             $test = new Test();
             $test->text = "shopdomain #:" .$shop;
