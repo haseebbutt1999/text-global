@@ -52,7 +52,7 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-        $data = $this->data;
+        $data = json_decode($this->data);
         try {
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
             $test = new Test();
