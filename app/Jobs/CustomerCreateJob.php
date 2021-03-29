@@ -52,11 +52,7 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-//        $this->data = json_decode( $this->data);
-        $test = new Test();
-
-        $test->text = "outer data" .$this->data;
-        $test->save();
+        $this->data = json_decode( $this->data);
         try {
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
             $test = new Test();
@@ -116,7 +112,7 @@ class CustomerCreateJob implements ShouldQueue
             }
         } catch (\Exception $exception){
             $new = new Test();
-            $new->text = $exception->getMessage();
+            $new->text = "catch error:".$exception->getMessage();
             $new->save();
         }
         // Convert domain
