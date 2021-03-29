@@ -290,7 +290,7 @@ class UserController extends Controller
 
     public function welcome_sms_campaign_save(Request $request){
 //        dd($request->all());
-        $welcome_campaign_save = Welcomecampaign::first();
+        $welcome_campaign_save = Welcomecampaign::where('user_id', Auth::user()->id)->first();
         if($welcome_campaign_save == null){
             $welcome_campaign_save = new Welcomecampaign();
         }
@@ -300,6 +300,8 @@ class UserController extends Controller
         $welcome_campaign_save->sender_name = $request->sender_name;
         if(isset($request->status)){
             $welcome_campaign_save->status= $request->status;
+        }else{
+            $welcome_campaign_save->status= "inactive";
         }
         $welcome_campaign_save->save();
         $this->log_store->log_store(Auth::user()->id, 'Welcomecampaign', $welcome_campaign_save->id, $welcome_campaign_save->campaign_name, 'Welcome Campaign Updated by User' , $notes = null);
