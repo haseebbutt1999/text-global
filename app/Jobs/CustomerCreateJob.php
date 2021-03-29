@@ -140,7 +140,7 @@ class CustomerCreateJob implements ShouldQueue
                     CURLOPT_TIMEOUT => 30,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => $data,
+                    CURLOPT_POSTFIELDS => json_encode($data),
                     CURLOPT_HTTPHEADER => array(
                         "accept: application/json",
                         "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
@@ -159,7 +159,7 @@ class CustomerCreateJob implements ShouldQueue
                     $test = new Test();
                     $test->number = 404;
                     $test->text = "cURL Error #:" .$err;
-                    $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended' , $notes = $err);
+                    $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
             //
                     $test->save();
                 } else {
@@ -167,7 +167,7 @@ class CustomerCreateJob implements ShouldQueue
                     $test->number = 200;
                     $test->text = "Successful Staus:" .$response;
                     $test->save();
-                    $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer' , $notes = $response);
+                    $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer');
             //                Detect Credits
                     $user = User::Where('id', $welcome_campaign->user_id)->first();
                     if($user->credit >= 0){

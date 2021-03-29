@@ -137,22 +137,55 @@ class CustomerController extends Controller
 //        else {
 //            return "<p> Failed! Your E-mail has not sent.</p>";
 //        }
-        $pushed_customer = [];
-        $customer = Customer::find(10);
-//        dd($customer);
-        $user_select_countries = auth::user()->countries;
-        foreach ($user_select_countries as $countries) {
-            foreach ($customer->addressess as $add){
-                if($add->country == $countries->name){
-                        $customer = json_decode(json_encode($customer));
-                    array_push($pushed_customer , $customer);
-                }
-            }
-        }
-//        dd($pushed_customer);
-    foreach ($pushed_customer as $pushed_cust){
-        dd($pushed_cust->addressess[0]->phone);
-    }
+//        $pushed_customer = [];
+//        $customer = Customer::find(10);
+////        dd($customer);
+//        $user_select_countries = auth::user()->countries;
+//        foreach ($user_select_countries as $countries) {
+//            foreach ($customer->addressess as $add){
+//                if($add->country == $countries->name){
+//                        $customer = json_decode(json_encode($customer));
+//                    array_push($pushed_customer , $customer);
+//                }
+//            }
+//        }
+////        dd($pushed_customer);
+//    foreach ($pushed_customer as $pushed_cust){
+//        dd($pushed_cust->phone);
+//    }
 
+        $data = [
+            "from" => "haseeb",
+            "to" => "+442079308181",
+            "text" => "hi this is message text",
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
+                "cache-control: no-cache",
+                "content-type: application/json",
+                "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        if ($err) {
+            dd($err);
+        } else {
+            dd($response);
+        }
     }
 }
