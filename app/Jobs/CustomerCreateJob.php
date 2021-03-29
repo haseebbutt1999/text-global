@@ -8,9 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Auth;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
-use phpDocumentor\Reflection\Types\True_;
 use stdClass;
 
 class CustomerCreateJob implements ShouldQueue
@@ -54,16 +52,17 @@ class CustomerCreateJob implements ShouldQueue
     {
         try {
 
-            $shop = $this->shopDomain;
-            $shop = User::where('name', $shop)->first();
-            $data=json_decode(json_encode($this->data),FALSE);
+            $custom_shop = $this->shopDomain;
+            $test = new Test();
+            $test->text = "shopdomain #:" .$custom_shop;
+            $test->save();
+//            $shop = User::where('name', $shop)->first();
+            $custom_data=json_decode($this->data);
 
             $test = new Test();
-            $test->text = "cURL Error #:" .$data;
+            $test->text = "cURL Error #:" .$custom_data;
             $test->save();
-            $test = new Test();
-            $test->text = "shopdomain #:" .$shop;
-            $test->save();
+
 //            $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
 //            $data = [
 //                "from" => $welcome_campaign->sender_name,
