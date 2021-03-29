@@ -59,9 +59,9 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-        $pushed_users=[];
-        $custom_shop = $this->shopDomain;
-        $shop = User::where('name', $custom_shop)->first();
+        $pushed_customer=[];
+        $user_shop = $this->shopDomain;
+        $shop = User::where('name', $user_shop)->first();
         $customer_data=$this->data;
         try {
             $customer = Customer::where('user_id', $shop->id)->where('shopify_customer_id', $customer_data->id)->first();
@@ -113,6 +113,21 @@ class CustomerCreateJob implements ShouldQueue
                 $address_customer->default = $address->default;
                 $address_customer->save();
             }
+
+            $user_select_countries = $shop->countries;
+            foreach ($user_select_countries as $countries) {
+                foreach ($customer->addressess as $add){
+                    if($add->country == $countries->name){
+                        $customer = json_decode(json_encode($customer, TRUE));
+                        array_push($pushed_customer , $customer);
+                    }
+                }
+            }
+
+            $new = new Test();
+            $new->text = "pushed_customer: ".$pushed_customer;
+            $new->save();
+
 
         }catch (\Exception $exception){
             $new = new Test();
