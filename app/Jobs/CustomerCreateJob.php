@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
+use phpDocumentor\Reflection\Types\True_;
 use stdClass;
 
 class CustomerCreateJob implements ShouldQueue
@@ -41,7 +42,7 @@ class CustomerCreateJob implements ShouldQueue
     public function __construct($shopDomain, $data)
     {
         $this->shopDomain = $shopDomain;
-        $this->data = $data;
+        $this->data = json_decode(json_encode($data), TRUE);
     }
 
     /**
@@ -51,9 +52,6 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
-        $test = new Test();
-        $test->text = "Error in Try Error #:" .$this->data;
-        $test->save();
         try {
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
             $test = new Test();
