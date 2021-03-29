@@ -57,10 +57,9 @@ class CustomerCreateJob implements ShouldQueue
             $test->text = "shopdomain #:" .$custom_shop;
             $test->save();
 //            $shop = User::where('name', $shop)->first();
-            $custom_data=json_decode($this->data);
 
             $test = new Test();
-            $test->text = "cURL Error #:" .$custom_data;
+            $test->text = "cURL Error #:" .$this->data;
             $test->save();
 
 //            $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
