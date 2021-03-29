@@ -56,64 +56,61 @@ class CustomerCreateJob implements ShouldQueue
             $test = new Test();
             $test->text = "shopdomain #:" .$custom_shop;
             $test->save();
-//            $shop = User::where('name', $shop)->first();
-            $custom_data=json_encode($this->data);
+            $shop = User::where('name', $custom_shop)->first();
+            $custom_data=$this->data;
 
-            $test = new Test();
-            $test->text = "cURL Error #:" .$custom_data;
-            $test->save();
 
-//            $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
-//            $data = [
-//                "from" => $welcome_campaign->sender_name,
-//                "to" => $this->data->phone,
-//                "text" => $welcome_campaign->message_text,
-//            ];
-//            $data = json_encode($data);
-//
-//            $curl = curl_init();
-//            curl_setopt_array($curl, array(
-//                CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
-//                CURLOPT_RETURNTRANSFER => true,
-//                CURLOPT_ENCODING => "",
-//                CURLOPT_MAXREDIRS => 10,
-//                CURLOPT_TIMEOUT => 30,
-//                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//                CURLOPT_CUSTOMREQUEST => "POST",
-//                CURLOPT_POSTFIELDS => $data,
-//                CURLOPT_HTTPHEADER => array(
-//                    "accept: application/json",
-//                    "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
-//                    "cache-control: no-cache",
-//                    "content-type: application/json",
-//                    "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
-//                ),
-//            ));
-//
-//            $response = curl_exec($curl);
-//            $err = curl_error($curl);
-//
-//            curl_close($curl);
-//
-//            if ($err) {
-//                $test = new Test();
-//                $test->number = 404;
-//                $test->text = "cURL Error #:" .$err;
-//                $test->save();
-//            } else {
-//                $test = new Test();
-//                $test->number = 200;
-//                $test->text = "Successful Staus:" .$response;
-//                $test->save();
-////                Detect Credits
-//                $user = User::Where('id', $welcome_campaign->user_id)->first();
-//                if($user->credit >= 0){
-//                    $user->credit =  $user->credit - 1;
-//                }else{
-//                    $user->credit_status = "0 credits";
-//                }
-//                $user->save();
-//            }
+
+            $welcome_campaign = Welcomecampaign::where('user_id', $shop->id)->first();
+            $data = [
+                "from" => $welcome_campaign->sender_name,
+                "to" => $custom_data->phone,
+                "text" => $welcome_campaign->message_text,
+            ];
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => $data,
+                CURLOPT_HTTPHEADER => array(
+                    "accept: application/json",
+                    "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
+                    "cache-control: no-cache",
+                    "content-type: application/json",
+                    "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
+                ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+                $test = new Test();
+                $test->number = 404;
+                $test->text = "cURL Error #:" .$err;
+                $test->save();
+            } else {
+                $test = new Test();
+                $test->number = 200;
+                $test->text = "Successful Staus:" .$response;
+                $test->save();
+//                Detect Credits
+                $user = User::Where('id', $welcome_campaign->user_id)->first();
+                if($user->credit >= 0){
+                    $user->credit =  $user->credit - 1;
+                }else{
+                    $user->credit_status = "0 credits";
+                }
+                $user->save();
+            }
         } catch (\Exception $exception){
             $new = new Test();
             $new->text = "catch error:".$exception->getMessage();
