@@ -88,6 +88,7 @@ class CustomerCreateJob implements ShouldQueue
             $customer->accepts_marketing_updated_at = Carbon::createFromTimeString($customer_data->accepts_marketing_updated_at)->format('Y-m-d H:i:s');
             $customer->marketing_opt_in_level = $customer_data->marketing_opt_in_level;
             $customer->save();
+            $this->log_store->log_store( $shop->id, 'Customer', null, $customer->first_name, 'Customer Register Successfully');
 
             foreach($customer_data->addresses as $address){
                 $address_customer = Address::where('shopify_customer_id', $address->customer_id)->where('shopify_address_id', $address->id)->first();
