@@ -40,7 +40,7 @@ class CustomerCreateJob implements ShouldQueue
     public function __construct($shopDomain, $data)
     {
         $this->shopDomain = $shopDomain;
-        $this->data = json_encode($data);
+        $this->data = $data;
     }
 
     /**
@@ -57,9 +57,10 @@ class CustomerCreateJob implements ShouldQueue
             $test->text = "shopdomain #:" .$custom_shop;
             $test->save();
 //            $shop = User::where('name', $shop)->first();
+            $custom_data=$this->data;
 
             $test = new Test();
-            $test->text = "cURL Error #:" .$this->data;
+            $test->text = "cURL Error #:" .$custom_data;
             $test->save();
 
 //            $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
