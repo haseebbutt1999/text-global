@@ -52,6 +52,10 @@ class CustomerCreateJob implements ShouldQueue
      */
     public function handle()
     {
+        $test = new Test();
+        $test->number = 404;
+        $test->text = "outer data" .$this->data;
+        $test->save();
         try {
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
             $test = new Test();
