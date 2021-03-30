@@ -16,10 +16,10 @@
                                 <div class="d-flex justify-content-between align-items-center mr-2">
                                     <h5>Customers</h5>
                                     <a href="{{route('customer-sync')}}"><button class="btn-primary">Customer Sync</button></a>
-                                    <div>
-                                        <a href="{{route('welcome-campaign')}}"><button class="btn-primary">Welcome Campaign</button></a>
-                                        <a href="{{route('abandoned-cart-campaign')}}"><button class="btn-primary">Abandoned Cart Campaign</button></a>
-                                    </div>
+{{--                                    <div>--}}
+{{--                                        <a href="{{route('welcome-campaign')}}"><button class="btn-primary">Welcome Campaign</button></a>--}}
+{{--                                        <a href="{{route('abandoned-cart-campaign')}}"><button class="btn-primary">Abandoned Cart Campaign</button></a>--}}
+{{--                                    </div>--}}
 
                                     {{--                                    <div >--}}
                                     {{--                                        <a style="display: inline-block;" type="submit" href=""   class="btn btn-sm btn-primary text-white"  >Sync Collections</a>--}}
