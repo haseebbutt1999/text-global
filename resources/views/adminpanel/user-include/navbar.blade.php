@@ -25,6 +25,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('sms-campaign-index')}}">SMS Campaigns<span class="sr-only"></span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('sms-triggers-index')}}">SMS Triggers<span class="sr-only"></span></a>
+                    </li>
                 </ul>
         </div>
     </div>

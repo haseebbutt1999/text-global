@@ -109,7 +109,7 @@ class SendSms implements ShouldQueue
 //                Detect Credits
                 $user = User::Where('id', $this->campaign->user_id)->first();
                 if($user->credit >= 0){
-                    $user->credit =  $user->credit - 1;
+                    $user->credit =  $user->credit - $this->campaign->calculated_credit_per_sms;
                 }else{
                     $user->credit_status = "0 credits";
                 }

@@ -36,6 +36,16 @@ class AfterAuthenticateJob implements ShouldQueue
             $shop->credit = Auth::user()->plan->credit;
             $shop->save();
         }
+        // add country "UK" by default in User
+        $countries = Auth::user()->countries()->where('name', 'United Kingdom')->exists();
+        $admin = User::where('role', 'admin')->first();
+        $countries_pref = $admin->country_shop_pref()->where('name', 'United Kingdom')->exists();
+        if($countries == false){
+            Auth::user()->countries()->attach(230, ['status'=>'active']);
+        }
+        if($countries_pref == false){
+            $admin->country_shop_pref()->attach($countries, ['status'=>'active']);
+        }
 
     }
 }

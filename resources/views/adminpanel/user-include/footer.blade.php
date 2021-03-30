@@ -19,6 +19,7 @@
 <script>
     $(document).ready(function() {
         $('.custom-select2').select2();
+
     });
 
     $('body').find('.ckeditors').each(function() {
@@ -37,16 +38,7 @@
 
     });
 
-    var maxLength = 160;
-    $('.create-campaign-textarea').keyup(function() {
-        var textlen = maxLength - $(this).val().length;
-        $('#rchars').text(textlen);
-    });
 
-    $('.edit-campaign-textarea').keyup(function() {
-        var textlen = maxLength - $(this).val().length;
-        $('.edit-char-div').text(textlen);
-    });
 
 
 

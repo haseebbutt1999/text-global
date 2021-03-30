@@ -34,6 +34,7 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
         Route::get('user-plans', 'UserController@user_plans')->name('user-plans');
 
         Route::get('sms-campaign-index', 'UserController@sms_campaign_index')->name('sms-campaign-index');
+
         Route::post('sms-campaign-save', 'UserController@sms_campaign_save')->name('sms-campaign-save');
         Route::post('edit-campaign-save/{id}', 'UserController@edit_campaign_save')->name('edit-campaign-save');
         Route::get('edit-status-campaign-save/{id}', 'UserController@edit_status_campaign_save')->name('edit-status-campaign-save');
@@ -47,6 +48,8 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
 
         Route::get('/abandoned-cart-campaign', 'UserController@abandoned_cart_campaign')->name('abandoned-cart-campaign');
         Route::post('/abandoned-cart-campaign-save', 'UserController@abandoned_cart_campaign_save')->name('abandoned-cart-campaign-save');
+
+        Route::get('sms-triggers-index', 'UserController@sms_trigger_index')->name('sms-triggers-index');
 
         Route::get('/customer-sync', 'CustomerController@customer_sync')->name('customer-sync');
 

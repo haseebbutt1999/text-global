@@ -168,13 +168,16 @@ class UserController extends Controller
 //        dd($request->all());
         $user = User::find($request->user_id);
 //        dd($user->countriesShopPref());
+
         $user->countries()->detach();
-        $user->countries()->attach($countries, ['status'=>'active']);
+        if($user->countries()->where('name', 'United Kingdom')->exists() == false){
+            $user->countries()->attach($countries, ['status'=>'active']);
+        }
 
         $user->country_shop_pref()->detach();
         $user->country_shop_pref()->attach($countries, ['status'=>'active']);
-        $user->country_shop_pref()->attach(230, ['status'=>'active']);
-        $user->countries()->attach(230, ['status'=>'active']);
+//        $user->country_shop_pref()->attach(230, ['status'=>'active']);
+//        $user->countries()->attach(230, ['status'=>'active']);
 
         return redirect()->back();
     }
@@ -186,9 +189,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         $user->countries()->detach();
-
         $user->countries()->attach($countries, ['status'=>'active']);
-        $user->countries()->attach(230, ['status'=>'active']);
 
         return redirect()->back();
     }
@@ -208,11 +209,12 @@ class UserController extends Controller
     }
 
     public function sms_campaign_save(Request $request){
-//        dd($request->message_text);
+//        dd($request->all());
         $campaign_save = new Campaign();
         $campaign_save->user_id = Auth::user()->id;
         $campaign_save->campaign_name = $request->campaign_name;
         $campaign_save->message_text = $request->message_text;
+        $campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         $campaign_save->sender_name = $request->sender_name;
         $campaign_save->published_at = \Carbon\Carbon::createFromTimeString($request->published_at)->format('Y-m-d H:i:s');
 //        $campaign_save->status = 'active';
@@ -231,12 +233,14 @@ class UserController extends Controller
 
     public function edit_campaign_save(Request $request, $id){
 //        dd($id);
+//        dd($request->all());
         $campaign_save = Campaign::where('id',$id)->first();
         if($campaign_save == null){
             $campaign_save = new Campaign();
         }
         $campaign_save->user_id = Auth::user()->id;
         $campaign_save->campaign_name = $request->campaign_name;
+        $campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         $campaign_save->message_text = $request->message_text;
         $campaign_save->sender_name = $request->sender_name;
         $campaign_save->published_at = Carbon::createFromTimeString($request->published_at)->format('Y-m-d H:i:s');
@@ -327,10 +331,22 @@ class UserController extends Controller
         $abandoned_cart_campaign->sender_name = $request->sender_name;
         if(isset($request->status)){
             $abandoned_cart_campaign->status= $request->status;
+        }else{
+            $abandoned_cart_campaign->status= "inactive";
         }
         $abandoned_cart_campaign->save();
 
         return redirect()->back();
+    }
+
+    public function sms_trigger_index(){
+        $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
+        $welcome_campaign= json_decode(json_encode($welcome_campaign,True));
+        $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
+        $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
+
+        $welcomeCampaign_logs_data = Log::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
+        return view('adminpanel/module/user/sms_trigger_index',compact('welcome_campaign', 'welcomeCampaign_logs_data', 'abandoned_cart_campaign'));
     }
 
     public function webhooks()

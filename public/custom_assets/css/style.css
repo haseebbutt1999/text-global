@@ -143,6 +143,9 @@ td .td-a:hover{
     padding-right: 35px;
     width: 125%;
 }
+.custom-select-div .select2-container{
+    width: 100% !important;
+}
 /*   Switch Button   */
 .switch {
     position: relative;
