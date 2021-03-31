@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Abandonedcartcampaign;
+use App\Welcomecampaign;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -47,5 +49,28 @@ class AfterAuthenticateJob implements ShouldQueue
             $admin->country_shop_pref()->attach($countries, ['status'=>'active']);
         }
 
+        $welcome_campaign_save = Welcomecampaign::where('user_id', Auth::user()->id)->first();
+        if($welcome_campaign_save == null){
+            $welcome_campaign_save = new Welcomecampaign();
+            $welcome_campaign_save->user_id = Auth::user()->id;
+            $welcome_campaign_save->campaign_name = "Welcome Sms Campagin";
+            $welcome_campaign_save->message_text = "{CustomerName}";
+            $welcome_campaign_save->sender_name = Auth::user()->shopdetail->sender_name;
+            $welcome_campaign_save->status= "active";
+            $welcome_campaign_save->save();
+
+        }
+
+        $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
+        if($abandoned_cart_campaign == null) {
+            $abandoned_cart_campaign = new Abandonedcartcampaign();
+            $abandoned_cart_campaign->user_id = Auth::user()->id;
+            $abandoned_cart_campaign->campaign_name = "Abandoned Cart Campagin";
+            $abandoned_cart_campaign->message_text = "{CustomerName} {ProductID} {OrderID} {OrderStatus} Text Message {AbandonedCartURL}";
+            $abandoned_cart_campaign->sender_name = Auth::user()->shopdetail->sender_name;
+            $abandoned_cart_campaign->delay_time = 1;
+            $abandoned_cart_campaign->status = "active";
+            $abandoned_cart_campaign->save();
+        }
     }
 }

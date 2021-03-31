@@ -1,3 +1,8 @@
+input[type="radio"]{
+    height: 19px !important;
+    width: 15px !important;
+    opacity: 1 !important;
+}
 .custom-col{
     width: 90%;
     margin-left: auto;
@@ -143,6 +148,7 @@ td .td-a:hover{
     padding-right: 35px;
     width: 125%;
 }
+
 .custom-select-div .select2-container{
     width: 100% !important;
 }

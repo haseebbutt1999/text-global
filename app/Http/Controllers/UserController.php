@@ -287,7 +287,7 @@ class UserController extends Controller
     }
 
     public function welcome_campaign(){
-        $welcome_campaign = Welcomecampaign::first();
+        $welcome_campaign = Welcomecampaign::where('user_id', Auth::user()->id)->first();
         $welcome_campaign= json_decode(json_encode($welcome_campaign,True));
         return view('adminpanel/module/user/welcome_campaign', compact('welcome_campaign'));
     }
@@ -314,14 +314,14 @@ class UserController extends Controller
     }
 
     public function abandoned_cart_campaign(){
-        $abandoned_cart_campaign = Abandonedcartcampaign::first();
+        $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
         $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
         return view('adminpanel/module/user/abandonedcart_campaign', compact('abandoned_cart_campaign'));
     }
 
     public function abandoned_cart_campaign_save(Request $request){
 //        dd($request->all());
-        $abandoned_cart_campaign = Abandonedcartcampaign::first();
+        $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
         if($abandoned_cart_campaign == null){
             $abandoned_cart_campaign = new Abandonedcartcampaign();
         }
@@ -329,6 +329,7 @@ class UserController extends Controller
         $abandoned_cart_campaign->campaign_name = $request->campaign_name;
         $abandoned_cart_campaign->message_text = $request->message_text;
         $abandoned_cart_campaign->sender_name = $request->sender_name;
+        $abandoned_cart_campaign->delay_time = $request->delay_time;
         if(isset($request->status)){
             $abandoned_cart_campaign->status= $request->status;
         }else{

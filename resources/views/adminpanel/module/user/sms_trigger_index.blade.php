@@ -13,6 +13,18 @@
                         <a class="nav-link" id="abandoned_cart-tab" data-toggle="tab" href="#abandoned_cart" role="tab" aria-controls="abandoned_cart"
                            aria-selected="false">Abandoned Cart</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="order_confirmation_sms-tab" data-toggle="tab" href="#order_confirmation_sms" role="tab" aria-controls="order_confirmation_sms"
+                           aria-selected="false">Order Confirmation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="order_dispatch-tab" data-toggle="tab" href="#order_dispatch" role="tab" aria-controls="order_dispatch"
+                           aria-selected="false">Order Dispatch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="order_refund-tab" data-toggle="tab" href="#order_refund" role="tab" aria-controls="order_refund"
+                           aria-selected="false">Order Refnud</a>
+                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="welcome_sms" role="tabpanel" aria-labelledby="welcome_sms-tab">
@@ -194,6 +206,379 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="abandoned_cart" role="tabpanel" aria-labelledby="abandoned_cart-tab">
+                        <div class="col-md-12 col-lg-12 card">
+                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                                @csrf
+                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
+                                    <h5>Abandoned Cart Campaign</h5>
+                                    <div class="">
+                                        <button type="submit"  class=" btn btn-primary ">Save</button>
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Campaign Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Sender Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="text-left"  for="#">Delay Time</label>
+                                            <div class="pl-3">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" @if($abandoned_cart_campaign->delay_time == 1) checked @endif value="1" class="form-check-input" name="delay_time">1 Hour
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" @if($abandoned_cart_campaign->delay_time == 2) checked @endif value="2" class="form-check-input" name="delay_time">2 Hour
+                                                    </label>
+                                                </div>
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" value="3" @if($abandoned_cart_campaign->delay_time == 3) checked @endif class="form-check-input" name="delay_time" >3 Hour
+                                                    </label>
+                                                </div>
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" value="12" @if($abandoned_cart_campaign->delay_time == 12) checked @endif class="form-check-input" name="delay_time" >12 Hour
+                                                    </label>
+                                                </div>
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" value="24" @if($abandoned_cart_campaign->delay_time == 24) checked @endif class="form-check-input" name="delay_time" >24 Hour
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div id="cct_embed_counts">
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <span id="rchars">160</span> Character(s) Remaining
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            Status
+                                        </div>
+                                        <label class="switch" style="">
+                                            {{--                                    @dd($shop_data->user)--}}
+                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {{--                                        <div class="card col-md-12">--}}
+                        {{--                                            <form action="{{route('shop-status-detail-save')}}" method="post">--}}
+                        {{--                                                @csrf--}}
+                        {{--                                                <div class="card-header" style="background: white;padding-bottom: 0;">--}}
+                        {{--                                                    <div class="row ">--}}
+                        {{--                                                        <div class="col-md-12 px-3 ">--}}
+                        {{--                                                            <div class="d-flex justify-content-end ">--}}
+                        {{--                                                                <div class="form-group">--}}
+                        {{--                                                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">--}}
+                        {{--                                                                </div>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="card-body">--}}
+                        {{--                                                    <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">--}}
+                        {{--                                                    <div class="row">--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Firstname</label>--}}
+                        {{--                                                                <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Surname</label>--}}
+                        {{--                                                                <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Email</label>--}}
+                        {{--                                                                <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Mobile#</label>--}}
+                        {{--                                                                <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">Mobile format must be 447</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Sender Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">where the SMS is being sent from</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Company Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="mb-2">--}}
+                        {{--                                                                Shop Status--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <label class="switch" style="">--}}
+                        {{--                                                                --}}{{--                                    @dd($shop_data->user)--}}
+                        {{--                                                                <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">--}}
+                        {{--                                                                <span class="slider round"></span>--}}
+                        {{--                                                            </label>--}}
+
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Username</label>--}}
+                        {{--                                                                <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">username format must be xxxxxxxx.textglobal</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Password</label>--}}
+                        {{--                                                                <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                            </form>--}}
+                        {{--                                        </div>--}}
+                    </div>
+                    <div class="tab-pane fade" id="order_confirmation_sms" role="tabpanel" aria-labelledby="order_confirmation_sms-tab">
+                        <div class="col-md-12 col-lg-12 card">
+                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                                @csrf
+                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
+                                    <h5>Abandoned Cart Campaign</h5>
+                                    <div class="">
+                                        <button type="submit"  class=" btn btn-primary ">Save</button>
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Campaign Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Sender Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                        </div>
+                                    </div>
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div id="cct_embed_counts">
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <span id="rchars">160</span> Character(s) Remaining
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            Status
+                                        </div>
+                                        <label class="switch" style="">
+                                            {{--                                    @dd($shop_data->user)--}}
+                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {{--                                        <div class="card col-md-12">--}}
+                        {{--                                            <form action="{{route('shop-status-detail-save')}}" method="post">--}}
+                        {{--                                                @csrf--}}
+                        {{--                                                <div class="card-header" style="background: white;padding-bottom: 0;">--}}
+                        {{--                                                    <div class="row ">--}}
+                        {{--                                                        <div class="col-md-12 px-3 ">--}}
+                        {{--                                                            <div class="d-flex justify-content-end ">--}}
+                        {{--                                                                <div class="form-group">--}}
+                        {{--                                                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">--}}
+                        {{--                                                                </div>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="card-body">--}}
+                        {{--                                                    <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">--}}
+                        {{--                                                    <div class="row">--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Firstname</label>--}}
+                        {{--                                                                <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Surname</label>--}}
+                        {{--                                                                <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Email</label>--}}
+                        {{--                                                                <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Mobile#</label>--}}
+                        {{--                                                                <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">Mobile format must be 447</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Sender Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">where the SMS is being sent from</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Company Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="mb-2">--}}
+                        {{--                                                                Shop Status--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <label class="switch" style="">--}}
+                        {{--                                                                --}}{{--                                    @dd($shop_data->user)--}}
+                        {{--                                                                <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">--}}
+                        {{--                                                                <span class="slider round"></span>--}}
+                        {{--                                                            </label>--}}
+
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Username</label>--}}
+                        {{--                                                                <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">username format must be xxxxxxxx.textglobal</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Password</label>--}}
+                        {{--                                                                <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                            </form>--}}
+                        {{--                                        </div>--}}
+                    </div>
+                    <div class="tab-pane fade" id="order_dispatch" role="tabpanel" aria-labelledby="order_dispatch-tab">
+                        <div class="col-md-12 col-lg-12 card">
+                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                                @csrf
+                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
+                                    <h5>Abandoned Cart Campaign</h5>
+                                    <div class="">
+                                        <button type="submit"  class=" btn btn-primary ">Save</button>
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Campaign Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Sender Name</label>
+                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                        </div>
+                                    </div>
+                                    <div class="card-body col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div id="cct_embed_counts">
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <span id="rchars">160</span> Character(s) Remaining
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            Status
+                                        </div>
+                                        <label class="switch" style="">
+                                            {{--                                    @dd($shop_data->user)--}}
+                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {{--                                        <div class="card col-md-12">--}}
+                        {{--                                            <form action="{{route('shop-status-detail-save')}}" method="post">--}}
+                        {{--                                                @csrf--}}
+                        {{--                                                <div class="card-header" style="background: white;padding-bottom: 0;">--}}
+                        {{--                                                    <div class="row ">--}}
+                        {{--                                                        <div class="col-md-12 px-3 ">--}}
+                        {{--                                                            <div class="d-flex justify-content-end ">--}}
+                        {{--                                                                <div class="form-group">--}}
+                        {{--                                                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">--}}
+                        {{--                                                                </div>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="card-body">--}}
+                        {{--                                                    <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">--}}
+                        {{--                                                    <div class="row">--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Firstname</label>--}}
+                        {{--                                                                <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Surname</label>--}}
+                        {{--                                                                <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Email</label>--}}
+                        {{--                                                                <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Mobile#</label>--}}
+                        {{--                                                                <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">Mobile format must be 447</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Sender Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">where the SMS is being sent from</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Company Name</label>--}}
+                        {{--                                                                <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="mb-2">--}}
+                        {{--                                                                Shop Status--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <label class="switch" style="">--}}
+                        {{--                                                                --}}{{--                                    @dd($shop_data->user)--}}
+                        {{--                                                                <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">--}}
+                        {{--                                                                <span class="slider round"></span>--}}
+                        {{--                                                            </label>--}}
+
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="col-md-4">--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Username</label>--}}
+                        {{--                                                                <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">--}}
+                        {{--                                                                <small class="text-muted">username format must be xxxxxxxx.textglobal</small>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <div class="form-group">--}}
+                        {{--                                                                <label for="#">Password</label>--}}
+                        {{--                                                                <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                            </form>--}}
+                        {{--                                        </div>--}}
+                    </div>
+                    <div class="tab-pane fade" id="order_refund" role="tabpanel" aria-labelledby="order_refund-tab">
                         <div class="col-md-12 col-lg-12 card">
                             <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
                                 @csrf

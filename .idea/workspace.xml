@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab.">
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/custom_assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/custom_assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +98,8 @@
       <workItem from="1616654224962" duration="25966000" />
       <workItem from="1616740362008" duration="22849000" />
       <workItem from="1616999628669" duration="23295000" />
-      <workItem from="1617086913634" duration="29137000" />
+      <workItem from="1617086913634" duration="29402000" />
+      <workItem from="1617172858456" duration="4946000" />
     </task>
     <task id="LOCAL-00001" summary="product directory deleted">
       <created>1616398302691</created>
@@ -397,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617117388153</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab.">
+      <created>1617117633055</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1617117633056</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,10 +444,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1616068215003" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617012855782">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617178999552">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617012855782" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617178999552" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -464,10 +476,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617117494972">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617117637026">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617117494972" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617117637026" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -527,6 +539,16 @@
           <line>267</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
+          <line>207</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
+          <line>279</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
           <line>163</line>
@@ -562,6 +584,15 @@
             <option name="methodName" value="edit_campaign_save" />
           </properties>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
+          <line>321</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\UserController" />
+            <option name="methodName" value="abandoned_cart_campaign_save" />
+          </properties>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
