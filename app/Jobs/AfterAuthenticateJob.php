@@ -56,7 +56,7 @@ class AfterAuthenticateJob implements ShouldQueue
             $welcome_campaign_save->user_id = Auth::user()->id;
             $welcome_campaign_save->campaign_name = "Welcome Sms Campagin";
             $welcome_campaign_save->message_text = "{CustomerName}";
-            $welcome_campaign_save->sender_name = Auth::user()->shopdetail->sender_name;
+            $welcome_campaign_save->sender_name = Auth::user()->name;
             $welcome_campaign_save->status= "active";
             $welcome_campaign_save->save();
 

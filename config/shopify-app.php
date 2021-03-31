@@ -170,7 +170,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_customers, write_customers ' ),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_customers, read_orders, read_fulfillments, read_assigned_fulfillment_orders ,read_checkouts ' ),
 
     /*
     |--------------------------------------------------------------------------
@@ -327,9 +327,7 @@ return [
         [
             'topic' => 'orders/updated',
             'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-updated'
-        ]
-
-
+        ],
 
     ],
 
