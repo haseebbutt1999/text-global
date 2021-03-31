@@ -60,16 +60,21 @@ class CheckoutsCreateJob implements ShouldQueue
         // Convert domain
         try {
             $user_shop = $this->shopDomain;
-            $checkouts = $this->data;
+            $checkout_data = $this->data;
             $shop = User::where('name', $user_shop)->first();
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($abandoned_cart_campaign_status_check)) {
-                $new = new Test();
-                $new->text = "error: ".$checkouts->id;
-                $new->save();
-                if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkouts->id)->exists() == false){
-//                    addHours($abandoned_cart_campaign_status_check->delay_time)
-                    dispatch(new AbandonedcartSmsDispacthJob($checkouts,$shop))->delay(Carbon::now()->addSeconds(60));
+                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
+                foreach($checkouts as $checkout){
+                    if($checkout->id == $checkout_data->id){
+                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
+                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
+                            $new = new Test();
+                            $new->text = json_encode($checkout);
+                            $new->save();
+                            dispatch(new AbandonedcartSmsDispacthJob($checkout,$shop))->delay(Carbon::now()->addSeconds(60));
+                        }
+                    }
                 }
             }
         }catch (\Exception $exception){
