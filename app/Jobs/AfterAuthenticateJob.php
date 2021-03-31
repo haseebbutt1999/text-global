@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Abandonedcartcampaign;
+use App\User;
 use App\Welcomecampaign;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -67,7 +68,7 @@ class AfterAuthenticateJob implements ShouldQueue
             $abandoned_cart_campaign->user_id = Auth::user()->id;
             $abandoned_cart_campaign->campaign_name = "Abandoned Cart Campagin";
             $abandoned_cart_campaign->message_text = "{CustomerName} {ProductID} {OrderID} {OrderStatus} Text Message {AbandonedCartURL}";
-            $abandoned_cart_campaign->sender_name = Auth::user()->shopdetail->sender_name;
+            $abandoned_cart_campaign->sender_name = Auth::user()->name;
             $abandoned_cart_campaign->delay_time = 1;
             $abandoned_cart_campaign->status = "active";
             $abandoned_cart_campaign->save();
