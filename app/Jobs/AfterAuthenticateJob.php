@@ -47,7 +47,7 @@ class AfterAuthenticateJob implements ShouldQueue
             Auth::user()->countries()->attach(230, ['status'=>'active']);
         }
         if($countries_pref == false){
-            $admin->country_shop_pref()->attach($countries, ['status'=>'active']);
+            Auth::user()->country_shop_pref()->attach(230, ['status'=>'active']);
         }
 
         $welcome_campaign_save = Welcomecampaign::where('user_id', Auth::user()->id)->first();

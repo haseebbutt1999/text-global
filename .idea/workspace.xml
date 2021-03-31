@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="order update, create, checkout, webhook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,14 +98,7 @@
       <workItem from="1616740362008" duration="22849000" />
       <workItem from="1616999628669" duration="23295000" />
       <workItem from="1617086913634" duration="29402000" />
-      <workItem from="1617172858456" duration="11286000" />
-    </task>
-    <task id="LOCAL-00001" summary="product directory deleted">
-      <created>1616398302691</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1616398302691</updated>
+      <workItem from="1617172858456" duration="18478000" />
     </task>
     <task id="LOCAL-00002" summary="welcomepage update Form Value exists ot not, checks">
       <created>1616404637658</created>
@@ -441,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617185202557</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="order update, create, checkout, webhook">
+      <created>1617186321633</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1617186321669</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,10 +480,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1616068215003" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617178999552">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617194965261">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617178999552" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617194965261" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -510,10 +512,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617185205797">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617186324360">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617185205797" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617186324360" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -530,10 +532,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617019213205">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617191595753">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617019213205" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617191595753" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
