@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="create default welcome and abandoned campaign">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <workItem from="1616740362008" duration="22849000" />
       <workItem from="1616999628669" duration="23295000" />
       <workItem from="1617086913634" duration="29402000" />
-      <workItem from="1617172858456" duration="6349000" />
+      <workItem from="1617172858456" duration="7269000" />
     </task>
     <task id="LOCAL-00001" summary="product directory deleted">
       <created>1616398302691</created>
@@ -420,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617179202604</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="create default welcome and abandoned campaign">
+      <created>1617180720223</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1617180720223</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,10 +495,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617179207737">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617180723123">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617179207737" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617180723123" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
