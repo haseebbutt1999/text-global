@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="order update, create, checkout, webhook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +99,7 @@
       <workItem from="1617172858456" duration="25932000" />
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
+      <workItem from="1617277757926" duration="582000" />
     </task>
     <task id="LOCAL-00013" summary="Webhook for New Customer Welcome sms">
       <created>1616768674726</created>

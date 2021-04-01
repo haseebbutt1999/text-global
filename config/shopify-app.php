@@ -328,6 +328,10 @@ return [
             'topic' => 'orders/updated',
             'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-updated'
         ],
+        [
+            'topic' => 'orders/fulfilled',
+            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-fulfilled'
+        ]
 
     ],
 
