@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Abandonedcartcampaign;
 use App\AbandonedCartLog;
+use App\Http\Controllers\LogsController;
 use App\Orderconfirm;
 use App\Test;
 use App\User;
@@ -18,6 +19,7 @@ class OrderConfirmJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     public $order_confirm_data;
     public $shop;
+    public $log_store;
     /**
      * Create a new job instance.
      *
@@ -27,6 +29,7 @@ class OrderConfirmJob implements ShouldQueue
     {
         $this->order_confirm_data = $order_confirm_data;
         $this->shop = $shop;
+        $this->log_store = new LogsController();
     }
 
     /**
