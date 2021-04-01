@@ -95,8 +95,8 @@ class CustomerController extends Controller
 
     public function test(){
 //        GET /admin/api/2021-01/checkouts.json
-        $checkouts = Auth::user()->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
-//        dd($checkouts);
+        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/orders/3777389887648.json')['body']['order'];
+        dd($orders);
         foreach($checkouts as $checkout){
             dd($checkout->id == $checkout->id);
             if(AbandonedCartLog::where('user_id', Auth::user()->id)->where('checkout_id', $checkout->id)->exists() == false){
