@@ -1,5 +1,9 @@
 <?php namespace App\Jobs;
 
+use App\Http\Controllers\LogsController;
+use App\Orderrefund;
+use App\Test;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -25,6 +29,7 @@ class OrdersUpdatedJob implements ShouldQueue
      * @var object
      */
     public $data;
+    public $log_store;
 
     /**
      * Create a new job instance.
@@ -38,6 +43,7 @@ class OrdersUpdatedJob implements ShouldQueue
     {
         $this->shopDomain = $shopDomain;
         $this->data = $data;
+        $this->log_store = new LogsController();
     }
 
     /**
@@ -47,10 +53,31 @@ class OrdersUpdatedJob implements ShouldQueue
      */
     public function handle()
     {
-        // Convert domain
-        $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
-
-        // Do what you wish with the data
-        // Access domain name as $this->shopDomain->toNative()
+        try {
+            $user_shop = $this->shopDomain;
+            $order_refund_data = $this->data;
+            $shop = User::where('name', $user_shop)->first();
+            $order_refund_campaign_status_check = Orderrefund::where('status', 'active')->where('user_id', $shop->id)->first();
+            if(isset($order_refund_campaign_status_check)){
+                $new = new Test();
+                $new->text = json_encode($order_refund_data);
+                $new->save();
+                if($order_refund_data->financial_status  == "Refunded" && $shop->credit_status != "0 credits" ) {
+                    dispatch(new OrderRefundJob($order_refund_data, $shop));
+                }else{
+                    $this->log_store->log_store( $shop->id, 'Orderrefund', null, null, "Order refund SMS not sended to customer because Your Credits is '0'");
+                }
+            }
+        }catch (\Exception $exception){
+            $new = new Test();
+            $new->text = "error: ".$exception->getMessage();
+            $new->save();
+            $new = new Test();
+            $new->text = "error: in webhook order refund data is : ".json_encode($order_refund_data);
+            $new->save();
+            $new = new Test();
+            $new->text = "error in webhook shop is : ".json_encode($shop);
+            $new->save();
+        }
     }
 }

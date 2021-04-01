@@ -2,6 +2,7 @@
 
 use App\Abandonedcartcampaign;
 use App\AbandonedCartLog;
+use App\Http\Controllers\LogsController;
 use App\Orderconfirm;
 use App\Orderdispatch;
 use App\Test;
@@ -32,6 +33,7 @@ class OrdersCreateJob implements ShouldQueue
      * @var object
      */
     public $data;
+    public $log_store;
 
     /**
      * Create a new job instance.
@@ -45,6 +47,7 @@ class OrdersCreateJob implements ShouldQueue
     {
         $this->shopDomain = $shopDomain;
         $this->data = $data;
+        $this->log_store = new LogsController();
     }
 
     /**
@@ -63,7 +66,11 @@ class OrdersCreateJob implements ShouldQueue
                 $new = new Test();
                 $new->text = json_encode($order_confirm_data);
                 $new->save();
-                dispatch(new OrderConfirmJob($order_confirm_data,$shop));
+                if($shop->credit_status != "0 credits"){
+                    dispatch(new OrderConfirmJob($order_confirm_data,$shop));
+                }else{
+                    $this->log_store->log_store( $shop->id, 'Orderconfirm', null, null, "Order confirm SMS not sended to customer because Your Credits is '0'");
+                }
             }
         }catch (\Exception $exception){
             $new = new Test();
