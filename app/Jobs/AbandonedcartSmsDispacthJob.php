@@ -16,7 +16,7 @@ use Illuminate\Queue\SerializesModels;
 class AbandonedcartSmsDispacthJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $checkout;
+    public $checkout_data;
     public $shop;
     public $log_store;
     /**
@@ -24,9 +24,9 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($checkout,$shop)
+    public function __construct($checkout_data,$shop)
     {
-        $this->checkout = $checkout;
+        $this->checkout_data = $checkout_data;
         $this->shop = $shop;
         $this->log_store = new LogsController();
     }
@@ -38,13 +38,12 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
      */
     public function handle()
     {
+        $checkout = $this->checkout_data;
+        $shop = $this->shop;
         try {
-            $checkout = $this->checkout;
-            $shop = $this->shop;
-            $customer_id = $checkout->customer->id;
-            $customer = $shop->api()->rest('GET', '/admin/customers/'.$customer_id.'.json')['body']['customer'];
-            $customer_country = $customer->addresses['0']->country;
-            $customer_phone = $customer->addresses['0']->phone;
+
+            $customer_phone = $checkout->billing_address->phone;
+            $customer_country = $checkout->billing_address->country;
 
             $country_users = $shop->countries;
     //                dd($country_users);
@@ -52,7 +51,7 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                 if($country_user->name == $customer_country){
                     $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', $shop->id)->first();
 
-                    $messgae_text = str_replace('{CustomerName}',$checkout->customer->first_name." ".$checkout->customer->last_name,$abandoned_cart_campaign->message_text);
+                    $messgae_text = str_replace('{CustomerName}',$checkout->billing_address->first_name." ".$checkout->billing_address->last_name,$abandoned_cart_campaign->message_text);
                     $test = new Test();
                     $test->text = "Text Message customer name Variable:" .$messgae_text;
                     $test->save();
@@ -98,7 +97,7 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                         $test->number = 200;
                         $test->text = "Successful Staus:" .$response;
                         $test->save();
-                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS Sended Successfully to Customer ('.$checkout->customer->first_name.')');
+                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS Sended Successfully to Customer ('.$checkout->billing_address->first_name.')');
                         //                Detect Credits
                         $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
                         if($user->credit >= 0){
@@ -108,14 +107,9 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                         }
                         $user->save();
                     }
-
                 }
             }
 
-            $abandoned_cart = new AbandonedCartLog();
-            $abandoned_cart->checkout_id = $checkout->id;
-            $abandoned_cart->user_id = $shop->id;
-            $abandoned_cart->save();
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
