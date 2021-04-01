@@ -98,7 +98,7 @@ class OrderConfirmJob implements ShouldQueue
                         $test->number = 200;
                         $test->text = "order confirm Successful Staus:" .$response;
                         $test->save();
-                        $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_campaign->billing_address->first_name.')');
+                        $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
                         //                Detect Credits
                         $user = User::Where('id', $order_confirm_campaign->user_id)->first();
                         if($user->credit >= 0){
