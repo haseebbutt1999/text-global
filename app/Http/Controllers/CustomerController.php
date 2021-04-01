@@ -95,7 +95,7 @@ class CustomerController extends Controller
 
     public function test(){
 //        GET /admin/api/2021-01/checkouts.json
-        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/orders/3777389887648.json')['body']['order'];
+        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/orders.json')['body']['orders'];
         dd($orders);
         foreach($checkouts as $checkout){
             dd($checkout->id == $checkout->id);

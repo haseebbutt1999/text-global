@@ -62,10 +62,12 @@ class OrdersUpdatedJob implements ShouldQueue
                 $new = new Test();
                 $new->text = json_encode($order_refund_data);
                 $new->save();
-                if($order_refund_data->financial_status  == "Refunded" && $shop->credit_status != "0 credits" ) {
-                    dispatch(new OrderRefundJob($order_refund_data, $shop));
-                }else{
-                    $this->log_store->log_store( $shop->id, 'Orderrefund', null, null, "Order refund SMS not sended to customer because Your Credits is '0'");
+                if($order_refund_data->financial_status  == "refunded" ) {
+                    if($shop->credit_status != "0 credits"){
+                        dispatch(new OrderRefundJob($order_refund_data, $shop));
+                    }else{
+                        $this->log_store->log_store( $shop->id, 'Orderrefund', null, null, "Order refund SMS not sended to customer because Your Credits is '0'");
+                    }
                 }
             }
         }catch (\Exception $exception){

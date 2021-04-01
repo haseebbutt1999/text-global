@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="order update, create, checkout, webhook">
+    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="order ful&#10;filled webhook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,14 +100,7 @@
       <workItem from="1617172858456" duration="25932000" />
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
-      <workItem from="1617277757926" duration="582000" />
-    </task>
-    <task id="LOCAL-00013" summary="Webhook for New Customer Welcome sms">
-      <created>1616768674726</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1616768674726</updated>
+      <workItem from="1617277757926" duration="2841000" />
     </task>
     <task id="LOCAL-00014" summary="Webhook for New Customer Welcome sms">
       <created>1617001397509</created>
@@ -444,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617267981179</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="order ful&#10;filled webhook">
+      <created>1617278377571</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1617278377573</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +475,8 @@
     <MESSAGE value="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab." />
     <MESSAGE value="create default welcome and abandoned campaign" />
     <MESSAGE value="order update, create, checkout, webhook" />
-    <option name="LAST_COMMIT_MESSAGE" value="order update, create, checkout, webhook" />
+    <MESSAGE value="order ful&#10;filled webhook" />
+    <option name="LAST_COMMIT_MESSAGE" value="order ful&#10;filled webhook" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617260564825">
@@ -513,10 +515,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617267984555">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617278380381">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617267984555" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617278380381" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
