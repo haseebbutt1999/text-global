@@ -11,6 +11,9 @@ use App\Customer;
 use App\Jobs\SendSms;
 use App\Jobs\WelcomeEmailJob;
 use App\Log;
+use App\Orderconfirm;
+use App\Orderdispatch;
+use App\Orderrefund;
 use App\Shopdetail;
 use App\User;
 use App\Welcomecampaign;
@@ -313,6 +316,71 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+
+
+    public function order_confirm_campaign_save(Request $request){
+//        dd($request->all());
+        $order_confirm_campaign_save = Orderconfirm::where('user_id', Auth::user()->id)->first();
+        if($order_confirm_campaign_save == null){
+            $order_confirm_campaign_save = new Orderconfirm();
+        }
+        $order_confirm_campaign_save->user_id = Auth::user()->id;
+        $order_confirm_campaign_save->campaign_name = $request->campaign_name;
+        $order_confirm_campaign_save->message_text = $request->message_text;
+        $order_confirm_campaign_save->sender_name = $request->sender_name;
+        if(isset($request->status)){
+            $order_confirm_campaign_save->status= $request->status;
+        }else{
+            $order_confirm_campaign_save->status= "inactive";
+        }
+        $order_confirm_campaign_save->save();
+        $this->log_store->log_store(Auth::user()->id, 'Orderconfirm', $order_confirm_campaign_save->id, $order_confirm_campaign_save->campaign_name, 'Order Confirm Camapign Updated by User' , $notes = null);
+
+        return redirect()->back();
+    }
+
+    public function order_refund_campaign_save(Request $request){
+//        dd($request->all());
+        $order_refund_campaign_save = Orderrefund::where('user_id', Auth::user()->id)->first();
+        if($order_refund_campaign_save == null){
+            $order_refund_campaign_save = new Orderrefund();
+        }
+        $order_refund_campaign_save->user_id = Auth::user()->id;
+        $order_refund_campaign_save->campaign_name = $request->campaign_name;
+        $order_refund_campaign_save->message_text = $request->message_text;
+        $order_refund_campaign_save->sender_name = $request->sender_name;
+        if(isset($request->status)){
+            $order_refund_campaign_save->status= $request->status;
+        }else{
+            $order_refund_campaign_save->status= "inactive";
+        }
+        $order_refund_campaign_save->save();
+        $this->log_store->log_store(Auth::user()->id, 'Orderrefund', $order_refund_campaign_save->id, $order_refund_campaign_save->campaign_name, 'Order Refund Camapign Updated by User' , $notes = null);
+
+        return redirect()->back();
+    }
+
+    public function order_dispatch_campaign_save(Request $request){
+//        dd($request->all());
+        $order_dispatch_campaign_save = Orderdispatch::where('user_id', Auth::user()->id)->first();
+        if($order_dispatch_campaign_save == null){
+            $order_dispatch_campaign_save = new Orderdispatch();
+        }
+        $order_dispatch_campaign_save->user_id = Auth::user()->id;
+        $order_dispatch_campaign_save->campaign_name = $request->campaign_name;
+        $order_dispatch_campaign_save->message_text = $request->message_text;
+        $order_dispatch_campaign_save->sender_name = $request->sender_name;
+        if(isset($request->status)){
+            $order_dispatch_campaign_save->status= $request->status;
+        }else{
+            $order_dispatch_campaign_save->status= "inactive";
+        }
+        $order_dispatch_campaign_save->save();
+        $this->log_store->log_store(Auth::user()->id, 'Orderdispatch', $order_dispatch_campaign_save->id, $order_dispatch_campaign_save->campaign_name, 'Order Confirm Camapign Updated by User' , $notes = null);
+
+        return redirect()->back();
+    }
+
     public function abandoned_cart_campaign(){
         $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
         $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
@@ -345,9 +413,15 @@ class UserController extends Controller
         $welcome_campaign= json_decode(json_encode($welcome_campaign,True));
         $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
         $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
+        $orderconfirm_campaign = Orderconfirm::where('user_id', Auth::user()->id)->first();
+        $orderconfirm_campaign= json_decode(json_encode($orderconfirm_campaign,True));
+        $orderrefund_campaign = Orderrefund::where('user_id', Auth::user()->id)->first();
+        $orderrefund_campaign= json_decode(json_encode($orderrefund_campaign,True));
+        $orderdispatch_campaign = Orderdispatch::where('user_id', Auth::user()->id)->first();
+        $orderdispatch_campaign= json_decode(json_encode($orderdispatch_campaign,True));
 
         $welcomeCampaign_logs_data = Log::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
-        return view('adminpanel/module/user/sms_trigger_index',compact('welcome_campaign', 'welcomeCampaign_logs_data', 'abandoned_cart_campaign'));
+        return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'welcomeCampaign_logs_data', 'abandoned_cart_campaign'));
     }
 
     public function webhooks()

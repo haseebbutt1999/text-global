@@ -3,6 +3,9 @@
 namespace App\Jobs;
 
 use App\Abandonedcartcampaign;
+use App\Orderconfirm;
+use App\Orderdispatch;
+use App\Orderrefund;
 use App\User;
 use App\Welcomecampaign;
 use Illuminate\Bus\Queueable;
@@ -60,6 +63,39 @@ class AfterAuthenticateJob implements ShouldQueue
             $welcome_campaign_save->status= "active";
             $welcome_campaign_save->save();
 
+        }
+
+        $order_confirm_campaign_save = Orderconfirm::where('user_id', Auth::user()->id)->first();
+        if($order_confirm_campaign_save == null){
+            $order_confirm_campaign_save = new Orderconfirm();
+            $order_confirm_campaign_save->user_id = Auth::user()->id;
+            $order_confirm_campaign_save->campaign_name = "Order Confirm Sms Campagin";
+            $order_confirm_campaign_save->message_text = "{CustomerName}";
+            $order_confirm_campaign_save->sender_name = Auth::user()->name;
+            $order_confirm_campaign_save->status= "active";
+            $order_confirm_campaign_save->save();
+        }
+
+        $order_refund_campaign_save = Orderrefund::where('user_id', Auth::user()->id)->first();
+        if($order_refund_campaign_save == null){
+            $order_refund_campaign_save = new Orderrefund();
+            $order_refund_campaign_save->user_id = Auth::user()->id;
+            $order_refund_campaign_save->campaign_name = "Order Refund Sms Campagin";
+            $order_refund_campaign_save->message_text = "{CustomerName}";
+            $order_refund_campaign_save->sender_name = Auth::user()->name;
+            $order_refund_campaign_save->status= "active";
+            $order_refund_campaign_save->save();
+        }
+
+        $order_dispatch_campaign_save = Orderdispatch::where('user_id', Auth::user()->id)->first();
+        if($order_dispatch_campaign_save == null){
+            $order_dispatch_campaign_save = new Orderdispatch();
+            $order_dispatch_campaign_save->user_id = Auth::user()->id;
+            $order_dispatch_campaign_save->campaign_name = "Order Dispatch Sms Campagin";
+            $order_dispatch_campaign_save->message_text = "{CustomerName}";
+            $order_dispatch_campaign_save->sender_name = Auth::user()->name;
+            $order_dispatch_campaign_save->status= "active";
+            $order_dispatch_campaign_save->save();
         }
 
         $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();

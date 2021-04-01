@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="order update, create, checkout, webhook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedcartSmsDispacthJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedcartSmsDispacthJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,14 +100,9 @@
       <workItem from="1616740362008" duration="22849000" />
       <workItem from="1616999628669" duration="23295000" />
       <workItem from="1617086913634" duration="29402000" />
-      <workItem from="1617172858456" duration="25715000" />
-    </task>
-    <task id="LOCAL-00007" summary="abandoned cart form added">
-      <created>1616657230055</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1616657230057</updated>
+      <workItem from="1617172858456" duration="25932000" />
+      <workItem from="1617212356488" duration="1257000" />
+      <workItem from="1617258127248" duration="4029000" />
     </task>
     <task id="LOCAL-00008" summary="logs create, countries modules changes, UI changes">
       <created>1616761982784</created>
@@ -442,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617203544050</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="order update, create, checkout, webhook">
+      <created>1617204372315</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1617204372316</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,14 +480,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="order update, create, checkout, webhook" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616068215003">
+    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617260564825">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1616068215003" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617198059953">
+    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617260564825" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617261975142">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617198059953" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617261975142" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -511,10 +516,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617203547221">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617204374924">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617203547221" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617204374924" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -531,10 +536,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617191595753">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617259891967">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617191595753" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617259891967" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -546,7 +551,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>270</line>
+          <line>273</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -584,9 +589,19 @@
           <line>279</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
+          <line>352</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
+          <line>393</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>163</line>
+          <line>166</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_shop_preferences_save" />
@@ -595,7 +610,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>184</line>
+          <line>187</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_user_save" />
@@ -604,7 +619,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>210</line>
+          <line>213</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="sms_campaign_save" />
@@ -613,7 +628,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>233</line>
+          <line>236</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="edit_campaign_save" />
@@ -622,12 +637,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>321</line>
+          <line>389</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="abandoned_cart_campaign_save" />
           </properties>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
+          <line>410</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\UserController" />
+            <option name="methodName" value="sms_trigger_index" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
+          <line>320</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\UserController" />
+            <option name="methodName" value="order_confirm_campaign_save" />
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

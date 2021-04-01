@@ -82,7 +82,7 @@
                                                         </div>
                                                         <label class="switch" style="">
                                                             {{--                                    @dd($shop_data->user)--}}
-                                                            <input @if($welcome_campaign->status == "active")checked="" @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                                            <input @if( isset($welcome_campaign->status) && $welcome_campaign->status == "active")checked="" @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
                                                             <span class="slider round"></span>
                                                         </label>
                                                     </div>
@@ -271,7 +271,7 @@
                                         </div>
                                         <label class="switch" style="">
                                             {{--                                    @dd($shop_data->user)--}}
-                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <input @if(isset($abandoned_cart_campaign->status) && $abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -352,10 +352,10 @@
                     </div>
                     <div class="tab-pane fade" id="order_confirmation_sms" role="tabpanel" aria-labelledby="order_confirmation_sms-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                            <form  action="{{Route('orderconfirm-campaign-save')}}" method="post"  >
                                 @csrf
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                    <h5>Abandoned Cart Campaign</h5>
+                                    <h5>Order Confirm Campaign</h5>
                                     <div class="">
                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                     </div>
@@ -364,19 +364,19 @@
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Campaign Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                            <input @if(isset($orderconfirm_campaign->campaign_name)) value="{{$orderconfirm_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
                                         </div>
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            <input @if(isset($orderconfirm_campaign->sender_name)) value="{{$orderconfirm_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
                                         </div>
                                     </div>
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Text Message</label>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderconfirm_campaign->message_text)){{$orderconfirm_campaign->message_text}}@endif</textarea>
                                                 <span id="rchars">160</span> Character(s) Remaining
                                             </div>
                                         </div>
@@ -385,7 +385,7 @@
                                         </div>
                                         <label class="switch" style="">
                                             {{--                                    @dd($shop_data->user)--}}
-                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <input @if(isset($orderconfirm_campaign->status) && $orderconfirm_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -466,10 +466,10 @@
                     </div>
                     <div class="tab-pane fade" id="order_dispatch" role="tabpanel" aria-labelledby="order_dispatch-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                            <form  action="{{Route('orderrefund-campaign-save')}}" method="post"  >
                                 @csrf
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                    <h5>Abandoned Cart Campaign</h5>
+                                    <h5>Order Refund Campaign</h5>
                                     <div class="">
                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                     </div>
@@ -478,19 +478,19 @@
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Campaign Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                            <input @if(isset($orderrefund_campaign->campaign_name)) value="{{$orderrefund_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
                                         </div>
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            <input @if(isset($orderrefund_campaign->sender_name)) value="{{$orderrefund_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
                                         </div>
                                     </div>
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Text Message</label>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderrefund_campaign->message_text)){{$orderrefund_campaign->message_text}}@endif</textarea>
                                                 <span id="rchars">160</span> Character(s) Remaining
                                             </div>
                                         </div>
@@ -499,7 +499,7 @@
                                         </div>
                                         <label class="switch" style="">
                                             {{--                                    @dd($shop_data->user)--}}
-                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <input @if( isset($orderrefund_campaign->status) && $orderrefund_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -580,10 +580,10 @@
                     </div>
                     <div class="tab-pane fade" id="order_refund" role="tabpanel" aria-labelledby="order_refund-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                            <form  action="{{Route('orderdispatch-campaign-save')}}" method="post"  >
                                 @csrf
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                    <h5>Abandoned Cart Campaign</h5>
+                                    <h5>Order Dispatch Campaign</h5>
                                     <div class="">
                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                     </div>
@@ -592,19 +592,19 @@
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Campaign Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->campaign_name)) value="{{$abandoned_cart_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
+                                            <input @if(isset($orderdispatch_campaign->campaign_name)) value="{{$orderdispatch_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
                                         </div>
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            <input @if(isset($orderdispatch_campaign->sender_name)) value="{{$orderdispatch_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
                                         </div>
                                     </div>
                                     <div class="card-body col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Text Message</label>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderdispatch_campaign->message_text)){{$orderdispatch_campaign->message_text}}@endif</textarea>
                                                 <span id="rchars">160</span> Character(s) Remaining
                                             </div>
                                         </div>
@@ -613,7 +613,7 @@
                                         </div>
                                         <label class="switch" style="">
                                             {{--                                    @dd($shop_data->user)--}}
-                                            <input @if($abandoned_cart_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
+                                            <input @if(isset($orderdispatch_campaign->status) && $orderdispatch_campaign->status == "active")checked @endif name="status" type="checkbox" value="active" class="custom-control-input  status-switch">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
