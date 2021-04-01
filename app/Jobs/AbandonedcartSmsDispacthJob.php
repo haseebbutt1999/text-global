@@ -106,13 +106,25 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                             $user->credit_status = "0 credits";
                         }
                         $user->save();
+
+                        $abandoned_cart = new AbandonedCartLog();
+                        $abandoned_cart->checkout_id = $checkout->id;
+                        $abandoned_cart->user_id = $shop->id;
+                        $abandoned_cart->save();
                     }
+
                 }
             }
 
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
+            $new->save();
+            $new = new Test();
+            $new->text = "error :in Job aban data is : ".json_encode($checkout);
+            $new->save();
+            $new = new Test();
+            $new->text = "error :in Job shop is : ".json_encode($shop);
             $new->save();
         }
 

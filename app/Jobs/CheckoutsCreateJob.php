@@ -56,35 +56,38 @@ class CheckoutsCreateJob implements ShouldQueue
      */
     public function handle()
     {
-        // Convert domain
         $user_shop = $this->shopDomain;
         $checkout_data = $this->data;
         $shop = User::where('name', $user_shop)->first();
         try {
-
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($abandoned_cart_campaign_status_check)) {
-                    //                    addHours($abandoned_cart_campaign_status_check->delay_time)
-                $new = new Test();
-                $new->text = json_encode($checkout_data);
-                $new->save();
-                if($shop->credit_status != "0 credits"){
-                    dispatch(new AbandonedcartSmsDispacthJob($checkout_data,$shop))->delay(Carbon::now()->addSeconds(60));
-                }else{
-                    $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
+                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
+                foreach($checkouts as $checkout){
+                    if($checkout->id == $checkout_data->id){
+                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
+                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
+                            if($shop->credit_status != "0 credits"){
+                                $new = new Test();
+                                $new->text = "abandonedcheckout api data:".json_encode($checkout);
+                                $new->save();
+                                dispatch(new AbandonedcartSmsDispacthJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
+                            }else{
+                                $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
+                            }
+                        }
+                    }
                 }
-
-
             }
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
             $new->save();
             $new = new Test();
-            $new->text = "error: in webhook abandoned cart data is : ".json_encode($order_dispatch_data);
+            $new->text = "error: in webhook abandoned data is : ".json_encode($checkout_data);
             $new->save();
             $new = new Test();
-            $new->text = "error in webhook shop is : ".json_encode($shop);
+            $new->text = "error in webhhok shop is : ".json_encode($shop);
             $new->save();
         }
 
