@@ -62,7 +62,7 @@ class OrdersUpdatedJob implements ShouldQueue
                 $new = new Test();
                 $new->text = json_encode($order_refund_data);
                 $new->save();
-                if($order_refund_data->financial_status  == "refunded" ) {
+                if($order_refund_data->financial_status  == "refunded" ){
                     if($shop->credit_status != "0 credits"){
                         dispatch(new OrderRefundJob($order_refund_data, $shop));
                     }else{

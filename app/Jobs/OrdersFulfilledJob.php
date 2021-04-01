@@ -1,5 +1,9 @@
 <?php namespace App\Jobs;
 
+use App\Http\Controllers\LogsController;
+use App\Orderdispatch;
+use App\Test;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -18,13 +22,8 @@ class OrdersFulfilledJob implements ShouldQueue
      * @var ShopDomain|string
      */
     public $shopDomain;
-
-    /**
-     * The webhook data
-     *
-     * @var object
-     */
     public $data;
+    public $log_store;
 
     /**
      * Create a new job instance.
@@ -38,6 +37,7 @@ class OrdersFulfilledJob implements ShouldQueue
     {
         $this->shopDomain = $shopDomain;
         $this->data = $data;
+        $this->log_store = new LogsController();
     }
 
     /**
@@ -47,10 +47,35 @@ class OrdersFulfilledJob implements ShouldQueue
      */
     public function handle()
     {
-        // Convert domain
-        $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+        try {
+            $user_shop = $this->shopDomain;
+            $order_dispatch_data = $this->data;
+            $shop = User::where('name', $user_shop)->first();
+            $order_dispatch_campaign_status_check = Orderdispatch::where('status', 'active')->where('user_id', $shop->id)->first();
+            if(isset($order_dispatch_campaign_status_check)){
+                $new = new Test();
+                $new->text = json_encode($order_dispatch_data);
+                $new->save();
+                if($order_dispatch_data->fulfillment_status  == "fulfilled" ){
+                    if($shop->credit_status != "0 credits"){
+                        dispatch(new OrderDispatchJob($order_dispatch_data, $shop));
+                    }else{
+                        $this->log_store->log_store( $shop->id, 'Orderdispatch', null, null, "Order Dispatch SMS not sended to customer because Your Credits is '0'");
+                    }
+                }
+            }
+        }catch (\Exception $exception){
+            $new = new Test();
+            $new->text = "error: ".$exception->getMessage();
+            $new->save();
+            $new = new Test();
+            $new->text = "error: in webhook order Dispatch data is : ".json_encode($order_dispatch_data);
+            $new->save();
+            $new = new Test();
+            $new->text = "error in webhook shop is : ".json_encode($shop);
+            $new->save();
+        }
 
-        // Do what you wish with the data
-        // Access domain name as $this->shopDomain->toNative()
+
     }
 }
