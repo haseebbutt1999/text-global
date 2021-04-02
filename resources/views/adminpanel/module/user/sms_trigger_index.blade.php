@@ -88,7 +88,7 @@
                                                         <div class="card" >
                                                             <div class="card-body">
                                                                 <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
-                                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
+                                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Text Message' fields. The available placeholders are:</p>
                                                             </div>
                                                             <ul class="list-group list-group-flush">
                                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -286,15 +286,13 @@
                                         <div class="card" >
                                             <div class="card-body">
                                                 <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
-                                                <li class="list-group-item custom-variable-font-size">{OrderName}</li>
-                                                <li class="list-group-item custom-variable-font-size">{FulfillmentStatus}</li>
-                                                <li class="list-group-item custom-variable-font-size">{FinancialStatus}</li>
-                                                <li class="list-group-item custom-variable-font-size">{OrderStatusUrl}</li>
-                                                <li class="list-group-item custom-variable-font-size">{OrderTotalPrice}</li>
+                                                <li class="list-group-item custom-variable-font-size">{ProductId}</li>
+                                                <li class="list-group-item custom-variable-font-size">{TotalPrice}</li>
+                                                <li class="list-group-item custom-variable-font-size">{AbandonedCheckoutUrl}</li>
                                                 <li class="list-group-item custom-variable-font-size">{Currency}</li>
                                             </ul>
                                         </div>
@@ -415,7 +413,7 @@
                                         <div class="card" >
                                             <div class="card-body">
                                                 <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -543,7 +541,7 @@
                                         <div class="card" >
                                             <div class="card-body">
                                                 <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -671,7 +669,7 @@
                                         <div class="card" >
                                             <div class="card-body">
                                                 <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
