@@ -331,7 +331,12 @@ return [
         [
             'topic' => 'orders/fulfilled',
             'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-fulfilled'
+        ],
+        [
+            'topic' => 'checkouts/update',
+            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checouts-update'
         ]
+
 
     ],
 
