@@ -30,7 +30,9 @@ input[type="radio"]{
 .custom-left-arrow-icon{
     font-size: 25px;text-align: center;    margin-right: 4px;
 }
-
+.custom-variable-font-size{
+    font-size: 14px;
+}
 .table-class tr th {
     background: #313d89;
     text-align: left;
