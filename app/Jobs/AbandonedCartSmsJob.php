@@ -50,7 +50,17 @@ class AbandonedCartSmsJob implements ShouldQueue
             foreach ($country_users as $country_user){
                 if($country_user->name == $order_customer_country){
                     $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', $shop->id)->first();
+                    $product_id_array = [];
+                    foreach ($checkout_data->line_items as $line_item){
+                        $product_id = $line_item->product_id;
+                        array_push($product_id_array, $product_id);
+                    }
+                    $product_ids = implode(", ",$product_id_array);
                     $messgae_text = str_replace('{CustomerName}',$checkout_data->billing_address->first_name." ".$checkout_data->billing_address->last_name,$abandoned_cart_campaign->message_text);
+                    $messgae_text = str_replace('{ProductId}',$product_ids,$messgae_text);
+                    $messgae_text = str_replace('{TotalPrice}',$checkout_data->total_price,$messgae_text);
+                    $messgae_text = str_replace('{AbandonedCheckoutUrl}',$checkout_data->abandoned_checkout_url,$messgae_text);
+                    $messgae_text = str_replace('{Currency}',$checkout_data->currency,$messgae_text);
 
                     $test = new Test();
                     $test->text = "'Abandoned Cart Campaign' Text msg is" .$messgae_text;

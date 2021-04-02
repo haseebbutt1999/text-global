@@ -97,6 +97,15 @@ class CustomerController extends Controller
 //        GET /admin/api/2021-01/checkouts.json
         $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
         dd($orders);
+        foreach ($orders as $order){
+            $product_id_array = [];
+            foreach ($order->line_items as $line_item){
+                $product_id = $line_item->product_id;
+                array_push($product_id_array, $product_id);
+            }
+            dd(implode(", ",$product_id_array));
+
+        }
 //        $length = $orders->refunds;
         $toEnd = count($orders->refunds);
 //        dd($toEnd);

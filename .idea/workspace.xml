@@ -22,7 +22,7 @@
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add variables in campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,14 +101,7 @@
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
       <workItem from="1617277757926" duration="10001000" />
-      <workItem from="1617345627920" duration="15681000" />
-    </task>
-    <task id="LOCAL-00029" summary="Webhook for New Customer Welcome sms">
-      <created>1617008111639</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1617008111639</updated>
+      <workItem from="1617345627920" duration="16634000" />
     </task>
     <task id="LOCAL-00030" summary="Webhook for New Customer Welcome sms">
       <created>1617008325538</created>
@@ -446,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617369868757</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="add variables in campaigns">
+      <created>1617370291634</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1617370291634</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
