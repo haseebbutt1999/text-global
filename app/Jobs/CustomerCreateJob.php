@@ -124,12 +124,14 @@ class CustomerCreateJob implements ShouldQueue
                     }
                 }
             }
+
             $welcome_campaign_status_check = Welcomecampaign::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($welcome_campaign_status_check)){
                 foreach($pushed_customer  as $pushed_cust){
                     $welcome_campaign = Welcomecampaign::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$pushed_cust->first_name." ".$pushed_cust->last_name,$welcome_campaign->message_text);
+
                     $test = new Test();
                     $test->text = "Text Message customer name Variable:" .$messgae_text;
                     $test->save();

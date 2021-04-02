@@ -53,6 +53,13 @@ class OrderConfirmJob implements ShouldQueue
                     $order_confirm_campaign = Orderconfirm::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$order_confirm_data->billing_address->first_name." ".$order_confirm_data->billing_address->last_name,$order_confirm_campaign->message_text);
+                    $messgae_text = str_replace('{OrderName}',$order_confirm_data->name,$messgae_text);
+                    $messgae_text = str_replace('{FinancialStatus}',$order_confirm_data->financial_status,$messgae_text);
+                    $messgae_text = str_replace('{OrderStatusUrl}',$order_confirm_data->order_status_url,$messgae_text);
+                    $messgae_text = str_replace('{OrderTotalPrice}',$order_confirm_data->total_price,$messgae_text);
+                    $messgae_text = str_replace('{Currency}',$order_confirm_data->currency,$messgae_text);
+
+
                     $test = new Test();
                     $test->text = "'Order Confirm' Text msg is" .$messgae_text;
                     $test->save();

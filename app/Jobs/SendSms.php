@@ -64,13 +64,13 @@ class SendSms implements ShouldQueue
 
         }
 
-
         foreach ($pushed_users as $pushed_user) {
+            $messgae_text = str_replace('{CustomerName}',$pushed_user->first_name." ".$pushed_user->last_name,$this->campaign->message_text);
 
             $data = [
                 "from" => $this->campaign->sender_name,
                 "to" => $pushed_user->phone,
-                "text" => $this->campaign->message_text,
+                "text" => $messgae_text,
             ];
             $data = json_encode($data);
 

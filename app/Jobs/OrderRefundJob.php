@@ -49,11 +49,23 @@ class OrderRefundJob implements ShouldQueue
             foreach ($country_users as $country_user){
                 if($country_user->name == $order_customer_country){
                     $order_refund_campaign = Orderrefund::where('user_id', $shop->id)->first();
-
+                    $toEnd = count($order_refund_data->refunds);
+                    foreach($order_refund_data->refunds as $key=>$value) {
+                        if (0 == --$toEnd) {
+                            $refunded_amount = $value->transactions[0]->amount;
+                        }
+                    }
                     $messgae_text = str_replace('{CustomerName}',$order_refund_data->billing_address->first_name." ".$order_refund_data->billing_address->last_name,$order_refund_campaign->message_text);
+                    $messgae_text = str_replace('{OrderName}',$order_refund_data->name,$messgae_text);
+                    $messgae_text = str_replace('{FinancialStatus}',$order_refund_data->financial_status,$messgae_text);
+                    $messgae_text = str_replace('{OrderStatusUrl}',$order_refund_data->order_status_url,$messgae_text);
+                    $messgae_text = str_replace('{RefundedPaymentCurrency}',$order_refund_data->currency,$messgae_text);
+                    $messgae_text = str_replace('{RefundedAmount}',$refunded_amount,$messgae_text);
+
                     $test = new Test();
                     $test->text = "'Order Refund' Text msg is" .$messgae_text;
                     $test->save();
+
                     $data = [
                         "from" => $order_refund_campaign->sender_name,
                         "to" => $order_customer_phone_nummber,

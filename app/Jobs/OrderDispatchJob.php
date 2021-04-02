@@ -51,6 +51,12 @@ class OrderDispatchJob implements ShouldQueue
                     $order_dispatch_campaign = Orderdispatch::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$order_dispatch_data->billing_address->first_name." ".$order_dispatch_data->billing_address->last_name,$order_dispatch_campaign->message_text);
+                    $messgae_text = str_replace('{OrderName}',$order_dispatch_data->name,$messgae_text);
+                    $messgae_text = str_replace('{FulfillmentStatus}',$order_dispatch_data->fulfillment_status,$messgae_text);
+                    $messgae_text = str_replace('{FinancialStatus}',$order_dispatch_data->financial_status,$messgae_text);
+                    $messgae_text = str_replace('{OrderStatusUrl}',$order_dispatch_data->order_status_url,$messgae_text);
+                    $messgae_text = str_replace('{OrderTotalPrice}',$order_dispatch_data->total_price,$messgae_text);
+                    $messgae_text = str_replace('{Currency}',$order_dispatch_data->currency,$messgae_text);
                     $test = new Test();
                     $test->text = "'Order Dispatch' Text msg is" .$messgae_text;
                     $test->save();
