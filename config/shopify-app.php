@@ -317,10 +317,6 @@ return [
             'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/customer-create'
         ],
         [
-            'topic' => 'checkouts/create',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checkouts-create'
-        ],
-        [
             'topic' => 'orders/create',
             'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-create'
         ],

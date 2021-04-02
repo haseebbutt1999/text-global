@@ -95,7 +95,7 @@ class CustomerController extends Controller
 
     public function test(){
 //        GET /admin/api/2021-01/checkouts.json
-        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/customers.json')['body']['customers'];
+        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
         dd($orders);
 //        $length = $orders->refunds;
         $toEnd = count($orders->refunds);
