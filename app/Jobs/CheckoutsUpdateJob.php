@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
 use stdClass;
 
@@ -61,34 +62,20 @@ class CheckoutsUpdateJob implements ShouldQueue
         $shop = User::where('name', $user_shop)->first();
         try {
             $new = new Test();
-                $new->text = json_encode($checkout_data);
-                $new->save();
-//            $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
-//            if(isset($abandoned_cart_campaign_status_check)) {
-//                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
-//                $new = new Test();
-//                $new->text = "a".json_encode($checkouts);
-//                $new->save();
-//                foreach($checkouts as $checkout){
-//                    if( $checkout['id'] ==  $checkout_data->id){
-//                        $new = new Test();
-//                        $new->text = "matched".$checkout_data->id;
-//                        $new->save();
-//                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->exists() == false){
-//                            $new = new Test();
-//                            $new->text = "check AbandonedCartLog not exit already";
-//                            $new->save();
-////                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
-//                            if($shop->credit_status != "0 credits"){
-//
-////                                dispatch(new AbandonedCartSmsJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
-//                            }else{
-//                                $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            $new->text = json_encode($checkout_data);
+            $new->save();
+            $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
+            if(isset($abandoned_cart_campaign_status_check)) {
+                $abandonedCartSmsStatus = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->where('status', 'sended')->first();
+                if($abandonedCartSmsStatus == null){
+//                                  addHours($abandoned_cart_campaign_status_check->delay_time)
+                    if($shop->credit_status != "0 credits"){
+                        dispatch(new AbandonedCartSmsJob($checkout_data,$shop))->delay(Carbon::now()->addMinutes(2));
+                    }else{
+                        $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
+                    }
+                }
+            }
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();

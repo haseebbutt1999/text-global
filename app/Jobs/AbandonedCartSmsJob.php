@@ -24,10 +24,10 @@ class AbandonedCartSmsJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($shopDomain, $data)
+    public function __construct($checkout_data, $shop)
     {
-        $this->shopDomain = $shopDomain;
-        $this->data = $data;
+        $this->checkout_data = $checkout_data;
+        $this->shop = $shop;
         $this->log_store = new LogsController();
     }
 
@@ -38,26 +38,31 @@ class AbandonedCartSmsJob implements ShouldQueue
      */
     public function handle()
     {
-        $checkout = $this->checkout_data;
+        $checkout_data = $this->checkout_data;
         $shop = $this->shop;
         try {
 
-            $customer_phone = $checkout->billing_address->phone;
-            $customer_country = $checkout->billing_address->country;
+            $order_customer_phone_nummber = $checkout_data->billing_address->phone;
+            $order_customer_country = $checkout_data->billing_address->country;
 
             $country_users = $shop->countries;
             //                dd($country_users);
             foreach ($country_users as $country_user){
-                if($country_user->name == $customer_country){
+                if($country_user->name == $order_customer_country){
                     $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', $shop->id)->first();
+                    $messgae_text = str_replace('{CustomerName}',$checkout_data->billing_address->first_name." ".$checkout_data->billing_address->last_name,$abandoned_cart_campaign->message_text);
+                    $messgae_text = str_replace('{OrderName}',$checkout_data->name,$messgae_text);
+                    $messgae_text = str_replace('{FinancialStatus}',$checkout_data->financial_status,$messgae_text);
+                    $messgae_text = str_replace('{OrderStatusUrl}',$checkout_data->order_status_url,$messgae_text);
 
-                    $messgae_text = str_replace('{CustomerName}',$checkout->billing_address->first_name." ".$checkout->billing_address->last_name,$abandoned_cart_campaign->message_text);
+
                     $test = new Test();
-                    $test->text = "Text Message customer name Variable:" .$messgae_text;
+                    $test->text = "'Abandoned Cart Campaign' Text msg is" .$messgae_text;
                     $test->save();
+
                     $data = [
                         "from" => $abandoned_cart_campaign->sender_name,
-                        "to" => $customer_phone,
+                        "to" => $order_customer_phone_nummber,
                         "text" => $messgae_text,
                     ];
 
@@ -88,16 +93,16 @@ class AbandonedCartSmsJob implements ShouldQueue
                     if ($err) {
                         $test = new Test();
                         $test->number = 404;
-                        $test->text = "cURL Error #:" .$err;
-                        $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS not Sended');
+                        $test->text = "Abandonedcartcampaign cURL Error #:" .$err;
+                        $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended');
                         //
                         $test->save();
                     } else {
                         $test = new Test();
                         $test->number = 200;
-                        $test->text = "Successful Staus:" .$response;
+                        $test->text = "AbandonedcartcampaignSuccessful Staus:" .$response;
                         $test->save();
-                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS Sended Successfully to Customer ('.$checkout->billing_address->first_name.')');
+                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
                         //                Detect Credits
                         $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
                         if($user->credit >= 0){
@@ -106,11 +111,11 @@ class AbandonedCartSmsJob implements ShouldQueue
                             $user->credit_status = "0 credits";
                         }
                         $user->save();
-
-                        $abandoned_cart = new AbandonedCartLog();
-                        $abandoned_cart->checkout_id = $checkout->id;
-                        $abandoned_cart->user_id = $shop->id;
-                        $abandoned_cart->save();
+                        $abandoned_cart_log_status = new AbandonedCartLog();
+                        $abandoned_cart_log_status->user_id = $shop->id;
+                        $abandoned_cart_log_status->checkout_id = $checkout_data->id;
+                        $abandoned_cart_log_status->status = "sended";
+                        $abandoned_cart_log_status->save();
                     }
 
                 }
@@ -121,7 +126,7 @@ class AbandonedCartSmsJob implements ShouldQueue
             $new->text = "error: ".$exception->getMessage();
             $new->save();
             $new = new Test();
-            $new->text = "error :in Job aban data is : ".json_encode($checkout);
+            $new->text = "error :in Job Abandonedcartcampaign data is : ".json_encode($checkout_data);
             $new->save();
             $new = new Test();
             $new->text = "error :in Job shop is : ".json_encode($shop);
