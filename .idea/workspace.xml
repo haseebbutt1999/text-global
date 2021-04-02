@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add variables in campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/ChecoutsUpdateJob.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,14 +100,7 @@
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
       <workItem from="1617277757926" duration="10001000" />
-      <workItem from="1617345627920" duration="13272000" />
-    </task>
-    <task id="LOCAL-00025" summary="Webhook for New Customer Welcome sms">
-      <created>1617007005415</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1617007005415</updated>
+      <workItem from="1617345627920" duration="13340000" />
     </task>
     <task id="LOCAL-00026" summary="Webhook for New Customer Welcome sms">
       <created>1617007300226</created>
@@ -447,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617367440336</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="add variables in campaigns">
+      <created>1617367880256</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1617367880256</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,10 +516,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617362017806">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617367885181">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617362017806" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617367885181" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
