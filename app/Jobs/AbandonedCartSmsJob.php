@@ -51,10 +51,6 @@ class AbandonedCartSmsJob implements ShouldQueue
                 if($country_user->name == $order_customer_country){
                     $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', $shop->id)->first();
                     $messgae_text = str_replace('{CustomerName}',$checkout_data->billing_address->first_name." ".$checkout_data->billing_address->last_name,$abandoned_cart_campaign->message_text);
-                    $messgae_text = str_replace('{OrderName}',$checkout_data->name,$messgae_text);
-                    $messgae_text = str_replace('{FinancialStatus}',$checkout_data->financial_status,$messgae_text);
-                    $messgae_text = str_replace('{OrderStatusUrl}',$checkout_data->order_status_url,$messgae_text);
-
 
                     $test = new Test();
                     $test->text = "'Abandoned Cart Campaign' Text msg is" .$messgae_text;
