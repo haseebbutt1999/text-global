@@ -71,10 +71,14 @@ class CheckoutsCreateJob implements ShouldQueue
                                 $new = new Test();
                                 $new->text = "abandonedcheckout api data:".json_encode($checkout);
                                 $new->save();
-                                dispatch(new AbandonedcartSmsDispacthJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
+                                dispatch(new AbandonedCartSmsJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
                             }else{
                                 $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
                             }
+                        }else{
+                            $new = new Test();
+                            $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout);
+                            $new->save();
                         }
                     }
                 }

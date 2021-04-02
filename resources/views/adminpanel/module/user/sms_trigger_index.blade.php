@@ -87,8 +87,8 @@
                                                     <div class="card-body col-md-4 col-lg-4 ">
                                                         <div class="card" >
                                                             <div class="card-body">
-                                                                <h6 class="card-title" style="font-size: 15px">Variables</h6>
-                                                                <p class="card-text custom-variable-font-size" >You can use variables to output in your 'Sender Name' and 'Text Message' fields. The available variables are:</p>
+                                                                <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
+                                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
                                                             </div>
                                                             <ul class="list-group list-group-flush">
                                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -285,8 +285,8 @@
                                     <div class="card-body col-md-4 col-lg-4 ">
                                         <div class="card" >
                                             <div class="card-body">
-                                                <h6 class="card-title" style="font-size: 15px">Variables</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use variables to output in your 'Sender Name' and 'Text Message' fields. The available variables are:</p>
+                                                <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -414,8 +414,8 @@
                                     <div class="card-body col-md-4 col-lg-4 ">
                                         <div class="card" >
                                             <div class="card-body">
-                                                <h6 class="card-title" style="font-size: 15px">Variables</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use variables to output in your 'Sender Name' and 'Text Message' fields. The available variables are:</p>
+                                                <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -542,8 +542,8 @@
                                     <div class="card-body col-md-4 col-lg-4 ">
                                         <div class="card" >
                                             <div class="card-body">
-                                                <h6 class="card-title" style="font-size: 15px">Variables</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use variables to output in your 'Sender Name' and 'Text Message' fields. The available variables are:</p>
+                                                <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
@@ -670,8 +670,8 @@
                                     <div class="card-body col-md-4 col-lg-4 ">
                                         <div class="card" >
                                             <div class="card-body">
-                                                <h6 class="card-title" style="font-size: 15px">Variables</h6>
-                                                <p class="card-text custom-variable-font-size" >You can use variables to output in your 'Sender Name' and 'Text Message' fields. The available variables are:</p>
+                                                <h6 class="card-title" style="font-size: 15px">Placeholder</h6>
+                                                <p class="card-text custom-variable-font-size" >You can use placeholders to output in your 'Sender Name' and 'Text Message' fields. The available placeholders are:</p>
                                             </div>
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item custom-variable-font-size">{CustomerName}</li>
