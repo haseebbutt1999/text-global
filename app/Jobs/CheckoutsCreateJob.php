@@ -58,17 +58,27 @@ class CheckoutsCreateJob implements ShouldQueue
     {
         $user_shop = $this->shopDomain;
         $checkout_data = $this->data;
-        $new = new Test();
-        $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout_data);
-        $new->save();
+
         $shop = User::where('name', $user_shop)->first();
         try {
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
-//            if(isset($abandoned_cart_campaign_status_check)) {
-//                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
-//                foreach($checkouts as $checkout){
-//                    if($checkout->id == $checkout_data->id){
-//                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
+            if(isset($abandoned_cart_campaign_status_check)) {
+                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
+                $new = new Test();
+                $new->text = "abandonedcheckout checkouts data:".json_encode($checkouts);
+                $new->save();
+                foreach($checkouts as $checkout){
+                    $new = new Test();
+                    $new->text = "abandonedcheckout checkout data:".json_encode($checkout);
+                    $new->save();
+                    if($checkout->id == $checkout_data->id){
+                        $new = new Test();
+                        $new->text = "check ids same or not: same";
+                        $new->save();
+                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
+                            $new = new Test();
+                            $new->text = "check AbandonedCartLog not exit already";
+                            $new->save();
 //                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
 //                            if($shop->credit_status != "0 credits"){
 //                                $new = new Test();
@@ -82,10 +92,10 @@ class CheckoutsCreateJob implements ShouldQueue
 //                            $new = new Test();
 //                            $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout);
 //                            $new->save();
-//                        }
-//                    }
-//                }
-//            }
+                        }
+                    }
+                }
+            }
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
