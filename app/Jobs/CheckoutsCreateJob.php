@@ -58,31 +58,34 @@ class CheckoutsCreateJob implements ShouldQueue
     {
         $user_shop = $this->shopDomain;
         $checkout_data = $this->data;
+        $new = new Test();
+        $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout_data);
+        $new->save();
         $shop = User::where('name', $user_shop)->first();
         try {
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
-            if(isset($abandoned_cart_campaign_status_check)) {
-                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
-                foreach($checkouts as $checkout){
-                    if($checkout->id == $checkout_data->id){
-                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
-                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
-                            if($shop->credit_status != "0 credits"){
-                                $new = new Test();
-                                $new->text = "abandonedcheckout api data:".json_encode($checkout);
-                                $new->save();
-                                dispatch(new AbandonedCartSmsJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
-                            }else{
-                                $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
-                            }
-                        }else{
-                            $new = new Test();
-                            $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout);
-                            $new->save();
-                        }
-                    }
-                }
-            }
+//            if(isset($abandoned_cart_campaign_status_check)) {
+//                $checkouts = $shop->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
+//                foreach($checkouts as $checkout){
+//                    if($checkout->id == $checkout_data->id){
+//                        if(AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout->id)->exists() == false){
+//                            //                    addHours($abandoned_cart_campaign_status_check->delay_time)
+//                            if($shop->credit_status != "0 credits"){
+//                                $new = new Test();
+//                                $new->text = "abandonedcheckout api data:".json_encode($checkout);
+//                                $new->save();
+//                                dispatch(new AbandonedCartSmsJob($checkout,$shop))->delay(Carbon::now()->addMinutes(2));
+//                            }else{
+//                                $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
+//                            }
+//                        }else{
+//                            $new = new Test();
+//                            $new->text = "abandonedcheckout api data in out side of AbandonedCartLog exit:".json_encode($checkout);
+//                            $new->save();
+//                        }
+//                    }
+//                }
+//            }
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
