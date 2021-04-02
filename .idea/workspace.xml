@@ -100,14 +100,7 @@
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
       <workItem from="1617277757926" duration="10001000" />
-      <workItem from="1617345627920" duration="9905000" />
-    </task>
-    <task id="LOCAL-00022" summary="Webhook for New Customer Welcome sms">
-      <created>1617006473516</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1617006473516</updated>
+      <workItem from="1617345627920" duration="10717000" />
     </task>
     <task id="LOCAL-00023" summary="Webhook for New Customer Welcome sms">
       <created>1617006777511</created>
@@ -445,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617360066643</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="add variables in campaigns">
+      <created>1617360695661</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1617360695661</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,10 +516,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617360072658">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617360703360">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617360072658" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617360703360" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

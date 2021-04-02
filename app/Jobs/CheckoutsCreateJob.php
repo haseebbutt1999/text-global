@@ -71,6 +71,12 @@ class CheckoutsCreateJob implements ShouldQueue
                     $new = new Test();
                     $new->text = "abandonedcheckout checkout data:".json_encode($checkout);
                     $new->save();
+                    $new = new Test();
+                    $new->text = "abandonedcheckout checkouts data:".json_encode($checkout->id).typeOf(json_encode($checkout->id));
+                    $new->save();
+                    $new = new Test();
+                    $new->text = "abandonedcheckout checkout data:".$checkout->id.typeOf($checkout->id);
+                    $new->save();
                     if($checkout->id == $checkout_data->id){
                         $new = new Test();
                         $new->text = "check ids same or not: same";
