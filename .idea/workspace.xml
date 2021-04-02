@@ -22,7 +22,7 @@
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add variables in campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ChecoutsUpdateJob.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,14 +102,7 @@
       <workItem from="1617212356488" duration="1257000" />
       <workItem from="1617258127248" duration="14079000" />
       <workItem from="1617277757926" duration="10001000" />
-      <workItem from="1617345627920" duration="12831000" />
-    </task>
-    <task id="LOCAL-00024" summary="Webhook for New Customer Welcome sms">
-      <created>1617006815665</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1617006815665</updated>
+      <workItem from="1617345627920" duration="13272000" />
     </task>
     <task id="LOCAL-00025" summary="Webhook for New Customer Welcome sms">
       <created>1617007005415</created>
@@ -447,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617362014516</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add variables in campaigns">
+      <created>1617367440336</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1617367440336</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,10 +486,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617260564825" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617359233235">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617367575917">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617359233235" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617367575917" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

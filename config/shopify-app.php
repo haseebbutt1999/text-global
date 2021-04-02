@@ -334,7 +334,7 @@ return [
         ],
         [
             'topic' => 'checkouts/update',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checouts-update'
+            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checkouts-update'
         ]
 
 
