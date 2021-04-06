@@ -109,6 +109,9 @@ class OrderConfirmJob implements ShouldQueue
                             }
                             $user->save();
                         }else{
+                            $test = new Test();
+                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                            $test->save();
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended.');
                         }
                     }

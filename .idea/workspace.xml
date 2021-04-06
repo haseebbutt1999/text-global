@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="validations applyed on all campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSms.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,14 +106,7 @@
       <workItem from="1617277757926" duration="10001000" />
       <workItem from="1617345627920" duration="20394000" />
       <workItem from="1617436531053" duration="3132000" />
-      <workItem from="1617691508948" duration="14578000" />
-    </task>
-    <task id="LOCAL-00041" summary="Webhook for New Customer Welcome sms">
-      <created>1617019663458</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1617019663458</updated>
+      <workItem from="1617691508948" duration="14730000" />
     </task>
     <task id="LOCAL-00042" summary="Webhook for New Customer Welcome sms">
       <created>1617023498495</created>
@@ -448,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617709701562</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="validations applyed on all campaigns">
+      <created>1617710408046</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1617710408046</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,10 +491,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617260564825" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617369227584">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617710517693">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617369227584" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617710517693" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

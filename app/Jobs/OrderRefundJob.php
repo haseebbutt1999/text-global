@@ -112,6 +112,9 @@ class OrderRefundJob implements ShouldQueue
                             }
                             $user->save();
                         }else{
+                            $test = new Test();
+                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                            $test->save();
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS not Sended.');
 
                         }

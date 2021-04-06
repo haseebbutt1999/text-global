@@ -117,6 +117,9 @@ class AbandonedCartSmsJob implements ShouldQueue
                             $abandoned_cart_log_status->status = "sended";
                             $abandoned_cart_log_status->save();
                         }else{
+                            $test = new Test();
+                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                            $test->save();
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended.');
                         }
                     }

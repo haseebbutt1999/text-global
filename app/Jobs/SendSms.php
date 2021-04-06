@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Campaign;
 use App\Http\Controllers\LogsController;
+use App\Test;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -108,6 +109,9 @@ class SendSms implements ShouldQueue
                     }
                     $user->save();
                 }else{
+                    $test = new Test();
+                    $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                    $test->save();
                     $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.' , $notes = $response);
                 }
 
