@@ -120,12 +120,6 @@ class OrderConfirmJob implements ShouldQueue
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
             $new->save();
-            $new = new Test();
-            $new->text = "error :in Job order data is : ".json_encode($order_confirm_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error :in Job shop is : ".json_encode($shop);
-            $new->save();
         }
     }
 }

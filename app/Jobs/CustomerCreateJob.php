@@ -181,9 +181,18 @@ class CustomerCreateJob implements ShouldQueue
                                 $user->credit_status = "0 credits";
                             }
                             $user->save();
+                            $test = new Test();
+                            $test->text = "welcome camapign per sms credits :" .$welcome_campaign->calculated_credit_per_sms;
+                            $test->save();
+                            $test = new Test();
+                            $test->text = "user data :" .$user;
+                            $test->save();
+                            $test = new Test();
+                            $test->text = "user credit" .$user->credit;
+                            $test->save();
                         }else{
                             $test = new Test();
-                            $test->text = "rejected msg:" .$response->messages[0]->status->name;
+                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
