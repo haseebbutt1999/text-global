@@ -2,8 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Abandonedcartcampaign;
-use App\AbandonedCartLog;
 use App\Http\Controllers\LogsController;
 use App\Orderconfirm;
 use App\Test;

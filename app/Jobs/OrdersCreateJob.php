@@ -66,9 +66,6 @@ class OrdersCreateJob implements ShouldQueue
                 if($shop->credit_status != "0 credits"){
                     dispatch(new OrderConfirmJob($order_confirm_data,$shop));
                 }else{
-                    $test = new Test();
-                    $test->text = "rejected msg:" .$response->messages[0]->status->description;
-                    $test->save();
                     $this->log_store->log_store( $shop->id, 'Orderconfirm', null, null, "Order confirm SMS not sended to customer because Your Credits is '0'");
                 }
             }
