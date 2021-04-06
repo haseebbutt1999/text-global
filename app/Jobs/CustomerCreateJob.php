@@ -173,19 +173,20 @@ class CustomerCreateJob implements ShouldQueue
                         //
                         $test->save();
                     } else {
-                        $test = new Test();
-                        $test->number = 200;
-                        $test->text = "Successful Staus:" .$response;
-                        $test->save();
-                        $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
-                        //                Detect Credits
-                        $user = User::Where('id', $welcome_campaign->user_id)->first();
-                        if($user->credit >= 0){
-                            $user->credit =  $user->credit - 1;
+                        $response = json_decode($response);
+                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                            $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
+                            //                Detect Credits
+                            $user = User::Where('id', $welcome_campaign->user_id)->first();
+                            if($user->credit >= 0){
+                                $user->credit =  $user->credit - $welcome_campaign->calculated_credit_per_sms;
+                            }else{
+                                $user->credit_status = "0 credits";
+                            }
+                            $user->save();
                         }else{
-                            $user->credit_status = "0 credits";
+                            $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
-                        $user->save();
                     }
                 }
             }
