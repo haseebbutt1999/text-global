@@ -838,7 +838,7 @@
             </div>
         </div>
     </div>
-    <input id="current_user_credits" value="{{\Illuminate\Support\Facades\Auth::user()->credit}}" hidden>
+    <input class="current_user_credits" value="{{\Illuminate\Support\Facades\Auth::user()->credit}}" hidden>
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -875,7 +875,7 @@
         $( ".welcome-save-campaign" ).submit(function( event ) {
             var showTextlen= $(this).find('#welcome-rchars').text();
             var showCredit= $(this).find('#welcome-credit').text();
-            var current_user_credits = $('#current_user_credits').val();
+            var current_user_credits = $('.current_user_credits').val();
 
             var sender_text = $(this).find('.welcome-sendername-character-count').val();
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
@@ -921,7 +921,7 @@
         $( ".abandoned-save-campaign" ).submit(function( event ) {
             var showTextlen= $(this).find('#abandoned-rchars').text();
             var showCredit= $(this).find('#abandoned-credit').text();
-            var current_user_credits = $('#current_user_credits').val();
+            var current_user_credits = $('.current_user_credits').val();
 
             var sender_text = $(this).find('.abandonedcart-sendername-character-count').val();
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
@@ -967,7 +967,7 @@
         $( ".orderconfirm-save-campaign" ).submit(function( event ) {
             var showTextlen= $(this).find('#orderconfirm-rchars').text();
             var showCredit= $(this).find('#orderconfirm-credit').text();
-            var current_user_credits = $('#current_user_credits').val();
+            var current_user_credits = $('.current_user_credits').val();
             var sender_text = $(this).find('.orderconfirm-sendername-character-count').val();
 
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
@@ -1014,7 +1014,7 @@
         $( ".orderrefund-save-campaign" ).submit(function( event ) {
             var showTextlen= $(this).find('#orderrefund-rchars').text();
             var showCredit= $(this).find('#orderrefund-credit').text();
-            var current_user_credits = $('#current_user_credits').val();
+            var current_user_credits = $('.current_user_credits').val();
             var sender_text = $(this).find('.orderrefund-sendername-character-count').val();
 
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
@@ -1060,7 +1060,7 @@
         $( ".orderdispatch-save-campaign" ).submit(function( event ) {
             var showTextlen= $(this).find('#orderdispatch-rchars').text();
             var showCredit= $(this).find('#orderdispatch-credit').text();
-            var current_user_credits = $('#current_user_credits').val();
+            var current_user_credits = $('.current_user_credits').val();
             var sender_text = $(this).find('.orderdispatch-sendername-character-count').val();
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
             {

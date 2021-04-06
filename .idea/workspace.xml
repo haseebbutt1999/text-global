@@ -21,11 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="validations applyed on all campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,14 +102,7 @@
       <workItem from="1617277757926" duration="10001000" />
       <workItem from="1617345627920" duration="20394000" />
       <workItem from="1617436531053" duration="3132000" />
-      <workItem from="1617691508948" duration="14730000" />
-    </task>
-    <task id="LOCAL-00042" summary="Webhook for New Customer Welcome sms">
-      <created>1617023498495</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1617023498496</updated>
+      <workItem from="1617691508948" duration="15104000" />
     </task>
     <task id="LOCAL-00043" summary="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab.">
       <created>1617117388151</created>
@@ -451,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617710408046</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="validations applyed on all campaigns">
+      <created>1617710529808</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1617710529822</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,10 +519,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617709705442">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617710531964">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617709705442" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617710531964" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
