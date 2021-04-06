@@ -59,8 +59,9 @@ class AfterAuthenticateJob implements ShouldQueue
             $welcome_campaign_save->user_id = Auth::user()->id;
             $welcome_campaign_save->campaign_name = "Welcome Sms Campagin";
             $welcome_campaign_save->message_text = "{CustomerName}, Welcome to our store.";
-            $welcome_campaign_save->sender_name = Auth::user()->name;
+            $welcome_campaign_save->sender_name = "XYZ";
             $welcome_campaign_save->status= "active";
+            $welcome_campaign_save->calculated_credit_per_sms= 1;
             $welcome_campaign_save->save();
 
         }
@@ -71,8 +72,9 @@ class AfterAuthenticateJob implements ShouldQueue
             $order_confirm_campaign_save->user_id = Auth::user()->id;
             $order_confirm_campaign_save->campaign_name = "Order Confirm Sms Campagin";
             $order_confirm_campaign_save->message_text = "Your order {OrderName} is confirmed.";
-            $order_confirm_campaign_save->sender_name = Auth::user()->name;
+            $order_confirm_campaign_save->sender_name = "XYZ";
             $order_confirm_campaign_save->status= "active";
+            $order_confirm_campaign_save->calculated_credit_per_sms= 1;
             $order_confirm_campaign_save->save();
         }
 
@@ -82,8 +84,9 @@ class AfterAuthenticateJob implements ShouldQueue
             $order_refund_campaign_save->user_id = Auth::user()->id;
             $order_refund_campaign_save->campaign_name = "Order Refund Sms Campagin";
             $order_refund_campaign_save->message_text = "Your order is refunded";
-            $order_refund_campaign_save->sender_name = Auth::user()->name;
+            $order_refund_campaign_save->sender_name = "XYZ";
             $order_refund_campaign_save->status= "active";
+            $order_refund_campaign_save->calculated_credit_per_sms= 1;
             $order_refund_campaign_save->save();
         }
 
@@ -93,7 +96,8 @@ class AfterAuthenticateJob implements ShouldQueue
             $order_dispatch_campaign_save->user_id = Auth::user()->id;
             $order_dispatch_campaign_save->campaign_name = "Order Dispatch Sms Campagin";
             $order_dispatch_campaign_save->message_text = "Your order is fulfilled.";
-            $order_dispatch_campaign_save->sender_name = Auth::user()->name;
+            $order_dispatch_campaign_save->sender_name = "XYZ";
+            $order_dispatch_campaign_save->calculated_credit_per_sms = 1;
             $order_dispatch_campaign_save->status= "active";
             $order_dispatch_campaign_save->save();
         }
@@ -104,8 +108,9 @@ class AfterAuthenticateJob implements ShouldQueue
             $abandoned_cart_campaign->user_id = Auth::user()->id;
             $abandoned_cart_campaign->campaign_name = "Abandoned Cart Campagin";
             $abandoned_cart_campaign->message_text = "Your cart items is abandoned.";
-            $abandoned_cart_campaign->sender_name = Auth::user()->name;
+            $abandoned_cart_campaign->sender_name = "XYZ";
             $abandoned_cart_campaign->delay_time = 1;
+            $abandoned_cart_campaign->calculated_credit_per_sms = 1;
             $abandoned_cart_campaign->status = "active";
             $abandoned_cart_campaign->save();
         }

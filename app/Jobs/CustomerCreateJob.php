@@ -176,7 +176,7 @@ class CustomerCreateJob implements ShouldQueue
                             //                Detect Credits
                             $user = User::Where('id', $welcome_campaign->user_id)->first();
                             if($user->credit >= 0){
-                                $user->credit =  $user->credit - $welcome_campaign->calculated_credit_per_sms;
+                                $user->credit =  ($user->credit) - ($welcome_campaign->calculated_credit_per_sms);
                             }else{
                                 $user->credit_status = "0 credits";
                             }
