@@ -131,7 +131,9 @@ class CustomerCreateJob implements ShouldQueue
                     $welcome_campaign = Welcomecampaign::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$pushed_cust->first_name." ".$pushed_cust->last_name,$welcome_campaign->message_text);
-
+                    $test = new Test();
+                    $test->text = "customer data:".json_encode($pushed_cust);
+                    $test->save();
                     $data = [
                         "from" => $welcome_campaign->sender_name,
                         "to" => $pushed_cust->phone,
