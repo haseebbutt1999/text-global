@@ -11,7 +11,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
 use Throwable;
 
@@ -95,11 +94,11 @@ class SendSms implements ShouldQueue
             curl_close($curl);
 
             if ($err) {
-                $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed');
+                $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed');
             } else {
                 $response = json_decode($response);
                 if($response->messages[0]->status->name = "PENDING_ENROUTE"){
-                    $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' );
+                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' );
 //                Detect Credits
                     $user = User::Where('id', $this->campaign->user_id)->first();
                     if($user->credit >= 0){
@@ -112,7 +111,7 @@ class SendSms implements ShouldQueue
                     $test = new Test();
                     $test->text = "rejected msg:" .$response->messages[0]->status->description;
                     $test->save();
-                    $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.');
+                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.');
                 }
 
             }
