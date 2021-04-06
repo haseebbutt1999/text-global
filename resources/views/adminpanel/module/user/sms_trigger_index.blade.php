@@ -49,7 +49,8 @@
 
                                     <div class="tab-pane fade show active" id="welcome_sms_campaign" role="tabpanel" aria-labelledby="welcome_sms_campaign-tab">
                                         <div class="col-md-12 col-lg-12 card">
-                                            <form  action="{{Route('welcome-sms-campaign-save')}}" method="post"  >
+                                            <form class="welcome-save-campaign" action="{{Route('welcome-sms-campaign-save')}}" method="post"  >
+                                                <input hidden value="" class="  welcome_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
                                                 @csrf
                                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
                                                     <h5>Welcome Sms Campaign</h5>
@@ -66,13 +67,26 @@
 
                                                         <div class="form-group">
                                                             <label class="text-left"  for="#">Sender Name</label>
-                                                            <input @if(isset($welcome_campaign->sender_name)) value="{{$welcome_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                                            @php
+                                                                $welcome_sender_name = \App\Welcomecampaign::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                                            @endphp
+
+                                                            <div class="custom-select-div ">
+                                                                <select required name="sender_name" class=" js-example-tags welcome-sendername-character-count">
+                                                                    @foreach($welcome_sender_name as $welcome_sender)
+                                                                        <option @if($welcome_sender->sender_name == $welcome_campaign->sender_name) selected @endif>{{$welcome_sender->sender_name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="welcome-sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="text-left"  for="#">Text Message</label>
+                                                            <div class="d-flex justify-content-between align-items-center" >
+                                                                <label class="text-left"  for="#">Text Message</label>
+                                                                <div style="color: gray;font-size: 13px;">Characters used <span id="welcome-rchars" style="text-align: right">0</span> / <span id="welcome-credit"> {{$welcome_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
+                                                            </div>
                                                             <div id="cct_embed_counts">
-                                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($welcome_campaign->message_text)){{$welcome_campaign->message_text}}@endif</textarea>
-                                                                <span id="rchars">160</span> Character(s) Remaining
+                                                                <textarea  class="form-control welcome-campaign-textarea"  name="message_text"  rows="4">@if(isset($welcome_campaign->message_text)){{$welcome_campaign->message_text}}@endif</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
@@ -216,7 +230,9 @@
                     </div>
                     <div class="tab-pane fade" id="abandoned_cart" role="tabpanel" aria-labelledby="abandoned_cart-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+
+                            <form class="abandoned-save-campaign"  action="{{Route('abandoned-cart-campaign-save')}}" method="post"  >
+                                <input hidden value="" class="  abandoned_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
                                 @csrf
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
                                     <h5>Abandoned Cart Campaign</h5>
@@ -233,14 +249,27 @@
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($abandoned_cart_campaign->sender_name)) value="{{$abandoned_cart_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            @php
+                                                $abandonedcart_sender_name = \App\Abandonedcartcampaign::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                            @endphp
+
+                                            <div class="custom-select-div ">
+                                                <select required name="sender_name" class=" js-example-tags abandonedcart-sendername-character-count">
+                                                    @foreach($abandonedcart_sender_name as $abandonedcart_sender)
+                                                        <option @if($abandonedcart_sender->sender_name == $abandoned_cart_campaign->sender_name) selected @endif>{{$abandonedcart_sender->sender_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="abandonedcart-sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                         </div>
                                         <div class="form-group ">
                                             <div class="form-group">
-                                                <label class="text-left"  for="#">Text Message</label>
+                                                <div class="d-flex justify-content-between align-items-center" >
+                                                    <label class="text-left"  for="#">Text Message</label>
+                                                    <div style="color: gray;font-size: 13px;">Characters used <span id="abandoned-rchars" style="text-align: right">0</span> / <span id="abandoned-credit"> {{$abandoned_cart_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
+                                                </div>
                                                 <div id="cct_embed_counts">
-                                                    <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
-                                                    <span id="rchars">160</span> Character(s) Remaining
+                                                    <textarea  class="form-control abandoned-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
                                                 </div>
                                             </div>
                                             <label class="text-left"  for="#">Delay Time</label>
@@ -374,8 +403,10 @@
                     </div>
                     <div class="tab-pane fade" id="order_confirmation_sms" role="tabpanel" aria-labelledby="order_confirmation_sms-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('orderconfirm-campaign-save')}}" method="post"  >
+
+                            <form class="orderconfirm-save-campaign"  action="{{Route('orderconfirm-campaign-save')}}" method="post"  >
                                 @csrf
+                                <input hidden value="" class="  orderconfirm_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
                                     <h5>Order Confirm Campaign</h5>
                                     <div class="">
@@ -388,16 +419,30 @@
                                             <label class="text-left"  for="#">Campaign Name</label>
                                             <input @if(isset($orderconfirm_campaign->campaign_name)) value="{{$orderconfirm_campaign->campaign_name}}" @endif name="campaign_name" type="text"  class="form-control ">
                                         </div>
-
+{{--                                        --}}
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($orderconfirm_campaign->sender_name)) value="{{$orderconfirm_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            @php
+                                                $orderconfirm_sender_name = \App\Orderconfirm::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                            @endphp
+
+                                            <div class="custom-select-div ">
+                                                <select required name="sender_name" class=" js-example-tags orderconfirm-sendername-character-count">
+                                                    @foreach($orderconfirm_sender_name as $orderconfirm_sender)
+                                                        <option @if($orderconfirm_sender->sender_name == $orderconfirm_campaign->sender_name) selected @endif>{{$orderconfirm_sender->sender_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="orderconfirm-sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                         </div>
+
                                         <div class="form-group">
-                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div class="d-flex justify-content-between align-items-center" >
+                                                <label class="text-left"  for="#">Text Message</label>
+                                                <div style="color: gray;font-size: 13px;">Characters used <span id="orderconfirm-rchars" style="text-align: right">0</span> / <span id="orderconfirm-credit"> {{$orderconfirm_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
+                                            </div>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderconfirm_campaign->message_text)){{$orderconfirm_campaign->message_text}}@endif</textarea>
-                                                <span id="rchars">160</span> Character(s) Remaining
+                                                <textarea  class="form-control orderconfirm-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderconfirm_campaign->message_text)){{$orderconfirm_campaign->message_text}}@endif</textarea>
                                             </div>
                                         </div>
                                         <div class="mb-2">
@@ -502,9 +547,11 @@
                     </div>
                     <div class="tab-pane fade" id="order_refund" role="tabpanel" aria-labelledby="order_refund-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('orderrefund-campaign-save')}}" method="post"  >
+                                <form class="orderrefund-save-campaign" action="{{Route('orderrefund-campaign-save')}}" method="post"  >
                                 @csrf
-                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
+                                    <input hidden value="" class="  orderrefund_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
+
+                                    <div class="card-header bg-white  d-flex justify-content-between align-items-center">
                                     <h5>Order Refund Campaign</h5>
                                     <div class="">
                                         <button type="submit"  class=" btn btn-primary ">Save</button>
@@ -519,13 +566,26 @@
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($orderrefund_campaign->sender_name)) value="{{$orderrefund_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            @php
+                                                $orderrefund_sender_name = \App\Orderrefund::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                            @endphp
+
+                                            <div class="custom-select-div ">
+                                                <select required name="sender_name" class=" js-example-tags orderrefund-sendername-character-count">
+                                                    @foreach($orderrefund_sender_name as $orderrefund_sender)
+                                                        <option @if($orderrefund_sender->sender_name == $orderrefund_campaign->sender_name) selected @endif>{{$orderrefund_campaign->sender_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="orderrefund-sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div class="d-flex justify-content-between align-items-center" >
+                                                <label class="text-left"  for="#">Text Message</label>
+                                                <div style="color: gray;font-size: 13px;">Characters used <span id="orderrefund-rchars" style="text-align: right">0</span> / <span id="orderrefund-credit"> {{$orderrefund_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
+                                            </div>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderrefund_campaign->message_text)){{$orderrefund_campaign->message_text}}@endif</textarea>
-                                                <span id="rchars">160</span> Character(s) Remaining
+                                                <textarea  class="form-control orderrefund-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderrefund_campaign->message_text)){{$orderrefund_campaign->message_text}}@endif</textarea>
                                             </div>
                                         </div>
                                         <div class="mb-2">
@@ -630,8 +690,10 @@
                     </div>
                     <div class="tab-pane fade" id="order_dispatch" role="tabpanel" aria-labelledby="order_dispatch-tab">
                         <div class="col-md-12 col-lg-12 card">
-                            <form  action="{{Route('orderdispatch-campaign-save')}}" method="post"  >
+                            <form class="orderdispatch-save-campaign"  action="{{Route('orderdispatch-campaign-save')}}" method="post"  >
                                 @csrf
+                                <input hidden value="" class="  orderdispatch_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
+
                                 <div class="card-header bg-white  d-flex justify-content-between align-items-center">
                                     <h5>Order Dispatch Campaign</h5>
                                     <div class="">
@@ -647,13 +709,26 @@
 
                                         <div class="form-group">
                                             <label class="text-left"  for="#">Sender Name</label>
-                                            <input @if(isset($orderdispatch_campaign->sender_name)) value="{{$orderdispatch_campaign->sender_name}}" @endif name="sender_name" type="text"  class="form-control name">
+                                            @php
+                                                $orderdispatch_sender_name = \App\Orderdispatch::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                            @endphp
+
+                                            <div class="custom-select-div ">
+                                                <select required name="sender_name" class=" js-example-tags orderdispatch-sendername-character-count">
+                                                    @foreach($orderdispatch_sender_name as $orderdispatch_sender)
+                                                        <option @if($orderdispatch_sender->sender_name == $orderdispatch_campaign->sender_name) selected @endif>{{$orderdispatch_sender->sender_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="orderdispatch-sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="text-left"  for="#">Text Message</label>
+                                            <div class="d-flex justify-content-between align-items-center" >
+                                                <label class="text-left"  for="#">Text Message</label>
+                                                <div style="color: gray;font-size: 13px;">Characters used <span id="orderdispatch-rchars" style="text-align: right">0</span> / <span id="orderdispatch-credit"> {{$orderdispatch_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
+                                            </div>
                                             <div id="cct_embed_counts">
-                                                <textarea maxlength="160" class="form-control create-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderdispatch_campaign->message_text)){{$orderdispatch_campaign->message_text}}@endif</textarea>
-                                                <span id="rchars">160</span> Character(s) Remaining
+                                                <textarea  class="form-control orderdispatch-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderdispatch_campaign->message_text)){{$orderdispatch_campaign->message_text}}@endif</textarea>
                                             </div>
                                         </div>
                                         <div class="mb-2">
@@ -763,12 +838,256 @@
             </div>
         </div>
     </div>
+    <input id="current_user_credits" value="{{\Illuminate\Support\Facades\Auth::user()->credit}}" hidden>
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
+        // var maxLength = 160;
+        // var textlen, credit;
 
+
+        $(".js-example-tags").select2({
+            tags: true
+        });
+        //welcome campaign textarea checks
+        $('.welcome-campaign-textarea').keyup(function() {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if(textlen <= 0){
+                var credit = 0;
+            }
+            else if(textlen < 306){
+                var credit = 1;
+            }else if(textlen < 460){
+                var credit = 2;
+            }else if(textlen < 612){
+                var credit = 3;
+            }else if(textlen > 612){
+                var credit = 4;
+            }
+
+            $('#welcome-rchars').text(textlen);
+            $('#welcome-credit').text(credit);
+        });
+
+        $( ".welcome-save-campaign" ).submit(function( event ) {
+            var showTextlen= $(this).find('#welcome-rchars').text();
+            var showCredit= $(this).find('#welcome-credit').text();
+            var current_user_credits = $('#current_user_credits').val();
+
+            var sender_text = $(this).find('.welcome-sendername-character-count').val();
+            if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+            {
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.welcome_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
+            }else{
+                $(this).find('.welcome-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                event.preventDefault();
+            }
+        });
+        // adandoned cart textarea checks
+        $('.abandoned-campaign-textarea').keyup(function() {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if(textlen <= 0){
+                var credit = 0;
+            }
+            else if(textlen < 306){
+                var credit = 1;
+            }else if(textlen < 460){
+                var credit = 2;
+            }else if(textlen < 612){
+                var credit = 3;
+            }else if(textlen > 612){
+                var credit = 4;
+            }
+
+            $('#abandoned-rchars').text(textlen);
+            $('#abandoned-credit').text(credit);
+        });
+
+        $( ".abandoned-save-campaign" ).submit(function( event ) {
+            var showTextlen= $(this).find('#abandoned-rchars').text();
+            var showCredit= $(this).find('#abandoned-credit').text();
+            var current_user_credits = $('#current_user_credits').val();
+
+            var sender_text = $(this).find('.abandonedcart-sendername-character-count').val();
+            if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+            {
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.abandoned_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
+            }else{
+                $(this).find('.abandonedcart-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                event.preventDefault();
+            }
+        });
+        // order confirm campaign textarea checks
+        $('.orderconfirm-campaign-textarea').keyup(function() {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if(textlen <= 0){
+                var credit = 0;
+            }
+            else if(textlen < 306){
+                var credit = 1;
+            }else if(textlen < 460){
+                var credit = 2;
+            }else if(textlen < 612){
+                var credit = 3;
+            }else if(textlen > 612){
+                var credit = 4;
+            }
+
+            $('#orderconfirm-rchars').text(textlen);
+            $('#orderconfirm-credit').text(credit);
+        });
+
+        $( ".orderconfirm-save-campaign" ).submit(function( event ) {
+            var showTextlen= $(this).find('#orderconfirm-rchars').text();
+            var showCredit= $(this).find('#orderconfirm-credit').text();
+            var current_user_credits = $('#current_user_credits').val();
+            var sender_text = $(this).find('.orderconfirm-sendername-character-count').val();
+
+            if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+            {
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.orderconfirm_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
+            }else{
+                $('.orderconfirm-save-campaign').find('.orderconfirm-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                event.preventDefault();
+            }
+
+        });
+        // order refund campaign textarea checks
+        $('.orderrefund-campaign-textarea').keyup(function() {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if(textlen <= 0){
+                var credit = 0;
+            }
+            else if(textlen < 306){
+                var credit = 1;
+            }else if(textlen < 460){
+                var credit = 2;
+            }else if(textlen < 612){
+                var credit = 3;
+            }else if(textlen > 612){
+                var credit = 4;
+            }
+
+            $('#orderrefund-rchars').text(textlen);
+            $('#orderrefund-credit').text(credit);
+        });
+
+        $( ".orderrefund-save-campaign" ).submit(function( event ) {
+            var showTextlen= $(this).find('#orderrefund-rchars').text();
+            var showCredit= $(this).find('#orderrefund-credit').text();
+            var current_user_credits = $('#current_user_credits').val();
+            var sender_text = $(this).find('.orderrefund-sendername-character-count').val();
+
+            if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+            {
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.orderrefund_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
+            }else{
+                $(this).find('.orderrefund-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                event.preventDefault();
+            }
+        });
+        // order dispatch  campaign textarea checks
+        $('.orderdispatch-campaign-textarea').keyup(function() {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if(textlen <= 0){
+                var credit = 0;
+            }
+            else if(textlen < 306){
+                var credit = 1;
+            }else if(textlen < 460){
+                var credit = 2;
+            }else if(textlen < 612){
+                var credit = 3;
+            }else if(textlen > 612){
+                var credit = 4;
+            }
+
+            $('#orderdispatch-rchars').text(textlen);
+            $('#orderdispatch-credit').text(credit);
+        });
+
+        $( ".orderdispatch-save-campaign" ).submit(function( event ) {
+            var showTextlen= $(this).find('#orderdispatch-rchars').text();
+            var showCredit= $(this).find('#orderdispatch-credit').text();
+            var current_user_credits = $('#current_user_credits').val();
+            var sender_text = $(this).find('.orderdispatch-sendername-character-count').val();
+            if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+            {
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.orderdispatch_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
+            }else{
+                $(this).find('.orderdispatch-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                event.preventDefault();
+            }
+        });
 
     });
+
+
+    function createCampaignTextareaFunction() {
+        var textarea_val = $('.create-campaign-textarea').val().length;
+        $('.textarea-count-val').text("characters: "+ textarea_val);
+
+    }
 
 </script>

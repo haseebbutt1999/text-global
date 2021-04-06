@@ -158,7 +158,7 @@ class UserController extends Controller
 
         $admin_selected_countries = auth::user()->country_shop_pref;
 
-        $country_user_data = CountryUser::where('user_id', auth::user()->id)->where('status', 'active')->get();
+        $country_user_data = CountryUser::where('user_id', Auth::user()->id)->where('status', 'active')->get();
 
         return view('adminpanel/module/user/countries', compact('admin_selected_countries', 'country_user_data'));
 
@@ -173,7 +173,7 @@ class UserController extends Controller
 //        dd($user->countriesShopPref());
 
         $user->countries()->detach();
-        if($user->countries()->where('name', 'United Kingdom')->exists() == false){
+        if($user->countries()->where('user_id', auth::user()->id)->where('name', 'United Kingdom')->exists() == false){
             $user->countries()->attach($countries, ['status'=>'active']);
         }
 
@@ -305,6 +305,7 @@ class UserController extends Controller
         $welcome_campaign_save->campaign_name = $request->campaign_name;
         $welcome_campaign_save->message_text = $request->message_text;
         $welcome_campaign_save->sender_name = $request->sender_name;
+        $welcome_campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         if(isset($request->status)){
             $welcome_campaign_save->status= $request->status;
         }else{
@@ -328,6 +329,7 @@ class UserController extends Controller
         $order_confirm_campaign_save->campaign_name = $request->campaign_name;
         $order_confirm_campaign_save->message_text = $request->message_text;
         $order_confirm_campaign_save->sender_name = $request->sender_name;
+        $order_confirm_campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         if(isset($request->status)){
             $order_confirm_campaign_save->status= $request->status;
         }else{
@@ -349,6 +351,7 @@ class UserController extends Controller
         $order_refund_campaign_save->campaign_name = $request->campaign_name;
         $order_refund_campaign_save->message_text = $request->message_text;
         $order_refund_campaign_save->sender_name = $request->sender_name;
+        $order_refund_campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         if(isset($request->status)){
             $order_refund_campaign_save->status= $request->status;
         }else{
@@ -370,6 +373,7 @@ class UserController extends Controller
         $order_dispatch_campaign_save->campaign_name = $request->campaign_name;
         $order_dispatch_campaign_save->message_text = $request->message_text;
         $order_dispatch_campaign_save->sender_name = $request->sender_name;
+        $order_dispatch_campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         if(isset($request->status)){
             $order_dispatch_campaign_save->status= $request->status;
         }else{
@@ -397,6 +401,7 @@ class UserController extends Controller
         $abandoned_cart_campaign->campaign_name = $request->campaign_name;
         $abandoned_cart_campaign->message_text = $request->message_text;
         $abandoned_cart_campaign->sender_name = $request->sender_name;
+        $abandoned_cart_campaign->calculated_credit_per_sms = $request->calculated_credit_per_sms;
         $abandoned_cart_campaign->delay_time = $request->delay_time;
         if(isset($request->status)){
             $abandoned_cart_campaign->status= $request->status;

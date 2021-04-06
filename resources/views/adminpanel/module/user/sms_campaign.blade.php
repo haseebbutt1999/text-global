@@ -149,11 +149,10 @@
 
                                                                 <div class="form-group">
                                                                     <label class="text-left"  for="#">Sender Name</label>
-{{--                                                                    <input required  value="{{$campaign->sender_name}}" name="sender_name" type="text"  class="form-control name edit-sendername-character-count">--}}
                                                                     @php
                                                                         $edit_campaign_sender_name = \App\Campaign::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
                                                                     @endphp
-                                                                    {{--                                                <input   type="text"  class="form-control name ">--}}
+
                                                                     <div class="custom-select-div ">
                                                                         <select required name="sender_name" class=" js-example-tags edit-sendername-character-count">
                                                                             @foreach($edit_campaign_sender_name as $edit_sender)

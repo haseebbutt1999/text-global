@@ -25,6 +25,7 @@
 
                                     <div class="form-group">
                                         <div>
+
                                             @foreach($admin_selected_countries as $key=>$countries)
 {{--                                                <input hidden type="number" name="country_id" value="{{$countries->id}}">--}}
                                                 <div class="d-flex justify-content-between align-items-center">

@@ -68,9 +68,9 @@ class CheckoutsUpdateJob implements ShouldQueue
             if(isset($abandoned_cart_campaign_status_check)) {
                 $abandonedCartSmsStatus = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->where('status', 'sended')->first();
                 if($abandonedCartSmsStatus == null){
-//                                  addHours($abandoned_cart_campaign_status_check->delay_time)
+//
                     if($shop->credit_status != "0 credits"){
-                        dispatch(new AbandonedCartSmsJob($checkout_data,$shop))->delay(Carbon::now()->addMinutes(2));
+                        dispatch(new AbandonedCartSmsJob($checkout_data,$shop))->delay(Carbon::now()->addHours($abandoned_cart_campaign_status_check->delay_time));
                     }else{
                         $this->log_store->log_store( $shop->id, 'Abandonedcartcamapign', null, null, "Abandoned Cart SMS not sended to customer because Your Credits is '0'");
                     }
