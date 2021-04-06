@@ -273,6 +273,7 @@ class UserController extends Controller
         $current_user_campaign = Campaign::where('id', $campaign_save->id)->where('send_status', 'Not Sended')->where('status', 'active')->where('user_id', Auth::user()->id)->first();
         if(isset($current_user_campaign)){
             $this->log_store->log_store(Auth::user()->id, 'Campaign', $current_user_campaign->id, $current_user_campaign->campaign_name, 'Campaign Active by User' , $notes = null);
+
             dispatch(new SendSms($current_user_campaign))->delay(Carbon::parse($current_user_campaign->published_at));
         }else{
             $this->log_store->log_store(Auth::user()->id, 'Campaign', $current_user_campaign->id, $current_user_campaign->campaign_name, 'Campaign Published Failed by User' , $notes = null);
