@@ -1083,11 +1083,4 @@
 
     });
 
-
-    function createCampaignTextareaFunction() {
-        var textarea_val = $('.create-campaign-textarea').val().length;
-        $('.textarea-count-val').text("characters: "+ textarea_val);
-
-    }
-
 </script>

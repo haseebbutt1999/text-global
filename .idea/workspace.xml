@@ -102,14 +102,7 @@
       <workItem from="1617277757926" duration="10001000" />
       <workItem from="1617345627920" duration="20394000" />
       <workItem from="1617436531053" duration="3132000" />
-      <workItem from="1617691508948" duration="15104000" />
-    </task>
-    <task id="LOCAL-00043" summary="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab.">
-      <created>1617117388151</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1617117388153</updated>
+      <workItem from="1617691508948" duration="15473000" />
     </task>
     <task id="LOCAL-00044" summary="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab.">
       <created>1617117633055</created>
@@ -447,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617710529822</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="validations applyed on all campaigns">
+      <created>1617710905179</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1617710905179</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,10 +519,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617710531964">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617710908624">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617710531964" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617710908624" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -539,10 +539,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617450771495">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617711090270">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617450771495" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617711090270" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
