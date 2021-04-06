@@ -132,9 +132,6 @@ class CustomerCreateJob implements ShouldQueue
 
                     $messgae_text = str_replace('{CustomerName}',$pushed_cust->first_name." ".$pushed_cust->last_name,$welcome_campaign->message_text);
 
-                    $test = new Test();
-                    $test->text = "Text Message customer name Variable:" .$messgae_text;
-                    $test->save();
                     $data = [
                         "from" => $welcome_campaign->sender_name,
                         "to" => $pushed_cust->phone,
@@ -195,79 +192,6 @@ class CustomerCreateJob implements ShouldQueue
             $new->text = "error: ".$exception->getMessage();
             $new->save();
         }
-
-
-
-
-//            save customer end
-
-//            $user_select_countries = $shop->countries;
-//            foreach ($user_select_countries as $countries) {
-//                foreach ($customer->addressess as $add){
-//                    if($add->country == $countries->name){
-//                        $users = json_decode(json_encode($customer, TRUE));
-//                        array_push($pushed_users , $users);
-//                    }
-//                }
-//
-//            }
-//
-//            foreach ($pushed_users as $user_data){
-//            $welcome_campaign = Welcomecampaign::where('user_id', $user_data->id)->first();
-//            $data = [
-//                "from" => $welcome_campaign->sender_name,
-//                "to" => $customer->phone,
-//                "text" => $welcome_campaign->message_text,
-//            ];
-//
-//            $curl = curl_init();
-//            curl_setopt_array($curl, array(
-//                CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
-//                CURLOPT_RETURNTRANSFER => true,
-//                CURLOPT_ENCODING => "",
-//                CURLOPT_MAXREDIRS => 10,
-//                CURLOPT_TIMEOUT => 30,
-//                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//                CURLOPT_CUSTOMREQUEST => "POST",
-//                CURLOPT_POSTFIELDS => $data,
-//                CURLOPT_HTTPHEADER => array(
-//                    "accept: application/json",
-//                    "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
-//                    "cache-control: no-cache",
-//                    "content-type: application/json",
-//                    "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
-//                ),
-//            ));
-//
-//            $response = curl_exec($curl);
-//            $err = curl_error($curl);
-//
-//            curl_close($curl);
-//
-//            if ($err) {
-//                $test = new Test();
-//                $test->number = 404;
-//                $test->text = "cURL Error #:" .$err;
-//                $this->log_store->log_store( $user_data->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended' , $notes = $err);
-//        //
-//                $test->save();
-//            } else {
-//                $test = new Test();
-//                $test->number = 200;
-//                $test->text = "Successful Staus:" .$response;
-//                $test->save();
-//                $this->log_store->log_store( $user_data->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer' , $notes = $response);
-//        //                Detect Credits
-//                $user = User::Where('id', $welcome_campaign->user_id)->first();
-//                if($user->credit >= 0){
-//                    $user->credit =  $user->credit - 1;
-//                }else{
-//                    $user->credit_status = "0 credits";
-//                }
-//                $user->save();
-//            }
-//        }
-        // Convert domain
     }
 
 

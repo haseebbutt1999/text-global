@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Campaign;
 use App\Http\Controllers\LogsController;
-use App\Test;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -41,11 +40,6 @@ class SendSms implements ShouldQueue
      */
     public function handle()
     {
-
-        $test = new Test();
-        $test->number = $this->campaign->id;
-        $test->save();
-
         $user = User::where('id',$this->campaign->user_id)->first();
         $user_select_countries = $user->countries;
         $user_customer = $user->customers;
@@ -72,6 +66,7 @@ class SendSms implements ShouldQueue
                 "to" => $pushed_user->phone,
                 "text" => $messgae_text,
             ];
+
             $data = json_encode($data);
 
             $curl = curl_init();
@@ -101,19 +96,21 @@ class SendSms implements ShouldQueue
             if ($err) {
                 $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed' , $notes = $err);
             } else {
-                $test = new Test();
-                $test->number = 200;
-                $test->text = "Successful Staus:" .$response;
-                $test->save();
-                $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' , $notes = $response);
+                $response = json_decode($response);
+                if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                    $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' , $notes = $response);
 //                Detect Credits
-                $user = User::Where('id', $this->campaign->user_id)->first();
-                if($user->credit >= 0){
-                    $user->credit =  $user->credit - $this->campaign->calculated_credit_per_sms;
+                    $user = User::Where('id', $this->campaign->user_id)->first();
+                    if($user->credit >= 0){
+                        $user->credit =  $user->credit - $this->campaign->calculated_credit_per_sms;
+                    }else{
+                        $user->credit_status = "0 credits";
+                    }
+                    $user->save();
                 }else{
-                    $user->credit_status = "0 credits";
+                    $this->log_store->log_store(Auth::user()->id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.' , $notes = $response);
                 }
-                $user->save();
+
             }
 
         }

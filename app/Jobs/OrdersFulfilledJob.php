@@ -53,9 +53,6 @@ class OrdersFulfilledJob implements ShouldQueue
             $shop = User::where('name', $user_shop)->first();
             $order_dispatch_campaign_status_check = Orderdispatch::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($order_dispatch_campaign_status_check)){
-                $new = new Test();
-                $new->text = json_encode($order_dispatch_data);
-                $new->save();
                 if($order_dispatch_data->fulfillment_status  == "fulfilled" ){
                     if($shop->credit_status != "0 credits"){
                         dispatch(new OrderDispatchJob($order_dispatch_data, $shop));
@@ -68,14 +65,6 @@ class OrdersFulfilledJob implements ShouldQueue
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
             $new->save();
-            $new = new Test();
-            $new->text = "error: in webhook order Dispatch data is : ".json_encode($order_dispatch_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error in webhook shop is : ".json_encode($shop);
-            $new->save();
         }
-
-
     }
 }

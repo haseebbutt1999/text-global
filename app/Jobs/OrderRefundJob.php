@@ -62,10 +62,6 @@ class OrderRefundJob implements ShouldQueue
                     $messgae_text = str_replace('{RefundedPaymentCurrency}',$order_refund_data->currency,$messgae_text);
                     $messgae_text = str_replace('{RefundedAmount}',$refunded_amount,$messgae_text);
 
-                    $test = new Test();
-                    $test->text = "'Order Refund' Text msg is" .$messgae_text;
-                    $test->save();
-
                     $data = [
                         "from" => $order_refund_campaign->sender_name,
                         "to" => $order_customer_phone_nummber,
@@ -104,19 +100,22 @@ class OrderRefundJob implements ShouldQueue
                         //
                         $test->save();
                     } else {
-                        $test = new Test();
-                        $test->number = 200;
-                        $test->text = "order refund Successful Staus:" .$response;
-                        $test->save();
-                        $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS Sended Successfully to Customer ('.$order_refund_data->billing_address->first_name.')');
-                        //                Detect Credits
-                        $user = User::Where('id', $order_refund_campaign->user_id)->first();
-                        if($user->credit >= 0){
-                            $user->credit =  $user->credit - 1;
+                        $response = json_decode($response);
+                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                            $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS Sended Successfully to Customer ('.$order_refund_data->billing_address->first_name.')');
+                            //                Detect Credits
+                            $user = User::Where('id', $order_refund_campaign->user_id)->first();
+                            if($user->credit >= 0){
+                                $user->credit =  $user->credit - $order_refund_campaign->calculated_credit_per_sms;
+                            }else{
+                                $user->credit_status = "0 credits";
+                            }
+                            $user->save();
                         }else{
-                            $user->credit_status = "0 credits";
+                            $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS not Sended.');
+
                         }
-                        $user->save();
+
                     }
 
                 }
@@ -125,12 +124,6 @@ class OrderRefundJob implements ShouldQueue
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
-            $new->save();
-            $new = new Test();
-            $new->text = "error :in Job order refund data is : ".json_encode($order_refund_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error :in Job shop is : ".json_encode($shop);
             $new->save();
         }
     }

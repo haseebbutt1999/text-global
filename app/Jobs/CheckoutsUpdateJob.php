@@ -61,14 +61,10 @@ class CheckoutsUpdateJob implements ShouldQueue
 
         $shop = User::where('name', $user_shop)->first();
         try {
-            $new = new Test();
-            $new->text = json_encode($checkout_data);
-            $new->save();
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($abandoned_cart_campaign_status_check)) {
                 $abandonedCartSmsStatus = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->where('status', 'sended')->first();
                 if($abandonedCartSmsStatus == null){
-//
                     if($shop->credit_status != "0 credits"){
                         dispatch(new AbandonedCartSmsJob($checkout_data,$shop))->delay(Carbon::now()->addHours($abandoned_cart_campaign_status_check->delay_time));
                     }else{

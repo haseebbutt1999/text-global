@@ -62,10 +62,6 @@ class AbandonedCartSmsJob implements ShouldQueue
                     $messgae_text = str_replace('{AbandonedCheckoutUrl}',$checkout_data->abandoned_checkout_url,$messgae_text);
                     $messgae_text = str_replace('{Currency}',$checkout_data->currency,$messgae_text);
 
-                    $test = new Test();
-                    $test->text = "'Abandoned Cart Campaign' Text msg is" .$messgae_text;
-                    $test->save();
-
                     $data = [
                         "from" => $abandoned_cart_campaign->sender_name,
                         "to" => $order_customer_phone_nummber,
@@ -104,24 +100,25 @@ class AbandonedCartSmsJob implements ShouldQueue
                         //
                         $test->save();
                     } else {
-                        $test = new Test();
-                        $test->number = 200;
-                        $test->text = "AbandonedcartcampaignSuccessful Staus:" .$response;
-                        $test->save();
-                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
-                        //                Detect Credits
-                        $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
-                        if($user->credit >= 0){
-                            $user->credit =  $user->credit - 1;
+                        $response = json_decode($response);
+                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                            $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
+                            //                Detect Credits
+                            $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
+                            if($user->credit >= 0){
+                                $user->credit =  $user->credit - $abandoned_cart_campaign->calculated_credit_per_sms;
+                            }else{
+                                $user->credit_status = "0 credits";
+                            }
+                            $user->save();
+                            $abandoned_cart_log_status = new AbandonedCartLog();
+                            $abandoned_cart_log_status->user_id = $shop->id;
+                            $abandoned_cart_log_status->checkout_id = $checkout_data->id;
+                            $abandoned_cart_log_status->status = "sended";
+                            $abandoned_cart_log_status->save();
                         }else{
-                            $user->credit_status = "0 credits";
+                            $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended.');
                         }
-                        $user->save();
-                        $abandoned_cart_log_status = new AbandonedCartLog();
-                        $abandoned_cart_log_status->user_id = $shop->id;
-                        $abandoned_cart_log_status->checkout_id = $checkout_data->id;
-                        $abandoned_cart_log_status->status = "sended";
-                        $abandoned_cart_log_status->save();
                     }
 
                 }
@@ -130,12 +127,6 @@ class AbandonedCartSmsJob implements ShouldQueue
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
-            $new->save();
-            $new = new Test();
-            $new->text = "error :in Job Abandonedcartcampaign data is : ".json_encode($checkout_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error :in Job shop is : ".json_encode($shop);
             $new->save();
         }
 

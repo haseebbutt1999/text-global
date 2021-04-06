@@ -59,9 +59,6 @@ class OrdersUpdatedJob implements ShouldQueue
             $shop = User::where('name', $user_shop)->first();
             $order_refund_campaign_status_check = Orderrefund::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($order_refund_campaign_status_check)){
-                $new = new Test();
-                $new->text = json_encode($order_refund_data);
-                $new->save();
                 if($order_refund_data->financial_status  == "refunded" ){
                     if($shop->credit_status != "0 credits"){
                         dispatch(new OrderRefundJob($order_refund_data, $shop));
@@ -73,12 +70,6 @@ class OrdersUpdatedJob implements ShouldQueue
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
-            $new->save();
-            $new = new Test();
-            $new->text = "error: in webhook order refund data is : ".json_encode($order_refund_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error in webhook shop is : ".json_encode($shop);
             $new->save();
         }
     }

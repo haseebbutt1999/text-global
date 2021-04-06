@@ -59,10 +59,6 @@ class OrderConfirmJob implements ShouldQueue
                     $messgae_text = str_replace('{OrderTotalPrice}',$order_confirm_data->total_price,$messgae_text);
                     $messgae_text = str_replace('{Currency}',$order_confirm_data->currency,$messgae_text);
 
-
-                    $test = new Test();
-                    $test->text = "'Order Confirm' Text msg is" .$messgae_text;
-                    $test->save();
                     $data = [
                         "from" => $order_confirm_campaign->sender_name,
                         "to" => $order_customer_phone_nummber,
@@ -98,22 +94,23 @@ class OrderConfirmJob implements ShouldQueue
                         $test->number = 404;
                         $test->text = "order confirm cURL Error #:" .$err;
                         $this->log_store->log_store( $shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended');
-                        //
                         $test->save();
                     } else {
-                        $test = new Test();
-                        $test->number = 200;
-                        $test->text = "order confirm Successful Staus:" .$response;
-                        $test->save();
-                        $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
-                        //                Detect Credits
-                        $user = User::Where('id', $order_confirm_campaign->user_id)->first();
-                        if($user->credit >= 0){
-                            $user->credit =  $user->credit - 1;
+
+                        $response = json_decode($response);
+                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                            $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
+                            //                Detect Credits
+                            $user = User::Where('id', $order_confirm_campaign->user_id)->first();
+                            if($user->credit >= 0){
+                                $user->credit =  $user->credit - $order_confirm_campaign->calculated_credit_per_sms;
+                            }else{
+                                $user->credit_status = "0 credits";
+                            }
+                            $user->save();
                         }else{
-                            $user->credit_status = "0 credits";
+                            $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended.');
                         }
-                        $user->save();
                     }
 
                 }

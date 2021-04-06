@@ -63,9 +63,6 @@ class OrdersCreateJob implements ShouldQueue
             $shop = User::where('name', $user_shop)->first();
             $order_confirm_campaign_status_check = Orderconfirm::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($order_confirm_campaign_status_check)){
-                $new = new Test();
-                $new->text = json_encode($order_confirm_data);
-                $new->save();
                 if($shop->credit_status != "0 credits"){
                     dispatch(new OrderConfirmJob($order_confirm_data,$shop));
                 }else{
@@ -75,12 +72,6 @@ class OrdersCreateJob implements ShouldQueue
         }catch (\Exception $exception){
             $new = new Test();
             $new->text = "error: ".$exception->getMessage();
-            $new->save();
-            $new = new Test();
-            $new->text = "error: in webhook order data is : ".json_encode($order_confirm_data);
-            $new->save();
-            $new = new Test();
-            $new->text = "error in webhhok shop is : ".json_encode($shop);
             $new->save();
         }
     }
