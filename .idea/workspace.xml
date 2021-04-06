@@ -102,14 +102,7 @@
       <workItem from="1617277757926" duration="10001000" />
       <workItem from="1617345627920" duration="20394000" />
       <workItem from="1617436531053" duration="3132000" />
-      <workItem from="1617691508948" duration="18413000" />
-    </task>
-    <task id="LOCAL-00046" summary="create default welcome and abandoned campaign">
-      <created>1617179202604</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1617179202604</updated>
+      <workItem from="1617691508948" duration="18488000" />
     </task>
     <task id="LOCAL-00047" summary="create default welcome and abandoned campaign">
       <created>1617180720223</created>
@@ -447,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617713833672</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="validations applyed on all campaigns">
+      <created>1617714783377</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1617714783377</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
