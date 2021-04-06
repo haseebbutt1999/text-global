@@ -182,6 +182,8 @@ class CustomerCreateJob implements ShouldQueue
                             }
                             $user->save();
                         }else{
+                            $test = new Test();
+                            $test->text = "rejected msg:" .$response->messages[0]->status->name;
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
                     }
