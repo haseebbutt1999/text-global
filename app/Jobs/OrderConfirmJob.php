@@ -98,7 +98,7 @@ class OrderConfirmJob implements ShouldQueue
                     } else {
 
                         $response = json_decode($response);
-                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $order_confirm_campaign->user_id)->first();

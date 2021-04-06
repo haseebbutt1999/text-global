@@ -97,7 +97,7 @@ class OrderDispatchJob implements ShouldQueue
                         $test->save();
                     } else {
                         $response = json_decode($response);
-                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order Dispatch SMS Sended Successfully to Customer ('.$order_dispatch_data->billing_address->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $order_dispatch_campaign->user_id)->first();

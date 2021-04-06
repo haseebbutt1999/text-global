@@ -171,7 +171,7 @@ class CustomerCreateJob implements ShouldQueue
                         $test->save();
                     } else {
                         $response = json_decode($response);
-                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $welcome_campaign->user_id)->first();

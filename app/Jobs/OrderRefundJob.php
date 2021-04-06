@@ -101,7 +101,7 @@ class OrderRefundJob implements ShouldQueue
                         $test->save();
                     } else {
                         $response = json_decode($response);
-                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS Sended Successfully to Customer ('.$order_refund_data->billing_address->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $order_refund_campaign->user_id)->first();

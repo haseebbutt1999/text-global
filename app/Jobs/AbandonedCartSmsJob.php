@@ -101,7 +101,7 @@ class AbandonedCartSmsJob implements ShouldQueue
                         $test->save();
                     } else {
                         $response = json_decode($response);
-                        if($response->messages[0]->status->name = "PENDING_ENROUTE"){
+                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
