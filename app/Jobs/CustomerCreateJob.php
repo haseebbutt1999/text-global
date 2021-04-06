@@ -136,7 +136,7 @@ class CustomerCreateJob implements ShouldQueue
                     $test->save();
                     $data = [
                         "from" => $welcome_campaign->sender_name,
-                        "to" => $pushed_cust->phone,
+                        "to" => $pushed_cust->addressess[0]->phone,
                         "text" => $messgae_text,
                     ];
 
