@@ -240,7 +240,7 @@ input:checked + .slider:before {
 /*}*/
 @media (min-width: 994px){
     .navbar-expand-lg .navbar-collapse {
-        margin-left: 20%;
+        margin-left: 15%;
     }
     ul.custom-ul li {
         padding: 5px 10px;
