@@ -133,9 +133,6 @@ class CustomerCreateJob implements ShouldQueue
                     $welcome_campaign = Welcomecampaign::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$pushed_cust->first_name." ".$pushed_cust->last_name,$welcome_campaign->message_text);
-                    $test = new Test();
-                    $test->text = "customer data:".json_encode($pushed_cust);
-                    $test->save();
                     $data = [
                         "from" => $welcome_campaign->sender_name,
                         "to" => $pushed_cust->addressess[0]->phone,
@@ -172,12 +169,12 @@ class CustomerCreateJob implements ShouldQueue
                         $test->text = "cURL Error #:" .$err;
                         $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         $test->save();
-                        $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.')');
+
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $welcome_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -190,7 +187,7 @@ class CustomerCreateJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
-                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description);
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description);
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
                     }

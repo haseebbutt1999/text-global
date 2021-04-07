@@ -47,8 +47,7 @@
                                             <form class="welcome-save-campaign" action="{{Route('welcome-sms-campaign-save')}}" method="post"  >
                                                 <input hidden value="" class="  welcome_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
                                                 @csrf
-                                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                                    <h5>Welcome Sms Campaign</h5>
+                                                <div class="card-header bg-white  d-flex justify-content-end align-items-center">
                                                     <div class="">
                                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                                     </div>
@@ -274,10 +273,9 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="width: 25%">Customer ID</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order Name</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Action</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Created_at</th>
+                                                                <th class="font-weight-bold " style="width: 33%">Customer ID</th>
+                                                                <th class="font-weight-bold " style="width: 33%">Action</th>
+                                                                <th class="font-weight-bold " style="width: 33%">Created_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -286,9 +284,7 @@
                                                                     <td>
                                                                         {{$user_abandonedcart_log->customer_id}}
                                                                     </td>
-                                                                    <td>
-                                                                        {{$user_abandonedcart_log->order_name}}
-                                                                    </td>
+
                                                                     <td >
                                                                         {{$user_abandonedcart_log->action}}
                                                                     </td>
@@ -329,8 +325,7 @@
                                             <form class="orderconfirm-save-campaign"  action="{{Route('orderconfirm-campaign-save')}}" method="post"  >
                                                 @csrf
                                                 <input hidden value="" class="  orderconfirm_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
-                                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                                    <h5>Order Confirm Campaign</h5>
+                                                <div class="card-header bg-white  d-flex justify-content-end align-items-center">
                                                     <div class="">
                                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                                     </div>
@@ -534,8 +529,7 @@
                                                 @csrf
                                                 <input hidden value="" class="  orderrefund_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
 
-                                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                                    <h5>Order Refund Campaign</h5>
+                                                <div class="card-header bg-white  d-flex justify-content-end align-items-center">
                                                     <div class="">
                                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                                     </div>
@@ -667,8 +661,7 @@
                                                 @csrf
                                                 <input hidden value="" class="  orderdispatch_sms_calculated_credit_per_sms" name="calculated_credit_per_sms" type="number">
 
-                                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
-                                                    <h5>Order Dispatch Campaign</h5>
+                                                <div class="card-header bg-white  d-flex justify-content-end align-items-center">
                                                     <div class="">
                                                         <button type="submit"  class=" btn btn-primary ">Save</button>
                                                     </div>

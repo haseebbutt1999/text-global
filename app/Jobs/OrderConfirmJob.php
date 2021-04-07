@@ -95,14 +95,12 @@ class OrderConfirmJob implements ShouldQueue
                         $test->text = "order confirm cURL Error #:" .$err;
                         $this->log_store->log_store( $shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order confirm SMS not sended');
                         $test->save();
-                        $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order confirm SMS not sended to customer ('.$order_confirm_data->billing_address->first_name.')');
-
                     } else {
 
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , $order_confirm_data->customer->id, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
 
                             //                Detect Credits
                             $user = User::Where('id', $shop->id)->first();
@@ -116,7 +114,7 @@ class OrderConfirmJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
-                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order confirm SMS not sended to customer ('.$order_confirm_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
+                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , $order_confirm_data->customer->id, 'Order confirm SMS not sended to customer ('.$order_confirm_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended.');
                         }
                     }
