@@ -19,6 +19,7 @@ class AbandonedCartSmsJob implements ShouldQueue
     public $checkout_data;
     public $shop;
     public $log_store;
+    public $user_log;
     /**
      * Create a new job instance.
      *
@@ -29,6 +30,7 @@ class AbandonedCartSmsJob implements ShouldQueue
         $this->checkout_data = $checkout_data;
         $this->shop = $shop;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -46,7 +48,6 @@ class AbandonedCartSmsJob implements ShouldQueue
             $order_customer_country = $checkout_data->billing_address->country;
 
             $country_users = $shop->countries;
-            //                dd($country_users);
             foreach ($country_users as $country_user){
                 if($country_user->name == $order_customer_country){
                     $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', $shop->id)->first();
@@ -97,12 +98,14 @@ class AbandonedCartSmsJob implements ShouldQueue
                         $test->number = 404;
                         $test->text = "Abandonedcartcampaign cURL Error #:" .$err;
                         $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended');
-                        //
                         $test->save();
+
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
+
                             //                Detect Credits
                             $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -121,6 +124,8 @@ class AbandonedCartSmsJob implements ShouldQueue
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended.');
+                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, 'Abandonedcartcampaign SMS not Sended ('.$checkout_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
+
                         }
                     }
 

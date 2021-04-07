@@ -18,6 +18,7 @@ class OrderDispatchJob implements ShouldQueue
     public $order_dispatch_data;
     public $shop;
     Public $log_store;
+    Public $user_log;
     /**
      * Create a new job instance.
      *
@@ -28,6 +29,7 @@ class OrderDispatchJob implements ShouldQueue
         $this->order_dispatch_data = $order_dispatch_data;
         $this->shop = $shop;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -98,7 +100,9 @@ class OrderDispatchJob implements ShouldQueue
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
-                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order Dispatch SMS Sended Successfully to Customer ('.$order_dispatch_data->billing_address->first_name.')');
+                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->billing_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , null, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->billing_address->first_name.')');
+
                             //                Detect Credits
                             $user = User::Where('id', $order_dispatch_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -108,6 +112,11 @@ class OrderDispatchJob implements ShouldQueue
                             }
                             $user->save();
                         }else{
+                            $test = new Test();
+                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                            $test->save();
+                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , null, 'Order dispatch SMS not sended to customer ('.$order_dispatch_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
+                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS not sended.');
 
                         }
 

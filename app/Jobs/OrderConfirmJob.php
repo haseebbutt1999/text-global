@@ -18,6 +18,7 @@ class OrderConfirmJob implements ShouldQueue
     public $order_confirm_data;
     public $shop;
     public $log_store;
+    public $user_log;
     /**
      * Create a new job instance.
      *
@@ -28,6 +29,7 @@ class OrderConfirmJob implements ShouldQueue
         $this->order_confirm_data = $order_confirm_data;
         $this->shop = $shop;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -91,13 +93,17 @@ class OrderConfirmJob implements ShouldQueue
                         $test = new Test();
                         $test->number = 404;
                         $test->text = "order confirm cURL Error #:" .$err;
-                        $this->log_store->log_store( $shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended');
+                        $this->log_store->log_store( $shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order confirm SMS not sended');
                         $test->save();
+                        $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order confirm SMS not sended to customer ('.$order_confirm_data->billing_address->first_name.')');
+
                     } else {
 
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order Confirm SMS Sended Successfully to Customer ('.$order_confirm_data->billing_address->first_name.')');
+
                             //                Detect Credits
                             $user = User::Where('id', $shop->id)->first();
                             if($user->credit > 0){
@@ -110,6 +116,7 @@ class OrderConfirmJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
+                            $this->user_log->user_log( $shop->id, 'Orderconfirm', $order_confirm_data->name , null, 'Order confirm SMS not sended to customer ('.$order_confirm_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
                             $this->log_store->log_store($shop->id, 'Orderconfirm', $order_confirm_campaign->id, $order_confirm_campaign->campaign_name, 'Order Confirm SMS not Sended.');
                         }
                     }

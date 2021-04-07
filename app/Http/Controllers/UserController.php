@@ -16,6 +16,7 @@ use App\Orderdispatch;
 use App\Orderrefund;
 use App\Shopdetail;
 use App\User;
+use App\UserCamapignLog;
 use App\Welcomecampaign;
 use Carbon\Traits\Test;
 use Illuminate\Support\Carbon;
@@ -426,8 +427,14 @@ class UserController extends Controller
         $orderdispatch_campaign = Orderdispatch::where('user_id', Auth::user()->id)->first();
         $orderdispatch_campaign= json_decode(json_encode($orderdispatch_campaign,True));
 
-        $welcomeCampaign_logs_data = Log::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
-        return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'welcomeCampaign_logs_data', 'abandoned_cart_campaign'));
+        $user_welcome_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
+        $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcart'])->orderBy('id', 'desc')->paginate(30);
+        $user_orderconfirm_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderconfirm'])->orderBy('id', 'desc')->paginate(30);
+        $user_orderdispatch_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderdispatch'])->orderBy('id', 'desc')->paginate(30);
+        $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('id', 'desc')->paginate(30);
+
+        return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'abandoned_cart_campaign',
+        'user_welcome_logs_data', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
     }
 
     public function webhooks()

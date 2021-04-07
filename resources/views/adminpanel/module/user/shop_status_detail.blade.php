@@ -25,13 +25,8 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="shopdetail" role="tabpanel" aria-labelledby="shopdetail-tab">
                         <div class="card col-md-12">
-
                             <div class="card-body col-md-12">
-                                {{--                    @dd($shop_data)--}}
-
-                                    {{--                            @dd($shop_data)--}}
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-
                                     <li class="nav-item">
                                         <a class="nav-link" id="userShopDetail-tab" data-toggle="tab" href="#userShopDetail" role="tab" aria-controls="userShopDetail"
                                            aria-selected="false">User Shop Detail</a>
@@ -42,7 +37,6 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-
                                     <div class="tab-pane fade show active" id="userShopDetail" role="tabpanel" aria-labelledby="userShopDetail-tab">
                                         <div class="card col-md-12">
                                             <form action="{{route('shop-status-detail-save')}}" method="post">
@@ -153,11 +147,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{--                                --}}
-
-
                             </div>
-
                         </div>
                     </div>
                     <div class="tab-pane fade" id="countries" role="tabpanel" aria-labelledby="countries-tab">
@@ -170,14 +160,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body col-md-12">
-                                    {{--                        @dd($user_shop_data)--}}
-                                    {{--                        {{route('user-country-save')}}--}}
-
                                     <input hidden type="number" name="user_id" value="{{$shop_id}}">
                                     <div class="row">
                                         <div class="col-md-12">
-{{--                                                                                @dd($countries_data)--}}
-
                                             <div class="form-group">
                                                 <div>
                                                     @foreach($countries_data as $key=>$countries)

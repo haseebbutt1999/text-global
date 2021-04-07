@@ -36,6 +36,7 @@ class CustomerCreateJob implements ShouldQueue
      */
     public $data;
     public $log_store;
+    public $user_log;
 
     /**
      * Create a new job instance.
@@ -50,6 +51,7 @@ class CustomerCreateJob implements ShouldQueue
         $this->shopDomain = $shopDomain;
         $this->data = $data;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -169,12 +171,13 @@ class CustomerCreateJob implements ShouldQueue
                         $test->number = 404;
                         $test->text = "cURL Error #:" .$err;
                         $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
-                        //
                         $test->save();
+                        $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.')');
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $welcome_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -183,19 +186,11 @@ class CustomerCreateJob implements ShouldQueue
                                 $user->credit_status = "0 credits";
                             }
                             $user->save();
-                            $test = new Test();
-                            $test->text = "welcome camapign per sms credits :" .$welcome_campaign->calculated_credit_per_sms;
-                            $test->save();
-                            $test = new Test();
-                            $test->text = "user data :" .$user;
-                            $test->save();
-                            $test = new Test();
-                            $test->text = "user credit" .$user->credit;
-                            $test->save();
                         }else{
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign', null, $pushed_cust->id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description);
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
                     }

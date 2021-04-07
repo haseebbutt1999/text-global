@@ -18,6 +18,7 @@ class OrderRefundJob implements ShouldQueue
     public $order_refund_data;
     public $shop;
     public $log_store;
+    public $user_log;
     /**
      * Create a new job instance.
      *
@@ -28,6 +29,7 @@ class OrderRefundJob implements ShouldQueue
         $this->order_refund_data = $order_refund_data;
         $this->shop = $shop;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -103,6 +105,7 @@ class OrderRefundJob implements ShouldQueue
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS Sended Successfully to Customer ('.$order_refund_data->billing_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Orderrefund', $order_refund_data->name , null, 'Order refund SMS sended successfully to customer ('.$order_refund_data->billing_address->first_name.')');
                             //                Detect Credits
                             $user = User::Where('id', $order_refund_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -116,7 +119,7 @@ class OrderRefundJob implements ShouldQueue
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS not Sended.');
-
+                            $this->user_log->user_log( $shop->id, 'Orderrefund', $order_refund_data->name , null, 'Order refund SMS not sended to customer ('.$order_refund_data->billing_address->first_name.') because '.$response->messages[0]->status->description);
                         }
 
                     }

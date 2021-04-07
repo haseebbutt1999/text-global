@@ -21,8 +21,52 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="validations applyed on all campaigns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderDispatchJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderDispatchJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_08_150153_create_addresses_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_11_125932_add_role_to_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_064434_add_user_status_to_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_074343_create_shopdetails_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_110720_add_password_to_shopdetails_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_142250_create_countries_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_15_094703_create_country_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_15_122803_create_packages_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_15_124312_add_package_name_to_packages_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_15_124515_add_package_description_to_packages_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_15_151815_add_credit_to_plans_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_16_140435_add_credit_to_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_17_123652_create_campaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_17_145924_create_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_072251_create_tests_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_074539_add_send_status_to_campaign_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_115057_create_customers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_133738_add_credit_status_to_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_19_120941_create_welcomecampaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_19_121824_add_welcome_sms_status_customers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_064611_create_abandonedcartcampaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_074725_create_logs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_132946_create_country_shoppreferences_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_30_100629_add_calculated_credit_per_sms_to_campaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_31_080553_add_delay_time_to_abandonedcartcampaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_31_113701_create_abandoned_cart_logs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_01_063533_create_orderconfirms_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_01_063706_create_orderrefunds_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_01_070227_create_orderdispatches_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_03_114345_add_calculated_sms_credits_to_welcomecampaigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_03_114424_add_calculated_sms_credits_to_worderconfirms_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_03_114445_add_calculated_sms_credits_to_orderrefunds_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_03_114546_add_calculated_sms_credits_toabandonedcartcamapigns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_03_114832_add_calculated_sms_credits_to_orderdispatechs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_status_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_status_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,14 +147,8 @@
       <workItem from="1617277757926" duration="10001000" />
       <workItem from="1617345627920" duration="20394000" />
       <workItem from="1617436531053" duration="3132000" />
-      <workItem from="1617691508948" duration="23876000" />
-    </task>
-    <task id="LOCAL-00053" summary="order update, create, checkout, webhook">
-      <created>1617199549728</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1617199549730</updated>
+      <workItem from="1617691508948" duration="25538000" />
+      <workItem from="1617776688955" duration="7682000" />
     </task>
     <task id="LOCAL-00054" summary="order update, create, checkout, webhook">
       <created>1617200068749</created>
@@ -448,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617719111601</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="validations applyed on all campaigns">
+      <created>1617720275772</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1617720275772</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,10 +529,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="validations applyed on all campaigns" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617260564825">
+    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617777766007">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617260564825" />
+    <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617777766007" />
     <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617710517693">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -520,10 +565,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617719151363">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1617721248264">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617719151363" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1617721248264" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -540,10 +585,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617711090270">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1617778464678">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617711090270" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1617778464678" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,12 +600,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>273</line>
+          <line>274</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_status_detail.blade.php</url>
-          <line>163</line>
+          <line>153</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -585,52 +630,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>330</line>
+          <line>309</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>474</line>
+          <line>513</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>844</line>
+          <line>789</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>29</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>51</line>
+          <line>46</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>271</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>88</line>
+          <line>83</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>85</line>
+          <line>80</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>28</line>
-          <option name="timeStamp" value="29" />
+          <line>42</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>166</line>
+          <line>167</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_shop_preferences_save" />
@@ -639,7 +674,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>187</line>
+          <line>188</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_user_save" />
@@ -648,7 +683,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>213</line>
+          <line>214</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="sms_campaign_save" />
@@ -657,7 +692,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>236</line>
+          <line>237</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="edit_campaign_save" />
@@ -666,7 +701,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>394</line>
+          <line>395</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="abandoned_cart_campaign_save" />
@@ -675,7 +710,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>416</line>
+          <line>417</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="sms_trigger_index" />
@@ -684,7 +719,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>322</line>
+          <line>323</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="order_confirm_campaign_save" />
