@@ -36,11 +36,13 @@
                                                 @endphp
 {{--                                                <input   type="text"  class="form-control name ">--}}
                                                 <div class="custom-select-div ">
-                                                    <select required name="sender_name" class=" js-example-tags sendername-character-count">
-                                                        @foreach($campaign_sender_name as $sender)
-                                                            <option value="{{$sender->sender_name}}">{{$sender->sender_name}}</option>
-                                                        @endforeach
-                                                    </select>
+{{--                                                    <select required name="sender_name" class=" js-example-tags sendername-character-count">--}}
+{{--                                                        @foreach($campaign_sender_name as $sender)--}}
+{{--                                                            <option value="{{$sender->sender_name}}">{{$sender->sender_name}}</option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
+                                                    <input required  name="sender_name" type="text"  class="form-control sendername-character-count">
+
                                                 </div>
                                                 <div class="sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                             </div>
@@ -154,11 +156,12 @@
                                                                     @endphp
 
                                                                     <div class="custom-select-div ">
-                                                                        <select required name="sender_name" class=" js-example-tags edit-sendername-character-count">
-                                                                            @foreach($edit_campaign_sender_name as $edit_sender)
-                                                                                <option @if($edit_sender->sender_name == $campaign->sender_name) selected @endif>{{$edit_sender->sender_name}}</option>
-                                                                            @endforeach
-                                                                        </select>
+{{--                                                                        <select required name="sender_name" class=" js-example-tags edit-sendername-character-count">--}}
+{{--                                                                            @foreach($edit_campaign_sender_name as $edit_sender)--}}
+{{--                                                                                <option @if($edit_sender->sender_name == $campaign->sender_name) selected @endif>{{$edit_sender->sender_name}}</option>--}}
+{{--                                                                            @endforeach--}}
+{{--                                                                        </select>--}}
+                                                                        <input required value="{{$campaign->sender_name}}" name="sender_name" type="text"  class="form-control edit-sendername-character-count">
                                                                     </div>
                                                                     <div class="sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                                                 </div>
@@ -242,23 +245,21 @@
 
             var sender_text = $(this).find('.sendername-character-count').val();
 
-            if(parseInt(showCredit) <= parseInt(current_user_credits) ){
-                if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
-                    $('#calculated_credit_per_sms').val(parseInt(showCredit));
-                }
-                else{
-                    return false;
-                }
-            }else{
-                alert("Your SMS credits is not enough to create this campaign.")
-                event.preventDefault();
-            }
-
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
             {
-                return true;
+                if(parseInt(showCredit) <= parseInt(current_user_credits) ){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $('#calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
             }else{
-                $(this).find('.sender-char-msg').html(`<span style="color: red;    font-size: 14px;">Min character 3 and Max character 11</span>`)
+                $(this).find('.sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
                 event.preventDefault();
             }
 
@@ -298,23 +299,21 @@
             console.log(current_user_credits)
             var sender_text = $(this).find('.edit-sendername-character-count').val();
 
-            if(parseInt(showCredit) <= parseInt(current_user_credits)){
-                if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
-                    $(this).find('.edit_calculated_credit_per_sms').val(parseInt(showCredit));
-                }
-                else{
-                    return false;
-                }
-            }else{
-                alert("Your SMS credits is not enough to create this campaign.")
-                event.preventDefault();
-            }
-
             if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
             {
-                return true;
+                if(parseInt(showCredit) <= parseInt(current_user_credits)){
+                    if(confirm("Characters used "+ showTextlen +" / "+showCredit+ " credits")){
+                        $(this).find('.edit_calculated_credit_per_sms').val(parseInt(showCredit));
+                    }
+                    else{
+                        return false;
+                    }
+                }else{
+                    alert("Your SMS credits is not enough to create this campaign.")
+                    event.preventDefault();
+                }
             }else{
-                $(this).find('.sender-char-msg').html(`<span style="color: red">Min character 3 and Max character 11</span>`)
+                $(this).find('.sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
                 event.preventDefault();
             }
         });

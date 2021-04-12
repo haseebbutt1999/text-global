@@ -14,6 +14,7 @@
 <script src="{{ asset('polished_asset/select2/js/select2.full.js') }}"></script>
 @yield('js_after')
 
+
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>--}}
 
 {{--<script>--}}
@@ -118,6 +119,7 @@
         }
 
     });
+</script>
 
 
 
