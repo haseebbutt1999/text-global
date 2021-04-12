@@ -48,8 +48,11 @@
                                                             <label class='control-label'>Select Credits</label>
 
                                                             <div class="form-check">
+
                                                                 @if(isset($plan->credits))
+{{--                                                                    @dd($plan->credits)--}}
                                                                     @foreach($plan->credits as $key2=>$credit_data)
+{{--                                                                        @dd($credit_data)--}}
                                                                         <label class="form-check-label d-flex price-credit-main-div">
                                                                             <input type="hidden" name="price" class="price">
                                                                             <input type="hidden" name="credits" class="credits">
