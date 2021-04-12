@@ -223,6 +223,35 @@ input:checked + .slider:before {
 .edit-package .modal-dialog{
     max-width: 45%;
 }
+/* stripe css start*/
+.panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.display-table {
+    display: table;
+}
+.display-tr {
+    display: table-row;
+}
+.display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 61%;
+}
+
+/*input[type="checkbox"] {*/
+/*    height: 18px !important;*/
+/*    width: 15px !important;*/
+/*    display: inline;*/
+/*    float: left;*/
+/*    margin-top: 3px;*/
+/*    outline: 0;*/
+/*    -webkit-box-shadow: none;*/
+/*    box-shadow: none;*/
+/*     opacity: 1 !important;*/
+/*}*/
+/* stripe css end*/
 
 /*   Switch Button End   */
 #search-form-api{

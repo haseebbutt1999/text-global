@@ -21,6 +21,7 @@ class SendSms implements ShouldQueue
     public $campaign;
     public $send_status="Sended";
     private $log_store;
+    private $user_log;
 
     /**
      * Create a new job instance.
@@ -31,6 +32,7 @@ class SendSms implements ShouldQueue
     {
         $this->campaign = $campaign;
         $this->log_store = new LogsController();
+        $this->user_log = new LogsController();
     }
 
     /**
@@ -100,6 +102,8 @@ class SendSms implements ShouldQueue
                 if($response->messages[0]->status->name = "PENDING_ENROUTE"){
                     $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' );
 //                Detect Credits
+                    $this->user_log->user_log( $this->campaign->user_id, 'Campaign', null , $pushed_user->shopify_customer_id, 'Campaign SMS sended successfully to customer ('.$pushed_user->first_name.')', "sended");
+
                     $user = User::Where('id', $this->campaign->user_id)->first();
                     if($user->credit >= 0){
                         $user->credit =  $user->credit - $this->campaign->calculated_credit_per_sms;
@@ -112,6 +116,8 @@ class SendSms implements ShouldQueue
                     $test->text = "rejected msg:" .$response->messages[0]->status->description;
                     $test->save();
                     $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.');
+                    $this->user_log->user_log( $this->campaign->user_id, 'Campaign', null , $pushed_user->shopify_customer_id, 'Campaign Send Failed. because '.$response->messages[0]->status->description, "not sended");
+
                 }
 
             }

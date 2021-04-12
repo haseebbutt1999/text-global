@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Credit;
 use App\Customer;
 use App\Package;
 use App\User;
@@ -83,6 +84,57 @@ class AdminController extends Controller
         $plan_delete = Plan::where('id',$id)->first();
         if(isset($plan_delete)){
             $plan_delete->delete();
+        }
+
+        return redirect()->back();
+    }
+
+    public function credits_index(){
+        $credits_data = Credit::orderBy('id', 'desc')->paginate(10);
+        $plans_data = Plan::get();
+        return view('adminpanel/module/dashboard/credits_index', compact('credits_data', 'plans_data'));
+    }
+
+    public function credits_save(Request $request){
+
+        $credit_save = new Credit();
+        $credit_save->plan_id = $request->plan_id;
+        $credit_save->price = $request->price;
+        $credit_save->credits = $request->credits;
+        if(isset($request->status)){
+            $credit_save->status = $request->status;
+        }else{
+            $credit_save->status = "Inactive";
+        }
+        $credit_save->save();
+
+        return redirect()->back();
+    }
+
+    public function edit_credits_save(Request $request, $id){
+
+        $credit_save = Credit::where('id',$id)->first();
+
+        if($credit_save == null){
+            $credit_save = new Credit();
+        }
+        $credit_save->plan_id = $request->plan_id;
+        $credit_save->price = $request->price;
+        $credit_save->credits = $request->credits;
+        if($request->status){
+            $credit_save->status = $request->status;
+        }else{
+            $credit_save->status = "Inactive";
+        }
+        $credit_save->save();
+
+        return redirect()->back();
+    }
+
+    public function credits_delete($id){
+        $credit_delete = Credit::where('id',$id)->first();
+        if(isset($credit_delete)){
+            $credit_delete->delete();
         }
 
         return redirect()->back();

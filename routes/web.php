@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,9 +57,14 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
 
         Route::get('sms-triggers-index', 'UserController@sms_trigger_index')->name('sms-triggers-index');
 
+        Route::get('get-reports', 'UserController@get_reports')->name('get-reports');
+
         Route::get('/customer-sync', 'CustomerController@customer_sync')->name('customer-sync');
 
-        Route::get('user', function(){
+        Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.process.payment');
+
+
+    Route::get('user', function(){
             $user = \App\User::find(auth::user()->id);
             dd($user->countries);
         });
@@ -93,6 +99,12 @@ Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
     Route::post('/plan-save', 'AdminController@plan_save')->name('plan-save');
     Route::post('/edit-plan-save/{id}', 'AdminController@edit_plan_save')->name('edit-plan-save');
     Route::get('/delete-plan/{id}', 'AdminController@plan_delete')->name('delete-plan');
+
+    Route::get('/credits', 'AdminController@credits_index')->name('credits');
+    Route::post('/credits-save', 'AdminController@credits_save')->name('credits-save');
+    Route::post('/edit-credits-save/{id}', 'AdminController@edit_credits_save')->name('edit-credits-save');
+    Route::get('/delete-credits/{id}', 'AdminController@credits_delete')->name('credits-plan');
+
 //    Route::get('/package-create', 'AdminController@package_create')->name('package-create');
 });
 

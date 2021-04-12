@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{ asset('polished_asset/select2/css/select2.min.css') }}">
 {{--    ckeditor cdn--}}
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+{{--    chart.js css --}}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
 
 
 </head>

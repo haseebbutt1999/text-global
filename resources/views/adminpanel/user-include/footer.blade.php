@@ -3,9 +3,7 @@
 {{--Footer Start--}}
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
@@ -14,7 +12,90 @@
         crossorigin="anonymous"></script>
 
 <script src="{{ asset('polished_asset/select2/js/select2.full.js') }}"></script>
+@yield('js_after')
 
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>--}}
+
+{{--<script>--}}
+{{--    $(function() {--}}
+
+{{--        // $('input[name="datefilter"]').daterangepicker({--}}
+{{--        //     autoUpdateInput: false,--}}
+{{--        //     locale: {--}}
+{{--        //         cancelLabel: 'Clear'--}}
+{{--        //     }--}}
+{{--        // });--}}
+{{--        //--}}
+{{--        // $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {--}}
+{{--        //     $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));--}}
+{{--        // });--}}
+{{--        //--}}
+{{--        // $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {--}}
+{{--        //     $(this).val('');--}}
+{{--        // });--}}
+
+{{--        if($('body').find('#canvas-graph-one').length > 0){--}}
+
+{{--            var config = {--}}
+{{--                type: 'bar',--}}
+{{--                data: {--}}
+{{--                    labels: JSON.parse($('#canvas-graph-one').attr('data-labels')),--}}
+{{--                    datasets: [{--}}
+{{--                        label: 'Order Count',--}}
+{{--                        backgroundColor: '#00e2ff',--}}
+{{--                        borderColor: '#00e2ff',--}}
+{{--                        data: JSON.parse($('#canvas-graph-one').attr('data-values')),--}}
+{{--                        fill: false,--}}
+{{--                    }]--}}
+{{--                },--}}
+{{--                options: {--}}
+{{--                    responsive: true,--}}
+{{--                    title: {--}}
+{{--                        display: true,--}}
+{{--                        text: 'Summary Orders Count'--}}
+{{--                    },--}}
+{{--                    tooltips: {--}}
+{{--                        mode: 'index',--}}
+{{--                        intersect: false,--}}
+{{--                    },--}}
+{{--                    hover: {--}}
+{{--                        mode: 'nearest',--}}
+{{--                        intersect: true--}}
+{{--                    },--}}
+{{--                    scales: {--}}
+{{--                        xAxes: [{--}}
+{{--                            display: true,--}}
+{{--                            scaleLabel: {--}}
+{{--                                display: true,--}}
+{{--                                labelString: 'Date'--}}
+{{--                            }--}}
+{{--                        }],--}}
+{{--                        yAxes: [{--}}
+{{--                            display: true,--}}
+{{--                            ticks: {--}}
+{{--                                beginAtZero: true,--}}
+{{--                                stepSize: 11,--}}
+{{--                                min: 0,--}}
+{{--                                max: 88--}}
+{{--                            },--}}
+{{--                            scaleLabel: {--}}
+{{--                                display: true,--}}
+{{--                                labelString: 'Value'--}}
+{{--                            }--}}
+{{--                        }]--}}
+{{--                    }--}}
+{{--                }--}}
+{{--            };--}}
+
+
+{{--            var ctx = document.getElementById('canvas-graph-one').getContext('2d');--}}
+{{--            console.log(ctx)--}}
+{{--            window.myBar = new Chart(ctx, config);--}}
+
+{{--        }--}}
+
+{{--    });--}}
+{{--</script>--}}
 
 <script>
     $(document).ready(function() {
@@ -37,8 +118,6 @@
         }
 
     });
-
-
 
 
 

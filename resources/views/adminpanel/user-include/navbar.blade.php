@@ -34,10 +34,10 @@
 
 
     <div style="width: 10%; " class="text-white mr-2">
-        <div class="bg-primary" style="
-    background: white;
+        <div  style="
+    background: white;background-color: #5C6AFE ;
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px;    font-weight: 500;
     text-align: center;">{{"Credits - ". Auth::user()->credit }}</div>
     </div>
 

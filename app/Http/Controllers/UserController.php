@@ -7,6 +7,7 @@ use App\Campaign;
 use App\Country;
 use App\CountryShoppreference;
 use App\CountryUser;
+use App\Credit;
 use App\Customer;
 use App\Jobs\SendSms;
 use App\Jobs\WelcomeEmailJob;
@@ -22,6 +23,7 @@ use Carbon\Traits\Test;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 use phpDocumentor\Reflection\Types\False_;
 use PhpParser\Node\Stmt\DeclareDeclare;
@@ -36,9 +38,100 @@ class UserController extends Controller
 
     }
 
-    public function user_dashboard(){
+    public function user_dashboard(Request $request){
         if(auth::user()->role == 'user'){
-            return view('adminpanel/module/dashboard/user_dashboard');
+            if($request->query('datefilter')) {
+                $query = $request->query('datefilter');
+                $dates_array = explode('- ', $query);
+
+                $start_date = date('Y-m-d h:i:s',strtotime($dates_array[0]));
+                $end_date = date('Y-m-d h:i:s',strtotime($dates_array[1]));
+
+                $orders_total_price = WordpressOrder::where('shop_id', session()->get('current_shop_domain'))->whereBetween('date_paid', [$start_date, $end_date])->sum('total');
+
+                $ordersQ = DB::table('wordpress_orders')
+                    ->select(DB::raw('DATE(date_paid) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->groupBy('date')
+                    ->get();
+
+            }
+            else {
+//                $total_send_msgs = UserCamapignLog::where('user_id', Auth::user()->id)->where('status', "sended");
+
+//            $ordersQ = DB::table('user_camapaign_logs')
+//                ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
+//                ->groupBy('date')
+//                ->get();
+                $user_campaign_log = DB::table('user_camapign_logs')->where('user_id', Auth::user()->id)->get();
+                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('user_id', Auth::user()->id)->get();
+                $customers = DB::table('customers')->where('user_id', Auth::user()->id)->get();
+            }
+//            dd();
+            $sms_pushed_array=[];
+            $customer_pushed_array=[];
+            $triggersms_pushed_array=[];
+
+            $total_send_sms = $user_campaign_log->count();
+            $total_customers = $customers->count();
+            $total_triggered_sms = $triggered_sms->count();
+            // Graph calculations
+            $graph_send_sms_dates = $user_campaign_log->pluck('created_at')->toArray();
+            $graph_customer_created_dates = $customers->pluck('date')->toArray();
+            $graph_trigger_sms_created_dates = $triggered_sms->pluck('date')->toArray();
+//            dd($graph_trigger_sms_created_dates);
+
+            foreach($graph_send_sms_dates as $date){
+                $a=explode(' ', $date);
+                array_push($sms_pushed_array, $a[0] );
+            }
+            foreach($graph_customer_created_dates as $customer){
+                $a=explode(' ', $customer);
+                array_push($customer_pushed_array, $a[0] );
+            }
+            foreach($graph_trigger_sms_created_dates as $trigger_sms_dates){
+                $a=explode(' ', $trigger_sms_dates);
+                array_push($triggersms_pushed_array, $a[0] );
+            }
+//            dd($graph_trigger_sms_created_dates);
+
+            $graph_customer_created_dates = array_unique($customer_pushed_array);
+            $graph_send_sms_dates = array_unique($sms_pushed_array);
+//            dd(array_values($graph_send_sms_dates));
+            $graph_trigger_sms_dates = array_unique($triggersms_pushed_array);
+
+
+            $pushed_nmbr_sms = [];
+            $pushed_customer = [];
+            $pushed_trigger_sms = [];
+
+            foreach ($graph_send_sms_dates as $graph_sms_date){
+                $nmbr_sms = DB::table('user_camapign_logs')->where('date' , $graph_sms_date)->where('user_id', Auth::user()->id)->count();
+                   array_push($pushed_nmbr_sms, $nmbr_sms);
+            }
+            foreach ($graph_trigger_sms_dates as $triggersms){
+                $nmbr_sms = DB::table('user_camapign_logs')->where('date' , $triggersms)->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
+                   array_push($pushed_trigger_sms, $nmbr_sms);
+            }
+            foreach ($graph_customer_created_dates as $customer_date){
+                $customers = DB::table('customers')->where('date' , $customer_date)->where('user_id', Auth::user()->id)->count();
+                   array_push($pushed_customer, $customers);
+            }
+//            dd($pushed_trigger_sms);
+
+            return view('adminpanel/module/dashboard/user_dashboard')->with([
+
+                'graph_send_sms_dates' => array_values($graph_send_sms_dates),
+                'graph_customer_created_dates' => array_values($graph_customer_created_dates),
+                'total_send_sms' => $total_send_sms,
+                'total_customers' => $total_customers,
+                'pushed_nmbr_sms' => $pushed_nmbr_sms,
+                'graph_trigger_sms_dates' => array_values($graph_trigger_sms_dates),
+                'pushed_trigger_sms' => $pushed_trigger_sms,
+                'pushed_customer' => $pushed_customer,
+                'total_triggered_sms' => $total_triggered_sms,
+            ]);
+
         }if(auth::user()->role == 'admin'){
             return redirect('admin-dashboard');
         }
@@ -201,7 +294,8 @@ class UserController extends Controller
     public function user_plans(){
 
         $plans_data = Plan::get();
-        return view('adminpanel/module/user/user_plan_index', compact('plans_data'));
+        $credits_data = Credit::get();
+        return view('adminpanel/module/user/user_plan_index', compact('plans_data', 'credits_data'));
     }
 
     public function sms_campaign_index(){
@@ -442,4 +536,6 @@ class UserController extends Controller
         $webhook=Auth::user()->api()->rest('GET','/admin/webhooks.json');
         dd($webhook);
     }
+
+
 }
