@@ -58,6 +58,8 @@
                                                                             <p class="mr-2"> {{ $credit_data->price}}$</p>
                                                                         </label>
                                                                     @endforeach
+                                                                @else
+                                                                    <label>Not Available</label>
                                                                 @endif
                                                             </div>
 

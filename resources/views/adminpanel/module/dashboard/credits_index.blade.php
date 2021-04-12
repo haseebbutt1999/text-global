@@ -99,8 +99,11 @@
                                             <td>
                                                 {{$credit->price}}
                                             </td>
+                                            <?php
+                                               $plan_name = \Osiset\ShopifyApp\Storage\Models\Plan::where('id', $credit->plan_id)->first();
+                                            ?>
                                             <td>
-                                                {{$credit->plan_id}}
+                                                {{$plan_name->name}}
                                             </td>
                                             <td>
                                                 {{$credit->status}}
