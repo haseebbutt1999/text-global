@@ -177,7 +177,7 @@ class CustomerCreateJob implements ShouldQueue
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Welcomecampaign',$pushed_cust->created_at,$pushed_cust->updated_at, null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')', "sended");
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')', "sended");
                             //                Detect Credits
                             $user = User::Where('id', $welcome_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -190,7 +190,7 @@ class CustomerCreateJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
-                            $this->user_log->user_log( $shop->id, 'Welcomecampaign',$pushed_cust->created_at,$pushed_cust->updated_at, null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description, "not sended");
+                            $this->user_log->user_log( $shop->id, 'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description, "not sended");
                             $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                         }
                     }

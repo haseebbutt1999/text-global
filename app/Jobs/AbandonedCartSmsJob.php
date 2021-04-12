@@ -107,7 +107,7 @@ class AbandonedCartSmsJob implements ShouldQueue
                             $test->text = "abandoned data:" .json_encode($checkout_data);
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', $checkout_data->created_at, $checkout_data->updated_at, null , $checkout_data->customer->id, "Abandonedcartcampaign SMS Sended Successfully to Customer (".$checkout_data->billing_address->first_name.")", "sended");
+                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS Sended Successfully to Customer (".$checkout_data->billing_address->first_name.")", "sended");
 
                             //                Detect Credits
                             $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
@@ -127,7 +127,7 @@ class AbandonedCartSmsJob implements ShouldQueue
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended.');
-                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', $checkout_data->created_at, $checkout_data->updated_at, null , $checkout_data->customer->id, "Abandonedcartcampaign SMS not Sended (".$checkout_data->billing_address->first_name.") because ".$response->messages[0]->status->description, "not sended");
+                            $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS not Sended (".$checkout_data->billing_address->first_name.") because ".$response->messages[0]->status->description, "not sended");
 
                         }
                     }
