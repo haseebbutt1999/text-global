@@ -103,6 +103,9 @@ class AbandonedCartSmsJob implements ShouldQueue
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
+                            $test = new Test();
+                            $test->text = "abandoned data:" .json_encode($checkout_data);
+                            $test->save();
                             $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
                             $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', $checkout_data->created_at, $checkout_data->updated_at, null , $checkout_data->customer->id, "Abandonedcartcampaign SMS Sended Successfully to Customer (".$checkout_data->billing_address->first_name.")", "sended");
 
