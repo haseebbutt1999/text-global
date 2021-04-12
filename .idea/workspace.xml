@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="user campaigns logs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,14 +106,7 @@
       <workItem from="1617863937891" duration="25823000" />
       <workItem from="1617952862015" duration="12479000" />
       <workItem from="1618147426670" duration="15894000" />
-      <workItem from="1618209338754" duration="7641000" />
-    </task>
-    <task id="LOCAL-00064" summary="order ful&#10;filled webhook">
-      <created>1617283732011</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1617283732011</updated>
+      <workItem from="1618209338754" duration="7717000" />
     </task>
     <task id="LOCAL-00065" summary="order ful&#10;filled webhook">
       <created>1617286263322</created>
@@ -453,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618215421090</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="user campaigns logs">
+      <created>1618217003690</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1618217003692</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,10 +524,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618215422756">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618217006349">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618215422756" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618217006349" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
