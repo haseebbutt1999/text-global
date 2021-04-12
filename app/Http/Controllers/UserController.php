@@ -77,8 +77,8 @@ class UserController extends Controller
             $total_triggered_sms = $triggered_sms->count();
             // Graph calculations
             $graph_send_sms_dates = $user_campaign_log->pluck('created_at')->toArray();
-            $graph_customer_created_dates = $customers->pluck('date')->toArray();
-            $graph_trigger_sms_created_dates = $triggered_sms->pluck('date')->toArray();
+            $graph_customer_created_dates = $customers->pluck('created_date')->toArray();
+            $graph_trigger_sms_created_dates = $triggered_sms->pluck('created_date')->toArray();
 //            dd($graph_trigger_sms_created_dates);
 
             foreach($graph_send_sms_dates as $date){

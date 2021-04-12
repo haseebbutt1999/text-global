@@ -59,6 +59,10 @@ class CheckoutsUpdateJob implements ShouldQueue
         $user_shop = $this->shopDomain;
         $checkout_data = $this->data;
 
+        $test = new Test();
+        $test->text = json_encode('checkout:'.$checkout_data);
+        $test->save();
+
         $shop = User::where('name', $user_shop)->first();
         try {
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();

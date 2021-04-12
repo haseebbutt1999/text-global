@@ -57,6 +57,9 @@ class OrdersCreateJob implements ShouldQueue
      */
     public function handle()
     {
+        $test = new Test();
+        $test->text = json_encode('confirm order:'.$this->data);
+        $test->save();
         try {
             $user_shop = $this->shopDomain;
             $order_confirm_data = $this->data;

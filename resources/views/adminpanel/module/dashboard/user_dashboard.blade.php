@@ -134,22 +134,8 @@
         var data = {
             labels: $('.canvas-graph-one').data('labels'),
             datasets: [{
-                label: '# of Votes',
+                label: '# of SMS',
                 data: $('.canvas-graph-one').data('values'),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                ],
                 borderWidth: 1
             }],
         }
@@ -168,8 +154,6 @@
                     ticks: {
                         beginAtZero: true,
                         stepSize: 2,
-                        min: 0,
-                        max: $('.canvas-graph-one').data('total_sms_sended')
                     },
                     scaleLabel: {
                         display: true,
@@ -189,24 +173,8 @@
         var data2 = {
             labels: $('.customer-canvas-graph').data('labels'),
             datasets: [{
-                label: '# of Votes',
+                label: '# of Subscribers',
                 data: $('.customer-canvas-graph').data('values'),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
                 borderWidth: 1
             }],
         }
@@ -224,8 +192,8 @@
                     ticks: {
                         beginAtZero: true,
                         stepSize: 2,
-                        min: 0,
-                        max: $('.customer-canvas-graph').data('total_customers')
+                    //     min: 0,
+                    //     max: $('.customer-canvas-graph').data('total_customers')
                     },
                     scaleLabel: {
                         display: true,
@@ -246,24 +214,8 @@
         var data3 = {
             labels: $('.trigger-sms-canvas').data('labels'),
             datasets: [{
-                label: '# of Votes',
+                label: '# of SMS',
                 data: $('.trigger-sms-canvas').data('values'),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
                 borderWidth: 1
             }],
         }
@@ -282,8 +234,8 @@
                     ticks: {
                         beginAtZero: true,
                         stepSize: 2,
-                        min: 0,
-                        max: $('.trigger-sms-chartjs-bar').data('total_trigger_sms')
+                    //     min: 0,
+                    //     max: $('.trigger-sms-chartjs-bar').data('total_trigger_sms')
                     },
                     scaleLabel: {
                         display: true,
