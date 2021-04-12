@@ -21,7 +21,7 @@ class LogsController extends Controller
         return true;
     }
 
-    public function user_log($user_id, $model_type, $created_date,$updated_date, $order_name, $customer_id, $action, $status){
+    public function user_log($user_id, $model_type, $created_date, $updated_date, $order_name, $customer_id, $action, $status){
         $log_save = new UserCamapignLog();
         $log_save->user_id = $user_id;
         $log_save->model_type = $model_type;
@@ -29,9 +29,14 @@ class LogsController extends Controller
         $log_save->customer_id = $customer_id;
         $log_save->action = $action;
         $log_save->status = $status;
-        $log_save->created_date = Carbon::createFromTimeString($created_date)->format('Y-m-d');
-        $log_save->created_at = Carbon::createFromTimeString($created_date)->format('Y-m-d H:i:s');
-        $log_save->updated_at = Carbon::createFromTimeString($updated_date)->format('Y-m-d H:i:s');
+        if($created_date != null){
+            $log_save->created_date = Carbon::createFromTimeString($created_date)->format('Y-m-d');
+            $log_save->created_at = Carbon::createFromTimeString($created_date)->format('Y-m-d H:i:s');
+            $log_save->updated_at = Carbon::createFromTimeString($updated_date)->format('Y-m-d H:i:s');
+        }
+        else{
+            $log_save->created_date = Carbon::now()->format('Y-m-d H:i:s');
+        }
         $log_save->save();
 
         return true;
