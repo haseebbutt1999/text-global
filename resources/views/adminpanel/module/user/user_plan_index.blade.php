@@ -48,15 +48,17 @@
                                                             <label class='control-label'>Select Credits</label>
 
                                                             <div class="form-check">
-                                                                @foreach($plan->credits as $key2=>$credit_data)
-                                                                    <label class="form-check-label d-flex price-credit-main-div">
-                                                                        <input type="hidden" name="price" class="price">
-                                                                        <input type="hidden" name="credits" class="credits">
-                                                                        <input required type="radio" style="display: block !important;" name="radio[]" data-price = "{{$credit_data->price}}" data-credits = "{{$credit_data->credits}}"  class="form-radio-input">
-                                                                        <p class="ml-2">Credits {{$credit_data->credits}} / </p>
-                                                                        <p class="mr-2"> {{ $credit_data->price}}$</p>
-                                                                    </label>
-                                                                @endforeach
+                                                                @if(isset($plan->credits))
+                                                                    @foreach($plan->credits as $key2=>$credit_data)
+                                                                        <label class="form-check-label d-flex price-credit-main-div">
+                                                                            <input type="hidden" name="price" class="price">
+                                                                            <input type="hidden" name="credits" class="credits">
+                                                                            <input required type="radio" style="display: block !important;" name="radio[]" data-price = "{{$credit_data->price}}" data-credits = "{{$credit_data->credits}}"  class="form-radio-input">
+                                                                            <p class="ml-2">Credits {{$credit_data->credits}} / </p>
+                                                                            <p class="mr-2"> {{ $credit_data->price}}$</p>
+                                                                        </label>
+                                                                    @endforeach
+                                                                @endif
                                                             </div>
 
                                                         </div>

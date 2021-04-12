@@ -63,8 +63,8 @@ class UserController extends Controller
 //                ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
 //                ->groupBy('date')
 //                ->get();
-                $user_campaign_log = DB::table('user_camapign_logs')->where('user_id', Auth::user()->id)->get();
-                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('user_id', Auth::user()->id)->get();
+                $user_campaign_log = DB::table('user_camapign_logs')->where('user_id', Auth::user()->id)->where('status', "sended")->get();
+                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('status', "sended")->where('user_id', Auth::user()->id)->get();
                 $customers = DB::table('customers')->where('user_id', Auth::user()->id)->get();
             }
 //            dd();
@@ -106,11 +106,11 @@ class UserController extends Controller
             $pushed_trigger_sms = [];
 
             foreach ($graph_send_sms_dates as $graph_sms_date){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $graph_sms_date)->where('user_id', Auth::user()->id)->count();
+                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $graph_sms_date)->where('status', "sended")->where('user_id', Auth::user()->id)->count();
                    array_push($pushed_nmbr_sms, $nmbr_sms);
             }
             foreach ($graph_trigger_sms_dates as $triggersms){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $triggersms)->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
+                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $triggersms)->where('status', "sended")->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
                    array_push($pushed_trigger_sms, $nmbr_sms);
             }
             foreach ($graph_customer_created_dates as $customer_date){

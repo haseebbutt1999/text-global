@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="user campaigns logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_campaign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_campaign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,14 +108,7 @@
       <workItem from="1617863937891" duration="25823000" />
       <workItem from="1617952862015" duration="12479000" />
       <workItem from="1618147426670" duration="15894000" />
-      <workItem from="1618209338754" duration="18709000" />
-    </task>
-    <task id="LOCAL-00070" summary="add variables in campaigns">
-      <created>1617360066642</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1617360066643</updated>
+      <workItem from="1618209338754" duration="19433000" />
     </task>
     <task id="LOCAL-00071" summary="add variables in campaigns">
       <created>1617360695661</created>
@@ -453,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618223618705</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="user campaigns logs">
+      <created>1618229655725</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1618229655727</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,10 +526,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618223622154">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618229657352">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618223622154" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618229657352" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
