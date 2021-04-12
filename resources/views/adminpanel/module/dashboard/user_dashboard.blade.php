@@ -136,7 +136,9 @@
             datasets: [{
                 label: '# of SMS',
                 data: $('.canvas-graph-one').data('values'),
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor: '#5c6ac4',
+                borderColor: '#5c6ac4',
             }],
         }
 
@@ -175,7 +177,9 @@
             datasets: [{
                 label: '# of Subscribers',
                 data: $('.customer-canvas-graph').data('values'),
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor: '#5c6ac4',
+                borderColor: '#5c6ac4',
             }],
         }
         var options2 =  {
@@ -208,15 +212,16 @@
             data: data2,
             options: options2,
         });
-        console.log($('.trigger-sms-canvas').data('labels') )
-        console.log($('.trigger-sms-canvas').data('values') )
+
         var ctx3 = document.getElementById('trigger-sms-chartjs-bar');
         var data3 = {
             labels: $('.trigger-sms-canvas').data('labels'),
             datasets: [{
                 label: '# of SMS',
                 data: $('.trigger-sms-canvas').data('values'),
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor: '#5c6ac4',
+                borderColor: '#5c6ac4',
             }],
         }
         console.log($('.trigger-sms-canvas').data('total_trigger_sms'))

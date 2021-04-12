@@ -2,11 +2,13 @@
 
 namespace App\Jobs;
 
+use App\AbandonedCartLog;
 use App\Http\Controllers\LogsController;
 use App\order;
 use App\Orderconfirm;
 use App\Test;
 use App\User;
+use App\UserCamapignLog;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -52,6 +54,12 @@ class OrderConfirmJob implements ShouldQueue
             $order_checkout_save->order_id = $order_confirm_data->id;
             $order_checkout_save->checkout_id = $order_confirm_data->checkout_id;
             $order_checkout_save->save();
+
+            $abandoned_conversion = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $order_confirm_data->checkout_id)->first();
+            if($abandoned_conversion != null){
+                $abandoned_conversion->conversion_status = "confirmed";
+                $abandoned_conversion->save();
+            }
 
             $order_customer_phone_nummber = $order_confirm_data->billing_address->phone;
             $order_customer_country = $order_confirm_data->billing_address->country;

@@ -42,13 +42,10 @@
                                                         data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                                         id="payment-form">
                                                         @csrf
-
                                                         <input type="hidden" class="plan_id" name="plan_id" value="{{$plan->id}}">
                                                         <div class='form-group '>
                                                             <label class='control-label'>Select Credits</label>
-
                                                             <div class="form-check">
-
                                                                 @if(isset($plan->credits))
 {{--                                                                    @dd($plan->credits)--}}
                                                                     @foreach($plan->credits as $key2=>$credit_data)
