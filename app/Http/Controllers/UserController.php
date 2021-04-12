@@ -106,15 +106,15 @@ class UserController extends Controller
             $pushed_trigger_sms = [];
 
             foreach ($graph_send_sms_dates as $graph_sms_date){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('date' , $graph_sms_date)->where('user_id', Auth::user()->id)->count();
+                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $graph_sms_date)->where('user_id', Auth::user()->id)->count();
                    array_push($pushed_nmbr_sms, $nmbr_sms);
             }
             foreach ($graph_trigger_sms_dates as $triggersms){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('date' , $triggersms)->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
+                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $triggersms)->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
                    array_push($pushed_trigger_sms, $nmbr_sms);
             }
             foreach ($graph_customer_created_dates as $customer_date){
-                $customers = DB::table('customers')->where('date' , $customer_date)->where('user_id', Auth::user()->id)->count();
+                $customers = DB::table('customers')->where('created_date' , $customer_date)->where('user_id', Auth::user()->id)->count();
                    array_push($pushed_customer, $customers);
             }
 //            dd($pushed_trigger_sms);

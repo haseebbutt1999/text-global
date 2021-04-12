@@ -88,6 +88,9 @@ class CustomerCreateJob implements ShouldQueue
             $customer->addresses = json_encode($customer_data->addresses);
             $customer->verified_email = $customer_data->verified_email;
             $customer->accepts_marketing_updated_at = Carbon::createFromTimeString($customer_data->accepts_marketing_updated_at)->format('Y-m-d H:i:s');
+            $customer->created_date = Carbon::createFromTimeString($customer_data->created_at)->format('Y-m-d');
+            $customer->created_at = Carbon::createFromTimeString($customer_data->created_at)->format('Y-m-d H:i:s');
+            $customer->updated_at = Carbon::createFromTimeString($customer_data->updated_at)->format('Y-m-d H:i:s');
             $customer->marketing_opt_in_level = $customer_data->marketing_opt_in_level;
             $customer->save();
             $this->log_store->log_store( $shop->id, 'Customer', null, $customer->first_name, 'Customer Register Successfully');

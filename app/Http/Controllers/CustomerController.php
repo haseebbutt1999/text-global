@@ -29,7 +29,7 @@ class CustomerController extends Controller
 //        dd($customer);
         //           fetch customer
         foreach ($customer as $customer_check){
-            $customer = Customer::where('shopify_customer_id', $customer_check->id)->first();
+            $customer = Customer::where('user_id', Auth::user()->id)->where('shopify_customer_id', $customer_check->id)->first();
             if($customer === null){
                 $customer = New Customer();
             }
@@ -51,6 +51,9 @@ class CustomerController extends Controller
             $customer->addresses = json_encode($customer_check->addresses);
             $customer->verified_email = $customer_check->verified_email;
             $customer->accepts_marketing_updated_at = Carbon::createFromTimeString($customer_check->accepts_marketing_updated_at)->format('Y-m-d H:i:s');
+            $customer->created_date = Carbon::createFromTimeString($customer_check->created_at)->format('Y-m-d');
+            $customer->created_at = Carbon::createFromTimeString($customer_check->created_at)->format('Y-m-d H:i:s');
+            $customer->updated_at = Carbon::createFromTimeString($customer_check->updated_at)->format('Y-m-d H:i:s');
             $customer->marketing_opt_in_level = $customer_check->marketing_opt_in_level;
             $customer->save();
             //           fetch customer end
