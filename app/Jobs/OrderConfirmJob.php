@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\LogsController;
+use App\order;
 use App\Orderconfirm;
 use App\Test;
 use App\User;
@@ -42,6 +43,15 @@ class OrderConfirmJob implements ShouldQueue
         $order_confirm_data = $this->order_confirm_data;
         $shop = $this->shop;
         try {
+
+            $order_checkout_save = order::where('user_id', $shop->id)->where('order_id', $order_confirm_data->id)->where('checkout_id', $order_confirm_data->checkout_id)->first();
+            if($order_checkout_save == null){
+                $order_checkout_save = new order();
+            }
+            $order_checkout_save->user_id = $shop->id;
+            $order_checkout_save->order_id = $order_confirm_data->id;
+            $order_checkout_save->checkout_id = $order_confirm_data->checkout_id;
+            $order_checkout_save->save();
 
             $order_customer_phone_nummber = $order_confirm_data->billing_address->phone;
             $order_customer_country = $order_confirm_data->billing_address->country;
