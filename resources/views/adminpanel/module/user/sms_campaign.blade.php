@@ -53,7 +53,7 @@
                                                     <div style="color: gray;font-size: 13px;">Characters used <span id="rchars" style="text-align: right">0</span> / <span id="credit"> 0 </span> credits.<br> Emoji's are not supported</div>
                                                 </div>
                                                 <div id="cct_embed_counts">
-                                                    <textarea required class="form-control create-campaign-textarea"  name="message_text"  rows="6"></textarea>
+                                                    <textarea required class="form-control create-campaign-textarea"   name="message_text"  rows="6" ></textarea>
                                                 </div>
                                             </div>
 

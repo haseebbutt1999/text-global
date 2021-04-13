@@ -71,6 +71,9 @@ class SendSms implements ShouldQueue
 
             $data = json_encode($data);
 
+//                          $username = User::find($this->campaign->user_id)->shopdetail->user_name;
+//                        $password = User::find($this->campaign->user_id)->shopdetail->password;
+//                        $auth = "Basic ". base64_encode("$username:$password");
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",

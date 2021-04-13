@@ -135,11 +135,26 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script>
-        // console.log($('.canvas-graph-one').data('labels'))
-        // console.log($('.canvas-graph-one').data('values'))
 
+        $(document).ready(function() {
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+        });
         var ctx = document.getElementById('chartjs-bar');
-        // console.log(ctx);
+
         var data = {
             labels: $('.canvas-graph-one').data('labels'),
             datasets: [{
@@ -233,7 +248,7 @@
                 borderColor: '#5c6ac4',
             }],
         }
-        console.log($('.trigger-sms-canvas').data('total_trigger_sms'))
+
         var options3 =  {
             scales: {
                 xAxes: [{
@@ -306,8 +321,6 @@
             data: data3,
             options: options3,
         });
-
-
 
     </script>
 @endsection

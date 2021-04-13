@@ -84,7 +84,7 @@ Route::group(['middleware'=>['auth.shopify']], function () {
 
 
 Route::get('/base', function() {
-    $auth = base64_encode("shopifyapp.textglobal:TGshopify1!");
+    $auth = "Basic ". base64_encode("shopifyapp.textglobal:TGshopify1!");
 
     dd($auth);
 });

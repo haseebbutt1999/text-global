@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Osiset\ShopifyApp\Storage\Queries\Shop;
 
 class CustomerController extends Controller
 {
@@ -97,26 +98,31 @@ class CustomerController extends Controller
     }
 
     public function test(){
+        $username = User::where('name', "saifiqbal.myshopify.com")->first();
+        dd($username->shopdetail->user_name);
+        $password = Auth::user()->shopdetail->password;
+        $auth = "Basic ". base64_encode("$username:$password");
+        dd($auth);
 //        GET /admin/api/2021-01/checkouts.json
-        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
-        dd($orders);
-        foreach ($orders as $order){
-            $product_id_array = [];
-            foreach ($order->line_items as $line_item){
-                $product_id = $line_item->product_id;
-                array_push($product_id_array, $product_id);
-            }
-            dd(implode(", ",$product_id_array));
-
-        }
-//        $length = $orders->refunds;
-        $toEnd = count($orders->refunds);
-//        dd($toEnd);
-        foreach($orders->refunds as $key=>$value) {
-            if (0 == --$toEnd) {
-                dd( $value);
-            }
-        }
+//        $orders = Auth::user()->api()->rest('GET', '/admin/api/2021-01/checkouts.json')['body']['checkouts'];
+//        dd($orders);
+//        foreach ($orders as $order){
+//            $product_id_array = [];
+//            foreach ($order->line_items as $line_item){
+//                $product_id = $line_item->product_id;
+//                array_push($product_id_array, $product_id);
+//            }
+//            dd(implode(", ",$product_id_array));
+//
+//        }
+////        $length = $orders->refunds;
+//        $toEnd = count($orders->refunds);
+////        dd($toEnd);
+//        foreach($orders->refunds as $key=>$value) {
+//            if (0 == --$toEnd) {
+//                dd( $value);
+//            }
+//        }
 
 //        foreach($checkouts as $checkout){
 //            dd($checkout->id == $checkout->id);

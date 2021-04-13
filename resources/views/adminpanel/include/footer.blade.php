@@ -32,7 +32,7 @@
 
 
 </script>
-
+@yield('js_after')
 
 </body>
 </html>

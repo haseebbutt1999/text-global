@@ -142,6 +142,10 @@ class CustomerCreateJob implements ShouldQueue
                         "text" => $messgae_text,
                     ];
 
+//                          $username = $shop->shopdetail->user_name;
+//                        $password = $shop->shopdetail->password;
+//                        $auth = "Basic ". base64_encode("$username:$password");
+
                     $curl = curl_init();
                     curl_setopt_array($curl, array(
                         CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",

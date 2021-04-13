@@ -6,7 +6,7 @@
 
             <div class="col-md-12 col-lg-12 ">
                 <div class="card">
-                    <form action="{{route('user-shop-detail-save')}}" method="post">
+                    <form id="save-user-shop-detail" action="{{route('user-shop-detail-save')}}" method="post">
                         @csrf
                     <div class="card-header d-flex justify-content-between align-items-center bg-white pb-1">
                         <h5>User Shop Detail</h5>
@@ -43,17 +43,19 @@
                                         <input placeholder="Enter your company name" value="{{ $user_shop_data->shopdetail-> company_name}}" name="company_name" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="#">Sender Name</label>
-                                        <input placeholder="Enter your sendername" value="{{ $user_shop_data->shopdetail-> sender_name}}" name="sender_name" type="text" class="form-control">
-                                        <small class="text-muted">where the SMS is being sent from</small>
+                                        <label class="text-left"  for="#">Sender Name</label>
+                                        <div class="custom-select-div ">
+                                            <input required placeholder="Enter Sendername" value="{{ $user_shop_data->shopdetail-> sender_name}}"  name="sender_name" type="text"  class="form-control sendername-character-count">
+                                        </div>
+                                        <div class="sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="#">Username</label>
-                                        <input placeholder="Enter your username" name="user_name" disabled value="{{$user_shop_data->shopdetail->user_name}}" type="text" class="form-control">
+                                        <input placeholder="Enter your username" name="user_name" disabled value="{{$user_shop_data->shopdetail->user_name}}" type="text" class="form-control username">
                                     </div>
-                                    <div class="form-group">
+                                   <div class="form-group">
                                         <label for="#">Password</label>
                                         <input placeholder="Enter your password" name="password" type="text" disabled value="{{$user_shop_data->shopdetail->password}}" class="form-control">
                                     </div>
@@ -68,6 +70,26 @@
 
         </div>
     </div>
+@endsection
+@section('js_after')
+    <script>
+        $(document).ready(function(){
+            $( "#save-user-shop-detail" ).submit(function( event ) {
+
+                var sender_text = $(this).find('.sendername-character-count').val();
+
+                if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+                {
+                    return true;
+                }else{
+                    $(this).find('.sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                    event.preventDefault();
+                }
+
+            });
+        });
+
+    </script>
 @endsection
 
 

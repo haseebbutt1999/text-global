@@ -39,7 +39,7 @@
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="userShopDetail" role="tabpanel" aria-labelledby="userShopDetail-tab">
                                         <div class="card col-md-12">
-                                            <form action="{{route('shop-status-detail-save')}}" method="post">
+                                            <form id="shop-status-detail" action="{{route('shop-status-detail-save')}}" method="post">
                                                 @csrf
                                             <div class="card-header" style="background: white;padding-bottom: 0;">
                                                 <div class="row ">
@@ -76,9 +76,11 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="#">Sender Name</label>
-                                                            <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">
-                                                            <small class="text-muted">where the SMS is being sent from</small>
+                                                            <label class="text-left"  for="#">Sender Name</label>
+                                                            <div class="custom-select-div ">
+                                                                <input required placeholder="Enter Sendername" value="{{ $shop_data-> sender_name}}"  name="sender_name" type="text"  class="form-control sendername-character-count">
+                                                            </div>
+                                                            <div class="sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="#">Company Name</label>
@@ -96,9 +98,11 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="#">Username</label>
-                                                            <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">
-                                                            <small class="text-muted">username format must be xxxxxxxx.textglobal</small>
+                                                            <div class="form-group">
+                                                                <label for="#">Username</label>
+                                                                <input placeholder="Enter Username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control username">
+                                                                <div class="username-char-msg"><span style="color: gray;font-size: 14px">Username Format Must be xxxxxx.textglobal</span></div>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="#">Password</label>
@@ -459,4 +463,32 @@
         </div>
     </div>
 
+@endsection
+@section('js_after')
+    <script>
+        $(document).ready(function(){
+
+            $( "#shop-status-detail" ).submit(function( event ) {
+
+                var sender_text = $(this).find('.sendername-character-count').val();
+                var username = $(this).find('.username').val();
+                var username_check = username.endsWith(".textglobal");
+
+                if(parseInt(sender_text.length) >=3 && parseInt(sender_text.length) <= 11)
+                {
+                    if(username_check == true){
+                        return true;
+                    }else{
+                        $(this).find('.username-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Username Format Must be xxxxxx.textglobal</div>`)
+                        event.preventDefault();
+                    }
+                }else{
+                    $(this).find('.sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+                    event.preventDefault();
+                }
+
+            });
+        });
+
+    </script>
 @endsection

@@ -83,6 +83,10 @@ class OrderConfirmJob implements ShouldQueue
                         "text" => $messgae_text,
                     ];
 
+//                          $username = User::find($shop->id)->shopdetail->user_name;
+//                        $password = User::find($shop->id)->shopdetail->password;
+//                        $auth = "Basic ". base64_encode("$username:$password");
+
                     $curl = curl_init();
                     curl_setopt_array($curl, array(
                         CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
