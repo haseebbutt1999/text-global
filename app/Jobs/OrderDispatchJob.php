@@ -43,8 +43,8 @@ class OrderDispatchJob implements ShouldQueue
         $shop = $this->shop;
         try {
 
-            $order_customer_phone_nummber = $order_dispatch_data->billing_address->phone;
-            $order_customer_country = $order_dispatch_data->billing_address->country;
+            $order_customer_phone_nummber = $order_dispatch_data->shipping_address->phone;
+            $order_customer_country = $order_dispatch_data->shipping_address->country;
 
             $country_users = $shop->countries;
             //                dd($country_users);
@@ -52,7 +52,7 @@ class OrderDispatchJob implements ShouldQueue
                 if($country_user->name == $order_customer_country){
                     $order_dispatch_campaign = Orderdispatch::where('user_id', $shop->id)->first();
 
-                    $messgae_text = str_replace('{CustomerName}',$order_dispatch_data->billing_address->first_name." ".$order_dispatch_data->billing_address->last_name,$order_dispatch_campaign->message_text);
+                    $messgae_text = str_replace('{CustomerName}',$order_dispatch_data->shipping_address->first_name." ".$order_dispatch_data->shipping_address->last_name,$order_dispatch_campaign->message_text);
                     $messgae_text = str_replace('{OrderName}',$order_dispatch_data->name,$messgae_text);
                     $messgae_text = str_replace('{FulfillmentStatus}',$order_dispatch_data->fulfillment_status,$messgae_text);
                     $messgae_text = str_replace('{FinancialStatus}',$order_dispatch_data->financial_status,$messgae_text);
@@ -105,8 +105,8 @@ class OrderDispatchJob implements ShouldQueue
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
-                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->billing_address->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->billing_address->first_name.')', "sended");
+                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->shipping_address->first_name.')');
+                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->shipping_address->first_name.')', "sended");
 
                             //                Detect Credits
                             $user = User::Where('id', $order_dispatch_campaign->user_id)->first();
@@ -120,7 +120,7 @@ class OrderDispatchJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
-                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS not sended to customer ('.$order_dispatch_data->billing_address->first_name.') because '.$response->messages[0]->status->description, "not sended");
+                            $this->user_log->user_log( $shop->id, 'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS not sended to customer ('.$order_dispatch_data->shipping_address->first_name.') because '.$response->messages[0]->status->description, "not sended");
                             $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS not sended.');
 
                         }
