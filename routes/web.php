@@ -91,7 +91,7 @@ Route::get('/base', function() {
 
 
 // admin routes
-Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
+Route::group(['middleware'=>['auth', 'prevent-back-history', 'prevent-user-access']], function () {
     Route::get('/home', 'HomeController@index');
 //    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
     Route::get('/shops', 'AdminController@shops_index')->name('shops');
