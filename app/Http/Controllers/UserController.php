@@ -194,14 +194,19 @@ class UserController extends Controller
 
         $campaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Campaign'])->orderBy('id', 'desc')->paginate(30);
         $welcomeCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
-//        $abandonedCartCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
+        $abandonedCartCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
+        $Orderconfirm_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Orderconfirm'])->orderBy('id', 'desc')->paginate(30);
+        $Orderdispatch_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Orderdispatch'])->orderBy('id', 'desc')->paginate(30);
         $plan_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Plan'])->orderBy('id', 'desc')->paginate(30);
         $user_shop_detail_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Shopdetail'])->orderBy('id', 'desc')->paginate(30);
         $country_shoppreference_data = CountryShoppreference::where('user_id', $id)->where('status', 'active')->get();
 //        dd($country_shoppreference_data);
         $shop_id = $id;
 //        'abandonedCartCampaign_logs_data ',
-        return view('adminpanel/module/user/shop_status_detail', compact('shop_data',  'welcomeCampaign_logs_data', 'user_shop_detail_logs_data', 'plan_logs_data', 'campaign_logs_data', 'countries_data', 'shop_id','country_shoppreference_data'));
+        return view('adminpanel/module/user/shop_status_detail', compact('shop_data',
+            'abandonedCartCampaign_logs_data', 'Orderconfirm_logs_data', 'Orderdispatch_logs_data',
+            'welcomeCampaign_logs_data', 'user_shop_detail_logs_data', 'plan_logs_data', 'campaign_logs_data',
+            'countries_data', 'shop_id','country_shoppreference_data'));
     }
 
     public function shop_status_detail_save(Request $request){

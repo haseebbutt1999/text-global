@@ -89,10 +89,11 @@ Route::get('/base', function() {
     dd($auth);
 });
 
+
 // admin routes
 Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
     Route::get('/home', 'HomeController@index');
-    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
+//    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
     Route::get('/shops', 'AdminController@shops_index')->name('shops');
 
     Route::get('/plans', 'AdminController@plans_index')->name('plans');
@@ -111,6 +112,7 @@ Route::group(['middleware'=>['auth', 'prevent-back-history']], function () {
 Route::get('/admin', function() {
     return view('auth.login');
 })->name('admin-login');
+
 Route::post('/admin-login-post','Auth\LoginController@login')->name('admin-login-post');
 
 Route::get('/admin-logout', '\App\Http\Controllers\HomeController@logout')->name('admin-logout');

@@ -198,7 +198,7 @@
 
                                     <li class="nav-item">
                                         <a class="nav-link" id="bundulCampaign-tab" data-toggle="tab" href="#bundulCampaign" role="tab" aria-controls="bundulCampaign"
-                                           aria-selected="false">Bundul Campaigns</a>
+                                           aria-selected="false">Triggered SMS Campaigns</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="welcomeCampaign-tab" data-toggle="tab" href="#welcomeCampaign" role="tab" aria-controls="welcomeCampaign"
@@ -207,6 +207,14 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="abandonedCartCamapign-tab" data-toggle="tab" href="#abandonedCartCamapign" role="tab" aria-controls="abandonedCartCamapign"
                                            aria-selected="false">Abandoned Cart Camapigns</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="orderconfirmCamapign-tab" data-toggle="tab" href="#orderconfirmCamapign" role="tab" aria-controls="orderconfirmCamapign"
+                                           aria-selected="false">Orderconfirm Camapigns</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="orderdispatchCamapign-tab" data-toggle="tab" href="#orderdispatchCamapign" role="tab" aria-controls="orderdispatchCamapign"
+                                           aria-selected="false">Orderdispatch Camapigns</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
@@ -299,24 +307,104 @@
                                                             </thead>
                                                             <tbody>
                                                             {{--                                        @dd($users_data)--}}
-{{--                                                            @if(isset($abandonedCartCampaign_logs_data))--}}
-{{--                                                                @foreach($abandonedCartCampaign_logs_data as $key=>$abandonedCartCampaign_log)--}}
+                                                            @if(isset($abandonedCartCampaign_logs_data))
+                                                                @foreach($abandonedCartCampaign_logs_data as $key=>$abandonedCartCampaign_log)
 
-{{--                                                                    <tr class="td-text-center">--}}
-{{--                                                                        <td>--}}
-{{--                                                                            {{$abandonedCartCampaign_log->action}}--}}
-{{--                                                                        </td>--}}
-{{--                                                                        <td >--}}
-{{--                                                                            {{$abandonedCartCampaign_log->created_at}}--}}
-{{--                                                                        </td>--}}
-{{--                                                                    </tr>--}}
-{{--                                                                @endforeach--}}
-{{--                                                                @endif--}}
+                                                                    <tr class="td-text-center">
+                                                                        <td>
+                                                                            {{$abandonedCartCampaign_log->action}}
+                                                                        </td>
+                                                                        <td >
+                                                                            {{$abandonedCartCampaign_log->created_at}}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                @endif
                                                             </tbody>
                                                         </table>
 {{--                                                        @if(isset($abandonedCartCampaign_logs_data))--}}
 {{--                                                        {!!  $abandonedCartCampaign_logs_data->links() !!}--}}
 {{--                                                            @endif--}}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade " id="orderconfirmCamapign" role="tabpanel" aria-labelledby="orderconfirmCamapign-tab">
+                                        <div class="card col-md-12">
+                                            <div class="card-body">
+                                                <div id="product_append">
+                                                    <div class="row px-3" style="overflow-x:auto;">
+
+                                                        <table id="datatabled" class="table table-borderless  table-hover  table-class ">
+                                                            <thead class="border-0 ">
+
+                                                            <tr class="th-tr table-tr text-white text-center">
+                                                                <th class="font-weight-bold " style="width: 50%">Action</th>
+                                                                <th class="font-weight-bold " style="width: 50%">Created_at</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{--                                        @dd($users_data)--}}
+                                                            @if(isset($Orderconfirm_logs_data))
+                                                                @foreach($Orderconfirm_logs_data as $key=>$Orderconfirm_logs)
+
+                                                                    <tr class="td-text-center">
+                                                                        <td>
+                                                                            {{$Orderconfirm_logs->action}}
+                                                                        </td>
+                                                                        <td >
+                                                                            {{$Orderconfirm_logs->created_at}}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                @endif
+                                                            </tbody>
+                                                        </table>
+                                                        @if(isset($Orderconfirm_logs_data))
+                                                        {!!  $Orderconfirm_logs_data->links() !!}
+                                                            @endif
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade " id="orderdispatchCamapign" role="tabpanel" aria-labelledby="orderdispatchCamapign-tab">
+                                        <div class="card col-md-12">
+                                            <div class="card-body">
+                                                <div id="product_append">
+                                                    <div class="row px-3" style="overflow-x:auto;">
+
+                                                        <table id="datatabled" class="table table-borderless  table-hover  table-class ">
+                                                            <thead class="border-0 ">
+
+                                                            <tr class="th-tr table-tr text-white text-center">
+                                                                <th class="font-weight-bold " style="width: 50%">Action</th>
+                                                                <th class="font-weight-bold " style="width: 50%">Created_at</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{--                                        @dd($users_data)--}}
+                                                            @if(isset($Orderdispatch_logs_data))
+                                                                @foreach($Orderdispatch_logs_data as $key=>$Orderdispatch_logs)
+
+                                                                    <tr class="td-text-center">
+                                                                        <td>
+                                                                            {{$Orderdispatch_logs->action}}
+                                                                        </td>
+                                                                        <td >
+                                                                            {{$Orderdispatch_logs->created_at}}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                @endif
+                                                            </tbody>
+                                                        </table>
+                                                        @if(isset($Orderdispatch_logs_data))
+                                                        {!!  $Orderdispatch_logs_data->links() !!}
+                                                            @endif
                                                     </div>
 
                                                 </div>
