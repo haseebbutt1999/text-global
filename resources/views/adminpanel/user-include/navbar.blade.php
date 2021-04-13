@@ -36,11 +36,11 @@
     </div>
 
 
-    <div style="width: 10%; " class="text-white mr-2">
+    <div style="width: auto; " class="text-white mr-2">
         <div  style="
     background: white;background-color: #5C6AFE ;
     border-radius: 10px;
-    padding: 5px;    font-weight: 500;
+    padding: 5px 25px;    font-weight: 500;
     text-align: center;">{{"Credits - ". Auth::user()->credit }}</div>
     </div>
 

@@ -112,7 +112,7 @@
             <div class="col-lg-6 mb-2">
                 <div class="card shadow-sm ">
                     <div class="card-header bg-primary text-light">
-                        <h6>Abandoned Cart Conversations</h6>
+                        <h6>Abandoned Cart Conversions</h6>
                     </div>
                     <div class="card-body">
                         <div class="col-md-12">
