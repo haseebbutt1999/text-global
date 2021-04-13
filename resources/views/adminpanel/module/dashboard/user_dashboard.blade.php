@@ -284,7 +284,7 @@
         var data3 = {
             labels: $('.abandoned-conversion-canvas-graph').data('labels'),
             datasets: [{
-                label: '# of SMS',
+                label: '# of Conversions',
                 data: $('.abandoned-conversion-canvas-graph').data('values'),
                 borderWidth: 1,
                 backgroundColor: '#5c6ac4',
