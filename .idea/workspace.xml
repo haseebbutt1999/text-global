@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="apply middleware on admin routes to prevent user access routes !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/user_dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/user_dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AfterAuthenticateJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +110,7 @@
       <workItem from="1618209338754" duration="28139000" />
       <workItem from="1618252667497" duration="3386000" />
       <workItem from="1618258251479" duration="1345000" />
-      <workItem from="1618295044932" duration="17719000" />
-    </task>
-    <task id="LOCAL-00082" summary="validations applyed on all campaigns">
-      <created>1617698173862</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1617698173863</updated>
+      <workItem from="1618295044932" duration="18963000" />
     </task>
     <task id="LOCAL-00083" summary="validations applyed on all campaigns">
       <created>1617698661409</created>
@@ -455,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618314584258</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="apply middleware on admin routes to prevent user access routes !">
+      <created>1618316438544</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1618316438546</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,10 +504,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1618313292376" />
-    <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1616396695114">
+    <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1618316542856">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="174" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1616396695114" />
+    <state x="580" y="174" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1618316542856" />
     <state width="1557" height="166" key="GridCell.Tab.0.bottom" timestamp="1615218110117">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -532,10 +532,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618314586711">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618316441556">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618314586711" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618316441556" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -552,10 +552,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1618312649194">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1618319014100">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1618312649194" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1618319014100" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
