@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('/custom_assets/css/style.css')}}">
+{{--    datepicker css--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- <link rel="stylesheet" href="http://localhost:3000/css/bootstrap4/dist/css/bootstrap-custom.css?v=datetime"> -->
     <link rel="stylesheet" href="{{asset('polished_asset/polished.min.css')}}">
     <!-- <link rel="stylesheet" href="polaris-navbar.css"> -->
@@ -28,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('polished_asset/select2/css/select2.min.css') }}">
 {{--    ckeditor cdn--}}
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
 {{--    chart.js css --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />

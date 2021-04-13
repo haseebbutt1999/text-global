@@ -14,6 +14,9 @@
                         <a class="nav-link" href="{{route('user-shop-detail')}}">Settings<span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item active">
+                        <a class="nav-link" href="{{route('home')}}">Dashboard<span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{route('customers')}}">Customers<span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item active">

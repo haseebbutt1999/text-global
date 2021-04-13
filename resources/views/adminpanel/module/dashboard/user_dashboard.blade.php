@@ -3,6 +3,10 @@
 
     <div class="col-lg-12 col-md-12 p-4">
         <!-- start info box -->
+        <form class="d-flex justify-content-end mb-3" method="GET" action="{{ route('home') }}">
+            <input type="search" name="datefilter" value="" class="" placeholder="Select date.."/>
+            <button class="btn btn-primary ml-2">Apply</button>
+        </form>
         <div class="row ">
 
             <div class="col-lg-3 mb-2">
@@ -47,12 +51,12 @@
             <div class="col-lg-3 mb-2">
                 <div class="card shadow-sm ">
                     <div class="card-header bg-primary text-light">
-                        <h6>Total SMS Send</h6>
+                        <h6>Total Abandoned Conversions</h6>
                     </div>
                     <div class="card-body">
                         <div class="col-md-12">
 {{--                            @dd(json_encode($graph_send_sms_dates))--}}
-                            <h3>{{$total_send_sms}}</h3>
+                            <h3>{{$total_abandoned_conversions}}</h3>
                         </div>
                     </div>
                 </div>
@@ -69,7 +73,7 @@
                     <div class="card-body">
                         <div class="col-md-12">
 {{--                                                        @dd(json_encode($graph_send_sms_dates))--}}
-                            <canvas id="chartjs-bar" class="canvas-graph-one" data-total_sms_sended="{{$total_send_sms}}" data-labels="{{json_encode($graph_send_sms_dates)}}" data-values="{{json_encode($pushed_nmbr_sms)}}"></canvas>
+                            <canvas id="chartjs-bar" class="canvas-graph-one"  data-labels="{{json_encode($total_sms_sended_dates)}}" data-values="{{json_encode($total_sms_sended)}}"></canvas>
                         </div>
                     </div>
                 </div>
@@ -82,7 +86,7 @@
                     <div class="card-body">
                         <div class="col-md-12">
                             {{--                            @dd(json_encode($graph_send_sms_dates))--}}
-                            <canvas id="customer-chartjs-bar" class="customer-canvas-graph" data-total_customers="{{$total_customers}}" data-labels="{{json_encode($graph_customer_created_dates)}}" data-values="{{json_encode($pushed_customer)}}"></canvas>
+                            <canvas id="customer-chartjs-bar" class="customer-canvas-graph"  data-labels="{{json_encode($total_subscribers_dates)}}" data-values="{{json_encode($total_subscribers_values)}}"></canvas>
                         </div>
                     </div>
                 </div>
@@ -100,7 +104,7 @@
                     <div class="card-body">
                         <div class="col-md-12">
 {{--                                                        @dd(json_encode($total_triggered_sms))--}}
-                            <canvas id="trigger-sms-chartjs-bar" class="trigger-sms-canvas" data-total_trigger_sms="{{$total_triggered_sms}}" data-labels="{{json_encode($graph_trigger_sms_dates)}}" data-values="{{json_encode($pushed_trigger_sms)}}"></canvas>
+                            <canvas id="trigger-sms-chartjs-bar" class="trigger-sms-canvas"  data-labels="{{json_encode($total_trigered_sms_dates)}}" data-values="{{json_encode($total_trigered_sms_values)}}"></canvas>
                         </div>
                     </div>
                 </div>
@@ -113,7 +117,7 @@
                     <div class="card-body">
                         <div class="col-md-12">
 {{--                                                        @dd(json_encode($graph_send_sms_dates))--}}
-                            <canvas id="customer1-chartjs-bar" class="customer-canvas-graph" data-total_customers="{{$total_customers}}" data-labels="{{json_encode($graph_customer_created_dates)}}" data-values="{{json_encode($pushed_customer)}}"></canvas>
+                            <canvas id="abandoned-conversion-chartjs-bar" class="abandoned-conversion-canvas-graph"  data-labels="{{json_encode($abandoned_conversion_dates)}}" data-values="{{json_encode($abandoned_conversion_values)}}"></canvas>
                         </div>
                     </div>
                 </div>
@@ -125,10 +129,15 @@
     </div>
 @endsection
 @section('js_after')
+    {{--    datepicker js--}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script>
         // console.log($('.canvas-graph-one').data('labels'))
         // console.log($('.canvas-graph-one').data('values'))
+
         var ctx = document.getElementById('chartjs-bar');
         // console.log(ctx);
         var data = {
@@ -255,6 +264,50 @@
             data: data3,
             options: options3,
         });
+
+        var ctx3 = document.getElementById('abandoned-conversion-chartjs-bar');
+        var data3 = {
+            labels: $('.abandoned-conversion-canvas-graph').data('labels'),
+            datasets: [{
+                label: '# of SMS',
+                data: $('.abandoned-conversion-canvas-graph').data('values'),
+                borderWidth: 1,
+                backgroundColor: '#5c6ac4',
+                borderColor: '#5c6ac4',
+            }],
+        }
+        var options3 =  {
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 2,
+                    //     min: 0,
+                    //     max: $('.trigger-sms-chartjs-bar').data('total_trigger_sms')
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Triggered SMS'
+                    }
+                }]
+            }
+        }
+
+        var myBarChart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: data3,
+            options: options3,
+        });
+
+
 
     </script>
 @endsection

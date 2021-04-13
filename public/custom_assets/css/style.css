@@ -269,7 +269,7 @@ input:checked + .slider:before {
 /*}*/
 @media (min-width: 994px){
     .navbar-expand-lg .navbar-collapse {
-        margin-left: 15% !important;
+        margin-left: 10% !important;
     }
     ul.custom-ul li {
         padding: 5px 10px;

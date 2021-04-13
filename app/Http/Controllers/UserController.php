@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\DB;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 use phpDocumentor\Reflection\Types\False_;
 use PhpParser\Node\Stmt\DeclareDeclare;
+use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class UserController extends Controller
 {
@@ -47,89 +48,115 @@ class UserController extends Controller
                 $start_date = date('Y-m-d h:i:s',strtotime($dates_array[0]));
                 $end_date = date('Y-m-d h:i:s',strtotime($dates_array[1]));
 
-                $orders_total_price = WordpressOrder::where('shop_id', session()->get('current_shop_domain'))->whereBetween('date_paid', [$start_date, $end_date])->sum('total');
-
-                $ordersQ = DB::table('wordpress_orders')
-                    ->select(DB::raw('DATE(date_paid) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
+//                $orders_total_price = WordpressOrder::where('shop_id', session()->get('current_shop_domain'))->whereBetween('date_paid', [$start_date, $end_date])->sum('total');
+//
+//                $ordersQ = DB::table('wordpress_orders')
+//                    ->select(DB::raw('DATE(date_paid) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
+//                    ->whereBetween('created_at', [$start_date, $end_date])
+//                    ->groupBy('date')
+//                    ->get();
+                $total_sms = DB::table('user_camapign_logs')
+                    ->select(DB::raw('DATE(created_date) as date'), DB::raw('count(*) as total'))
+                    ->where('user_id', Auth::user()->id)->where('status', "sended")
                     ->whereBetween('created_at', [$start_date, $end_date])
                     ->groupBy('date')
                     ->get();
 
+                $total_subscribers = DB::table('customers')
+                    ->select(DB::raw('DATE(created_at) as customer_created_dates'), DB::raw('count(*) as total_customers'))
+                    ->where('user_id', Auth::user()->id)
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->groupBy('customer_created_dates')
+                    ->get();
+
+                $total_triggered = DB::table('user_camapign_logs')
+                    ->select(DB::raw('DATE(created_at) as total_trigger_sms_dates'), DB::raw('count(*) as total_trigger_sms_values'))
+                    ->where('user_id', Auth::user()->id)->where('model_type', "Campaign")->where('status', "sended")
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->groupBy('total_trigger_sms_dates')
+                    ->get();
+
+                $abandoned_conversion = DB::table('abandoned_cart_logs')
+                    ->select(DB::raw('DATE(created_at) as abandoned_conversion_dates'), DB::raw('count(*) as abandoned_conversion_values'))
+                    ->where('user_id', Auth::user()->id)->where('conversion_status', "confirmed")
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->groupBy('abandoned_conversion_dates')
+                    ->get();
+
+                $user_campaign_log = DB::table('user_camapign_logs')->where('user_id', Auth::user()->id)->where('status', "sended")
+                    ->whereBetween('created_at', [$start_date, $end_date])->get();
+                $abandoned_conversion_logs = DB::table('abandoned_cart_logs')->where('user_id', Auth::user()->id)->where('conversion_status', "confirmed")
+                    ->whereBetween('created_at', [$start_date, $end_date])->get();
+                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('status', "sended")
+                    ->where('user_id', Auth::user()->id)->whereBetween('created_at', [$start_date, $end_date])->get();
+                $customers = DB::table('customers')->where('user_id', Auth::user()->id)->whereBetween('created_at', [$start_date, $end_date])->get();
+
             }
             else {
-//                $total_send_msgs = UserCamapignLog::where('user_id', Auth::user()->id)->where('status', "sended");
+                $total_sms = DB::table('user_camapign_logs')
+                    ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
+                    ->where('user_id', Auth::user()->id)->where('status', "sended")
+                    ->groupBy('date')
+                    ->get();
 
-//            $ordersQ = DB::table('user_camapaign_logs')
-//                ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total, sum(total) as total_sum'))
-//                ->groupBy('date')
-//                ->get();
+                $total_subscribers = DB::table('customers')
+                    ->select(DB::raw('DATE(created_at) as customer_created_dates'), DB::raw('count(*) as total_customers'))
+                    ->where('user_id', Auth::user()->id)
+                    ->groupBy('customer_created_dates')
+                    ->get();
+
+                $total_triggered = DB::table('user_camapign_logs')
+                    ->select(DB::raw('DATE(created_at) as total_trigger_sms_dates'), DB::raw('count(*) as total_trigger_sms_values'))
+                    ->where('user_id', Auth::user()->id)->where('model_type', "Campaign")->where('status', "sended")
+                    ->groupBy('total_trigger_sms_dates')
+                    ->get();
+
+                $abandoned_conversion = DB::table('abandoned_cart_logs')
+                    ->select(DB::raw('DATE(created_at) as abandoned_conversion_dates'), DB::raw('count(*) as abandoned_conversion_values'))
+                    ->where('user_id', Auth::user()->id)->where('conversion_status', "confirmed")
+                    ->groupBy('abandoned_conversion_dates')
+                    ->get();
+
                 $user_campaign_log = DB::table('user_camapign_logs')->where('user_id', Auth::user()->id)->where('status', "sended")->get();
-                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('status', "sended")->where('user_id', Auth::user()->id)->get();
+                $abandoned_conversion_logs = DB::table('abandoned_cart_logs')->where('user_id', Auth::user()->id)->where('conversion_status', "confirmed")->get();
+                $triggered_sms = DB::table('user_camapign_logs')->where('model_type', 'Campaign')->where('status', "sended")
+                    ->where('user_id', Auth::user()->id)->get();
                 $customers = DB::table('customers')->where('user_id', Auth::user()->id)->get();
+
             }
-//            dd();
-            $sms_pushed_array=[];
-            $customer_pushed_array=[];
-            $triggersms_pushed_array=[];
+
+            $total_subscribers_dates = $total_subscribers->pluck('customer_created_dates')->toArray();
+            $total_subscribers_values = $total_subscribers->pluck('total_customers')->toArray();
+
+            $total_sms_sended_dates = $total_sms->pluck('date')->toArray();
+            $total_sms_sended = $total_sms->pluck('total')->toArray();
+
+            $total_trigered_sms_dates = $total_triggered->pluck('total_trigger_sms_dates')->toArray();
+            $total_trigered_sms_values = $total_triggered->pluck('total_trigger_sms_values')->toArray();
+//            dd($abandoned_conversion);
+            $abandoned_conversion_dates = $abandoned_conversion->pluck('abandoned_conversion_dates')->toArray();
+            $abandoned_conversion_values = $abandoned_conversion->pluck('abandoned_conversion_values')->toArray();
 
             $total_send_sms = $user_campaign_log->count();
             $total_customers = $customers->count();
             $total_triggered_sms = $triggered_sms->count();
-            // Graph calculations
-            $graph_send_sms_dates = $user_campaign_log->pluck('created_at')->toArray();
-            $graph_customer_created_dates = $customers->pluck('created_date')->toArray();
-            $graph_trigger_sms_created_dates = $triggered_sms->pluck('created_date')->toArray();
-//            dd($graph_trigger_sms_created_dates);
-
-            foreach($graph_send_sms_dates as $date){
-                $a=explode(' ', $date);
-                array_push($sms_pushed_array, $a[0] );
-            }
-            foreach($graph_customer_created_dates as $customer){
-                $a=explode(' ', $customer);
-                array_push($customer_pushed_array, $a[0] );
-            }
-            foreach($graph_trigger_sms_created_dates as $trigger_sms_dates){
-                $a=explode(' ', $trigger_sms_dates);
-                array_push($triggersms_pushed_array, $a[0] );
-            }
-//            dd($graph_trigger_sms_created_dates);
-
-            $graph_customer_created_dates = array_unique($customer_pushed_array);
-            $graph_send_sms_dates = array_unique($sms_pushed_array);
-//            dd(array_values($graph_send_sms_dates));
-            $graph_trigger_sms_dates = array_unique($triggersms_pushed_array);
-
-
-            $pushed_nmbr_sms = [];
-            $pushed_customer = [];
-            $pushed_trigger_sms = [];
-
-            foreach ($graph_send_sms_dates as $graph_sms_date){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $graph_sms_date)->where('status', "sended")->where('user_id', Auth::user()->id)->count();
-                   array_push($pushed_nmbr_sms, $nmbr_sms);
-            }
-            foreach ($graph_trigger_sms_dates as $triggersms){
-                $nmbr_sms = DB::table('user_camapign_logs')->where('created_date' , $triggersms)->where('status', "sended")->where('model_type' , "Campaign")->where('user_id', Auth::user()->id)->count();
-                   array_push($pushed_trigger_sms, $nmbr_sms);
-            }
-            foreach ($graph_customer_created_dates as $customer_date){
-                $customers = DB::table('customers')->where('created_date' , $customer_date)->where('user_id', Auth::user()->id)->count();
-                   array_push($pushed_customer, $customers);
-            }
-//            dd($pushed_trigger_sms);
+            $total_abandoned_conversions = $abandoned_conversion_logs->count();
 
             return view('adminpanel/module/dashboard/user_dashboard')->with([
 
-                'graph_send_sms_dates' => array_values($graph_send_sms_dates),
-                'graph_customer_created_dates' => array_values($graph_customer_created_dates),
+                'total_sms_sended_dates' => $total_sms_sended_dates,
+                'total_sms_sended' => $total_sms_sended,
+                'total_subscribers_dates' => $total_subscribers_dates,
+                'total_subscribers_values' => $total_subscribers_values,
+                'total_trigered_sms_dates' => $total_trigered_sms_dates,
+                'total_trigered_sms_values' => $total_trigered_sms_values,
+                'abandoned_conversion_dates' => $abandoned_conversion_dates,
+                'abandoned_conversion_values' => $abandoned_conversion_values,
+
                 'total_send_sms' => $total_send_sms,
                 'total_customers' => $total_customers,
-                'pushed_nmbr_sms' => $pushed_nmbr_sms,
-                'graph_trigger_sms_dates' => array_values($graph_trigger_sms_dates),
-                'pushed_trigger_sms' => $pushed_trigger_sms,
-                'pushed_customer' => $pushed_customer,
                 'total_triggered_sms' => $total_triggered_sms,
+                'total_abandoned_conversions' => $total_abandoned_conversions,
             ]);
 
         }if(auth::user()->role == 'admin'){
