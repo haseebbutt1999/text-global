@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="apply middleware on admin routes to prevent user access routes !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +110,7 @@
       <workItem from="1618209338754" duration="28139000" />
       <workItem from="1618252667497" duration="3386000" />
       <workItem from="1618258251479" duration="1345000" />
-      <workItem from="1618295044932" duration="24364000" />
-    </task>
-    <task id="LOCAL-00087" summary="validations applyed on all campaigns">
-      <created>1617708107942</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1617708107943</updated>
+      <workItem from="1618295044932" duration="25265000" />
     </task>
     <task id="LOCAL-00088" summary="validations applyed on all campaigns">
       <created>1617708976159</created>
@@ -455,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618324331444</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="apply middleware on admin routes to prevent user access routes !">
+      <created>1618325849488</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1618325849489</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,10 +532,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618324548968">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618325852705">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618324548968" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618325852705" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -552,10 +552,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1618319014100">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1618326533535">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1618319014100" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1618326533535" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

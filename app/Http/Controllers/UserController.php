@@ -554,7 +554,7 @@ class UserController extends Controller
         $orderdispatch_campaign= json_decode(json_encode($orderdispatch_campaign,True));
 
         $user_welcome_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
-        $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcart'])->orderBy('id', 'desc')->paginate(30);
+        $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
         $user_orderconfirm_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderconfirm'])->orderBy('id', 'desc')->paginate(30);
         $user_orderdispatch_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderdispatch'])->orderBy('id', 'desc')->paginate(30);
         $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('id', 'desc')->paginate(30);
