@@ -4,7 +4,7 @@
     <div class="col-lg-12 col-md-12 p-4">
         <!-- start info box -->
         <form class="d-flex justify-content-end mb-3" method="GET" action="{{ route('home') }}">
-            <input type="search" name="datefilter" value="" class="" placeholder="Select date.."/>
+            <input type="search" autocomplete="off" name="datefilter" value="" class="" placeholder="Select date.."/>
             <button class="btn btn-primary ml-2">Apply</button>
         </form>
         <div class="row ">

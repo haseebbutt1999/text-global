@@ -19,15 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="user campaigns logs">
+    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="dashboard reports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/custom_assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/custom_assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/user_dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/user_dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/navbar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,14 +110,7 @@
       <workItem from="1618209338754" duration="28139000" />
       <workItem from="1618252667497" duration="3386000" />
       <workItem from="1618258251479" duration="1345000" />
-      <workItem from="1618295044932" duration="5099000" />
-    </task>
-    <task id="LOCAL-00075" summary="add variables in campaigns">
-      <created>1617367963448</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1617367963448</updated>
+      <workItem from="1618295044932" duration="6061000" />
     </task>
     <task id="LOCAL-00076" summary="add variables in campaigns">
       <created>1617369746918</created>
@@ -461,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618239972025</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="dashboard reports">
+      <created>1618300167492</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1618300167504</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +489,8 @@
     <MESSAGE value="add variables in campaigns" />
     <MESSAGE value="validations applyed on all campaigns" />
     <MESSAGE value="user campaigns logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="user campaigns logs" />
+    <MESSAGE value="dashboard reports" />
+    <option name="LAST_COMMIT_MESSAGE" value="dashboard reports" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617777766007">
@@ -534,10 +529,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618240063390">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618300169731">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618240063390" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618300169731" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
