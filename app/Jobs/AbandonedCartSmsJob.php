@@ -50,8 +50,8 @@ class AbandonedCartSmsJob implements ShouldQueue
         if($order_checkout_check == null){
             try {
 
-                $order_customer_phone_nummber = $checkout_data->billing_address->phone;
-                $order_customer_country = $checkout_data->billing_address->country;
+                $order_customer_phone_nummber = $checkout_data->shipping_address->phone;
+                $order_customer_country = $checkout_data->shipping_address->country;
 
                 $country_users = $shop->countries;
                 foreach ($country_users as $country_user){
@@ -63,7 +63,7 @@ class AbandonedCartSmsJob implements ShouldQueue
                             array_push($product_id_array, $product_id);
                         }
                         $product_ids = implode(", ",$product_id_array);
-                        $messgae_text = str_replace('{CustomerName}',$checkout_data->billing_address->first_name." ".$checkout_data->billing_address->last_name,$abandoned_cart_campaign->message_text);
+                        $messgae_text = str_replace('{CustomerName}',$checkout_data->shipping_address->first_name." ".$checkout_data->shipping_address->last_name,$abandoned_cart_campaign->message_text);
                         $messgae_text = str_replace('{ProductId}',$product_ids,$messgae_text);
                         $messgae_text = str_replace('{TotalPrice}',$checkout_data->total_price,$messgae_text);
                         $messgae_text = str_replace('{AbandonedCheckoutUrl}',$checkout_data->abandoned_checkout_url,$messgae_text);
@@ -116,8 +116,8 @@ class AbandonedCartSmsJob implements ShouldQueue
                                 $test = new Test();
                                 $test->text = "abandoned data:" .json_encode($checkout_data);
                                 $test->save();
-                                $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->billing_address->first_name.')');
-                                $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS Sended Successfully to Customer (".$checkout_data->billing_address->first_name.")", "sended");
+                                $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS Sended Successfully to Customer ('.$checkout_data->shipping_address->first_name.')');
+                                $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS Sended Successfully to Customer (".$checkout_data->shipping_address->first_name.")", "sended");
 
                                 //                Detect Credits
                                 $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
@@ -137,7 +137,7 @@ class AbandonedCartSmsJob implements ShouldQueue
                                 $test->text = "rejected msg:" .$response->messages[0]->status->description;
                                 $test->save();
                                 $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandonedcartcampaign SMS not Sended.');
-                                $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS not Sended (".$checkout_data->billing_address->first_name.") because ".$response->messages[0]->status->description, "not sended");
+                                $this->user_log->user_log( $shop->id, 'Abandonedcartcampaign', null , $checkout_data->customer->id, "Abandonedcartcampaign SMS not Sended (".$checkout_data->shipping_address->first_name.") because ".$response->messages[0]->status->description, "not sended");
 
                             }
                         }
