@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse custom-nav-collapse" id="navbarSupportedContent">
+    <div class="collapse admin-nav navbar-collapse custom-nav-collapse" id="navbarSupportedContent">
         <div class="text-center">
             <ul class="custom-ul navbar-nav mr-auto text-center">
                 <li class="nav-item active">

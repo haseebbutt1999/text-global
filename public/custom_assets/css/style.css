@@ -274,4 +274,11 @@ input:checked + .slider:before {
     ul.custom-ul li {
         padding: 5px 10px;
     }
+    .admin-nav.navbar-collapse {
+        margin-left: 27% !important;
+    }
+    ul.custom-ul li {
+        padding: 5px 10px;
+    }
+
 }
