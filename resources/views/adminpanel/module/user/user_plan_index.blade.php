@@ -152,7 +152,7 @@
 
         $('form.require-validation').bind('submit', function(e) {
             var plan_id = $(this).find('.plan_id').val();
-            console.log(plan_id);
+
             $form = $(this),
                 inputSelector = ['input[type=email]', 'input[type=password]',
                     'input[type=text]', 'input[type=file]',

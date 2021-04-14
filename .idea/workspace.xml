@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="apply middleware on admin routes to prevent user access routes !">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" afterDir="false" />
+    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="stripe credit big fixing">
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,14 +110,7 @@
       <workItem from="1618252667497" duration="3386000" />
       <workItem from="1618258251479" duration="1345000" />
       <workItem from="1618295044932" duration="25792000" />
-      <workItem from="1618348891366" duration="9236000" />
-    </task>
-    <task id="LOCAL-00091" summary="validations applyed on all campaigns">
-      <created>1617710529808</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1617710529822</updated>
+      <workItem from="1618348891366" duration="9280000" />
     </task>
     <task id="LOCAL-00092" summary="validations applyed on all campaigns">
       <created>1617710905179</created>
@@ -457,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618379084628</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="stripe credit big fixing">
+      <created>1618387317692</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1618387317692</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +493,8 @@
     <MESSAGE value="dashboard reports and admin side logs" />
     <MESSAGE value="and checks on submit form, add api username and password dynamically" />
     <MESSAGE value="apply middleware on admin routes to prevent user access routes !" />
-    <option name="LAST_COMMIT_MESSAGE" value="apply middleware on admin routes to prevent user access routes !" />
+    <MESSAGE value="stripe credit big fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="stripe credit big fixing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617777766007">
