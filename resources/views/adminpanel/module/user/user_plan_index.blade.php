@@ -2,10 +2,10 @@
 @section('content')
 
     <!-- POST CARDS -->
-<div class="container">
-    <div class="row pt-2 p-5">
-        @foreach($plans_data as $key=>$plan)
-{{--            @if($plan->on_install != 1)--}}
+    <div class="container">
+        <div class="row pt-2 p-5">
+            @foreach($plans_data as $key=>$plan)
+                {{--            @if($plan->on_install != 1)--}}
                 <div class="col-sm-4 mb-4">
                     <div class="card bg-white border-0 shadow-sm">
                         <div class="card-header bg-white border-light" style="background: #202E78 !important; color: white">
@@ -47,9 +47,9 @@
                                                             <label class='control-label'>Select Credits</label>
                                                             <div class="form-check">
                                                                 @if(isset($plan->credits))
-{{--                                                                    @dd($plan->credits)--}}
+                                                                    {{--                                                                    @dd($plan->credits)--}}
                                                                     @foreach($plan->credits as $key2=>$credit_data)
-{{--                                                                        @dd($credit_data)--}}
+                                                                        {{--                                                                        @dd($credit_data)--}}
                                                                         <label class="form-check-label d-flex price-credit-main-div">
                                                                             <input type="hidden" name="price" class="price">
                                                                             <input type="hidden" name="credits" class="credits">
@@ -74,15 +74,15 @@
                                                         <div>
                                                             <div class='form-group  required'>
                                                                 <label class='control-label'>Card Number</label> <input
-                                                                     class='form-control card-number-{{$plan->id}}' size='20'
+                                                                    class='form-control card-number-{{$plan->id}}' size='20'
                                                                     type='text'>
                                                             </div>
                                                         </div>
                                                         <div class='row'>
                                                             <div class='col-4 form-group cvc required'>
                                                                 <label class='control-label'>CVC</label> <input
-                                                                                                                class='form-control card-cvc-{{$plan->id}}' placeholder='ex. 311' size='4'
-                                                                                                                type='text'>
+                                                                    class='form-control card-cvc-{{$plan->id}}' placeholder='ex. 311' size='4'
+                                                                    type='text'>
                                                             </div>
                                                             <div class='col-4 form-group expiration required'>
                                                                 <label class='control-label'>Expiration Month</label> <input
@@ -113,16 +113,16 @@
                                         </div>
                                     </div>
                                 </div>
-{{--                                modal end--}}
+                                {{--                                modal end--}}
                             </div>
 
                         </div>
                     </div>
                 </div>
-{{--            @endif--}}
-        @endforeach
+                {{--            @endif--}}
+            @endforeach
+        </div>
     </div>
-</div>
 
     <!-- END POST CARDS -->
 
@@ -148,11 +148,12 @@
             }
         });
         // Stripe Order Payment
-        var $form = $(".require-validation");
+         var $form;
+
         $('form.require-validation').bind('submit', function(e) {
             var plan_id = $(this).find('.plan_id').val();
             console.log(plan_id);
-            var $form = $(".require-validation"),
+            $form = $(this),
                 inputSelector = ['input[type=email]', 'input[type=password]',
                     'input[type=text]', 'input[type=file]',
                     'textarea'
@@ -194,7 +195,6 @@
             } else {
                 /* token contains id, last4, and card type */
                 var token = response['id'];
-                var $form = $(".require-validation");
                 $form.find('input[type=text]').empty();
                 $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
                 $form.get(0).submit();

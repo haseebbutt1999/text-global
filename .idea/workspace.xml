@@ -21,9 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="apply middleware on admin routes to prevent user access routes !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CheckoutsUpdateJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,14 +112,7 @@
       <workItem from="1618252667497" duration="3386000" />
       <workItem from="1618258251479" duration="1345000" />
       <workItem from="1618295044932" duration="25792000" />
-      <workItem from="1618348891366" duration="2481000" />
-    </task>
-    <task id="LOCAL-00090" summary="validations applyed on all campaigns">
-      <created>1617710408046</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1617710408046</updated>
+      <workItem from="1618348891366" duration="9236000" />
     </task>
     <task id="LOCAL-00091" summary="validations applyed on all campaigns">
       <created>1617710529808</created>
@@ -458,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618349745032</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="apply middleware on admin routes to prevent user access routes !">
+      <created>1618379084628</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1618379084628</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,10 +534,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618349748623">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1618379149499">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618349748623" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1618379149499" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -637,6 +636,11 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
           <line>128</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php</url>
+          <line>22</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
