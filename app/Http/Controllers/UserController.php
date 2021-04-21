@@ -612,48 +612,6 @@ class UserController extends Controller
 
     }
 
-    public  function webhooks_delete(){
-
-        $shop = Auth::user();
-        $response = $shop->api()->rest('DELETE', '/admin/webhooks/1025598357664.json', [
-            'webhook' => [
-                'topic' => 'customers/create',
-                'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/customer-create',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('DELETE', '/admin/webhooks/1025598390432.json', [
-            'webhook' => [
-                'topic' => 'orders/create',
-                'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-create',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('DELETE', '/admin/webhooks/1025598423200.json', [
-            'webhook' => [
-                'topic' => 'orders/updated',
-                'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-updated',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('DELETE', '/admin/webhooks/1025598455968.json', [
-            'webhook' => [
-                'topic' => 'orders/fulfilled',
-                'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-fulfilled',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('DELETE', '/admin/webhooks/1025598488736.json', [
-            'webhook' => [
-                'topic' => 'checkouts/update',
-                'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checkouts-update',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('GET', '/admin/webhooks.json');
-        dd($response);
-
-    }
 
 
 
