@@ -133,6 +133,7 @@
                                                                     <td>
                                                                         {{$user_welcome_log->customer_id}}
                                                                     </td>
+                                                                    </td>
                                                                     <td>
                                                                         {{$user_welcome_log->firstname}}
                                                                     </td>
@@ -427,13 +428,13 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="width: 25%">Customer ID</th>
+                                                                <th class="font-weight-bold " style="">Customer ID</th>
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Action</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">Action</th>
+                                                                <th class="font-weight-bold " style="">Created_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -572,13 +573,13 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="width: 25%">Customer ID</th>
+                                                                <th class="font-weight-bold " style="">Customer ID</th>
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Action</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">Action</th>
+                                                                <th class="font-weight-bold " style="">Created_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -719,13 +720,13 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="width: 25%">Customer ID</th>
+                                                                <th class="font-weight-bold " style="">Customer ID</th>
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Action</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">Action</th>
+                                                                <th class="font-weight-bold " style="">Created_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
