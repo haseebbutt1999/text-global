@@ -133,6 +133,15 @@
                                                                     <td>
                                                                         {{$user_welcome_log->customer_id}}
                                                                     </td>
+                                                                    <td>
+                                                                        {{$user_welcome_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_welcome_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_welcome_log->mobileno}}
+                                                                    </td>
                                                                     <td >
                                                                         {{$user_welcome_log->action}}
                                                                     </td>
@@ -293,7 +302,15 @@
                                                                     <td>
                                                                         {{$user_abandonedcart_log->customer_id}}
                                                                     </td>
-
+                                                                    <td>
+                                                                        {{$user_abandonedcart_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_abandonedcart_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_abandonedcart_log->mobileno}}
+                                                                    </td>
                                                                     <td >
                                                                         {{$user_abandonedcart_log->action}}
                                                                     </td>
@@ -426,6 +443,15 @@
                                                                 <tr class="td-text-center">
                                                                     <td>
                                                                         {{$user_orderconfirm_log->customer_id}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderconfirm_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderconfirm_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderconfirm_log->mobileno}}
                                                                     </td>
                                                                     <td>
                                                                         {{$user_orderconfirm_log->order_name}}
@@ -564,6 +590,15 @@
                                                                         {{$user_orderrefund_log->customer_id}}
                                                                     </td>
                                                                     <td>
+                                                                        {{$user_orderrefund_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderrefund_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderrefund_log->mobileno}}
+                                                                    </td>
+                                                                    <td>
                                                                         {{$user_orderrefund_log->order_name}}
                                                                     </td>
                                                                     <td >
@@ -699,6 +734,15 @@
                                                                 <tr class="td-text-center">
                                                                     <td>
                                                                         {{$user_orderdispatch_log->customer_id}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->mobileno}}
                                                                     </td>
                                                                     <td>
                                                                         {{$user_orderdispatch_log->order_name}}
