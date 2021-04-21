@@ -3,6 +3,7 @@
 use App\Abandonedcartcampaign;
 use App\AbandonedCartLog;
 use App\Http\Controllers\LogsController;
+use App\order;
 use App\Test;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -68,7 +69,7 @@ class CheckoutsUpdateJob implements ShouldQueue
             $abandoned_cart_campaign_status_check = Abandonedcartcampaign::where('status', 'active')->where('user_id', $shop->id)->first();
             if(isset($abandoned_cart_campaign_status_check)) {
                 $abandonedCartSmsStatus = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->where('status', 'sended')->first();
-                if($abandonedCartSmsStatus == null){
+                if($abandonedCartSmsStatus == null ){
                     if($shop->credit_status != "0 credits"){
 //
                         dispatch(new AbandonedCartSmsJob($checkout_data,$shop))->delay(Carbon::now()->addHours($abandoned_cart_campaign_status_check->delay_time));

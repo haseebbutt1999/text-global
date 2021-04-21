@@ -44,9 +44,9 @@ class AbandonedCartSmsJob implements ShouldQueue
         $checkout_data = $this->checkout_data;
         $shop = $this->shop;
         $order_checkout_check = order::where('user_id', $shop->id)->where('checkout_id', $checkout_data->id)->first();
-        $test = new Test();
-        $test->text = "order_checkout:".json_encode($order_checkout_check);
-        $test->save();
+//        $test = new Test();
+//        $test->text = "order_checkout:".json_encode($order_checkout_check);
+//        $test->save();
         if($order_checkout_check == null){
             try {
 
