@@ -53,9 +53,9 @@
                                             </td>
                                             <td>
                                                 @if(isset($user->plan->name))
-                                                {{$user->plan->name}}
+                                                <div class="badge badge-primary text-light px-3 py-1">{{$user->plan->name}}</div>
                                                 @else
-                                                No Plan Selected
+                                                <div class="badge badge-danger text-light px-3 py-1">No Plan Selected</div>
                                                 @endif
                                             </td>
                                             <td>
@@ -65,7 +65,7 @@
                                                 @if(isset($user->shopdetail) && $user->shopdetail != "")
                                                     <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>
                                                 @else
-                                                    No Shop Details
+                                                    <div class="badge badge-danger text-light px-3 py-1">No Shop Details</div>
                                                 @endif
                                             </td>
                                         </tr>
