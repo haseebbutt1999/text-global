@@ -110,7 +110,7 @@ class OrderRefundJob implements ShouldQueue
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS Sended Successfully to Customer ('.$order_refund_data->shipping_address->first_name.')');
-                            $this->user_log->user_log( $shop->id, 'Orderrefund', $order_refund_data->name , $order_refund_data->customer->id, 'Order refund SMS sended successfully to customer ('.$order_refund_data->shipping_address->first_name.')', "sended");
+                            $this->user_log->user_log( $shop->id, $order_refund_data->shipping_address->phone,$order_refund_data->shipping_address->first_name,$order_refund_data->shipping_address->last_name,'Orderrefund', $order_refund_data->name , $order_refund_data->customer->id, 'Order refund SMS sended successfully to customer ('.$order_refund_data->shipping_address->first_name.')', "sended");
                             //                Detect Credits
                             $user = User::Where('id', $order_refund_campaign->user_id)->first();
                             if($user->credit >= 0){
@@ -124,7 +124,7 @@ class OrderRefundJob implements ShouldQueue
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
                             $this->log_store->log_store($shop->id, 'Orderrefund', $order_refund_campaign->id, $order_refund_campaign->campaign_name, 'Order Refund SMS not Sended.');
-                            $this->user_log->user_log( $shop->id, 'Orderrefund', $order_refund_data->name , $order_refund_data->customer->id, 'Order refund SMS not sended to customer ('.$order_refund_data->shipping_address->first_name.') because '.$response->messages[0]->status->description, "not sended");
+                            $this->user_log->user_log( $shop->id, $order_refund_data->shipping_address->phone,$order_refund_data->shipping_address->first_name,$order_refund_data->shipping_address->last_name,'Orderrefund', $order_refund_data->name , $order_refund_data->customer->id, 'Order refund SMS not sended to customer ('.$order_refund_data->shipping_address->first_name.') because '.$response->messages[0]->status->description, "not sended");
                         }
 
                     }

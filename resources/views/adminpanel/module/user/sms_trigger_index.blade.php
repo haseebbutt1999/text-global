@@ -118,6 +118,9 @@
 
                                                             <tr class="th-tr table-tr text-white text-center">
                                                                 <th class="font-weight-bold " style="width: 33%">Customer ID</th>
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
                                                                 <th class="font-weight-bold " style="width: 33%">Action</th>
                                                                 <th class="font-weight-bold " style="width: 33%">Created_at</th>
                                                             </tr>
@@ -276,9 +279,12 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="width: 33%">Customer ID</th>
-                                                                <th class="font-weight-bold " style="width: 33%">Action</th>
-                                                                <th class="font-weight-bold " style="width: 33%">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Customer ID</th>
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="">Action</th>
+                                                                <th class="font-weight-bold " style="">Created_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -405,7 +411,10 @@
 
                                                             <tr class="th-tr table-tr text-white text-center">
                                                                 <th class="font-weight-bold " style="width: 25%">Customer ID</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order Name</th>
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Action</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Created_at</th>
                                                             </tr>
@@ -538,7 +547,10 @@
 
                                                             <tr class="th-tr table-tr text-white text-center">
                                                                 <th class="font-weight-bold " style="width: 25%">Customer ID</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order Name</th>
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Action</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Created_at</th>
                                                             </tr>
@@ -673,7 +685,10 @@
 
                                                             <tr class="th-tr table-tr text-white text-center">
                                                                 <th class="font-weight-bold " style="width: 25%">Customer ID</th>
-                                                                <th class="font-weight-bold " style="width: 25%">Order Name</th>
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="width: 25%">Order#</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Action</th>
                                                                 <th class="font-weight-bold " style="width: 25%">Created_at</th>
                                                             </tr>

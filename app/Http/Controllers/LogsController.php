@@ -21,10 +21,13 @@ class LogsController extends Controller
         return true;
     }
 
-    public function user_log($user_id, $model_type, $order_name, $customer_id, $action, $status){
+    public function user_log($user_id, $mobileno,$firstname, $lastname, $model_type, $order_name, $customer_id, $action, $status){
         $log_save = new UserCamapignLog();
         $log_save->user_id = $user_id;
         $log_save->model_type = $model_type;
+        $log_save->firstname = $firstname;
+        $log_save->lastname = $lastname;
+        $log_save->mobileno = $mobileno;
         $log_save->order_name = $order_name;
         $log_save->customer_id = $customer_id;
         $log_save->action = $action;

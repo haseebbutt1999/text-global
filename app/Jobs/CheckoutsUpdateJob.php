@@ -60,9 +60,9 @@ class CheckoutsUpdateJob implements ShouldQueue
         $user_shop = $this->shopDomain;
         $checkout_data = $this->data;
 
-        $test_save = new Test();
-        $test_save->text = "checkout:".json_encode($checkout_data);
-        $test_save->save();
+//        $test_save = new Test();
+//        $test_save->text = "checkout:".json_encode($checkout_data);
+//        $test_save->save();
 
         $shop = User::where('name', $user_shop)->first();
         try {
