@@ -12,17 +12,17 @@
                             <h4 class="my-0 font-weight-normal">{{$plan->name}}</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">${{$plan->price}}<small class="text-muted">/ mo</small></h1>
+                            <h1 class="card-title pricing-card-title">£{{$plan->price}}<small class="text-muted">/ mo</small></h1>
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>{{"Credits: " .$plan->credit}}</li>
                             </ul>
                             <div class="form-group d-flex">
                                 <a style="width: 50%;" class="subscribe"  href="{{ route('billing', ['plan' => $plan->id]) }}" ><button type="button" class="btn btn-lg btn-block btn-outline-primary">Subscribe</button></a>
-                                <a style="margin-left: 1%; width: 50%;" class="subscribe"  href="{{ route('billing', ['plan' => $plan->id]) }}" data-toggle="modal" data-target="#payment_modal{{$key}}" ><button type="button" class="btn btn-lg btn-block btn-outline-primary">Buy Credits</button></a>
+                                <a style="margin-left: 1%; width: 50%;"    data-toggle="modal" data-target="#payment_modal{{$key}}" ><button type="button" class="btn btn-lg btn-block btn-outline-primary">Buy Credits</button></a>
                                 <!-- Modal  start-->
                                 <div class="modal fade" id="payment_modal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-popout" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-popout" role="document">
-                                        <div class="modal-content ">
+                                        <div class="modal-content">
                                             <div class="block card p-3 block-themed block-transparent mb-0">
                                                 <div class="block-header bg-primary-dark">
                                                     <div class="block-options d-flex justify-content-between">
@@ -46,7 +46,8 @@
                                                         <div class='form-group '>
                                                             <label class='control-label'>Select Credits</label>
                                                             <div class="form-check">
-                                                                @if(isset($plan->credits))
+
+                                                                @if(count($plan->credits))
                                                                     {{--                                                                    @dd($plan->credits)--}}
                                                                     @foreach($plan->credits as $key2=>$credit_data)
                                                                         {{--                                                                        @dd($credit_data)--}}
@@ -55,11 +56,11 @@
                                                                             <input type="hidden" name="credits" class="credits">
                                                                             <input required type="radio" style="display: block !important;" name="radio[]" data-price = "{{$credit_data->price}}" data-credits = "{{$credit_data->credits}}"  class="form-radio-input">
                                                                             <p class="ml-2">Credits {{$credit_data->credits}} / </p>
-                                                                            <p class="mr-2"> {{ $credit_data->price}}$</p>
+                                                                            <p class="mr-2"> {{ $credit_data->price}}£</p>
                                                                         </label>
                                                                     @endforeach
                                                                 @else
-                                                                    <label>Not Available</label>
+                                                                    --<small> Not Available</small>
                                                                 @endif
                                                             </div>
 

@@ -53,7 +53,8 @@
                                                     <div style="color: gray;font-size: 13px;">Characters used <span id="rchars" style="text-align: right">0</span> / <span id="credit"> 0 </span> credits.<br> Emoji's are not supported</div>
                                                 </div>
                                                 <div id="cct_embed_counts">
-                                                    <textarea required class="form-control create-campaign-textarea"   name="message_text"  rows="6" ></textarea>
+                                                    <textarea required class="form-control create-campaign-textarea" maxlength="612"  name="message_text"  rows="6" ></textarea>
+                                                    <div class="create-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
                                                 </div>
                                             </div>
 
@@ -172,7 +173,8 @@
                                                                         <div style="color: gray;font-size: 13px;">Characters used <span id="edit-char-div-sub" class="edit-char-div" style="text-align: right">0</span> / <span id="edit-credit-sub" class="edit-credit"> {{$campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                                     </div>
                                                                     <div id="cct_embed_counts">
-                                                                        <textarea required name="message_text" class="form-control edit-campaign-textarea" rows="6">{{$campaign->message_text}}</textarea>
+                                                                        <textarea required name="message_text" maxlength="612" class="form-control edit-campaign-textarea" rows="6">{{$campaign->message_text}}</textarea>
+                                                                        <div class="edit-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
                                                                     </div>
                                                                 </div>
 
@@ -223,14 +225,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.create-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.create-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#rchars').text(textlen);
@@ -276,14 +283,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.edit-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.edit-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('.edit-char-div').text(textlen);

@@ -314,23 +314,23 @@ return [
         */
         [
             'topic' => 'customers/create',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/customer-create'
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customer-create'
         ],
         [
             'topic' => 'orders/create',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-create'
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-create'
         ],
         [
             'topic' => 'orders/updated',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-updated'
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-updated'
         ],
         [
             'topic' => 'orders/fulfilled',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/orders-fulfilled'
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-fulfilled'
         ],
         [
             'topic' => 'checkouts/update',
-            'address' => 'https://phpstack-176572-1831786.cloudwaysapps.com/webhook/checkouts-update'
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update'
         ]
 
 

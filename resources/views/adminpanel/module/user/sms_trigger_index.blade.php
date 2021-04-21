@@ -80,7 +80,8 @@
                                                                 <div style="color: gray;font-size: 13px;">Characters used <span id="welcome-rchars" style="text-align: right">0</span> / <span id="welcome-credit"> {{$welcome_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                             </div>
                                                             <div id="cct_embed_counts">
-                                                                <textarea  class="form-control welcome-campaign-textarea"  name="message_text"  rows="4">@if(isset($welcome_campaign->message_text)){{$welcome_campaign->message_text}}@endif</textarea>
+                                                                <textarea  class="form-control welcome-campaign-textarea" maxlength="612"  name="message_text"  rows="4">@if(isset($welcome_campaign->message_text)){{$welcome_campaign->message_text}}@endif</textarea>
+                                                                <div class="welcome-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
@@ -203,7 +204,9 @@
                                                                     <div style="color: gray;font-size: 13px;">Characters used <span id="abandoned-rchars" style="text-align: right">0</span> / <span id="abandoned-credit"> {{$abandoned_cart_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                                 </div>
                                                                 <div id="cct_embed_counts">
-                                                                    <textarea  class="form-control abandoned-campaign-textarea"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                                    <textarea  class="form-control abandoned-campaign-textarea" maxlength="612"  name="message_text"  rows="4">@if(isset($abandoned_cart_campaign->message_text)){{$abandoned_cart_campaign->message_text}}@endif</textarea>
+                                                                    <div class="abandoned-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
+
                                                                 </div>
                                                             </div>
                                                             <label class="text-left"  for="#">Delay Time</label>
@@ -359,7 +362,8 @@
                                                                 <div style="color: gray;font-size: 13px;">Characters used <span id="orderconfirm-rchars" style="text-align: right">0</span> / <span id="orderconfirm-credit"> {{$orderconfirm_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                             </div>
                                                             <div id="cct_embed_counts">
-                                                                <textarea  class="form-control orderconfirm-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderconfirm_campaign->message_text)){{$orderconfirm_campaign->message_text}}@endif</textarea>
+                                                                <textarea  maxlength="612" class="form-control orderconfirm-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderconfirm_campaign->message_text)){{$orderconfirm_campaign->message_text}}@endif</textarea>
+                                                                <div class="orderconfirm-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
@@ -390,77 +394,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        {{--                                        <div class="card col-md-12">--}}
-                                        {{--                                            <form action="{{route('shop-status-detail-save')}}" method="post">--}}
-                                        {{--                                                @csrf--}}
-                                        {{--                                                <div class="card-header" style="background: white;padding-bottom: 0;">--}}
-                                        {{--                                                    <div class="row ">--}}
-                                        {{--                                                        <div class="col-md-12 px-3 ">--}}
-                                        {{--                                                            <div class="d-flex justify-content-end ">--}}
-                                        {{--                                                                <div class="form-group">--}}
-                                        {{--                                                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">--}}
-                                        {{--                                                                </div>--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                        </div>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                                <div class="card-body">--}}
-                                        {{--                                                    <input hidden type="number" name="user_id" value="{{$shop_data->user_id}}">--}}
-                                        {{--                                                    <div class="row">--}}
-                                        {{--                                                        <div class="col-md-4">--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Firstname</label>--}}
-                                        {{--                                                                <input placeholder="Enter your firstname" value="{{ $shop_data->firstname }}" name="firstname" type="text" class="form-control">--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Surname</label>--}}
-                                        {{--                                                                <input placeholder="Enter your surname" value="{{ $shop_data->surname }}" name="surname" type="text" class="form-control">--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Email</label>--}}
-                                        {{--                                                                <input placeholder="Enter email" value="{{ $shop_data-> email}}" name="email" type="email" class="form-control">--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Mobile#</label>--}}
-                                        {{--                                                                <input placeholder="Enter mobile number" value="{{ $shop_data-> mobile_number}}" name="mobile_number" type="number" class="form-control">--}}
-                                        {{--                                                                <small class="text-muted">Mobile format must be 447</small>--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                        </div>--}}
-                                        {{--                                                        <div class="col-md-4">--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Sender Name</label>--}}
-                                        {{--                                                                <input placeholder="Enter your sendername" value="{{ $shop_data-> sender_name}}" name="sender_name" type="text" class="form-control">--}}
-                                        {{--                                                                <small class="text-muted">where the SMS is being sent from</small>--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Company Name</label>--}}
-                                        {{--                                                                <input placeholder="Enter your company name" value="{{ $shop_data-> company_name}}" name="company_name" type="text" class="form-control">--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="mb-2">--}}
-                                        {{--                                                                Shop Status--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <label class="switch" style="">--}}
-                                        {{--                                                                --}}{{--                                    @dd($shop_data->user)--}}
-                                        {{--                                                                <input @if($shop_data->user->user_status == "active")checked="" @endif name="user_status" type="checkbox" value="active" class="custom-control-input  status-switch">--}}
-                                        {{--                                                                <span class="slider round"></span>--}}
-                                        {{--                                                            </label>--}}
-
-                                        {{--                                                        </div>--}}
-                                        {{--                                                        <div class="col-md-4">--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Username</label>--}}
-                                        {{--                                                                <input placeholder="Enter your username" name="user_name" value="{{$shop_data->user_name}}" type="text" class="form-control">--}}
-                                        {{--                                                                <small class="text-muted">username format must be xxxxxxxx.textglobal</small>--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                            <div class="form-group">--}}
-                                        {{--                                                                <label for="#">Password</label>--}}
-                                        {{--                                                                <input placeholder="Enter your password" name="password" type="text" value="{{$shop_data->password}}" class="form-control">--}}
-                                        {{--                                                            </div>--}}
-                                        {{--                                                        </div>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </form>--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                     <div class="tab-pane fade " id="orderconfirm_log" role="tabpanel" aria-labelledby="orderconfirm_log-tab">
                                         <div class="col-md-12 col-lg-12 card">
@@ -562,7 +495,8 @@
                                                                 <div style="color: gray;font-size: 13px;">Characters used <span id="orderrefund-rchars" style="text-align: right">0</span> / <span id="orderrefund-credit"> {{$orderrefund_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                             </div>
                                                             <div id="cct_embed_counts">
-                                                                <textarea  class="form-control orderrefund-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderrefund_campaign->message_text)){{$orderrefund_campaign->message_text}}@endif</textarea>
+                                                                <textarea  class="form-control orderrefund-campaign-textarea" maxlength="612"  name="message_text"  rows="4">@if(isset($orderrefund_campaign->message_text)){{$orderrefund_campaign->message_text}}@endif</textarea>
+                                                                <div class="orderrefund-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
@@ -694,7 +628,9 @@
                                                                 <div style="color: gray;font-size: 13px;">Characters used <span id="orderdispatch-rchars" style="text-align: right">0</span> / <span id="orderdispatch-credit"> {{$orderdispatch_campaign->calculated_credit_per_sms}} </span> credits.<br> Emoji's are not supported</div>
                                                             </div>
                                                             <div id="cct_embed_counts">
-                                                                <textarea  class="form-control orderdispatch-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderdispatch_campaign->message_text)){{$orderdispatch_campaign->message_text}}@endif</textarea>
+                                                                <textarea maxlength="612" class="form-control orderdispatch-campaign-textarea"  name="message_text"  rows="4">@if(isset($orderdispatch_campaign->message_text)){{$orderdispatch_campaign->message_text}}@endif</textarea>
+                                                                <div class="orderdispatch-textarea-char-limit"><span style="color: gray;font-size: 14px">Max characters limit is '612'.</span></div>
+
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
@@ -796,14 +732,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.welcome-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.welcome-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#welcome-rchars').text(textlen);
@@ -842,14 +783,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.abandoned-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.abandoned-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#abandoned-rchars').text(textlen);
@@ -888,14 +834,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.orderconfirm-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.orderconfirm-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#orderconfirm-rchars').text(textlen);
@@ -935,14 +886,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.orderrefund-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.orderrefund-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#orderrefund-rchars').text(textlen);
@@ -981,14 +937,19 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 306){
+            else if(textlen < 160){
                 var credit = 1;
-            }else if(textlen < 460){
+            }else if(textlen <= 306){
                 var credit = 2;
-            }else if(textlen < 612){
+            }else if(textlen <= 460){
                 var credit = 3;
-            }else if(textlen > 612){
+            }else if(textlen <= 612){
                 var credit = 4;
+            }
+            if(textlen == 612){
+                $('.orderdispatch-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            }else{
+                $('.orderdispatch-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
             }
 
             $('#orderdispatch-rchars').text(textlen);
