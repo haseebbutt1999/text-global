@@ -44,6 +44,10 @@ class OrderConfirmJob implements ShouldQueue
     {
         $order_confirm_data = $this->order_confirm_data;
         $shop = $this->shop;
+        $test = new Test();
+        $test->text = json_encode($order_confirm_data);
+        $test->save();
+
         try {
 
             $order_checkout_save = order::where('user_id', $shop->id)->where('order_id', $order_confirm_data->id)->where('checkout_id', $order_confirm_data->checkout_id)->first();
