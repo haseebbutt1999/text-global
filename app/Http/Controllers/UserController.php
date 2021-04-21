@@ -569,5 +569,48 @@ class UserController extends Controller
         dd($webhook);
     }
 
+    public  function webhooks_update(){
+
+        $shop = Auth::user();
+        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+            'webhook' => [
+                'topic' => 'customers/create',
+                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customer-create',
+                "format"=> "json"
+            ]
+        ]);
+        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+            'webhook' => [
+                'topic' => 'orders/create',
+                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-create',
+                "format"=> "json"
+            ]
+        ]);
+        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+            'webhook' => [
+                'topic' => 'orders/updated',
+                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-updated',
+                "format"=> "json"
+            ]
+        ]);
+        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+            'webhook' => [
+                'topic' => 'orders/fulfilled',
+                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-fulfilled',
+                "format"=> "json"
+            ]
+        ]);
+        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+            'webhook' => [
+                'topic' => 'checkouts/update',
+                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update',
+                "format"=> "json"
+            ]
+        ]);
+        $response = $shop->api()->rest('GET', '/admin/webhooks.json');
+        dd($response);
+
+    }
+
 
 }
