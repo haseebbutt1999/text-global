@@ -52,7 +52,11 @@
                                                 {{$user->name}}
                                             </td>
                                             <td>
+                                                @if(isset($user->plan->name))
                                                 {{$user->plan->name}}
+                                                @else
+                                                No Plan Selected
+                                                @endif
                                             </td>
                                             <td>
                                                 <div class="badge badge-primary text-light px-3 py-1">{{$user->credit}}</div>
