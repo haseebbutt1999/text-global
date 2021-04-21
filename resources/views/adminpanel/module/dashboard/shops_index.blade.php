@@ -62,7 +62,11 @@
                                                 <div class="badge badge-primary text-light px-3 py-1">{{$user->credit}}</div>
                                             </td>
                                             <td style="text-align: right;">
-                                                <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>
+                                                @if(isset($user->id))
+                                                    <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>
+                                                @else
+                                                    No Shop Details
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
