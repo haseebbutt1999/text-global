@@ -62,7 +62,7 @@
                                                 <div class="badge badge-primary text-light px-3 py-1">{{$user->credit}}</div>
                                             </td>
                                             <td style="text-align: right;">
-                                                @if(isset($user->shopdetail))
+                                                @if(isset($user->shopdetail) && $user->shopdetail != "")
                                                     <a href="{{route('shop-status-detail', $user->id)}}"><button class="btn btn-primary btn-sm" >Shop Detail</button></a>
                                                 @else
                                                     No Shop Details
