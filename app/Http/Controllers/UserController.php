@@ -565,7 +565,12 @@ class UserController extends Controller
 
     public function webhooks()
     {
-        $webhook=Auth::user()->api()->rest('GET','/admin/webhooks.json');
+        $webhook = [''];
+        $users = User::get();
+        foreach ($users as $user){
+            array_push($webhook,$user->api()->rest('GET','/admin/webhooks.json')['body']['webhooks']);
+        }
+
         dd($webhook);
     }
 

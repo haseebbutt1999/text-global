@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Credit;
 use App\Customer;
+use App\Exports\CustomersExport;
 use App\Package;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 
 class AdminController extends Controller
@@ -72,10 +74,60 @@ class AdminController extends Controller
         return view('adminpanel/module/dashboard/customers_index', compact('customers_data','total_orders', 'total_spents', 'countries', 'filter_country'));
 
 
-        return view('adminpanel/module/dashboard/customers_index', compact('customers_data'));
+//        return view('adminpanel/module/dashboard/customers_index', compact('customers_data'));
     }
 
-    public function customer_filter(Request $request){
+    public function customer_export(){
+        return Excel::download(new CustomersExport, 'customers.xlsx');
+    }
+
+    public function customer_push(){
+        $customers = Customer::where('user_id', Auth::user()->id)->get();
+        foreach ($customers as $customer){
+
+            $data = [
+                "firstName" => $customer->first_name,
+                "lastName" => $customer->last_name,
+                "contactInformation"=>[
+                    "email"=>[
+                        "address"=>$customer->email,
+                    ],
+                    "phone"=>[
+                        "number"=>$customer->phone,
+                    ]
+                ],
+                "country"=>$customer->addressess[0]->country,
+                "customAttributes"=>[
+                    "orders_count"=>$customer->orders_count,
+                    "total_spent"=>$customer->total_spent,
+                    "currency"=>$customer->currency,
+                ]
+            ];
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://%7BbaseUrl%7D/people/2/persons',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>$data,
+                CURLOPT_HTTPHEADER => array(
+                    'Authorization: {authorization}',
+                    'Content-Type: application/json',
+                    'Accept: application/json'
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            echo $response;
+        }
 
     }
 
