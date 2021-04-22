@@ -26,10 +26,57 @@ class AdminController extends Controller
         return view('adminpanel/module/dashboard/shops_index', compact('users_data'));
     }
 
-    public function customers_index(){
-        $customers_data = Customer::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(10);
+    public function customers_index(Request $request){
+        $shop=Auth::user();
+        $countries = [];
+        foreach ($shop->customers as $customer){
+            array_push($countries, $customer->addressess[0]->country);
+        }
+        $countries = array_values(array_unique($countries));
+
+//        $collections=Product::where('shop', $shop->name)->pluck('collection')->toArray();
+        $total_orders = '';
+        $total_spents = '';
+        $filter_country='';
+//        $products = Product::with('trendyolModel')->where('shop', $shop->name);
+        $customers_data = Customer::where('user_id', Auth::user()->id);
+//        dd($products->get());
+        if ($request->input('total_orders'))
+        {
+            $total_orders=$request->input('total_orders');
+
+            $customers_data=$customers_data->where(function ($query) use($total_orders){
+                $query->orWhere('orders_count','LIKE binary', '%'.$total_orders.'%');
+            });
+        }
+        if ($request->input('total_spents')) {
+            $total_spents = $request->input('total_spents');
+
+            $customers_data=$customers_data->where(function ($query) use($total_spents){
+                $query->orWhere('total_spent','LIKE binary', '%'.number_format($total_spents, 2).'%');
+            });
+        }
+        if ($request->input('country')) {
+
+            $filter_country = $request->input('country');
+
+            $customers_data=$customers_data->whereHas('addressess',function ($query) use($filter_country){
+                $query->where('country',$filter_country);
+            });
+//            $products = $products->where('product_type', $filter_product_type);
+        }
+        $customers_data = $customers_data->orderBy('created_at', 'desc')->paginate(20);
+//        if (count($request->all())) {
+//            $products->appends($request->all());
+//        }
+        return view('adminpanel/module/dashboard/customers_index', compact('customers_data','total_orders', 'total_spents', 'countries', 'filter_country'));
+
 
         return view('adminpanel/module/dashboard/customers_index', compact('customers_data'));
+    }
+
+    public function customer_filter(Request $request){
+
     }
 
     public function plans_index(){

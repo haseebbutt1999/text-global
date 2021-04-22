@@ -117,7 +117,7 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="">Customer ID</th>
+
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
@@ -130,10 +130,6 @@
                                                             @foreach($user_welcome_logs_data as $key=>$user_welcome_log)
 
                                                                 <tr class="td-text-center">
-                                                                    <td>
-                                                                        {{$user_welcome_log->customer_id}}
-                                                                    </td>
-                                                                    </td>
                                                                     <td>
                                                                         {{$user_welcome_log->firstname}}
                                                                     </td>
@@ -289,7 +285,6 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="">Customer ID</th>
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
@@ -300,9 +295,6 @@
                                                             <tbody>
                                                             @foreach($user_abandonedcart_logs_data as $key=>$user_abandonedcart_log)
                                                                 <tr class="td-text-center">
-                                                                    <td>
-                                                                        {{$user_abandonedcart_log->customer_id}}
-                                                                    </td>
                                                                     <td>
                                                                         {{$user_abandonedcart_log->firstname}}
                                                                     </td>
@@ -428,7 +420,7 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="">Customer ID</th>
+
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
@@ -442,9 +434,6 @@
                                                             @foreach($user_orderconfirm_logs_data as $key=>$user_orderconfirm_log)
 
                                                                 <tr class="td-text-center">
-                                                                    <td>
-                                                                        {{$user_orderconfirm_log->customer_id}}
-                                                                    </td>
                                                                     <td>
                                                                         {{$user_orderconfirm_log->firstname}}
                                                                     </td>
@@ -573,7 +562,7 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="">Customer ID</th>
+
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
@@ -587,9 +576,6 @@
                                                             @foreach($user_orderrefund_logs_data as $key=>$user_orderrefund_log)
 
                                                                 <tr class="td-text-center">
-                                                                    <td>
-                                                                        {{$user_orderrefund_log->customer_id}}
-                                                                    </td>
                                                                     <td>
                                                                         {{$user_orderrefund_log->firstname}}
                                                                     </td>
@@ -720,7 +706,7 @@
                                                             <thead class="border-0 ">
 
                                                             <tr class="th-tr table-tr text-white text-center">
-                                                                <th class="font-weight-bold " style="">Customer ID</th>
+
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
@@ -733,9 +719,6 @@
                                                             {{--                                        @dd($users_data)--}}
                                                             @foreach($user_orderdispatch_logs_data as $key=>$user_orderdispatch_log)
                                                                 <tr class="td-text-center">
-                                                                    <td>
-                                                                        {{$user_orderdispatch_log->customer_id}}
-                                                                    </td>
                                                                     <td>
                                                                         {{$user_orderdispatch_log->firstname}}
                                                                     </td>

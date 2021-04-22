@@ -44,6 +44,7 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
         Route::get('enable-sms', 'UserController@enable_sms')->name('enable-sms');
 
         Route::get('/customers', 'AdminController@customers_index')->name('customers');
+//        Route::post('/customer-filter', 'AdminController@customer_filter')->name('customer-filter');
         Route::get('/welcome-campaign', 'UserController@welcome_campaign')->name('welcome-campaign');
         Route::post('/welcome-sms-campaign-save', 'UserController@welcome_sms_campaign_save')->name('welcome-sms-campaign-save');
 

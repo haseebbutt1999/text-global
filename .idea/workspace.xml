@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="update weebhook, according to new domain">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,28 +122,8 @@
       <workItem from="1618985539002" duration="2350000" />
       <workItem from="1618995905916" duration="2075000" />
       <workItem from="1619001297678" duration="6099000" />
-      <workItem from="1619023794930" duration="14279000" />
-    </task>
-    <task id="LOCAL-00107" summary="user campaigns logs">
-      <created>1618212146317</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1618212146318</updated>
-    </task>
-    <task id="LOCAL-00108" summary="user campaigns logs">
-      <created>1618213550774</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1618213550775</updated>
-    </task>
-    <task id="LOCAL-00109" summary="user campaigns logs">
-      <created>1618213842928</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1618213842928</updated>
+      <workItem from="1619023794930" duration="16924000" />
+      <workItem from="1619072378237" duration="5093000" />
     </task>
     <task id="LOCAL-00110" summary="user campaigns logs">
       <created>1618214172208</created>
@@ -463,7 +447,28 @@
       <option name="project" value="LOCAL" />
       <updated>1619045236594</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="update weebhook, according to new domain">
+      <created>1619045815017</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1619045815018</updated>
+    </task>
+    <task id="LOCAL-00157" summary="update weebhook, according to new domain">
+      <created>1619046816159</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1619046816161</updated>
+    </task>
+    <task id="LOCAL-00158" summary="update weebhook, according to new domain">
+      <created>1619047852745</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1619047852746</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,10 +517,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1617777766007" />
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618313292376">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619072963449">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1618313292376" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1619072963449" />
     <state x="580" y="174" key="FileChooserDialogImpl" timestamp="1618316542856">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -544,10 +549,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1616426128824" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1619045474655">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1619047857716">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1619045474655" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1619047857716" />
     <state x="509" y="157" width="581" height="546" key="find.popup" timestamp="1617090789955">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -564,10 +569,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1617002206686" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1619031717777">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1619072817023">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1619031717777" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1619072817023" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -599,17 +604,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>331</line>
+          <line>324</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>476</line>
+          <line>466</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>777</line>
+          <line>761</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -634,7 +639,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/web.php</url>
-          <line>105</line>
+          <line>106</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -651,6 +656,11 @@
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php</url>
           <line>22</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php</url>
+          <line>72</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>

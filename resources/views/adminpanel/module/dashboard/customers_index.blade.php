@@ -1,6 +1,39 @@
 @extends('adminpanel.user-layout.default')
 @section('content')
     <div class="col-lg-12 col-md-12 p-4">
+        <div class=" px-3 pt-3  bg-white" style="border-radius: 3px;border:1px solid lightgrey;" >
+            <form method="GET" action="{{route('customers')}}">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="number" placeholder="Total Orders" name="total_orders" value="{{$total_orders}}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="number" placeholder="Total Spents" name="total_spents" value="{{$total_spents}}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <?php
+//                        $product_types = \App\Product::select('product_type')->distinct()->get();
+                        ?>
+                        <select class="form-control" name="country">
+                            <option value="" selected>Select Country</option>
+                            @foreach($countries as $country)
+                                @if($country!==null && $country!=='')
+                                    <option @if($country==$filter_country) selected @endif value="{{$country}}">{{$country}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn w-100 btn-primary">Filter</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
         <!-- start info box -->
         <div class="row ">
             <div class="col-md-12 pl-3 pt-2" style="margin: auto;">
