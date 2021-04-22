@@ -569,8 +569,10 @@ class UserController extends Controller
         $users = User::get();
 
         foreach ($users as $user){
+            $shop = Auth::login($user);
+
             if($user->id != 1){
-                array_push($webhook,$user->api()->rest('GET','/admin/webhooks.json')['body']);
+                array_push($webhook,$shop->api()->rest('GET','/admin/webhooks.json')['body']);
             }
         }
 
