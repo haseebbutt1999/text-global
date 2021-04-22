@@ -567,8 +567,11 @@ class UserController extends Controller
     {
         $webhook = [''];
         $users = User::get();
+
         foreach ($users as $user){
-            array_push($webhook,$user->api()->rest('GET','/admin/webhooks.json')['body']);
+            if($user->id != 1){
+                array_push($webhook,$user->api()->rest('GET','/admin/webhooks.json')['body']);
+            }
         }
 
         dd($webhook);
