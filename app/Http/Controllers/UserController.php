@@ -560,7 +560,7 @@ class UserController extends Controller
         $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('id', 'desc')->paginate(30);
 
         return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'abandoned_cart_campaign',
-        'user_welcome_logs_data', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
+            'user_welcome_logs_data', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
     }
 
     public function webhooks()
@@ -569,48 +569,48 @@ class UserController extends Controller
         dd($webhook);
     }
 
-    public  function webhooks_update(){
-
-        $shop = Auth::user();
-        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
-            'webhook' => [
-                'topic' => 'customers/create',
-                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customer-create',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
-            'webhook' => [
-                'topic' => 'orders/create',
-                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-create',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
-            'webhook' => [
-                'topic' => 'orders/updated',
-                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-updated',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
-            'webhook' => [
-                'topic' => 'orders/fulfilled',
-                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-fulfilled',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
-            'webhook' => [
-                'topic' => 'checkouts/update',
-                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update',
-                "format"=> "json"
-            ]
-        ]);
-        $response = $shop->api()->rest('GET', '/admin/webhooks.json');
-        dd($response);
-
-    }
+//    public  function webhooks_update(){
+//
+//        $shop = Auth::user();
+//        $response = $shop->api()->rest('PUT', '/admin/webhooks/1028341563575.json', [
+//            'webhook' => [
+//                'topic' => 'customers/create',
+//                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customer-create',
+//                "format"=> "json"
+//            ]
+//        ]);
+//        $response = $shop->api()->rest('PUT', '/admin/webhooks/1028341596343.json', [
+//            'webhook' => [
+//                'topic' => 'orders/create',
+//                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-create',
+//                "format"=> "json"
+//            ]
+//        ]);
+//        $response = $shop->api()->rest('PUT', '/admin/webhooks/1028341661879.json', [
+//            'webhook' => [
+//                'topic' => 'orders/updated',
+//                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-updated',
+//                "format"=> "json"
+//            ]
+//        ]);
+//        $response = $shop->api()->rest('PUT', '/admin/webhooks/1028341694647.json', [
+//            'webhook' => [
+//                'topic' => 'orders/fulfilled',
+//                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-fulfilled',
+//                "format"=> "json"
+//            ]
+//        ]);
+//        $response = $shop->api()->rest('PUT', '/admin/webhooks/1028341727415.json', [
+//            'webhook' => [
+//                'topic' => 'checkouts/update',
+//                'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update',
+//                "format"=> "json"
+//            ]
+//        ]);
+//        $response = $shop->api()->rest('GET', '/admin/webhooks.json');
+//        dd($response);
+//
+//    }
 
 
 
