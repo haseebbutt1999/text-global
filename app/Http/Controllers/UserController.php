@@ -565,52 +565,42 @@ class UserController extends Controller
 
     public function webhooks()
     {
-        $webhook = [''];
-        $users = User::get();
-
-        foreach ($users as $user){
-            $shop = Auth::login($user);
-
-            if($user->id != 1){
-                array_push($webhook,$shop->api()->rest('GET','/admin/webhooks.json')['body']);
-            }
-        }
-
+        $webhook=Auth::user()->api()->rest('GET','/admin/webhooks.json');
         dd($webhook);
     }
 
     public  function webhooks_update(){
 
         $shop = Auth::user();
-        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
             'webhook' => [
                 'topic' => 'customers/create',
                 'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customer-create',
                 "format"=> "json"
             ]
         ]);
-        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
             'webhook' => [
                 'topic' => 'orders/create',
                 'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-create',
                 "format"=> "json"
             ]
         ]);
-        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
             'webhook' => [
                 'topic' => 'orders/updated',
                 'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-updated',
                 "format"=> "json"
             ]
         ]);
-        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
             'webhook' => [
                 'topic' => 'orders/fulfilled',
                 'address' => 'https://shopifyapp.textglobal.co.uk/webhook/orders-fulfilled',
                 "format"=> "json"
             ]
         ]);
-        $response = $shop->api()->rest('POST', '/admin/webhooks.json', [
+        $response = $shop->api()->rest('PUT', '/admin/webhooks.json', [
             'webhook' => [
                 'topic' => 'checkouts/update',
                 'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update',
