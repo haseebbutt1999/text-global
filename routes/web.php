@@ -65,7 +65,8 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
         Route::get('/customer-sync', 'CustomerController@customer_sync')->name('customer-sync');
 
         Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.process.payment');
-
+        Route::post('paypal', 'PaymentController@payWithpaypal')->name('paypal-payment');
+        Route::get('status/{credits}', 'PaymentController@getPaymentStatus')->name('status');
 
     Route::get('user', function(){
             $user = \App\User::find(auth::user()->id);
