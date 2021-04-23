@@ -81,10 +81,13 @@
                                     <thead class="border-0 ">
 
                                     <tr class="th-tr table-tr text-white text-center">
-                                        <th class="font-weight-bold " >Name</th>
+                                        <th class="font-weight-bold " >First Name</th>
+                                        <th class="font-weight-bold " >Last Name</th>
                                         <th class="font-weight-bold " >Email</th>
                                         <th class="font-weight-bold " >Phone</th>
                                         <th class="font-weight-bold " >Country</th>
+                                        <th class="font-weight-bold " >Total Orders</th>
+                                        <th class="font-weight-bold " >Total Spents</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -93,13 +96,20 @@
 
                                         <tr class="td-text-center">
                                             <td>
-                                                {{$customer->first_name ." ".$customer->last_name}}
+                                                {{$customer->first_name}}
+                                            </td>
+                                            <td>
+                                                {{$customer->last_name}}
                                             </td>
                                             <td>
                                                 {{$customer->email}}
                                             </td>
                                             <td>
-                                                {{$customer->phone}}
+                                                @if($customer->phone)
+                                                    {{$customer->phone}}
+                                                @else
+                                                    <div class="badge badge-primary text-light p-1">Not Found</div>
+                                                @endif
                                             </td>
                                             @php
                                                    #dd($customer->addressess->first()->country);
@@ -108,6 +118,12 @@
                                                 @if(isset($customer->addressess->first()->country))
                                                     {{$customer->addressess->first()->country}}
                                                 @endif
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-primary text-light py-1 px-3">{{$customer->orders_count}}</div>
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-primary text-light py-1 px-3">{{$customer->total_spent}}</div>
                                             </td>
                                         </tr>
                                     @endforeach
