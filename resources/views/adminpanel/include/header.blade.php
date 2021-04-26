@@ -26,8 +26,11 @@
     <link rel="stylesheet" href="{{asset('polished_asset/iconic/css/open-iconic-bootstrap.min.css')}}">
 {{--select2 css--}}
     <link rel="stylesheet" href="{{ asset('polished_asset/select2/css/select2.min.css') }}">
+    {{--    toaster cdn to display response--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 {{--    ckeditor cdn--}}
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
 
 
 </head>

@@ -239,7 +239,9 @@ input:checked + .slider:before {
     vertical-align: middle;
     width: 61%;
 }
-
+#toast-container {
+    margin-top: 57px !important;
+}
 /*input[type="checkbox"] {*/
 /*    height: 18px !important;*/
 /*    width: 15px !important;*/

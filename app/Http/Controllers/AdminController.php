@@ -82,53 +82,155 @@ class AdminController extends Controller
     }
 
     public function customer_push(){
-        $customers = Customer::where('user_id', Auth::user()->id)->get();
-        foreach ($customers as $customer){
+        $customers = Customer::where('user_id', Auth::user()->id)->where('data_pushed', null)->get();
+        if(count($customers)){
+            foreach ($customers as $customer){
+                if($customer->data_pushed == null){
+                    if(isset($customer->addressess[0]->country)){
+                        $country = $customer->addressess[0]->country;
+                    }else{
+                        $country = null;
+                    }
+//                         $username = User::find(Auth::user()->id)->shopdetail->user_name;
+//                        $password = User::find(Auth::user()->id)->shopdetail->password;
+//                        $auth = "Basic ". base64_encode("$username:$password");
+                    $data = [
+                        "firstName" => $customer->first_name,
+                        "lastName" => $customer->last_name,
+                        "contactInformation"=>[
+                            "email"=>[
+                                "address"=>$customer->email,
+                            ],
+                        ],
+                        "country"=>$country,
+                        "customAttributes"=>[
+                            "orders_count"=>$customer->orders_count,
+                            "total_spent"=>$customer->total_spent,
+                            "currency"=>$customer->currency,
+                        ],
+                    ];
+//            dd($data);
 
-            $data = [
-                "firstName" => $customer->first_name,
-                "lastName" => $customer->last_name,
-                "contactInformation"=>[
-                    "email"=>[
-                        "address"=>$customer->email,
-                    ],
-                    "phone"=>[
-                        "number"=>$customer->phone,
-                    ]
-                ],
-                "country"=>$customer->addressess[0]->country,
-                "customAttributes"=>[
-                    "orders_count"=>$customer->orders_count,
-                    "total_spent"=>$customer->total_spent,
-                    "currency"=>$customer->currency,
-                ]
-            ];
+                    $curl = curl_init();
 
-            $curl = curl_init();
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => "https://api.messaging-service.com/people/2/persons",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS => json_encode($data),
+                        CURLOPT_HTTPHEADER => array(
+                            "accept: application/json",
+                            "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
+                            "cache-control: no-cache",
+                            "content-type: application/json",
+                            "postman-token: f4774df4-f030-2a0c-bcd1-76e024d4e338"
+                        ),
+                    ));
 
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://%7BbaseUrl%7D/people/2/persons',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS =>$data,
-                CURLOPT_HTTPHEADER => array(
-                    'Authorization: {authorization}',
-                    'Content-Type: application/json',
-                    'Accept: application/json'
-                ),
-            ));
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
 
-            $response = curl_exec($curl);
+                    curl_close($curl);
 
-            curl_close($curl);
-            echo $response;
+                    if ($err) {
+
+                    } else {
+                        $var =json_decode($response);
+                        if(isset($var->requestError) && $var->requestError->serviceException->messageId == "BAD_REQUEST"){
+
+                        }elseif(isset($var->errorMessage) && $var->errorMessage == "Duplicate"){
+                            $customer->data_pushed = "pushed";
+                            $customer->save();
+                        }else{
+                            $customer->data_pushed = "pushed";
+                            $customer->save();
+                        }
+                    }
+                }
+            }
+            return redirect()->back()->with('success', 'Customers Pushed Successfully');
+        }else{
+            return redirect()->back()->with('error', 'Customers Already Pushed !');
         }
 
+    }
+
+    public function admin_customer_push(){
+        $customers = Customer::where('data_pushed', null)->get();
+        if(count($customers)){
+            foreach ($customers as $customer)
+            {
+                if($customer->data_pushed == null){
+                    if(isset($customer->addressess[0]->country)){
+                        $country = $customer->addressess[0]->country;
+                    }else{
+                        $country = null;
+                    }
+                    $data = [
+                        "firstName" => $customer->first_name,
+                        "lastName" => $customer->last_name,
+                        "contactInformation"=>[
+                            "email"=>[
+                                "address"=>$customer->email,
+                            ],
+                        ],
+                        "country"=>$country,
+                        "customAttributes"=>[
+                            "orders_count"=>$customer->orders_count,
+                            "total_spent"=>$customer->total_spent,
+                            "currency"=>$customer->currency,
+                        ],
+                    ];
+
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => "https://api.messaging-service.com/people/2/persons",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS => json_encode($data),
+                        CURLOPT_HTTPHEADER => array(
+                            "accept: application/json",
+                            "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
+                            "cache-control: no-cache",
+                            "content-type: application/json",
+                            "postman-token: f4774df4-f030-2a0c-bcd1-76e024d4e338"
+                        ),
+                    ));
+
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+
+                    curl_close($curl);
+
+                    if ($err) {
+
+                    } else {
+                        $var =json_decode($response);
+                        if(isset($var->requestError) && $var->requestError->serviceException->messageId == "BAD_REQUEST"){
+
+                        }elseif(isset($var->errorMessage) && $var->errorMessage == "Duplicate"){
+                            $customer->data_pushed = "pushed";
+                            $customer->save();
+                        }else{
+                            $customer->data_pushed = "pushed";
+                            $customer->save();
+                        }
+                    }
+                }
+            }
+            return redirect()->back()->with('success', 'Customers Pushed Successfully');
+        }else{
+            return redirect()->back()->with('error', 'Customers Already Pushed !');
+        }
     }
 
     public function plans_index(){

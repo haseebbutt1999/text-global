@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{ asset('polished_asset/select2/css/select2.min.css') }}">
 {{--    ckeditor cdn--}}
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+{{--    toaster cdn to display response--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 {{--    chart.js css --}}
 

@@ -50,7 +50,7 @@
                                     <h5>Customers</h5>
                                     <div>
                                         <a href="{{route('customer-export')}}"><button class="btn-primary">Customers Export</button></a>
-{{--                                        <a href="{{route('customer-push')}}"><button class="btn-primary">Customers Push</button></a>--}}
+                                        <a href="{{route('customer-push')}}"><button class="btn-primary">Customers Sync to Enterprise Platform</button></a>
                                         <a href="{{route('customer-sync')}}"><button class="btn-primary">Customer Sync</button></a>
                                     </div>
 

@@ -113,6 +113,8 @@ Route::group(['middleware'=>['auth', 'prevent-back-history', 'prevent-user-acces
     Route::post('/edit-credits-save/{id}', 'AdminController@edit_credits_save')->name('edit-credits-save');
     Route::get('/delete-credits/{id}', 'AdminController@credits_delete')->name('credits-plan');
 
+     Route::get('/admin-customer-push', 'AdminController@admin_customer_push')->name('admin-customer-push');
+
 //    Route::get('/package-create', 'AdminController@package_create')->name('package-create');
 });
 
