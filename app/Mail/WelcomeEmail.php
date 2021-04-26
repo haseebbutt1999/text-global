@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $shop_detail;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($shopdetail)
     {
-
+        $this->shop_detail = $shopdetail;
     }
 
     /**
@@ -28,6 +28,6 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.welcome_email');
+        return $this->markdown('email.welcome_email')->with('shopdetail', $this->shop_detail);
     }
 }

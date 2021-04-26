@@ -148,17 +148,17 @@
                                                                     Text Global Shopify-UK
                                                                 </h2>
                                                             </td>
-                                                                <!--[if mso]>
-                                                                <table  aria-hidden="true" border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width:100%;">
-                                                                    <tr>
-                                                                        <td align="center" valign="top" width="150">
-                                                                <![endif]-->
+                                                            <!--[if mso]>
+                                                            <table  aria-hidden="true" border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width:100%;">
+                                                                <tr>
+                                                                    <td align="center" valign="top" width="150">
+                                                            <![endif]-->
 
-                                                                <!--[if mso]>
-                                                                </td>
-                                                                </tr>
-                                                                </table>
-                                                                <![endif]-->
+                                                            <!--[if mso]>
+                                                            </td>
+                                                            </tr>
+                                                            </table>
+                                                            <![endif]-->
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -219,7 +219,7 @@
                                             <tr>
                                                 <!-- ID:TXT TITLE -->
                                                 <td align="center" class="MsoNormal" style="color:#333333; font-family:Segoe UI, Helvetica Neue, Arial, Verdana, Trebuchet MS, sans-serif; font-weight:600; font-size:26px; line-height:36px; letter-spacing:1px;">
-                                                    <multiline>Thank You For Registration</multiline>
+                                                    <multiline>Invoice</multiline>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -238,7 +238,7 @@
                                                         <tr>
                                                             <!-- ID:TXT CONTENT -->
                                                             <td align="center" class="MsoNormal" style="color:#666666; font-family:Segoe UI, Helvetica Neue, Arial, Verdana, Trebuchet MS, sans-serif; font-size:14px; line-height:24px;">
-                                                                <multiline>Hi {{$shopdetail->firstname}}, Thank You for signing up and one of our team will contact you to complete the setup.</multiline>
+                                                                <multiline>Hi {{$user->shopdetail->firstname}}, You successfully buy {{$paymentDetail['credits']}} credits using '{{$paymentDetail['method']}}' payment gateway method in £{{$paymentDetail['price']}}. Your new credits are {{$user->credit}}.</multiline>
                                                             </td>
                                                         </tr>
                                                         <tr>

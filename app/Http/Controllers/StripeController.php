@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\PaymentInvoiceJob;
+use App\Test;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,14 @@ class StripeController extends Controller
 
         $user = User::find(Auth::user()->id);
         $user->credit += $request->credits;
-        $user->save();
+        if($user->save()){
+            $paymentDetail = ['method'=>'paypal', 'credits'=>$request->credits, 'price'=>$request->price * 100];
+            $t = new Test();
+            $t->text = json_encode($user->shopdetail->firstname)."stripe:".json_encode($paymentDetail);
+            $t->save();
+            $paymentInvoiceJob = (new PaymentInvoiceJob($user,$paymentDetail));
+            dispatch($paymentInvoiceJob);
+        }
 
         return redirect()->back();
     }

@@ -2,9 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Mail\WelcomeEmail;
-use App\Shopdetail;
+use App\Mail\PaymentInvoiceMail;
 use App\Test;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,18 +12,20 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class WelcomeEmailJob implements ShouldQueue
+class PaymentInvoiceJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $shopdetail;
+    public $user;
+    public $paymentDetail;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(Shopdetail $shopdetail)
+    public function __construct(User $users, $paymentDetails)
     {
-        $this->shopdetail = $shopdetail;
+        $this->user =$users;
+        $this->paymentDetail = $paymentDetails;
     }
 
     /**
@@ -33,23 +35,21 @@ class WelcomeEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->shopdetail->email)->send(new WelcomeEmail($this->shopdetail));
+//        $test= new test()
+        Mail::to($this->user->email)->send(new PaymentInvoiceMail($this->user,  $this->paymentDetail));
 
         if(Mail::failures() != 0) {
 
             $t = new Test();
             $t->text = "Success! Your E-mail has been sent";
-            $t->number = $this->shopdetail->id;
             $t->save();
         }
 
         else {
             $t = new Test();
             $t->text = "Failed! Your E-mail has not sent";
-            $t->number = $this->shopdetail->id;
             $t->save();
 
         }
-
     }
 }

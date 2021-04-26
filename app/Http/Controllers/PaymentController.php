@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\PaymentInvoiceJob;
+use App\Test;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,8 +54,8 @@ class PaymentController extends Controller
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('status', $request->paypal_credits)) /** Specify return URL **/
-        ->setCancelUrl(URL::route('status', $request->paypal_credits));
+        $redirect_urls->setReturnUrl(URL::route('status', ['credits'=>$request->paypal_credits, 'amount'=>$request->amount])) /** Specify return URL **/
+        ->setCancelUrl(URL::route('status', ['credits'=>$request->paypal_credits, 'amount'=>$request->amount]));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
@@ -88,9 +90,10 @@ class PaymentController extends Controller
         return Redirect::route('paywithpaypal');
     }
 
-    public function getPaymentStatus(Request $request, $credits)
+    public function getPaymentStatus(Request $request, $credits, $amount)
     {
         /** Get the payment ID before session clear **/
+
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
@@ -108,7 +111,11 @@ class PaymentController extends Controller
             if($credits != null){
                 $user = User::find(Auth::user()->id);
                 $user->credit += $credits;
-                $user->save();
+                if($user->save()){
+                    $paymentDetail = ['method'=>'paypal', 'credits'=>$credits, 'price'=>$amount];
+                    $paymentInvoiceJob = (new PaymentInvoiceJob($user,$paymentDetail));
+                    dispatch($paymentInvoiceJob);
+                }
             }
             \Session::put('success', 'Payment success');
             return Redirect::route('user-plans');
