@@ -23,11 +23,14 @@ use Carbon\Traits\Test;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Osiset\ShopifyApp\Storage\Models\Plan;
 use phpDocumentor\Reflection\Types\False_;
 use PhpParser\Node\Stmt\DeclareDeclare;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
+use function Osiset\ShopifyApp\createHmac;
+
 
 class UserController extends Controller
 {
@@ -283,7 +286,7 @@ class UserController extends Controller
     public function countries_index(){
 
         $admin_selected_countries = auth::user()->country_shop_pref;
-
+//        dd($admin_selected_countries);
         $country_user_data = CountryUser::where('user_id', Auth::user()->id)->where('status', 'active')->get();
 
         return view('adminpanel/module/user/countries', compact('admin_selected_countries', 'country_user_data'));
@@ -569,6 +572,25 @@ class UserController extends Controller
         dd($webhook);
     }
 
+    public  function addmore_emails(Request $request){
+
+        $credits = $request->credits;
+        $user = User::findorfail(Auth::user()->id);
+        $user->credit +=  $credits;
+        $user->save();
+        // Description and price of usage charge (the only two parameters required)
+        $charge = [
+            'description' => $request->addemail_description,
+            'price'       => (float)$request->price,
+            'redirect'    =>  route('user-plans')// Optional, if not supplied redirect goes back to previous page with flash `success`=`true`
+        ];
+        // Create a signature to prevent tampering
+        $signature = createHmac(['data' => $charge, 'buildQuery' => true], Config::get('shopify-app.api_secret'));
+        // Create the route
+        $usageChargeRoute = route('billing.usage_charge', array_merge($charge, ['signature' => $signature]));
+//        dd($usageChargeRoute);
+        return redirect($usageChargeRoute);
+    }
 //    public  function webhooks_update(){
 //
 //        $shop = Auth::user();

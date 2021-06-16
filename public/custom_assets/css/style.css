@@ -8,6 +8,12 @@ input[type="radio"]{
     margin-left: auto;
     margin-right: auto;
 }
+tr.td-text-center a:hover {
+    text-decoration: underline !important;
+}
+.links-hover a:hover {
+    text-decoration: underline !important;
+}
 .custom-left-arrow-div{
     padding: 9px 13px;
     border: 1px solid grey;

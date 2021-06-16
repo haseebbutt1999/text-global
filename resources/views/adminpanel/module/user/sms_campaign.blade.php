@@ -225,7 +225,7 @@
             if(textlen <= 0){
                 var credit = 0;
             }
-            else if(textlen < 160){
+            else if(textlen <= 160){
                 var credit = 1;
             }else if(textlen <= 306){
                 var credit = 2;

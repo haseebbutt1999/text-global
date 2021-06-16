@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+|  
 */
 //
 //Route::get('/', function () {
@@ -33,6 +33,9 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
          Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
 
         Route::get('user-plans', 'UserController@user_plans')->name('user-plans');
+        Route::post('addmore-emails', 'UserController@addmore_emails')->name('addmore-emails');
+
+
 
         Route::get('sms-campaign-index', 'UserController@sms_campaign_index')->name('sms-campaign-index');
 
@@ -95,6 +98,7 @@ Route::get('/base', function() {
 
     dd($auth);
 });
+
 
 
 // admin routes

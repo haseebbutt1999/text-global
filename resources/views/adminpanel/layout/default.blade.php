@@ -5,3 +5,4 @@
 @yield('content')
 
 @include('adminpanel.include.footer')
+ 

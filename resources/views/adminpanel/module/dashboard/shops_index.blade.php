@@ -50,7 +50,9 @@
 
                                         <tr class="td-text-center">
                                             <td>
+                                         <a href={{route('shop-status-detail', $user->id)}}>
                                                 {{$user->name}}
+                                         </a>
                                             </td>
                                             <td>
                                                 @if(isset($user->plan->name))
