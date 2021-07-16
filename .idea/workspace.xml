@@ -24,9 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="changes by haseeb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +149,7 @@
       <workItem from="1623389543741" duration="11892000" />
       <workItem from="1623410926967" duration="10314000" />
       <workItem from="1623652148377" duration="270000" />
-      <workItem from="1626416892601" duration="10654000" />
-    </task>
-    <task id="LOCAL-00123" summary="user campaigns logs">
-      <created>1618239972025</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1618239972025</updated>
+      <workItem from="1626416892601" duration="10712000" />
     </task>
     <task id="LOCAL-00124" summary="dashboard reports">
       <created>1618300167492</created>
@@ -496,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626421536023</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="changes by haseeb">
+      <created>1626435262591</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1626435262592</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,10 +561,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860@0.0.1600.860" timestamp="1626417267363" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626435161066">
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626435289851">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626435161066" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626435289851" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

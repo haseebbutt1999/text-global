@@ -13,7 +13,7 @@
                             <h4 class="my-0 font-weight-normal">{{$plan->name}}</h4>
                         </div>
                         <div class="card-body links-hover">
-                            <h3 class="card-title pricing-card-title">£{{$plan->price}}+VAT<small class="text-muted">/
+                            <h3 class="card-title pricing-card-title">£{{$plan->user_plan}}+VAT<small class="text-muted">/
                                     mo</small></h3>
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li class="d-flex justify-content-between align-items-center">
