@@ -13,10 +13,20 @@
                             <h4 class="my-0 font-weight-normal">{{$plan->name}}</h4>
                         </div>
                         <div class="card-body links-hover">
-                            <h1 class="card-title pricing-card-title">£{{$plan->price}}<small class="text-muted">/
-                                    mo</small></h1>
+                            <h3 class="card-title pricing-card-title">£{{$plan->price}}+VAT<small class="text-muted">/
+                                    mo</small></h3>
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li>{{"Credits: " .$plan->credit}}</li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        {{"Credits: " .$plan->credit}}
+                                    </div>
+                                    @if(isset(\Illuminate\Support\Facades\Auth::user()->plan_id) && (\Illuminate\Support\Facades\Auth::user()->plan_id == $plan->id))
+                                        <div>
+                                            <span class="badge badge-primary p-1 ">Plan Seletecd</span>
+                                        </div>
+                                    @endif
+                                </li>
+
 {{--                                <li class="mt-2"><label>Buy Credits</label></li>--}}
 {{--                                <li>--}}
 {{--                                    @if(count($plan->credits))--}}
@@ -242,17 +252,17 @@
                             <div class="form-group d-flex">
                                 <a style="width: 100%;" class="subscribe"
                                    href="{{ route('billing', ['plan' => $plan->id]) }}">
-                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Subscribe
+                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Purchase
                                     </button>
                                 </a>
                             </div>
 
-                                <div class="form-group d-flex">
-                                    <a style="cursor: pointer; color:blue" data-toggle="modal"
-                                       data-target="#addmore_emails{{$key}}">
-                                      Add more emails!
-                                    </a>
-                                </div>
+{{--                                <div class="form-group d-flex">--}}
+{{--                                    <a style="cursor: pointer; color:blue" data-toggle="modal"--}}
+{{--                                       data-target="#addmore_emails{{$key}}">--}}
+{{--                                      Add more emails!--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
                             <!-- Modal  start-->
                                 <div class="modal fade plans-links" id="addmore_emails{{$key}}" tabindex="-1" role="dialog"
                                      aria-labelledby="modal-block-popout" aria-hidden="true">
