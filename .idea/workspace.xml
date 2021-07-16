@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="maitnain new logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,14 +148,7 @@
       <workItem from="1623389543741" duration="11892000" />
       <workItem from="1623410926967" duration="10314000" />
       <workItem from="1623652148377" duration="270000" />
-      <workItem from="1626416892601" duration="23108000" />
-    </task>
-    <task id="LOCAL-00133" summary="apply middleware on admin routes to prevent user access routes !">
-      <created>1618320896135</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1618320896136</updated>
+      <workItem from="1626416892601" duration="23616000" />
     </task>
     <task id="LOCAL-00134" summary="apply middleware on admin routes to prevent user access routes !">
       <created>1618323240143</created>
@@ -494,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626449245686</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="maitnain new logs">
+      <created>1626449550837</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1626449550838</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,10 +548,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626449250264">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626449553752">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626449250264" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626449553752" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

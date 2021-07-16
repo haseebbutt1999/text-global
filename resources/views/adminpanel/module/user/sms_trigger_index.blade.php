@@ -662,7 +662,7 @@
                                                                         {{$user_orderconfirm_log->mobileno}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_abandonedcart_log->sms_text}}
+                                                                        {{$user_orderconfirm_log->sms_text}}
                                                                     </td>
                                                                     <td>
                                                                         {{$user_orderconfirm_log->order_name}}
@@ -887,7 +887,7 @@
                                                                         {{$user_orderrefund_log->order_name}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_abandonedcart_log->sms_text}}
+                                                                        {{$user_orderrefund_log->sms_text}}
                                                                     </td>
                                                                     <td>
                                                                         {{$user_orderrefund_log->action}}
@@ -1115,7 +1115,7 @@
                                                                         {{$user_orderdispatch_log->order_name}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_abandonedcart_log->sms_text}}
+                                                                        {{$user_orderdispatch_log->sms_text}}
                                                                     </td>
                                                                     <td>
                                                                         {{$user_orderdispatch_log->action}}
