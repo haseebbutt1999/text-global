@@ -24,8 +24,20 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="changee">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedCartSmsJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AbandonedcartSmsDispacthJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AbandonedcartSmsDispacthJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CustomerCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderDispatchJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderDispatchJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderRefundJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersCreateJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersFulfilledJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersFulfilledJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrdersUpdatedJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSms.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,14 +162,7 @@
       <workItem from="1623389543741" duration="11892000" />
       <workItem from="1623410926967" duration="10314000" />
       <workItem from="1623652148377" duration="270000" />
-      <workItem from="1626416892601" duration="19270000" />
-    </task>
-    <task id="LOCAL-00131" summary="apply middleware on admin routes to prevent user access routes !">
-      <created>1618316438544</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1618316438546</updated>
+      <workItem from="1626416892601" duration="22773000" />
     </task>
     <task id="LOCAL-00132" summary="apply middleware on admin routes to prevent user access routes !">
       <created>1618319546317</created>
@@ -495,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626445078690</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="changee">
+      <created>1626445670097</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1626445670097</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,14 +562,18 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626445081622">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626445671660">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626445081622" />
-    <state x="509" y="183" width="581" height="494" key="find.popup" timestamp="1626445624954">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626445671660" />
+    <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="509" y="183" width="581" height="494" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1626445624954" />
+    <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1600.860@0.0.1600.860" timestamp="1626448838113" />
+    <state x="509" y="183" width="581" height="494" key="find.popup" timestamp="1626449023021">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="509" y="183" width="581" height="494" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1626449023021" />
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626417267363">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -601,17 +617,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>455</line>
+          <line>457</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>674</line>
+          <line>677</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>1126</line>
+          <line>1131</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

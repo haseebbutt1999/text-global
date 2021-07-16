@@ -57,7 +57,7 @@ class OrdersFulfilledJob implements ShouldQueue
                     if($shop->credit_status != "0 credits"){
                         dispatch(new OrderDispatchJob($order_dispatch_data, $shop));
                     }else{
-                        $this->log_store->log_store( $shop->id, 'Orderdispatch', null, null, "Order Dispatch SMS not sended to customer because Your Credits is '0'");
+                        $this->log_store->log_store( $shop->id, 'Orderdispatch', null, null, "Order Dispatch SMS not sended to customer because Your Credits is '0'",null);
                     }
                 }
             }

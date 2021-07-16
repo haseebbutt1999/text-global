@@ -89,7 +89,7 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                         $test = new Test();
                         $test->number = 404;
                         $test->text = "cURL Error #:" .$err;
-                        $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS not Sended');
+                        $this->log_store->log_store( $shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id,$messgae_text, $abandoned_cart_campaign->campaign_name, 'Failed');
                         //
                         $test->save();
                     } else {
@@ -97,11 +97,25 @@ class AbandonedcartSmsDispacthJob implements ShouldQueue
                         $test->number = 200;
                         $test->text = "Successful Staus:" .$response;
                         $test->save();
-                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id, $abandoned_cart_campaign->campaign_name, 'Abandoned Cart SMS Sended Successfully to Customer ('.$checkout->billing_address->first_name.')');
+                        $this->log_store->log_store($shop->id, 'Abandonedcartcampaign', $abandoned_cart_campaign->id,$messgae_text, $abandoned_cart_campaign->campaign_name, 'Sent');
                         //                Detect Credits
                         $user = User::Where('id', $abandoned_cart_campaign->user_id)->first();
-                        if($user->credit >= 0){
-                            $user->credit =  $user->credit - 1;
+                        $messgae_text_count = strlen($messgae_text);
+                        if($messgae_text_count >= 0){
+                            $credit = 0;
+                            if ($messgae_text_count <= 0) {
+                                $credit = 0;
+                            } else if ($messgae_text_count <= 160) {
+                                $credit = 1;
+                            } else if ($messgae_text_count <= 306) {
+                                $credit = 2;
+                            } else if ($messgae_text_count <= 460) {
+                                $credit = 3;
+                            } else if ($messgae_text_count <= 612) {
+                                $credit = 4;
+                            }
+
+                            $user->credit =  $user->credit - $credit;
                         }else{
                             $user->credit_status = "0 credits";
                         }

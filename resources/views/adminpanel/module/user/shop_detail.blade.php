@@ -24,7 +24,7 @@
                                             <input placeholder="Enter your firstname" name="firstname" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="#">Sur Name</label>
+                                            <label for="#">Surname</label>
                                             <input placeholder="Enter your surname" name="surname" type="text" class="form-control">
                                         </div>
                                     </div>

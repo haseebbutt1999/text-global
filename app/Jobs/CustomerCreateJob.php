@@ -175,14 +175,14 @@ class CustomerCreateJob implements ShouldQueue
                             $test = new Test();
                             $test->number = 404;
                             $test->text = "cURL Error #:" .$err;
-                            $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
+                            $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id,$messgae_text, $welcome_campaign->campaign_name, 'Failed');
                             $test->save();
 
                         } else {
                             $response = json_decode($response);
                             if($response->messages[0]->status->name == "PENDING_ENROUTE"){
-                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
-                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')', "sended");
+                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id,$messgae_text, $welcome_campaign->campaign_name, 'Sent');
+                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,$messgae_text,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Sent', "sended");
                                 //                Detect Credits
                                 $user = User::Where('id', $welcome_campaign->user_id)->first();
                                 if($user->credit >= 0){
@@ -195,12 +195,13 @@ class CustomerCreateJob implements ShouldQueue
                                 $test = new Test();
                                 $test->text = "rejected msg:" .$response->messages[0]->status->description;
                                 $test->save();
-                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description, "not sended");
-                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
+                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,$messgae_text,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Failed', "not sended");
+                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id,$messgae_text, $welcome_campaign->campaign_name, 'Failed');
                             }
                         }
                     }else{
-                        $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome SMS not sended to new customer. Becuase your campaign SMS text message chacater exceed greate than "612".');
+                        $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id,$messgae_text, $welcome_campaign->campaign_name, 'Failed');
+                        $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,$messgae_text,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Failed', "not sended");
                     }
 
                 }

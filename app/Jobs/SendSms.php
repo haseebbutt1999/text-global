@@ -99,13 +99,13 @@ class SendSms implements ShouldQueue
             curl_close($curl);
 
             if ($err) {
-                $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed');
+                $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id,$messgae_text, $this->campaign->campaign_name, 'Failed');
             } else {
                 $response = json_decode($response);
                 if($response->messages[0]->status->name = "PENDING_ENROUTE"){
-                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Sended Successfully' );
+                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id,$messgae_text, $this->campaign->campaign_name, 'Sent' );
 //                Detect Credits
-                    $this->user_log->user_log( $this->campaign->user_id,$pushed_user->addressess[0]->phone,$pushed_user->addressess[0]->first_name,$pushed_user->addressess[0]->last_name, 'Campaign', null , $pushed_user->shopify_customer_id, 'Campaign SMS sended successfully to customer ('.$pushed_user->first_name.')', "sended");
+                    $this->user_log->user_log( $this->campaign->user_id,$pushed_user->addressess[0]->phone,$pushed_user->addressess[0]->first_name,$pushed_user->addressess[0]->last_name,$messgae_text, 'Campaign', null , $pushed_user->shopify_customer_id, 'Sent', "sended");
 
                     $user = User::Where('id', $this->campaign->user_id)->first();
                     $messgae_text_count = strlen($messgae_text);
@@ -132,8 +132,8 @@ class SendSms implements ShouldQueue
                     $test = new Test();
                     $test->text = "rejected msg:" .$response->messages[0]->status->description;
                     $test->save();
-                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id, $this->campaign->campaign_name, 'Campaign Send Failed.');
-                    $this->user_log->user_log( $this->campaign->user_id, $pushed_user->addressess[0]->phone,$pushed_user->addressess[0]->first_name,$pushed_user->addressess[0]->last_name,'Campaign', null , $pushed_user->shopify_customer_id, 'Campaign Send Failed. because '.$response->messages[0]->status->description, "not sended");
+                    $this->log_store->log_store($this->campaign->user_id, 'Campaign', $this->campaign->id,$messgae_text, $this->campaign->campaign_name, 'Failed');
+                    $this->user_log->user_log( $this->campaign->user_id, $pushed_user->addressess[0]->phone,$pushed_user->addressess[0]->first_name,$pushed_user->addressess[0]->last_name,$messgae_text,'Campaign', null , $pushed_user->shopify_customer_id, 'Failed', "not sended");
 
                 }
 

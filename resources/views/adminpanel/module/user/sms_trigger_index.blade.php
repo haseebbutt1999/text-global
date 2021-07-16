@@ -168,8 +168,9 @@
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="">SMS</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
-                                                                <th class="font-weight-bold " style="">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -419,8 +420,9 @@
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="">SMS</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
-                                                                <th class="font-weight-bold " style="">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -633,8 +635,9 @@
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
                                                                 <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">SMS</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
-                                                                <th class="font-weight-bold " style="">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -851,8 +854,9 @@
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
                                                                 <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">SMS</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
-                                                                <th class="font-weight-bold " style="">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -1076,8 +1080,9 @@
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
                                                                 <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">SMS</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
-                                                                <th class="font-weight-bold " style="">Created_at</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>

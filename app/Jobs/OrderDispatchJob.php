@@ -99,19 +99,33 @@ class OrderDispatchJob implements ShouldQueue
                         $test = new Test();
                         $test->number = 404;
                         $test->text = "order dispatch cURL Error #:" .$err;
-                        $this->log_store->log_store( $shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order Dispatch SMS not Sended');
+                        $this->log_store->log_store( $shop->id, 'Orderdispatch', $order_dispatch_campaign->id,$messgae_text, $order_dispatch_campaign->campaign_name, 'Failed');
                         //
                         $test->save();
                     } else {
                         $response = json_decode($response);
                         if($response->messages[0]->status->name == "PENDING_ENROUTE"){
-                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->shipping_address->first_name.')');
-                            $this->user_log->user_log( $shop->id, $order_dispatch_data->shipping_address->phone,$order_dispatch_data->shipping_address->first_name,$order_dispatch_data->shipping_address->last_name,'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS sended successfully to customer ('.$order_dispatch_data->shipping_address->first_name.')', "sended");
+                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id,$messgae_text, $order_dispatch_campaign->campaign_name, 'Sent');
+                            $this->user_log->user_log( $shop->id, $order_dispatch_data->shipping_address->phone,$order_dispatch_data->shipping_address->first_name,$order_dispatch_data->shipping_address->last_name,$messgae_text,'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Sent', "sended");
 
                             //                Detect Credits
                             $user = User::Where('id', $order_dispatch_campaign->user_id)->first();
-                            if($user->credit >= 0){
-                                $user->credit =  $user->credit - $order_dispatch_campaign->calculated_credit_per_sms;
+                            $messgae_text_count = strlen($messgae_text);
+                            if($messgae_text_count >= 0){
+                                $credit = 0;
+                                if ($messgae_text_count <= 0) {
+                                    $credit = 0;
+                                } else if ($messgae_text_count <= 160) {
+                                    $credit = 1;
+                                } else if ($messgae_text_count <= 306) {
+                                    $credit = 2;
+                                } else if ($messgae_text_count <= 460) {
+                                    $credit = 3;
+                                } else if ($messgae_text_count <= 612) {
+                                    $credit = 4;
+                                }
+
+                                $user->credit =  $user->credit - $credit;
                             }else{
                                 $user->credit_status = "0 credits";
                             }
@@ -120,8 +134,8 @@ class OrderDispatchJob implements ShouldQueue
                             $test = new Test();
                             $test->text = "rejected msg:" .$response->messages[0]->status->description;
                             $test->save();
-                            $this->user_log->user_log( $shop->id, $order_dispatch_data->shipping_address->phone,$order_dispatch_data->shipping_address->first_name,$order_dispatch_data->shipping_address->last_name,'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Order dispatch SMS not sended to customer ('.$order_dispatch_data->shipping_address->first_name.') because '.$response->messages[0]->status->description, "not sended");
-                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id, $order_dispatch_campaign->campaign_name, 'Order dispatch SMS not sended.');
+                            $this->user_log->user_log( $shop->id, $order_dispatch_data->shipping_address->phone,$order_dispatch_data->shipping_address->first_name,$order_dispatch_data->shipping_address->last_name,$messgae_text,'Orderdispatch', $order_dispatch_data->name , $order_dispatch_data->customer->id, 'Failed', "not sended");
+                            $this->log_store->log_store($shop->id, 'Orderdispatch', $order_dispatch_campaign->id,$messgae_text, $order_dispatch_campaign->campaign_name, 'Failed');
 
                         }
 
