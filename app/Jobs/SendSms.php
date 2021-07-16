@@ -23,7 +23,7 @@ class SendSms implements ShouldQueue
     private $log_store;
     private $user_log;
 
-    /**
+    /**SendSms
      * Create a new job instance.
      *
      * @return void
@@ -108,8 +108,22 @@ class SendSms implements ShouldQueue
                     $this->user_log->user_log( $this->campaign->user_id,$pushed_user->addressess[0]->phone,$pushed_user->addressess[0]->first_name,$pushed_user->addressess[0]->last_name, 'Campaign', null , $pushed_user->shopify_customer_id, 'Campaign SMS sended successfully to customer ('.$pushed_user->first_name.')', "sended");
 
                     $user = User::Where('id', $this->campaign->user_id)->first();
-                    if($user->credit >= 0){
-                        $user->credit =  $user->credit - $this->campaign->calculated_credit_per_sms;
+                    $messgae_text_count = strlen($messgae_text);
+                    if($messgae_text_count >= 0){
+                        $credit = 0;
+                        if ($messgae_text_count <= 0) {
+                            $credit = 0;
+                        } else if ($messgae_text_count <= 160) {
+                            $credit = 1;
+                        } else if ($messgae_text_count <= 306) {
+                            $credit = 2;
+                        } else if ($messgae_text_count <= 460) {
+                            $credit = 3;
+                        } else if ($messgae_text_count <= 612) {
+                            $credit = 4;
+                        }
+
+                        $user->credit =  $user->credit - $credit;
                     }else{
                         $user->credit_status = "0 credits";
                     }

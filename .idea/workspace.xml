@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="changes by haseeb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/plans_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/plans_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendSms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendSms.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,14 +149,7 @@
       <workItem from="1623389543741" duration="11892000" />
       <workItem from="1623410926967" duration="10314000" />
       <workItem from="1623652148377" duration="270000" />
-      <workItem from="1626416892601" duration="11505000" />
-    </task>
-    <task id="LOCAL-00126" summary="dashboard reports">
-      <created>1618302096941</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1618302096941</updated>
+      <workItem from="1626416892601" duration="14245000" />
     </task>
     <task id="LOCAL-00127" summary="dashboard reports and admin side logs">
       <created>1618304133348</created>
@@ -494,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626435864596</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="changes by haseeb">
+      <created>1626436110914</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1626436110915</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,22 +549,26 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626435867495">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626436113862">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626435867495" />
-    <state x="509" y="183" width="581" height="494" key="find.popup" timestamp="1626433632389">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626436113862" />
+    <state x="509" y="183" width="581" height="494" key="find.popup" timestamp="1626439548869">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="509" y="183" width="581" height="494" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1626433632389" />
+    <state x="509" y="183" width="581" height="494" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439548869" />
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626417267363">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860@0.0.1600.860" timestamp="1626417267363" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626435914844">
+    <state x="456" y="195" key="run.anything.popup" timestamp="1626439522288">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626435914844" />
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439522288" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626439527092">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439527092" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
