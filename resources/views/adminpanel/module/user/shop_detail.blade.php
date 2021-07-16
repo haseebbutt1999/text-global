@@ -20,11 +20,11 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="#">Firstname</label>
+                                            <label for="#">First Name</label>
                                             <input placeholder="Enter your firstname" name="firstname" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="#">Surname</label>
+                                            <label for="#">Sur Name</label>
                                             <input placeholder="Enter your surname" name="surname" type="text" class="form-control">
                                         </div>
                                     </div>
