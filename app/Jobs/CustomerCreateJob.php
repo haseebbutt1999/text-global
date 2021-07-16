@@ -136,68 +136,73 @@ class CustomerCreateJob implements ShouldQueue
                     $welcome_campaign = Welcomecampaign::where('user_id', $shop->id)->first();
 
                     $messgae_text = str_replace('{CustomerName}',$pushed_cust->first_name." ".$pushed_cust->last_name,$welcome_campaign->message_text);
-                    $data = [
-                        "from" => $welcome_campaign->sender_name,
-                        "to" => $pushed_cust->addressess[0]->phone,
-                        "text" => $messgae_text,
-                    ];
+                    if(strlen($messgae_text) <= 613){
+                        $data = [
+                            "from" => $welcome_campaign->sender_name,
+                            "to" => $pushed_cust->addressess[0]->phone,
+                            "text" => $messgae_text,
+                        ];
 
 //                          $username = $shop->shopdetail->user_name;
 //                        $password = $shop->shopdetail->password;
 //                        $auth = "Basic ". base64_encode("$username:$password");
 
-                    $curl = curl_init();
-                    curl_setopt_array($curl, array(
-                        CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => "",
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 30,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => "POST",
-                        CURLOPT_POSTFIELDS => json_encode($data),
-                        CURLOPT_HTTPHEADER => array(
-                            "accept: application/json",
-                            "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
-                            "cache-control: no-cache",
-                            "content-type: application/json",
-                            "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
-                        ),
-                    ));
+                        $curl = curl_init();
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => "http://api.messaging-service.com/sms/1/text/single",
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => "",
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 30,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => "POST",
+                            CURLOPT_POSTFIELDS => json_encode($data),
+                            CURLOPT_HTTPHEADER => array(
+                                "accept: application/json",
+                                "authorization: Basic c2hvcGlmeWFwcC50ZXh0Z2xvYmFsOlRHc2hvcGlmeTEh",
+                                "cache-control: no-cache",
+                                "content-type: application/json",
+                                "postman-token: 04d5825f-6285-666b-6d0c-968ce3f6fd25"
+                            ),
+                        ));
 
-                    $response = curl_exec($curl);
-                    $err = curl_error($curl);
+                        $response = curl_exec($curl);
+                        $err = curl_error($curl);
 
-                    curl_close($curl);
+                        curl_close($curl);
 
-                    if ($err) {
-                        $test = new Test();
-                        $test->number = 404;
-                        $test->text = "cURL Error #:" .$err;
-                        $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
-                        $test->save();
-
-                    } else {
-                        $response = json_decode($response);
-                        if($response->messages[0]->status->name == "PENDING_ENROUTE"){
-                            $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
-                            $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')', "sended");
-                            //                Detect Credits
-                            $user = User::Where('id', $welcome_campaign->user_id)->first();
-                            if($user->credit >= 0){
-                                $user->credit =  ($user->credit) - ($welcome_campaign->calculated_credit_per_sms);
-                            }else{
-                                $user->credit_status = "0 credits";
-                            }
-                            $user->save();
-                        }else{
+                        if ($err) {
                             $test = new Test();
-                            $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                            $test->number = 404;
+                            $test->text = "cURL Error #:" .$err;
+                            $this->log_store->log_store( $shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
                             $test->save();
-                            $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description, "not sended");
-                            $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
+
+                        } else {
+                            $response = json_decode($response);
+                            if($response->messages[0]->status->name == "PENDING_ENROUTE"){
+                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')');
+                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome Sms Sended Successfully to new Customer ('.$customer->first_name.')', "sended");
+                                //                Detect Credits
+                                $user = User::Where('id', $welcome_campaign->user_id)->first();
+                                if($user->credit >= 0){
+                                    $user->credit =  ($user->credit) - ($welcome_campaign->calculated_credit_per_sms);
+                                }else{
+                                    $user->credit_status = "0 credits";
+                                }
+                                $user->save();
+                            }else{
+                                $test = new Test();
+                                $test->text = "rejected msg:" .$response->messages[0]->status->description;
+                                $test->save();
+                                $this->user_log->user_log( $shop->id, $customer->addressess[0]->phone,$customer->first_name,$customer->last_name,'Welcomecampaign',null, $pushed_cust->shopify_customer_id, 'Welcome SMS not Sended to Customer ('.$customer->first_name.') because '.$response->messages[0]->status->description, "not sended");
+                                $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome Sms not Sended');
+                            }
                         }
+                    }else{
+                        $this->log_store->log_store($shop->id, 'Welcomecampaign', $welcome_campaign->id, $welcome_campaign->campaign_name, 'Welcome SMS not sended to new customer. Becuase your campaign SMS text message chacater exceed greate than "612".');
                     }
+
                 }
             }
         }catch (\Exception $exception){
