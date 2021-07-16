@@ -35,8 +35,6 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
         Route::get('user-bundles', 'UserController@user_plans')->name('user-plans');
         Route::post('addmore-emails', 'UserController@addmore_emails')->name('addmore-emails');
 
-
-
         Route::get('sms-campaign-index', 'UserController@sms_campaign_index')->name('sms-campaign-index');
 
         Route::post('sms-campaign-save', 'UserController@sms_campaign_save')->name('sms-campaign-save');

@@ -75,7 +75,6 @@ class AdminController extends Controller
 //        }
         return view('adminpanel/module/dashboard/customers_index', compact('customers_data','total_orders', 'total_spents', 'countries', 'filter_country'));
 
-
 //        return view('adminpanel/module/dashboard/customers_index', compact('customers_data'));
     }
 
@@ -250,7 +249,8 @@ class AdminController extends Controller
         $plan_save->interval = $request->interval;
         $plan_save->terms = $request->terms;
         $plan_save->trial_days = $request->trial_days;
-        $plan_save->price = $request->price;
+        $plan_save->price = ($request->price)+($request->price * 0.20);
+        $plan_save->user_price = $request->price;
         $plan_save->credit = $request->credit;
         $plan_save->test = 1;
         $plan_save->on_install = 0;
@@ -273,7 +273,8 @@ class AdminController extends Controller
         $plan_update->interval = $request->interval;
         $plan_update->terms = $request->terms;
         $plan_update->trial_days = $request->trial_days;
-        $plan_update->price = $request->price;
+        $plan_update->price = ($request->price)+($request->price * 0.20);
+        $plan_update->user_price = $request->price;
         $plan_update->credit = $request->credit;
         $plan_update->test = 1;
         $plan_update->on_install = 0;

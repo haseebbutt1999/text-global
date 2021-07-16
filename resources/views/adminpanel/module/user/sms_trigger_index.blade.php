@@ -101,7 +101,7 @@
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <label class="text-left" for="#">Text Message</label>
-                                                                <div style="color: gray;font">Characters used <span
+                                                                <div style="color: gray;">Characters used <span
                                                                         id="welcome-rchars"
                                                                         style="text-align: right">0</span> / <span
                                                                         id="welcome-credit"> {{$welcome_campaign->calculated_credit_per_sms}} </span>
@@ -962,8 +962,8 @@
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <label class="text-left" for="#">Text Message</label>
-                                                                <div style="color: gray;font-size: 13px;">Characters
-                                                                    used <span id="orderdispatch-rchars"
+                                                                <div style="color: gray;font-size: 13px;">Characters used
+                                                                    <span id="orderdispatch-rchars"
                                                                                style="text-align: right">0</span> /
                                                                     <span
                                                                         id="orderdispatch-credit"> {{$orderdispatch_campaign->calculated_credit_per_sms}} </span>
