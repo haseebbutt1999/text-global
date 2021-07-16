@@ -46,7 +46,7 @@
 
 
                                                     <div class="form-group">
-                                                        <label class="text-left"  >Price</label>
+                                                        <label class="text-left"  >User Displayed Price</label>
                                                         <input   name="price" step="any" type="number"   class="form-control weight">
                                                     </div>
                                                     <div class="form-group">
@@ -105,6 +105,7 @@
                                         <th class="font-weight-bold " >Type</th>
                                         <th class="font-weight-bold " >Name</th>
                                         <th class="font-weight-bold " >Price</th>
+                                        <th class="font-weight-bold " >User Displayed Price</th>
                                         <th class="font-weight-bold " >Credit</th>
                                         <th class="font-weight-bold " >Interval</th>
                                         <th class="font-weight-bold " >Capped Amount</th>
@@ -127,6 +128,9 @@
                                             </td>
                                             <td>
                                                 {{$plan->price}}
+                                            </td>
+                                            <td>
+                                                {{$plan->user_price}}
                                             </td>
                                             <td>
                                                 {{$plan->credit}}
@@ -173,8 +177,8 @@
                                                                             <input  value="{{$plan->name}}" name="name" type="text"  class="form-control name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="text-left"  >Price</label>
-                                                                            <input value="{{$plan->price}}"  name="price" step="any" type="number"   class="form-control weight">
+                                                                            <label class="text-left"  >User Displayed Price</label>
+                                                                            <input value="{{$plan->user_price}}"  name="price" step="any" type="number"   class="form-control weight">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="text-left"  for="#">Credit</label>
