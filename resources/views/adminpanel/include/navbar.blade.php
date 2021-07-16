@@ -14,7 +14,7 @@
                     <a class="nav-link" href="{{route('shops')}}">Shops<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('plans')}}">Plans<span class="sr-only"></span></a>
+                    <a class="nav-link" href="{{route('plans')}}">Bundles<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('credits')}}">Credits<span class="sr-only"></span></a>

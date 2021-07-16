@@ -32,7 +32,9 @@ class AdminController extends Controller
         $shop=Auth::user();
         $countries = [];
         foreach ($shop->customers as $customer){
-            array_push($countries, $customer->addressess[0]->country);
+            if(isset($customer->addressess[0])){
+                array_push($countries, $customer->addressess[0]->country);
+            }
         }
         $countries = array_values(array_unique($countries));
 

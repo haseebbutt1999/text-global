@@ -40,7 +40,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="welcome_sms_campaign-tab" data-toggle="tab"
                                            href="#welcome_sms_campaign" role="tab" aria-controls="welcome_sms_campaign"
-                                           aria-selected="false">Welcome Sms Campaign</a>
+                                           aria-selected="false">Welcome SMS Campaign</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="welcome_log-tab" data-toggle="tab" href="#welcome_log"
@@ -214,7 +214,7 @@
                                         <a class="nav-link" id="abandonedcart_campaign-tab" data-toggle="tab"
                                            href="#abandonedcart_campaign" role="tab"
                                            aria-controls="abandonedcart_campaign"
-                                           aria-selected="false">Abandoned Cart Sms Campaign</a>
+                                           aria-selected="false">Abandoned Cart SMS Campaign</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="abandonedcart_log-tab" data-toggle="tab"
@@ -464,7 +464,7 @@
                                         <a class="nav-link" id="order_confirm_campaign-tab" data-toggle="tab"
                                            href="#order_confirm_campaign" role="tab"
                                            aria-controls="order_confirm_campaign"
-                                           aria-selected="false">Orderconfirm Sms Campaign</a>
+                                           aria-selected="false">Order Confirm SMS Campaign</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="orderconfirm_log-tab" data-toggle="tab"
@@ -682,7 +682,7 @@
                                         <a class="nav-link" id="order_refund_campaign-tab" data-toggle="tab"
                                            href="#order_refund_campaign" role="tab"
                                            aria-controls="order_refund_campaign"
-                                           aria-selected="false">Orderrefund Sms Campaign</a>
+                                           aria-selected="false">Order Refund SMS Campaign</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="orderrefund_log-tab" data-toggle="tab"
@@ -900,7 +900,7 @@
                                         <a class="nav-link" id="order_dispatch_campaign-tab" data-toggle="tab"
                                            href="#order_dispatch_campaign" role="tab"
                                            aria-controls="order_dispatch_campaign"
-                                           aria-selected="false">Orderdispatch Sms Campaign</a>
+                                           aria-selected="false">Order Dispatch SMS Campaign</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="orderdispatch_log-tab" data-toggle="tab"

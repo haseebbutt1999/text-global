@@ -277,12 +277,14 @@
                                                             <label class='control-label'>Select Credits</label>
                                                             <div class="form-check">
 
+{{--                                                        to access $plan->credits relationship ----> \osiset\laravel-shopify\src\ShopifyApp\Storage\Models>--}}
                                                                 @if(count($plan->credits))
                                                                     {{--                                                                    @dd($plan->credits)--}}
                                                                     @foreach($plan->credits as $key2=>$credit_data)
                                                                         {{--                                                                        @dd($credit_data)--}}
                                                                         <label for="{{$key.$key2}}"
-                                                                            class="form-check-label d-flex price-credit-main-div">
+
+                                                                        class="form-check-label d-flex price-credit-main-div">
                                                                             <input hidden type="number" step="any" name="price"
                                                                                    class="price">
                                                                             <input type="hidden" name="credits"

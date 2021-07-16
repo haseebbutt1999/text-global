@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|  
+|
 */
 //
 //Route::get('/', function () {
@@ -32,7 +32,7 @@ Route::group(['middleware'=>['auth.shopify','shop-active']], function () {
 
          Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
 
-        Route::get('user-plans', 'UserController@user_plans')->name('user-plans');
+        Route::get('user-bundles', 'UserController@user_plans')->name('user-plans');
         Route::post('addmore-emails', 'UserController@addmore_emails')->name('addmore-emails');
 
 
@@ -107,7 +107,7 @@ Route::group(['middleware'=>['auth', 'prevent-back-history', 'prevent-user-acces
 //    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
     Route::get('/shops', 'AdminController@shops_index')->name('shops');
 
-    Route::get('/plans', 'AdminController@plans_index')->name('plans');
+    Route::get('/bundles', 'AdminController@plans_index')->name('plans');
     Route::post('/plan-save', 'AdminController@plan_save')->name('plan-save');
     Route::post('/edit-plan-save/{id}', 'AdminController@edit_plan_save')->name('edit-plan-save');
     Route::get('/delete-plan/{id}', 'AdminController@plan_delete')->name('delete-plan');
