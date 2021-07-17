@@ -10,7 +10,7 @@
                         @csrf
                         <div class="card-header bg-white">
                             <div class="col-md-6 m-auto d-flex justify-content-between align-items-center  ">
-                                <h5>Contact-us</h5>
+                                <h5>Contact Us</h5>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </div>

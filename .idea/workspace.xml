@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add contact us">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/contact.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +151,7 @@
       <workItem from="1626416892601" duration="24041000" />
       <workItem from="1626460590386" duration="57000" />
       <workItem from="1626461184173" duration="285000" />
-      <workItem from="1626501937528" duration="11490000" />
-    </task>
-    <task id="LOCAL-00154" summary="update weebhook, according to new domain">
-      <created>1619044970658</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1619044970658</updated>
+      <workItem from="1626501937528" duration="11505000" />
     </task>
     <task id="LOCAL-00155" summary="update weebhook, according to new domain">
       <created>1619045236594</created>
@@ -496,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626513443571</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="add contact us">
+      <created>1626513527536</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1626513527536</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
