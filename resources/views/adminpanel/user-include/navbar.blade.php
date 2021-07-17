@@ -2,7 +2,9 @@
 
 
 <nav class="navbar navbar-expand-lg " style="background: #202e78;">
-    <a style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}">TextGlobalShopify</a>
+    <div>
+        <a  style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}"><img style="max-width: 35%;" src="{{asset('text-global-uk.jpg')}}"></a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
