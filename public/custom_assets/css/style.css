@@ -14,6 +14,9 @@ input[type="radio"]{
 tr.td-text-center a:hover {
     text-decoration: underline !important;
 }
+.bg-primary {
+    background-color: #4C74B8 !important;
+}
 .links-hover a:hover {
     text-decoration: underline !important;
 }
