@@ -55,7 +55,7 @@ tr.td-text-center a:hover {
     font-size: 14px;
 }
 .table-class tr th {
-    background: #313d89;
+    background: #4C74B8;
     text-align: left;
 }
 .table-class tr td {
@@ -216,7 +216,7 @@ td .td-a:hover{
 }
 
 input:checked + .slider {
-    background-color: #4d5dbf;
+    background-color: #4C74B8;
 }
 
 input:focus + .slider {
