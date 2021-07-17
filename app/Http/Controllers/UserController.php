@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Abandonedcartcampaign;
 use App\Campaign;
+use App\Contact;
 use App\Country;
 use App\CountryShoppreference;
 use App\CountryUser;
@@ -194,6 +195,7 @@ class UserController extends Controller
         $shop_data = Shopdetail::where('user_id', $id)->first();
 //        dd($shop_data);
         $countries_data = Country::get();
+        $contact_datas = Contact::where('user_id', $id)->orderBy('created_at','DESC')->paginate(30);
 
         $campaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Campaign'])->orderBy('id', 'desc')->paginate(30);
         $welcomeCampaign_logs_data = Log::where('user_id', $id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
@@ -209,7 +211,7 @@ class UserController extends Controller
         return view('adminpanel/module/user/shop_status_detail', compact('shop_data',
             'abandonedCartCampaign_logs_data', 'Orderconfirm_logs_data', 'Orderdispatch_logs_data',
             'welcomeCampaign_logs_data', 'user_shop_detail_logs_data', 'plan_logs_data', 'campaign_logs_data',
-            'countries_data', 'shop_id','country_shoppreference_data'));
+            'contact_datas','countries_data', 'shop_id','country_shoppreference_data'));
     }
 
     public function shop_status_detail_save(Request $request){

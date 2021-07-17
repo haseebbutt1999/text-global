@@ -21,6 +21,10 @@
                         <a class="nav-link" id="plan-tab" data-toggle="tab" href="#plan" role="tab" aria-controls="plan"
                            aria-selected="false">User Plans</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                           aria-selected="false">Contact-us</a>
+                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="shopdetail" role="tabpanel" aria-labelledby="shopdetail-tab">
@@ -454,6 +458,61 @@
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="card col-md-12">
+
+
+                                <div class="card-body col-md-12">
+                                    <div class="row px-3" style="overflow-x:auto;">
+
+                                        <table id="datatabled" class="table table-borderless  table-hover  table-class ">
+                                            <thead class="border-0 ">
+
+                                            <tr class="th-tr table-tr text-white text-center">
+                                                <th class="font-weight-bold " >Name</th>
+                                                <th class="font-weight-bold " >Email</th>
+                                                <th class="font-weight-bold " >Subject</th>
+                                                <th class="font-weight-bold " >Message</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if($contact_datas->count())
+                                                @foreach($contact_datas as $key=>$contact)
+
+                                                    <tr class="td-text-center">
+                                                        <td>
+                                                            {{$contact->name}}
+                                                        </td>
+                                                        <td>
+                                                            {{$contact->email}}
+                                                        </td>
+                                                        <td>
+                                                            {{$contact->subject}}
+                                                        </td>
+                                                        <td>
+                                                            {{$contact->message}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="4">
+                                                        -- no contact-us data found
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                            {{--                                        @dd($users_data)--}}
+
+                                            </tbody>
+                                        </table>
+                                        @if($contact_datas->count())
+                                            {!!  $contact_datas->links() !!}
+                                        @endif
+                                    </div>
+                                </div>
+
                         </div>
                     </div>
                 </div>
