@@ -275,9 +275,13 @@ input:checked + .slider:before {
 /*    float: right;*/
 /*    margin-right: 38px;*/
 /*}*/
+
 @media (min-width: 994px){
+    /*.navbar-expand-lg .navbar-collapse {*/
+    /*    margin-left: 15% !important;*/
+    /*}*/
     .navbar-expand-lg .navbar-collapse {
-        margin-left: 15% !important;
+        margin-left: 0 !important;
     }
     ul.custom-ul li {
         padding: 5px 10px;

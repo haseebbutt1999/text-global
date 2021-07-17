@@ -662,11 +662,12 @@
                                                                         {{$user_orderconfirm_log->mobileno}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderconfirm_log->sms_text}}
-                                                                    </td>
-                                                                    <td>
                                                                         {{$user_orderconfirm_log->order_name}}
                                                                     </td>
+                                                                    <td>
+                                                                        {{$user_orderconfirm_log->sms_text}}
+                                                                    </td>
+
                                                                     <td>
                                                                         {{$user_orderconfirm_log->action}}
                                                                     </td>
