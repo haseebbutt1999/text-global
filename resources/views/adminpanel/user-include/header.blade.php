@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="26x26" href="{{asset('text-global-uk.jpg')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Text Global Shopify</title>
     <meta charset="utf-8">
