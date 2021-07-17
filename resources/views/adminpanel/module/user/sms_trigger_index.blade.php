@@ -194,7 +194,7 @@
                                                                         {{$user_welcome_log->action}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_welcome_log->created_at}}
+                                                                        {{date_format($user_welcome_log->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -448,7 +448,7 @@
                                                                         {{$user_abandonedcart_log->action}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_abandonedcart_log->created_at}}
+                                                                        {{date_format($user_abandonedcart_log->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -672,7 +672,7 @@
                                                                         {{$user_orderconfirm_log->action}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderconfirm_log->created_at}}
+                                                                        {{date_format($user_orderconfirm_log->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -894,7 +894,7 @@
                                                                         {{$user_orderrefund_log->action}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderrefund_log->created_at}}
+                                                                        {{date_format($user_orderrefund_log->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -1122,7 +1122,7 @@
                                                                         {{$user_orderdispatch_log->action}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->created_at}}
+                                                                        {{date_format($user_orderdispatch_log->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
