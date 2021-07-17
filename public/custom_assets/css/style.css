@@ -8,11 +8,20 @@ input[type="radio"]{
     margin-left: auto;
     margin-right: auto;
 }
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0; }
+.navbar-brand img {
+    max-height: 65px;
+}
 .card-header h6 {
     margin: 0 !important;
 }
 tr.td-text-center a:hover {
     text-decoration: underline !important;
+}
+.btn-primary, .dataTables_wrapper .dataTables_paginate a.current {
+    border-color: #4C74B8;
 }
 .bg-primary {
     background-color: #4C74B8 !important;

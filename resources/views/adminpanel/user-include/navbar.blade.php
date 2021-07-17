@@ -1,9 +1,9 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg " style="background: #202e78;">
+<nav class="navbar navbar-expand-lg " style="background: #4C74B8">
     <div>
-        <a  style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}"><img style="max-width: 35%;" src="{{asset('text-global-uk.jpg')}}"></a>
+        <a  style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}"><img style="max-height: 65px;" src="{{asset('text-global-uk.jpg')}}"></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,10 +44,10 @@
     <div style="width: auto; " class="text-white mr-2 d-flex">
 
         <div style="
-    color: white;background-color: #5C6AFE ;
+    color: white;background-color: #F4B340 ;
     padding: 5px 25px;    font-weight: 500;
     text-align: center;">{{"Credits - ". Auth::user()->credit }}</div>
-        <a style="font-weight: 500;" class="btn btn-warning text-white" href="{{route('user-plans')}}">
+        <a style="font-weight: 500;" class="btn btn-success text-white"  href="{{route('user-plans')}}">
             Buy SMS Bundles
         </a>
     </div>

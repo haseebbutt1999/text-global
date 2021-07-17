@@ -1,9 +1,9 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg " style="background: #202e78;">
+<nav class="navbar navbar-expand-lg " style="background: #4C74B8;">
     <div>
-        <a  style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}"><img style="max-width: 35%;" src="{{asset('text-global-uk.jpg')}}"></a>
+        <a  style="margin-left: 10px;" class="navbar-brand" href="{{Route('home')}}"><img style="max-height: 65px;" src="{{asset('text-global-uk.jpg')}}"></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

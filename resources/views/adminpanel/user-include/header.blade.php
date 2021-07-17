@@ -39,5 +39,15 @@
 
 
 </head>
-
+<style>
+    .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 0; }
+    .btn-primary, .dataTables_wrapper .dataTables_paginate a.current {
+        border-color: #4C74B8;
+    }
+    .bg-primary {
+        background-color: #4C74B8 !important;
+    }
+</style>
 {{--Header End--}}
