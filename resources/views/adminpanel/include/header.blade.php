@@ -41,6 +41,7 @@
         .bg-primary {
             background-color: #4C74B8 !important;
         }
+        .
 
     </style>
 
