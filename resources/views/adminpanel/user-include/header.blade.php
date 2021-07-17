@@ -23,7 +23,7 @@
 {{--    datepicker css--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- <link rel="stylesheet" href="http://localhost:3000/css/bootstrap4/dist/css/bootstrap-custom.css?v=datetime"> -->
-    <link rel="stylesheet" href="{{asset('polished_asset/polished.min.css')}}?{{ now() }}">
+    <link rel="stylesheet" href="{{asset('polished_asset/polished.min.css')}}">
     <!-- <link rel="stylesheet" href="polaris-navbar.css"> -->
     <link rel="stylesheet" href="{{asset('polished_asset/iconic/css/open-iconic-bootstrap.min.css')}}">
 {{--select2 css--}}
@@ -47,6 +47,9 @@
         border-color: #4C74B8;
     }
     body .bg-primary {
+        background-color: #4C74B8 !important;
+    }
+    .btn-primary{
         background-color: #4C74B8 !important;
     }
     .navbar {

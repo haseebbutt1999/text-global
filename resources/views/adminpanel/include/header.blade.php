@@ -21,9 +21,9 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('/custom_assets/css/style.css')}}?{{ now() }}">
     <!-- <link rel="stylesheet" href="http://localhost:3000/css/bootstrap4/dist/css/bootstrap-custom.css?v=datetime"> -->
-    <link rel="stylesheet" href="{{asset('polished_asset/polished.min.css')}}?{{ now() }}">
+    <link rel="stylesheet" href="{{asset('polished_asset/polished.min.css')}}">
     <!-- <link rel="stylesheet" href="polaris-navbar.css"> -->
-    <link rel="stylesheet" href="{{asset('polished_asset/iconic/css/open-iconic-bootstrap.min.css')}}?{{ now() }}">
+    <link rel="stylesheet" href="{{asset('polished_asset/iconic/css/open-iconic-bootstrap.min.css')}}">
 {{--select2 css--}}
     <link rel="stylesheet" href="{{ asset('polished_asset/select2/css/select2.min.css') }}">
     {{--    toaster cdn to display response--}}
@@ -42,6 +42,9 @@
         border-color: #4C74B8;
     }
     .bg-primary {
+        background-color: #4C74B8 !important;
+    }
+    .btn-primary{
         background-color: #4C74B8 !important;
     }
     .navbar {
