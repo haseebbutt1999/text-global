@@ -22,12 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="maitnain new logs">
+    <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add contact us">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_status_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_status_detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/user_plan_index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,14 +153,7 @@
       <workItem from="1626416892601" duration="24041000" />
       <workItem from="1626460590386" duration="57000" />
       <workItem from="1626461184173" duration="285000" />
-      <workItem from="1626501937528" duration="9798000" />
-    </task>
-    <task id="LOCAL-00151" summary="update weebhook, according to new domain">
-      <created>1619032698087</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1619032698087</updated>
+      <workItem from="1626501937528" duration="10661000" />
     </task>
     <task id="LOCAL-00152" summary="update weebhook, according to new domain">
       <created>1619034644266</created>
@@ -501,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626508279371</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="add contact us">
+      <created>1626511982095</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1626511982095</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +517,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Webhook for New Customer Welcome sms" />
     <MESSAGE value="country module changes, prev selected senders option, sms credit limit by incresing text message character, litter bit changes in sms trigger tab." />
     <MESSAGE value="create default welcome and abandoned campaign" />
     <MESSAGE value="order update, create, checkout, webhook" />
@@ -545,7 +541,8 @@
     <MESSAGE value="welcome campaign changes character" />
     <MESSAGE value="changee" />
     <MESSAGE value="maitnain new logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="maitnain new logs" />
+    <MESSAGE value="add contact us" />
+    <option name="LAST_COMMIT_MESSAGE" value="add contact us" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1626509952938">
@@ -556,10 +553,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626508281849">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626511995980">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626508281849" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626511995980" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
