@@ -23,7 +23,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-                           aria-selected="false">Contact-us</a>
+                           aria-selected="false">Contact Us</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
