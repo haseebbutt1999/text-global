@@ -24,11 +24,16 @@ Route::group(['middleware' => ['auth.shopify', 'shop-active']], function () {
     // customer routes
     Route::get('/', 'UserController@user_dashboard')->middleware(['billable'])->name('home');
     Route::post('setup-page', 'UserController@setup_page')->name('setup-page');
+    Route::get('contact-us', 'ContactController@index')->name('contact-form');
 
     Route::get('user-shop-detail', 'UserController@user_shop_detail')->name('user-shop-detail');
+
+    Route::post('contact-save', 'ContactController@contact_save')->name('contact-save');
     Route::post('user-shop-detail-save', 'UserController@user_shop_detail_save')->name('user-shop-detail-save');
 
     Route::get('countries', 'UserController@countries_index')->name('countries');
+
+
 
     Route::post('country-user-save', 'UserController@country_user_save')->name('country-user-save');
 
@@ -103,6 +108,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history', 'prevent-user-acc
     Route::get('/home', 'HomeController@index');
 //    Route::get('/admin-dashboard', 'AdminController@admin_dashboard')->name('admin-dashboard');
     Route::get('/shops', 'AdminController@shops_index')->name('shops');
+//    Route::get('/contact-list', 'AdminController@contact_list')->name('contact-list');
 
     Route::get('/bundles', 'AdminController@plans_index')->name('plans');
     Route::post('/plan-save', 'AdminController@plan_save')->name('plan-save');

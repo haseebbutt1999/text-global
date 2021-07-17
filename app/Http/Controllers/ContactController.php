@@ -12,17 +12,17 @@ class ContactController extends Controller
         return view('adminpanel/module/user/contact');
     }
     public function contact_save(Request $request){
-        if(Contact::where('user_id', $request->user_id)->exists()){
-            $contact = Contact::where('user_id', $request->user_id)->first();
-        }else{
-            $conatct = new Contact();
-        }
-        $conatct->user_id = $request->user_id;
-        $conatct->name = $request->name;
-        $conatct->email = $request->email;
-        $conatct->subject = $request->subject;
-        $conatct->message = $request->message;
-        $conatct->save();
+//        if(Contact::where('user_id', $request->user_id)->exists()){
+//            $contact = Contact::where('user_id', $request->user_id)->first();
+//        }else{
+        $contact = new Contact();
+//        }
+        $contact->user_id = $request->user_id;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
         if(Auth::user()->user_status == "inactive"){
             return view('adminpanel/module/user/setup_page');
         }else{

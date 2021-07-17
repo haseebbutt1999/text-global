@@ -418,17 +418,14 @@
             @endforeach
                 <div class="col-sm-4 mb-4">
                     <div class="card bg-white border-0 shadow-sm">
-                        <div class="card-header bg-white border-light"
+                        <div class="card-body bg-white border-light"
                              style="background: #4C74B8 !important; color: white">
-                            <h4 class="my-0 font-weight-normal">{{$plan->name}}</h4>
-                        </div>
-                        <div class="card-body links-hover">
-                            <h5 class="card-title pricing-card-title">Need more? Contact us today for a bulk pricing</h5>
-
+                            <h5 style="margin-top: 45px;" class=" text-center card-title pricing-card-title">Need more? </h5>
+                            <h6 class="text-center">Contact us today for a bulk pricing</h6>
                             <div class="form-group d-flex">
                                 <a style="width: 100%;" class="subscribe"
                                    href="{{ route('contact-form') }}">
-                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Conatc US
+                                    <button style="margin-top: 35px;" type="button" class="btn btn-lg btn-block btn-white">Contact US
                                     </button>
                                 </a>
                             </div>
