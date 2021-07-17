@@ -25,6 +25,7 @@
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="maitnain new logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/include/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/user-include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/user-include/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,14 +153,7 @@
       <workItem from="1626416892601" duration="24041000" />
       <workItem from="1626460590386" duration="57000" />
       <workItem from="1626461184173" duration="285000" />
-      <workItem from="1626501937528" duration="3980000" />
-    </task>
-    <task id="LOCAL-00141" summary="stripe credit big fixing">
-      <created>1618387348074</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1618387348074</updated>
+      <workItem from="1626501937528" duration="4072000" />
     </task>
     <task id="LOCAL-00142" summary="stripe credit big fixing">
       <created>1618996330275</created>
@@ -497,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626505934797</updated>
     </task>
-    <option name="localTasksCounter" value="190" />
+    <task id="LOCAL-00190" summary="maitnain new logs">
+      <created>1626506004366</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1626506004366</updated>
+    </task>
+    <option name="localTasksCounter" value="191" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,10 +553,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626505936693">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626506006589">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626505936693" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626506006589" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
