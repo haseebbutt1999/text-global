@@ -49,6 +49,10 @@
     }
     .navbar {
         padding: 0 1rem; }
+    body .btn-primary {
+        background-color: #4C74B8 !important;
+        background: #4C74B8 !important;
+    }
 
 </style>
 
