@@ -15,7 +15,7 @@
                             <div class="col-md-12 px-3 pt-2">
                                 <div class="d-flex justify-content-between">
                                     <h5>Shops</h5>
-                                    <a href="{{route('admin-customer-push')}}"><button class="btn-primary">Customers Sync to Enterprise Platform</button></a>
+                                    <a class="btn btn-primary" href="{{route('admin-customer-push')}}">Customers Sync to Enterprise Platform</a>
 {{--                                    <div >--}}
 {{--                                        <a style="display: inline-block;" type="submit" href=""   class="btn btn-sm btn-primary text-white"  >Sync Collections</a>--}}
 

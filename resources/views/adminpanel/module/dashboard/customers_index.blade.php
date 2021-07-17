@@ -49,9 +49,9 @@
                                 <div class="d-flex justify-content-between align-items-center mr-2">
                                     <h5>Customers</h5>
                                     <div>
-                                        <a href="{{route('customer-export')}}"><button class="btn-primary">Customers Export</button></a>
-                                        <a href="{{route('customer-push')}}"><button class="btn-primary">Customers Sync to Enterprise Platform</button></a>
-                                        <a href="{{route('customer-sync')}}"><button class="btn-primary">Customer Sync</button></a>
+                                        <a class="btn btn-primary"  href="{{route('customer-export')}}">Customers Export</a>
+                                        <a class="btn btn-primary" href="{{route('customer-push')}}">Customers Sync to Enterprise Platform</a>
+                                        <a class="btn btn-primary" href="{{route('customer-sync')}}">Customer Sync</a>
                                     </div>
 
 {{--                                    <div>--}}
