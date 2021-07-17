@@ -23,7 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add contact us">
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/setup_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/setup_page.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +152,7 @@
       <workItem from="1626416892601" duration="24041000" />
       <workItem from="1626460590386" duration="57000" />
       <workItem from="1626461184173" duration="285000" />
-      <workItem from="1626501937528" duration="11505000" />
-    </task>
-    <task id="LOCAL-00155" summary="update weebhook, according to new domain">
-      <created>1619045236594</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1619045236594</updated>
+      <workItem from="1626501937528" duration="11706000" />
     </task>
     <task id="LOCAL-00156" summary="update weebhook, according to new domain">
       <created>1619045815017</created>
@@ -496,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626513527536</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="add contact us">
+      <created>1626513540594</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1626513540594</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,10 +552,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626513446208">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626513543491">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626513446208" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626513543491" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -575,10 +576,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439522288" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626512694238">
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1626513652809">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626512694238" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1626513652809" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
