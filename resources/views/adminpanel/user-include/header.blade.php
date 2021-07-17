@@ -37,17 +37,20 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
 
-    <style>
-        .navbar-brand {
-            padding-top: 0;
-            padding-bottom: 0; }
-        .btn-primary, .dataTables_wrapper .dataTables_paginate a.current {
-            border-color: #4C74B8;
-        }
-        body .bg-primary {
-            background-color: #4C74B8 !important;
-        }
-    </style>
+
 </head>
+<style>
+    .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 0; }
+    .btn-primary, .dataTables_wrapper .dataTables_paginate a.current {
+        border-color: #4C74B8;
+    }
+    body .bg-primary {
+        background-color: #4C74B8 !important;
+    }
+    .navbar {
+        padding: 0 1rem; }
+</style>
 
 {{--Header End--}}
