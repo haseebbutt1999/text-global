@@ -331,7 +331,22 @@ return [
         [
             'topic' => 'checkouts/update',
             'address' => 'https://shopifyapp.textglobal.co.uk/webhook/checkouts-update'
+        ],
+        [
+            'topic' => 'shop/redact',
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/shop-redact'
+        ],
+        [
+            'topic' => 'customers/redact',
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customers-redact'
+        ],
+        [
+            'topic' => 'customers/data_request',
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customers-data-request'
         ]
+
+
+
 
 
     ],
