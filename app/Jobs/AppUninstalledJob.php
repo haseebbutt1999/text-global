@@ -75,7 +75,7 @@ class AppUninstalledJob implements ShouldQueue
 
             $welcomecampaigns = Welcomecampaign::where('user_id', $shop->id)->get();
             foreach ($welcomecampaigns as $welcomecampaign){
-                $welcomecampaigns->delete();
+                $welcomecampaign->delete();
             }
             $user_campaigns_logs = UserCamapignLog::where('user_id', $shop->id)->get();
             foreach ($user_campaigns_logs as $user_campaigns_log){
