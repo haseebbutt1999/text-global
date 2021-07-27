@@ -87,7 +87,7 @@
                                         <th class="font-weight-bold " >Phone</th>
                                         <th class="font-weight-bold " >Country</th>
                                         <th class="font-weight-bold " >Total Orders</th>
-                                        <th class="font-weight-bold " >Total Spents</th>
+                                        <th class="font-weight-bold " >Total Spent</th>
                                     </tr>
                                     </thead>
                                     <tbody>
