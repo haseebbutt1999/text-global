@@ -343,7 +343,12 @@ return [
         [
             'topic' => 'customers/data_request',
             'address' => 'https://shopifyapp.textglobal.co.uk/webhook/customers-data-request'
+        ],
+        [
+            'topic' => 'app/uninstalled',
+            'address' => 'https://shopifyapp.textglobal.co.uk/webhook/app-uninstalled'
         ]
+
 
 
 
