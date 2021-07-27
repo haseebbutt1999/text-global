@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth.shopify', 'shop-active']], function () {
     // customer routes
     Route::get('/', 'UserController@user_dashboard')->middleware(['billable'])->name('home');
     Route::post('setup-page', 'UserController@setup_page')->name('setup-page');
-    Route::get('contact-us', 'ContactController@index')->name('contact-form');
+
 
     Route::get('user-shop-detail', 'UserController@user_shop_detail')->name('user-shop-detail');
 
@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth.shopify', 'shop-active']], function () {
 });
 
 Route::group(['middleware' => ['auth.shopify']], function () {
-
+    Route::get('contact-us', 'ContactController@index')->name('contact-form');
     Route::post('shop-detail', 'UserController@shop_detail')->name('shop-detail');
     Route::get('shop-status-detail/{id}', 'UserController@shop_status_detail')->name('shop-status-detail');
     Route::post('shop-status-detail-save', 'UserController@shop_status_detail_save')->name('shop-status-detail-save');
