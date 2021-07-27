@@ -24,7 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add contact us">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/shopify-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/shopify-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/setup_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/setup_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/shop_detail.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,21 +155,7 @@
       <workItem from="1626461184173" duration="285000" />
       <workItem from="1626501937528" duration="13253000" />
       <workItem from="1627327361274" duration="2182000" />
-      <workItem from="1627384117662" duration="2740000" />
-    </task>
-    <task id="LOCAL-00160" summary="apply filter on cutomers page">
-      <created>1619088408307</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1619088408309</updated>
-    </task>
-    <task id="LOCAL-00161" summary="apply filter on cutomers page">
-      <created>1619089004844</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1619089004849</updated>
+      <workItem from="1627384117662" duration="4689000" />
     </task>
     <task id="LOCAL-00162" summary="apply filter on cutomers page">
       <created>1619089437180</created>
@@ -499,7 +486,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626517415400</updated>
     </task>
-    <option name="localTasksCounter" value="209" />
+    <task id="LOCAL-00209" summary="add contact us">
+      <created>1627387378040</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1627387378046</updated>
+    </task>
+    <task id="LOCAL-00210" summary="add contact us">
+      <created>1627387386740</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1627387386740</updated>
+    </task>
+    <option name="localTasksCounter" value="211" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,10 +555,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1626517420039">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627387390132">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1626517420039" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627387390132" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -566,10 +567,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="611" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1626509924299" />
-    <state x="509" y="183" width="581" height="546" key="find.popup" timestamp="1627329609953">
+    <state x="509" y="183" width="581" height="546" key="find.popup" timestamp="1627390827170">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="509" y="183" width="581" height="546" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1627329609953" />
+    <state x="509" y="183" width="581" height="546" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1627390827170" />
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626417267363">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -578,10 +579,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439522288" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627328473514">
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627390788317">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627328473514" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627390788317" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

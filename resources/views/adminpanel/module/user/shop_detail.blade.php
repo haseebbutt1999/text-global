@@ -51,7 +51,7 @@
                                             </div>
                                             <div class="sender-char-msg"><span style="color: gray;font-size: 14px">Min character 3 and Max character 11</span></div>
                                         </div>
-                                    </div>
+                                    </div>N
                                 </div>
                         </div>
                         </form>

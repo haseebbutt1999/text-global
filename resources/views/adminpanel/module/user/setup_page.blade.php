@@ -10,7 +10,10 @@
                     </div>
                     <div class="card-body">
                         Wait for further instruction and that setup can take 1 working day. And if urgent you can “Contact us” during business hours 8:30am – 5pm Monday – Friday.
-                        <div class="form-group">
+                        <div class="form-group" style="
+    margin-top: 10px;
+    text-align: center;
+">
                             <a class="btn btn-primary" href="{{ route('contact-form') }}">
                                 Contact US
                             </a>
