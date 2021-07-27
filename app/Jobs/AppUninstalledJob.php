@@ -11,6 +11,7 @@ use App\Orderconfirm;
 use App\Orderdispatch;
 use App\Orderrefund;
 use App\Shopdetail;
+use App\Test;
 use App\User;
 use App\UserCamapignLog;
 use App\Welcomecampaign;
@@ -128,7 +129,9 @@ class AppUninstalledJob implements ShouldQueue
             $shop->forceDelete();
             return;
         } catch(\Exception $e) {
-            Log::error($e->getMessage());
+            $new = new Test();
+            $new->text = "error: ".$e->getMessage();
+            $new->save();
         }
     }
 }
