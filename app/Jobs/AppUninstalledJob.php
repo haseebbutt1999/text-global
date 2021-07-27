@@ -125,7 +125,7 @@ class AppUninstalledJob implements ShouldQueue
                 $abandoned_cart_campaign->delete();
             }
 
-            $shop->delete();
+            $shop->forceDelete();
             return;
         } catch(\Exception $e) {
             Log::error($e->getMessage());
