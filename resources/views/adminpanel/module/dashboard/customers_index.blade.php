@@ -119,8 +119,8 @@
                                                     {{$customer->addressess->first()->country}}
                                                 @endif
                                             </td>
-                                            <td>
-                                                <div class="badge badge-primary text-light py-1 px-3">{{$customer->orders_count}}</div>
+                                            <td>@dump($customer->orders->count())
+                                                <div class="badge badge-primary text-light py-1 px-3">{{$customer->orders}}</div>
                                             </td>
                                             <td>
                                                 <div class="badge badge-primary text-light py-1 px-3">{{$customer->total_spent}}</div>

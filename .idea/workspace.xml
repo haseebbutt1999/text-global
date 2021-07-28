@@ -23,7 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="lapsed customer campaign">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +157,7 @@
       <workItem from="1627327361274" duration="2182000" />
       <workItem from="1627384117662" duration="9359000" />
       <workItem from="1627415471703" duration="140000" />
-      <workItem from="1627451471978" duration="15324000" />
-    </task>
-    <task id="LOCAL-00189" summary="maitnain new logs">
-      <created>1626505934797</created>
-      <option name="number" value="00189" />
-      <option name="presentableId" value="LOCAL-00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1626505934797</updated>
+      <workItem from="1627451471978" duration="16195000" />
     </task>
     <task id="LOCAL-00190" summary="maitnain new logs">
       <created>1626506004366</created>
@@ -500,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627469654308</updated>
     </task>
-    <option name="localTasksCounter" value="238" />
+    <task id="LOCAL-00238" summary="lapsed customer campaign">
+      <created>1627470050376</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1627470050377</updated>
+    </task>
+    <option name="localTasksCounter" value="239" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,10 +565,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627469658887">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627470053426">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627469658887" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627470053426" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -587,10 +589,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439522288" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627462411436">
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627470840162">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627462411436" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627470840162" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
