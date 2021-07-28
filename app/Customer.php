@@ -12,7 +12,7 @@ class Customer extends Model
     }
     public function orders()
     {
-        return $this->hasMany(Address::class, 'customer_id','shopify_customer_id');
+        return $this->hasMany(order::class, 'customer_id','shopify_customer_id');
     }
 
     public function user(){
