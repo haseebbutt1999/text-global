@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="lapsed customer campaign">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,14 +156,7 @@
       <workItem from="1627327361274" duration="2182000" />
       <workItem from="1627384117662" duration="9359000" />
       <workItem from="1627415471703" duration="140000" />
-      <workItem from="1627451471978" duration="16195000" />
-    </task>
-    <task id="LOCAL-00190" summary="maitnain new logs">
-      <created>1626506004366</created>
-      <option name="number" value="00190" />
-      <option name="presentableId" value="LOCAL-00190" />
-      <option name="project" value="LOCAL" />
-      <updated>1626506004366</updated>
+      <workItem from="1627451471978" duration="16282000" />
     </task>
     <task id="LOCAL-00191" summary="maitnain new logs">
       <created>1626506077822</created>
@@ -502,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627470050377</updated>
     </task>
-    <option name="localTasksCounter" value="239" />
+    <task id="LOCAL-00239" summary="lapsed customer campaign">
+      <created>1627470931491</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1627470931491</updated>
+    </task>
+    <option name="localTasksCounter" value="240" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,10 +564,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627470053426">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627470935720">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627470053426" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627470935720" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
