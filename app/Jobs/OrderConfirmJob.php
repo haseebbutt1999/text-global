@@ -62,7 +62,10 @@ class OrderConfirmJob implements ShouldQueue
             $order_checkout_save->customer_id = $order_confirm_data->customer->id;
             $customer = Customer::where('user_id', $shop->id)->where('shopify_customer_id',$order_confirm_data->customer->id)->first();
             if($customer != null){
-                $customer->last_order_date =  Carbon::createFromTimeString($order_confirm_data->created_at)->format('Y-m-d');
+                $new = new Test();
+                $new->text = "last_order_date: ".json_encode(Carbon::createFromTimeString($order_confirm_data->created_at)->format('Y-m-d H:i:s'));
+                $new->save();
+                $customer->last_order_date =  Carbon::createFromTimeString($order_confirm_data->created_at)->format('Y-m-d H:i:s');
                 $customer->orders_count = $order_confirm_data->customer->orders_count;
                 $customer->save();
             }
