@@ -3,12 +3,14 @@
 namespace App\Jobs;
 
 use App\AbandonedCartLog;
+use App\Customer;
 use App\Http\Controllers\LogsController;
 use App\order;
 use App\Orderconfirm;
 use App\Test;
 use App\User;
 use App\UserCamapignLog;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -58,6 +60,12 @@ class OrderConfirmJob implements ShouldQueue
             $order_checkout_save->order_id = $order_confirm_data->id;
             $order_checkout_save->checkout_id = $order_confirm_data->checkout_id;
             $order_checkout_save->customer_id = $order_confirm_data->customer->id;
+            $customer = Customer::where('user_id', $shop->id)->where('shopify_customer_id',$order_confirm_data->customer->id)->first();
+            if($customer != null){
+                $customer->last_order_date =  Carbon::createFromTimeString($order_confirm_data->created_at)->format('Y-m-d');
+                $customer->orders_count = $order_confirm_data->customer->orders_count;
+                $customer->save();
+            }
             $order_checkout_save->save();
 
             $abandoned_conversion = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $order_confirm_data->checkout_id)->first();
