@@ -26,6 +26,8 @@ class CustomerController extends Controller
     public function customer_sync(){
 
         $customer = Auth::user();
+        $cus = Customer::where('shopify_customer_id',5425875812521)->first();
+        dd($cus->orders);
         $customer = $customer->api()->rest('GET', '/admin/customers.json')['body']['customers'];
 //        $customer = $customer->api()->rest('GET', '/admin/orders.json');
 //        dd($customer);

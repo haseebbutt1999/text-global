@@ -10,6 +10,10 @@ class Customer extends Model
     {
         return $this->hasMany(Address::class, 'shopify_customer_id','shopify_customer_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Address::class, 'shopify_customer_id','customer_id');
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

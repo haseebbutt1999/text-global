@@ -85,6 +85,7 @@ Route::group(['middleware' => ['auth.shopify', 'shop-active']], function () {
     Route::get('/webhook', 'UserController@webhooks');
     Route::get('/webhook/update', 'UserController@webhooks_update');
 
+
 });
 
 Route::group(['middleware' => ['auth.shopify']], function () {
