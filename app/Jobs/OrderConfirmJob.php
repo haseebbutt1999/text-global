@@ -57,6 +57,7 @@ class OrderConfirmJob implements ShouldQueue
             $order_checkout_save->user_id = $shop->id;
             $order_checkout_save->order_id = $order_confirm_data->id;
             $order_checkout_save->checkout_id = $order_confirm_data->checkout_id;
+            $order_checkout_save->customer_id = $order_confirm_data->customer->id;
             $order_checkout_save->save();
 
             $abandoned_conversion = AbandonedCartLog::where('user_id', $shop->id)->where('checkout_id', $order_confirm_data->checkout_id)->first();
