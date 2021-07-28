@@ -14,7 +14,7 @@ class AddFieldToCustomersTable extends Migration
     public function up()
     {
         Schema::table('customers', function (Blueprint $table) {
-            $table->timestamp('last_order_date')->nullable()->after('last_name');
+            $table->string('last_order_date')->nullable()->after('last_name');
         });
     }
 
