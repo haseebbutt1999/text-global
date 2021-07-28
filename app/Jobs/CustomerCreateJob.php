@@ -77,7 +77,7 @@ class CustomerCreateJob implements ShouldQueue
             $customer->email = $customer_data->email;
             $customer->first_name = $customer_data->first_name;
             $customer->last_name = $customer_data->last_name;
-            $customer->phone = $customer_data->default_address->phone;
+            $customer->phone = $customer_data->phone;
             $customer->currency = $customer_data->currency;
             $customer->accepts_marketing = $customer_data->accepts_marketing;
             $customer->state = $customer_data->state;
