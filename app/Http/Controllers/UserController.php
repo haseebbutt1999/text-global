@@ -12,6 +12,7 @@ use App\Credit;
 use App\Customer;
 use App\Jobs\SendSms;
 use App\Jobs\WelcomeEmailJob;
+use App\LapsedCustomer;
 use App\Log;
 use App\Orderconfirm;
 use App\Orderdispatch;
@@ -518,6 +519,29 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function lapsed_campaign_save(Request $request){
+//        dd($request->all());
+        $lapsed_campaign_save = LapsedCustomer::where('user_id', Auth::user()->id)->first();
+        if($lapsed_campaign_save == null){
+            $lapsed_campaign_save = new LapsedCustomer();
+        }
+        $lapsed_campaign_save->user_id = Auth::user()->id;
+        $lapsed_campaign_save->campaign_name = $request->campaign_name;
+        $lapsed_campaign_save->days = $request->days;
+        $lapsed_campaign_save->message_text = $request->message_text;
+        $lapsed_campaign_save->sender_name = $request->sender_name;
+        $lapsed_campaign_save->calculated_credit_per_sms = $request->calculated_credit_per_sms;
+        if(isset($request->status)){
+            $lapsed_campaign_save->status= $request->status;
+        }else{
+            $lapsed_campaign_save->status= "inactive";
+        }
+        $lapsed_campaign_save->save();
+        $this->log_store->log_store(Auth::user()->id, 'LapsedCustomer', $lapsed_campaign_save->id, $lapsed_campaign_save->campaign_name, 'Lapsed customer Camapign Updated by User' , $notes = null);
+
+        return redirect()->back();
+    }
+
     public function abandoned_cart_campaign(){
         $abandoned_cart_campaign = Abandonedcartcampaign::where('user_id', Auth::user()->id)->first();
         $abandoned_cart_campaign= json_decode(json_encode($abandoned_cart_campaign,True));
@@ -557,15 +581,18 @@ class UserController extends Controller
         $orderrefund_campaign= json_decode(json_encode($orderrefund_campaign,True));
         $orderdispatch_campaign = Orderdispatch::where('user_id', Auth::user()->id)->first();
         $orderdispatch_campaign= json_decode(json_encode($orderdispatch_campaign,True));
+        $lapsed_campaign = LapsedCustomer::where('user_id', Auth::user()->id)->first();
+        $lapsed_campaign= json_decode(json_encode($lapsed_campaign,True));
 
         $user_welcome_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
         $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
         $user_orderconfirm_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderconfirm'])->orderBy('id', 'desc')->paginate(30);
         $user_orderdispatch_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderdispatch'])->orderBy('id', 'desc')->paginate(30);
         $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('id', 'desc')->paginate(30);
+        $user_lapsed_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['LapsedCustomer'])->orderBy('id', 'desc')->paginate(30);
 
         return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'abandoned_cart_campaign',
-            'user_welcome_logs_data', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
+            'user_welcome_logs_data','user_lapsed_logs_data','lapsed_campaign', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
     }
 
     public function webhooks()

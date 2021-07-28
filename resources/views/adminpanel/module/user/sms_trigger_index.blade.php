@@ -30,6 +30,11 @@
                            aria-controls="order_dispatch"
                            aria-selected="false">Order Dispatch Campaign</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="lapsed_customer-tab" data-toggle="tab" href="#lapsed_customer" role="tab"
+                           aria-controls="lapsed_customer"
+                           aria-selected="false">Lapsed Customer Campaign</a>
+                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="welcome_sms" role="tabpanel"
@@ -1138,6 +1143,197 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="lapsed_customer" role="tabpanel" aria-labelledby="lapsed_customer-tab">
+                        <div class="col-md-12 col-lg-12 card">
+                            <div class="card-body col-md-12">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="lapsed_campaign-tab" data-toggle="tab"
+                                           href="#lapsed_campaign" role="tab"
+                                           aria-controls="lapsed_campaign"
+                                           aria-selected="false">Lapsed Customer SMS Campaign</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="lapsed_log-tab" data-toggle="tab"
+                                           href="#lapsedlog_log" role="tab" aria-controls="lapsedlog_log"
+                                           aria-selected="false">Logs</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="lapsed_campaign" role="tabpanel"
+                                         aria-labelledby="lapsed_campaign-tab">
+                                        <div class="col-md-12 col-lg-12 card">
+                                            <form class="lapsed-save-campaign"
+                                                  action="{{Route('lapsed-campaign-save')}}" method="post">
+                                                @csrf
+                                                <input hidden value=""
+                                                       class="  lapsed_sms_calculated_credit_per_sms"
+                                                       name="calculated_credit_per_sms" type="number">
+
+                                                <div class="card-header bg-white  d-flex justify-content-between align-items-center">
+                                                    <div class="">Automaticaly send lapsed customer's an automated offer within a set period of days.
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="submit" class=" btn btn-primary ">Save</button>
+                                                    </div>
+                                                </div>
+                                                <div class="row px-3">
+                                                    <div class="card-body col-md-8 col-lg-8 ">
+                                                        <div class="form-group">
+                                                            <label class="text-left" for="#">Campaign Name</label>
+                                                            <input
+                                                                @if(isset($lapsed_campaign->campaign_name)) value="{{$lapsed_campaign->campaign_name}}"
+                                                                @endif name="campaign_name" type="text"
+                                                                class="form-control ">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="text-left" for="#">Days</label>
+                                                            <input @if(isset($lapsed_campaign->days)) value="{{$lapsed_campaign->days}}" @endif name="days" type="number"
+                                                                class="form-control days" required>
+                                                            <div class="lapsed-error-msg"><span
+                                                                    style="color: gray;font-size: 14px">Enter a number between 10-365.</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="text-left" for="#">Sender Name</label>
+                                                            @php
+                                                                $lapsedcustomer_sender_name = \App\LapsedCustomer::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->select('sender_name')->distinct()->get();
+                                                            @endphp
+
+                                                            <div class="custom-select-div ">
+                                                                <select required name="sender_name"
+                                                                        class=" js-example-tags lapsed-sendername-character-count">
+                                                                    @foreach($lapsedcustomer_sender_name as $lapsedcustomer_sender)
+                                                                        <option
+                                                                            @if($lapsedcustomer_sender->sender_name == $lapsed_campaign->sender_name) selected @endif>{{$lapsedcustomer_sender->sender_name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="lapsed-sender-char-msg"><span
+                                                                    style="color: gray;font-size: 14px">Min character 3 and Max character 11</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <label class="text-left" for="#">Text Message</label>
+                                                                <div style="color: gray;font-size: 13px;">Characters used
+                                                                    <span id="lapsed-rchars"
+                                                                               style="text-align: right">0</span> /
+                                                                    <span
+                                                                        id="lapsed-credit"> @if(isset($lapsed_campaign->calculated_credit_per_sms)){{$lapsed_campaign->calculated_credit_per_sms}}@else 0 @endif </span>
+                                                                    credits.<br> Emoji's are not supported
+                                                                </div>
+                                                            </div>
+                                                            <div id="cct_embed_counts">
+                                                                <textarea maxlength="612"
+                                                                          class="form-control lapsed-campaign-textarea"
+                                                                          id="lapsed-campaign-textarea"
+                                                                          name="message_text"
+                                                                          rows="4">@if(isset($lapsed_campaign->message_text)){{$lapsed_campaign->message_text}}@endif</textarea>
+                                                                <div class="lapsed-textarea-char-limit"><span
+                                                                        style="color: gray;font-size: 14px">Max characters limit is '612'.</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            Status
+                                                        </div>
+                                                        <label class="switch" style="">
+                                                            {{--                                    @dd($shop_data->user)--}}
+                                                            <input
+                                                                @if(isset($lapsed_campaign->status) && $lapsed_campaign->status == "active")checked
+                                                                @endif name="status" type="checkbox" value="active"
+                                                                class="custom-control-input  status-switch">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="card-body col-md-4 col-lg-4 ">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title" style="font-size: 15px">
+                                                                    Placeholder</h6>
+                                                                <p class="card-text custom-variable-font-size">You can
+                                                                    use placeholders to output in your 'Text Message'
+                                                                    fields. The available placeholders are:</p>
+                                                            </div>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item custom-variable-font-size">
+                                                                    <button type="button"
+                                                                            class="lapsed-placeholder btn btn-primary">
+                                                                        {CustomerName}
+                                                                    </button>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade " id="lapsedlog_log" role="tabpanel"
+                                         aria-labelledby="lapsed_log-tab">
+                                        <div class="col-md-12 col-lg-12 card">
+                                            <div class="card-body">
+                                                <div id="product_append">
+                                                    <div class="row px-3" style="overflow-x:auto;">
+                                                        <table id="datatabled"
+                                                               class="table table-borderless  table-hover  table-class ">
+                                                            <thead class="border-0 ">
+
+                                                            <tr class="th-tr table-tr text-white text-center">
+
+                                                                <th class="font-weight-bold " style="">First Name</th>
+                                                                <th class="font-weight-bold " style="">Last Name</th>
+                                                                <th class="font-weight-bold " style="">Mobile#</th>
+                                                                <th class="font-weight-bold " style="">Order#</th>
+                                                                <th class="font-weight-bold " style="">SMS Text</th>
+                                                                <th class="font-weight-bold " style="">Action</th>
+                                                                <th class="font-weight-bold " style="">Sent_at</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{--                                        @dd($users_data)--}}
+                                                            @foreach($user_orderdispatch_logs_data as $key=>$user_orderdispatch_log)
+                                                                <tr class="td-text-center">
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->firstname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->lastname}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->mobileno}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->order_name}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->sms_text}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{$user_orderdispatch_log->action}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{date_format($user_orderdispatch_log->created_at, 'M d,Y H:m:A')}}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        {!!  $user_orderdispatch_logs_data->links() !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1187,6 +1383,15 @@
                 var cntrl = $(this).html().trim();
                 console.log(cntrl)
                 $("#welcome-campaign-textarea").val(function (_, val) {
+                    return val + cntrl
+                });
+            });
+        });
+        $(document).ready(function () {
+
+            $(".lapsed-placeholder").click(function () {
+                var cntrl = $(this).html().trim();
+                $("#lapsed-campaign-textarea").val(function (_, val) {
                     return val + cntrl
                 });
             });
@@ -1445,6 +1650,62 @@
             }
         } else {
             $(this).find('.orderdispatch-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
+            event.preventDefault();
+        }
+    });
+
+
+        // lapsed customer  campaign textarea checks
+        $('.lapsed-campaign-textarea').keyup(function () {
+
+            var nmbr_char = $(this).val().length;
+            var textlen = nmbr_char;
+            if (textlen <= 0) {
+                var credit = 0;
+            } else if (textlen <= 160) {
+                var credit = 1;
+            } else if (textlen <= 306) {
+                var credit = 2;
+            } else if (textlen <= 460) {
+                var credit = 3;
+            } else if (textlen <= 612) {
+                var credit = 4;
+            }
+            if (textlen == 612) {
+                $('.lapsed-textarea-char-limit').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Max characters limit is '612'.</div>`)
+            } else {
+                $('.lapsed-textarea-char-limit').html(`<span style="color: gray;font-size: 14px">Max characters limit is '612'.</span>`)
+            }
+
+            $('#lapsed-rchars').text(textlen);
+            $('#lapsed-credit').text(credit);
+        });
+    $(".lapsed-save-campaign").submit(function (event) {
+        var showTextlen = $(this).find('#lapsed-rchars').text();
+        var showCredit = $(this).find('#lapsed-credit').text();
+        var current_user_credits = $('.current_user_credits').val();
+        var sender_text = $(this).find('.lapsed-sendername-character-count').val();
+        var days = $(this).find('.days').val();
+
+        if(parseInt(days) >= 10 && parseInt(days) <= 365){
+            alert(123)
+        }else{
+            $(this).find('.lapsed-error-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">You need to be enter a number between 10-365.</div>`)
+            event.preventDefault();
+        }
+        if (parseInt(sender_text.length) >= 3 && parseInt(sender_text.length) <= 11) {
+            if (parseInt(showCredit) <= parseInt(current_user_credits)) {
+                if (confirm("Characters used " + showTextlen + " / " + showCredit + " credits")) {
+                    $(this).find('.lapsed_sms_calculated_credit_per_sms').val(parseInt(showCredit));
+                } else {
+                    return false;
+                }
+            } else {
+                alert("Your SMS credits is not enough to create this campaign.")
+                event.preventDefault();
+            }
+        } else {
+            $(this).find('.lapsed-sender-char-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">Min character 3 and Max character 11 </div>`)
             event.preventDefault();
         }
     });

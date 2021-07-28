@@ -24,7 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="add contact us">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/dashboard/customers_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -67,15 +70,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\text-global\resources\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\text-global\database\migrations" />
       <recent name="C:\laragon\www\text-global" />
       <recent name="C:\laragon\www\text-global\resources\views\adminpanel\module\dashboard" />
       <recent name="C:\laragon\www\text-global\resources\views\adminpanel\module\user" />
       <recent name="C:\laragon\www\text-global\resources\views\adminpanel" />
-      <recent name="C:\laragon\www\text-global\public\polished_asset" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\text-global\resources\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -154,49 +157,9 @@
       <workItem from="1626461184173" duration="285000" />
       <workItem from="1626501937528" duration="13253000" />
       <workItem from="1627327361274" duration="2182000" />
-      <workItem from="1627384117662" duration="6953000" />
-    </task>
-    <task id="LOCAL-00166" summary="paypal integration">
-      <created>1619172409563</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1619172409564</updated>
-    </task>
-    <task id="LOCAL-00167" summary="customers fields adds">
-      <created>1619176272072</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1619176272073</updated>
-    </task>
-    <task id="LOCAL-00168" summary="customer exports to global platform">
-      <created>1619428355248</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1619428355257</updated>
-    </task>
-    <task id="LOCAL-00169" summary="changes by haseeb">
-      <created>1626419879113</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1626419879114</updated>
-    </task>
-    <task id="LOCAL-00170" summary="changes by haseeb">
-      <created>1626420102287</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1626420102288</updated>
-    </task>
-    <task id="LOCAL-00171" summary="changes by haseeb">
-      <created>1626421536023</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1626421536023</updated>
+      <workItem from="1627384117662" duration="9359000" />
+      <workItem from="1627415471703" duration="140000" />
+      <workItem from="1627451471978" duration="6931000" />
     </task>
     <task id="LOCAL-00172" summary="changes by haseeb">
       <created>1626435262591</created>
@@ -499,7 +462,49 @@
       <option name="project" value="LOCAL" />
       <updated>1627393510619</updated>
     </task>
-    <option name="localTasksCounter" value="215" />
+    <task id="LOCAL-00215" summary="add contact us">
+      <created>1627394736805</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1627394736807</updated>
+    </task>
+    <task id="LOCAL-00216" summary="add contact us">
+      <created>1627395668387</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1627395668389</updated>
+    </task>
+    <task id="LOCAL-00217" summary="add contact us">
+      <created>1627395891942</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1627395891942</updated>
+    </task>
+    <task id="LOCAL-00218" summary="add contact us">
+      <created>1627396161651</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1627396161652</updated>
+    </task>
+    <task id="LOCAL-00219" summary="add contact us">
+      <created>1627396523716</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1627396523721</updated>
+    </task>
+    <task id="LOCAL-00220" summary="add contact us">
+      <created>1627396830193</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1627396830193</updated>
+    </task>
+    <option name="localTasksCounter" value="221" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,18 +551,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="add contact us" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1627393294740">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1627395877321">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1627393294740" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1627395877321" />
     <state x="580" y="187" key="FileChooserDialogImpl" timestamp="1626417133395">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="187" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626417133395" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627393546275">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627396833102">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627393546275" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627396833102" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -566,10 +571,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="611" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1626509924299" />
-    <state x="509" y="183" width="581" height="546" key="find.popup" timestamp="1627390827170">
+    <state x="509" y="183" width="581" height="546" key="find.popup" timestamp="1627396152739">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="509" y="183" width="581" height="546" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1627390827170" />
+    <state x="509" y="183" width="581" height="546" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1627396152739" />
     <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626417267363">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -578,10 +583,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1626439522288" />
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627394715608">
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup" timestamp="1627458864772">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627394715608" />
+    <state x="456" y="83" width="672" height="676" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1627458864772" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -593,7 +598,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>405</line>
+          <line>406</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -613,52 +618,52 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>464</line>
+          <line>469</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>688</line>
+          <line>693</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>1148</line>
+          <line>1344</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>55</line>
+          <line>60</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>111</line>
+          <line>116</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>103</line>
+          <line>108</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/adminpanel/module/user/sms_trigger_index.blade.php</url>
-          <line>50</line>
+          <line>55</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/web.php</url>
-          <line>117</line>
+          <line>118</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>131</line>
+          <line>132</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>132</line>
+          <line>133</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -678,7 +683,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>297</line>
+          <line>298</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_shop_preferences_save" />
@@ -687,7 +692,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>318</line>
+          <line>319</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="country_user_save" />
@@ -696,7 +701,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>345</line>
+          <line>346</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="sms_campaign_save" />
@@ -705,7 +710,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>368</line>
+          <line>369</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="edit_campaign_save" />
@@ -714,7 +719,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>526</line>
+          <line>550</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="abandoned_cart_campaign_save" />
@@ -723,7 +728,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>548</line>
+          <line>572</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="sms_trigger_index" />
@@ -732,7 +737,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>454</line>
+          <line>455</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="order_confirm_campaign_save" />
@@ -741,7 +746,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>245</line>
+          <line>246</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\UserController" />
             <option name="methodName" value="user_shop_detail" />

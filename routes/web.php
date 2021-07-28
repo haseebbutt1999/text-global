@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth.shopify', 'shop-active']], function () {
     Route::post('/orderconfirm-campaign-save', 'UserController@order_confirm_campaign_save')->name('orderconfirm-campaign-save');
     Route::post('/orderrefund-campaign-save', 'UserController@order_refund_campaign_save')->name('orderrefund-campaign-save');
     Route::post('/orderdispatch-campaign-save', 'UserController@order_dispatch_campaign_save')->name('orderdispatch-campaign-save');
+    Route::post('/lapsed-campaign-save', 'UserController@lapsed_campaign_save')->name('lapsed-campaign-save');
 
     Route::get('sms-triggers-index', 'UserController@sms_trigger_index')->name('sms-triggers-index');
 
