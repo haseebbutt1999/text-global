@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="lapsed customer campaign">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_07_28_090653_add_field_to_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_07_28_090653_add_field_to_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +156,7 @@
       <workItem from="1627327361274" duration="2182000" />
       <workItem from="1627384117662" duration="9359000" />
       <workItem from="1627415471703" duration="140000" />
-      <workItem from="1627451471978" duration="13797000" />
-    </task>
-    <task id="LOCAL-00182" summary="maitnain new logs">
-      <created>1626449550837</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1626449550838</updated>
+      <workItem from="1627451471978" duration="14232000" />
     </task>
     <task id="LOCAL-00183" summary="maitnain new logs">
       <created>1626450119628</created>
@@ -501,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627468179269</updated>
     </task>
-    <option name="localTasksCounter" value="231" />
+    <task id="LOCAL-00231" summary="lapsed customer campaign">
+      <created>1627468498509</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1627468498510</updated>
+    </task>
+    <option name="localTasksCounter" value="232" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,10 +564,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627468207122">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627468516150">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627468207122" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627468516150" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -685,11 +685,6 @@
           <url>file://$PROJECT_DIR$/routes/web.php</url>
           <line>26</line>
           <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Jobs/OrderConfirmJob.php</url>
-          <line>67</line>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
