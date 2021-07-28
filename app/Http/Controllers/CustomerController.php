@@ -27,7 +27,7 @@ class CustomerController extends Controller
 
         $customer = Auth::user();
         $customer = $customer->api()->rest('GET', '/admin/customers.json')['body']['customers'];
-        dd($customer[0]->default_address->phone);
+        dd($customer);
         //           fetch customer
         foreach ($customer as $customer_check){
             $customer = Customer::where('user_id', Auth::user()->id)->where('shopify_customer_id', $customer_check->id)->first();
