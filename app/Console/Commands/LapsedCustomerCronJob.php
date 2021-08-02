@@ -64,7 +64,8 @@ class LapsedCustomerCronJob extends Command
                                 $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $customer->last_order_date);
                                 $diff_in_days = $to->diffInDays($from);
                                 $lapsed_campaign = LapsedCustomer::where('user_id', $shop->id)->first();
-                                if ($diff_in_days >= $lapsed_campaign->days) {
+//                                $lapsed_campaign->days
+                                if ($diff_in_days >= 1) {
                                     // send sms to lapsed customer
                                     $messgae_text = str_replace('{CustomerName}', $customer->first_name . " " . $customer->last_name, $lapsed_campaign->message_text);
 //
