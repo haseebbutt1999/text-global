@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="lapsed customer campaign">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,20 +158,7 @@
       <workItem from="1627415471703" duration="140000" />
       <workItem from="1627451471978" duration="21655000" />
       <workItem from="1627588681840" duration="104000" />
-    </task>
-    <task id="LOCAL-00194" summary="maitnain new logs">
-      <created>1626506808751</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1626506808752</updated>
-    </task>
-    <task id="LOCAL-00195" summary="maitnain new logs">
-      <created>1626506908886</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1626506908886</updated>
+      <workItem from="1627908509537" duration="1326000" />
     </task>
     <task id="LOCAL-00196" summary="maitnain new logs">
       <created>1626507096358</created>
@@ -502,7 +489,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627471726122</updated>
     </task>
-    <option name="localTasksCounter" value="243" />
+    <task id="LOCAL-00243" summary="lapsed customer campaign">
+      <created>1627908551269</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1627908551270</updated>
+    </task>
+    <task id="LOCAL-00244" summary="lapsed customer campaign">
+      <created>1627908559650</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1627908559650</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,10 +550,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="lapsed customer campaign" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1627476038867">
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1627909204596">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1627476038867" />
+    <state x="530" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1627909204596" />
     <state x="580" y="187" key="FileChooserDialogImpl" timestamp="1626417133395">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -565,10 +566,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627471728427">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1627908561619">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627471728427" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1627908561619" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -689,7 +690,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php</url>
-          <line>144</line>
+          <line>162</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
