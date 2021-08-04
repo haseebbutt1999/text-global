@@ -58,16 +58,16 @@ class LapsedCustomerCronJob extends Command
                     $country_users = $shop->countries;
                     //                dd($country_users);
                     foreach ($country_users as $country_user) {
-                        if ($country_user->name == $customer_country ) {
+                        if ($country_user->name == $customer_country) {
                             if ($customer->orders->count() > 1) {
 
-                                    $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date("Y-m-d H:s:i"));
-                                    $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $customer->last_order_date);
-                                    $diff_in_days = $to->diffInDays($from);
-                                    $lapsed_campaign = LapsedCustomer::where('user_id', $shop->id)->first();
+                                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date("Y-m-d H:s:i"));
+                                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $customer->last_order_date);
+                                $diff_in_days = $to->diffInDays($from);
+                                $lapsed_campaign = LapsedCustomer::where('user_id', $shop->id)->first();
 //
-                                    if ($diff_in_days >= $lapsed_campaign->days) {
-                                        if($shop->credit != 0 && $shop->credit > 0){
+                                if ($diff_in_days >= $lapsed_campaign->days) {
+                                    if ($shop->credit != 0 && $shop->credit > 0) {
                                         // send sms to lapsed customer
                                         $messgae_text = str_replace('{CustomerName}', $customer->first_name . " " . $customer->last_name, $lapsed_campaign->message_text);
 //
@@ -116,7 +116,7 @@ class LapsedCustomerCronJob extends Command
                                             $response = json_decode($response);
                                             if ($response->messages[0]->status->name == "PENDING_ENROUTE") {
                                                 $this->log_store->log_store($shop->id, 'LapsedCustomer', $lapsed_campaign->id, $messgae_text, $lapsed_campaign->campaign_name, 'Sent');
-                                                $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, $messgae_text, 'LapsedCustomer',  null, $customer->shopify_customer_id,null, "Send");
+                                                $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, $messgae_text, 'LapsedCustomer', null, $customer->shopify_customer_id, null, "Send");
 
                                                 //                Detect Credits
                                                 $user = User::Where('id', $lapsed_campaign->user_id)->first();
@@ -150,10 +150,10 @@ class LapsedCustomerCronJob extends Command
                                             }
 
                                         }
-                                        }else{
-                                            $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, '', 'LapsedCustomer', null, null, 'Failed due to 0 credit !', "not sended");
-                                        }
+                                    } else {
+                                        $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, '', 'LapsedCustomer', null, null, 'Failed due to 0 credit !', "not sended");
                                     }
+                                }
 
                             }
                         }
@@ -161,7 +161,7 @@ class LapsedCustomerCronJob extends Command
                 }
             }
             return 0;
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             $test = new Test();
             $test->text = "Lapsed Customers Exception error" . json_encode($exception->getMessage());
             $test->save();
