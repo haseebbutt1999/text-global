@@ -49,7 +49,7 @@
         <div style="
     color: white;background-color: #F4B340 ;
     padding: 5px 25px;    font-weight: 500;
-    text-align: center;">{{"Credits - ". Auth::user()->credit }}</div>
+    text-align: center;">{{"Credits - ". \Illuminate\Support\Facades\Auth::user()->credit }}</div>
         @else
         <div style="
     color: white;background-color: #F4B340 ;
