@@ -161,21 +161,7 @@
       <workItem from="1627908509537" duration="3247000" />
       <workItem from="1627930869314" duration="920000" />
       <workItem from="1628055104770" duration="1639000" />
-      <workItem from="1628061674006" duration="4469000" />
-    </task>
-    <task id="LOCAL-00202" summary="add contact us">
-      <created>1626513443571</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1626513443571</updated>
-    </task>
-    <task id="LOCAL-00203" summary="add contact us">
-      <created>1626513527536</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1626513527536</updated>
+      <workItem from="1628061674006" duration="5190000" />
     </task>
     <task id="LOCAL-00204" summary="add contact us">
       <created>1626513540594</created>
@@ -506,7 +492,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628065988780</updated>
     </task>
-    <option name="localTasksCounter" value="251" />
+    <task id="LOCAL-00251" summary="lapsed customer campaign">
+      <created>1628066395305</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1628066395305</updated>
+    </task>
+    <task id="LOCAL-00252" summary="lapsed customer campaign">
+      <created>1628066436832</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1628066436832</updated>
+    </task>
+    <option name="localTasksCounter" value="253" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,10 +569,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1628065992230">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1628066716196">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1628065992230" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1628066716196" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -585,10 +585,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="509" y="183" width="581" height="546" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1627910908730" />
-    <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1627588779219">
+    <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1628066477989">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860@0.0.1600.860" timestamp="1627588779219" />
+    <state x="582" y="334" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860@0.0.1600.860" timestamp="1628066477989" />
     <state x="456" y="195" key="run.anything.popup" timestamp="1626439522288">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
