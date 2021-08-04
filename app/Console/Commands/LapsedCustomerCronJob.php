@@ -49,7 +49,7 @@ class LapsedCustomerCronJob extends Command
             $shops = User::where('role', 'user')->get();
 
             foreach ($shops as $shop) {
-                $customers = Customer::where('user_id', $shop->id)->get();
+                $customers = Customer::where('lapsed_sms_status','not sended')->where('user_id', $shop->id)->get();
                 foreach ($customers as $customer) {
 
                     $customer_country = $customer->addressess[0]->country;
@@ -115,6 +115,8 @@ class LapsedCustomerCronJob extends Command
                                         } else {
                                             $response = json_decode($response);
                                             if ($response->messages[0]->status->name == "PENDING_ENROUTE") {
+                                                $customer->lapsed_sms_status = 'send';
+                                                $customer->save();
                                                 $this->log_store->log_store($shop->id, 'LapsedCustomer', $lapsed_campaign->id, $messgae_text, $lapsed_campaign->campaign_name, 'Sent');
                                                 $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, $messgae_text, 'LapsedCustomer', null, $customer->shopify_customer_id, null, "Send");
 

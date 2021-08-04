@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b86583d-81d5-49ef-bc96-17f1f8ecc9c9" name="Default Changelist" comment="lapsed customer campaign">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,21 +161,8 @@
       <workItem from="1627908509537" duration="3247000" />
       <workItem from="1627930869314" duration="920000" />
       <workItem from="1628055104770" duration="1639000" />
-      <workItem from="1628061674006" duration="6666000" />
-    </task>
-    <task id="LOCAL-00207" summary="add contact us">
-      <created>1626513838258</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1626513838258</updated>
-    </task>
-    <task id="LOCAL-00208" summary="add contact us">
-      <created>1626517415397</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1626517415400</updated>
+      <workItem from="1628061674006" duration="7286000" />
+      <workItem from="1628075078188" duration="130000" />
     </task>
     <task id="LOCAL-00209" summary="add contact us">
       <created>1627387378040</created>
@@ -505,7 +493,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628074388050</updated>
     </task>
-    <option name="localTasksCounter" value="256" />
+    <task id="LOCAL-00256" summary="lapsed customer campaign">
+      <created>1628074430305</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1628074430305</updated>
+    </task>
+    <task id="LOCAL-00257" summary="lapsed customer campaign">
+      <created>1628074476296</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1628074476296</updated>
+    </task>
+    <option name="localTasksCounter" value="258" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,10 +570,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1627459649735" />
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1628074390034">
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2" timestamp="1628074486515">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1628074390034" />
+    <state x="392" y="165" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1628074486515" />
     <state x="409" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626448838113">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -692,7 +694,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Console/Commands/LapsedCustomerCronJob.php</url>
-          <line>169</line>
+          <line>171</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
