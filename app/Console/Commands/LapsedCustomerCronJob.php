@@ -118,7 +118,7 @@ class LapsedCustomerCronJob extends Command
                                                 $customer->lapsed_sms_status = 'send';
                                                 $customer->save();
                                                 $this->log_store->log_store($shop->id, 'LapsedCustomer', $lapsed_campaign->id, $messgae_text, $lapsed_campaign->campaign_name, 'Sent');
-                                                $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, $messgae_text, 'LapsedCustomer', null, $customer->shopify_customer_id, null, "Send");
+                                                $this->user_log->user_log($shop->id, $customer->phone, $customer->first_name, $customer->last_name, $messgae_text, 'LapsedCustomer', null, $customer->shopify_customer_id, 'Sent', "sended");
 
                                                 //                Detect Credits
                                                 $user = User::Where('id', $lapsed_campaign->user_id)->first();
