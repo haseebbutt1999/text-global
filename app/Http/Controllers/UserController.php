@@ -584,12 +584,12 @@ class UserController extends Controller
         $lapsed_campaign = LapsedCustomer::where('user_id', Auth::user()->id)->first();
         $lapsed_campaign= json_decode(json_encode($lapsed_campaign,True));
 
-        $user_welcome_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('id', 'desc')->paginate(30);
-        $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('id', 'desc')->paginate(30);
-        $user_orderconfirm_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderconfirm'])->orderBy('id', 'desc')->paginate(30);
-        $user_orderdispatch_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderdispatch'])->orderBy('id', 'desc')->paginate(30);
-        $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('id', 'desc')->paginate(30);
-        $user_lapsed_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['LapsedCustomer'])->orderBy('id', 'desc')->paginate(30);
+        $user_welcome_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Welcomecampaign'])->orderBy('created_at', 'desc')->paginate(30);
+        $user_abandonedcart_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Abandonedcartcampaign'])->orderBy('created_at', 'desc')->paginate(30);
+        $user_orderconfirm_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderconfirm'])->orderBy('created_at', 'desc')->paginate(30);
+        $user_orderdispatch_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderdispatch'])->orderBy('created_at', 'desc')->paginate(30);
+        $user_orderrefund_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['Orderrefund'])->orderBy('created_at', 'desc')->paginate(30);
+        $user_lapsed_logs_data = UserCamapignLog::where('user_id', Auth::user()->id)->whereIn('model_type', ['LapsedCustomer'])->orderBy('created_at', 'desc')->paginate(30);
 
         return view('adminpanel/module/user/sms_trigger_index',compact('orderdispatch_campaign','orderrefund_campaign','welcome_campaign', 'orderconfirm_campaign', 'abandoned_cart_campaign',
             'user_welcome_logs_data','user_lapsed_logs_data','lapsed_campaign', 'user_orderdispatch_logs_data', 'user_orderconfirm_logs_data', 'user_abandonedcart_logs_data', 'user_orderrefund_logs_data'));
