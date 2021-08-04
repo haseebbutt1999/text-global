@@ -1289,7 +1289,6 @@
                                                                 <th class="font-weight-bold " style="">First Name</th>
                                                                 <th class="font-weight-bold " style="">Last Name</th>
                                                                 <th class="font-weight-bold " style="">Mobile#</th>
-                                                                <th class="font-weight-bold " style="">Order#</th>
                                                                 <th class="font-weight-bold " style="">SMS Text</th>
                                                                 <th class="font-weight-bold " style="">Action</th>
                                                                 <th class="font-weight-bold " style="">Sent_at</th>
@@ -1297,34 +1296,31 @@
                                                             </thead>
                                                             <tbody>
                                                             {{--                                        @dd($users_data)--}}
-                                                            @foreach($user_orderdispatch_logs_data as $key=>$user_orderdispatch_log)
+                                                            @foreach($user_lapsed_logs_data as $key=>$user_lapsed_logs)
                                                                 <tr class="td-text-center">
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->firstname}}
+                                                                        {{$user_lapsed_logs->firstname}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->lastname}}
+                                                                        {{$user_lapsed_logs->lastname}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->mobileno}}
+                                                                        {{$user_lapsed_logs->mobileno}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->order_name}}
+                                                                        {{$user_lapsed_logs->sms_text}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->sms_text}}
+                                                                        {{$user_lapsed_logs->status}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_orderdispatch_log->action}}
-                                                                    </td>
-                                                                    <td>
-                                                                        {{date_format($user_orderdispatch_log->created_at, 'M d,Y H:m:A')}}
+                                                                        {{date_format($user_lapsed_logs->created_at, 'M d,Y H:m:A')}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
                                                             </tbody>
                                                         </table>
-                                                        {!!  $user_orderdispatch_logs_data->links() !!}
+                                                        {!!  $user_lapsed_logs_data->links() !!}
                                                     </div>
                                                 </div>
                                             </div>
