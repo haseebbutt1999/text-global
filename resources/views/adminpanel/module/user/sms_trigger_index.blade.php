@@ -1684,7 +1684,7 @@
         var days = $(this).find('.days').val();
 
         if(parseInt(days) >= 10 && parseInt(days) <= 365){
-            alert(123)
+
         }else{
             $(this).find('.lapsed-error-msg').html(`<div style="font-size: 14px; padding: 5px 10px;" class="alert alert-danger" role="alert">You need to be enter a number between 10-365.</div>`)
             event.preventDefault();
