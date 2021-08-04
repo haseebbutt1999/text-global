@@ -1311,7 +1311,7 @@
                                                                         {{$user_lapsed_logs->sms_text}}
                                                                     </td>
                                                                     <td>
-                                                                        {{$user_lapsed_logs->status}}
+                                                                        {{$user_lapsed_logs->action}}
                                                                     </td>
                                                                     <td>
                                                                         {{date_format($user_lapsed_logs->created_at, 'M d,Y H:m:A')}}
